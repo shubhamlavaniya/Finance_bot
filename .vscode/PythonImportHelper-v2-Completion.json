@@ -3140,6 +3140,15 @@
         "documentation": {}
     },
     {
+        "label": "sys.modules['sqlite3']",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\nimport os\nimport pandas as pd\nfrom pathlib import Path\nfrom langchain_community.vectorstores import Chroma\nfrom langchain_community.embeddings import HuggingFaceEmbeddings\nfrom langchain.chains import RetrievalQA\nfrom langchain_community.llms import HuggingFaceHub\nfrom langchain_community.retrievers import BM25Retriever\nfrom langchain_core.documents import Document",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
         "label": "script_dir",
         "kind": 5,
         "importPath": "src.rag_core",

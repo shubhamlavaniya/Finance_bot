@@ -8,7 +8,8 @@ rank_bm25
 transformers
 tqdm
 streamlit
-chromadb
+#chromadb
+chromadb==0.4.24
 #chromadb==0.4.1
 pyarrow
 unidecode
