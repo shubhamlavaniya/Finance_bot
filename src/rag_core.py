@@ -163,6 +163,37 @@ def verify_answer(llm: Any, answer: str, source_documents: list) -> str:
     response = verification_chain.invoke({"answer": answer, "source_docs": source_texts})
     return response.strip()
 
+
+def validate_query_simple(query: str) -> str:
+    """Simple rule-based query validation without API calls."""
+    query_lower = query.lower()
+    
+    # Harmful patterns
+    harmful_patterns = [
+        "harm", "attack", "malware", "virus", "hack", "exploit",
+        "self-harm", "suicide", "kill", "destroy", "bomb", "weapon"
+    ]
+    
+    if any(pattern in query_lower for pattern in harmful_patterns):
+        return "HARMFUL"
+    
+    # Financial keywords (from Apple 10-K context)
+    financial_keywords = [
+        "revenue", "income", "profit", "financial", "balance", "cash flow",
+        "10-k", "apple", "financial statement", "earnings", "margin",
+        "assets", "liabilities", "equity", "dividend", "investment",
+        "stock", "share", "ipo", "market cap", "valuation", "growth",
+        "sales", "expenses", "rd", "research", "development", "tax",
+        "debt", "credit", "loan", "interest", "currency", "exchange",
+        "segment", "geographic", "product", "service", "iphone", "mac",
+        "ipad", "wearables", "app store", "cloud", "subscription"
+    ]
+    
+    if any(keyword in query_lower for keyword in financial_keywords):
+        return "RELEVANT_FINANCIAL"
+    
+    return "IRRELEVANT"
+
 # --- Main RAG Pipeline Function ---
 
 def get_rag_response(query: str):

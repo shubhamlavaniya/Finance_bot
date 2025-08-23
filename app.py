@@ -5,7 +5,7 @@
 
 import streamlit as st
 import time
-from src.rag_core import get_rag_response, get_rag_llm, validate_query
+from src.rag_core import get_rag_response, get_rag_llm, validate_query,validate_query_simple
 from src.ft_core import get_ft_response, load_ft_model_and_tokenizer
 from src.db_handler import init_db, save_chat, load_chats, update_chat_title
 import uuid
@@ -104,7 +104,7 @@ if prompt := st.chat_input("Enter your question here..."):
         ft_model, _, _ = load_ft_model_and_tokenizer()
         validation_llm = ft_model
 
-    validation_status = validate_query(validation_llm, prompt)
+    validation_status = validate_query_simple(prompt)
     if validation_status in ["IRRELEVANT", "HARMFUL"]:
         response_text = f"Your query was flagged as **{validation_status}**. Please ask a relevant financial question."
         with st.chat_message("assistant"):
