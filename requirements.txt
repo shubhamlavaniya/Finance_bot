@@ -19,18 +19,15 @@ torch
 nomic
 gradio==4.44.0 # or a newer version
 ollama
-#bs4
-#lxml
 langfuse
 openai
 pdfplumber
-langchain_community
+#langchain_community
 langchain-chroma
 langchain-huggingface
 pysqlite3-binary
 huggingface_hub
-langchain
-sentence-transformers
-torch
 peft
+langchain-community==0.0.32
+numpy==1.26.4
 
