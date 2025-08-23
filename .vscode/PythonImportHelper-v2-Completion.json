@@ -1096,12 +1096,12 @@
         "documentation": {}
     },
     {
-        "label": "numpy",
+        "label": "streamlit",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "numpy",
-        "description": "numpy",
-        "detail": "numpy",
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
         "documentation": {}
     },
     {
@@ -1176,6 +1176,15 @@
         "description": "unidecode",
         "isExtraImport": true,
         "detail": "unidecode",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
         "documentation": {}
     },
     {
@@ -1341,6 +1350,15 @@
         "documentation": {}
     },
     {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
+        "documentation": {}
+    },
+    {
         "label": "chromadb",
         "kind": 6,
         "isExtraImport": true,
@@ -1358,16 +1376,23 @@
         "documentation": {}
     },
     {
-        "label": "streamlit",
-        "kind": 6,
+        "label": "get_rag_response",
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
         "isExtraImport": true,
-        "importPath": "streamlit",
-        "description": "streamlit",
-        "detail": "streamlit",
+        "detail": "src.rag_core",
         "documentation": {}
     },
     {
-        "label": "get_rag_response",
+        "label": "get_rag_llm",
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "isExtraImport": true,
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "validate_query",
         "importPath": "src.rag_core",
         "description": "src.rag_core",
         "isExtraImport": true,
@@ -1400,6 +1425,14 @@
     },
     {
         "label": "get_ft_response",
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "isExtraImport": true,
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "get_ft_llm",
         "importPath": "src.ft_core",
         "description": "src.ft_core",
         "isExtraImport": true,
@@ -2672,11 +2705,29 @@
         "documentation": {}
     },
     {
+        "label": "load_ft_model_and_tokenizer",
+        "kind": 2,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "def load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Load the BASE model first\n        base_model = AutoModelForCausalLM.from_pretrained(\n            DEFAULT_MODEL_ID,\n            trust_remote_code=True,\n            torch_dtype=torch.float16 if device == \"cuda\" else torch.float32,",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "load_memory_resources",
+        "kind": 2,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "def load_memory_resources():\n    \"\"\"Loads and caches memory Q/A pairs and the Sentence Transformer.\"\"\"\n    def _load_qa_pairs():\n        pairs = []\n        if QA_JSON.exists():\n            with open(QA_JSON, \"r\", encoding=\"utf-8\") as f:\n                pairs = json.load(f)\n        elif QA_TXT.exists():\n            with open(QA_TXT, \"r\", encoding=\"utf-8\") as f:\n                lines = f.read().split(\"\\n\")",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
         "label": "validate_query_ft",
         "kind": 2,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "def validate_query_ft(query: str) -> str:\n    q = (query or \"\").lower()\n    if any(bad in q for bad in [\"attack\", \"explosive\", \"malware\", \"self-harm\"]):\n        return \"HARMFUL\"\n    if not any(k in q for k in FINANCE_KEYWORDS):\n        return \"IRRELEVANT\"\n    return \"OK\"\n# ---------- FT answerer ----------\nDECODE = {\n    \"num_beams\": 5,",
+        "peekOfCode": "def validate_query_ft(query: str) -> str:\n    q = (query or \"\").lower()\n    if any(bad in q for bad in [\"attack\", \"explosive\", \"malware\", \"self-harm\"]):\n        return \"HARMFUL\"\n    if not any(k in q for k in FINANCE_KEYWORDS):\n        return \"IRRELEVANT\"\n    return \"OK\"\nDECODE = {\n    \"num_beams\": 5, \"max_new_tokens\": 80, \"early_stopping\": True, \n    \"no_repeat_ngram_size\": 2, \"repetition_penalty\": 1.1, \"temperature\": 0.3",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2685,7 +2736,7 @@
         "kind": 2,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "def get_ft_response(question: str):\n    \"\"\"Uniform response shape with RAG for the UI.\"\"\"\n    guard = validate_query_ft(question)\n    if guard in (\"IRRELEVANT\", \"HARMFUL\"):\n        return {\n            \"answer\": f\"Your query was flagged as **{guard}**. Please ask a relevant financial question.\",\n            \"verification\": \"BLOCKED\",\n            \"confidence\": 0.0,\n            \"method\": \"Fine-tuned\",\n            \"response_time\": 0.0",
+        "peekOfCode": "def get_ft_response(question: str):\n    \"\"\"Uniform response shape with RAG for the UI.\"\"\"\n    # This will get the cached model and resources\n    model, tokenizer, device = load_ft_model_and_tokenizer()\n    qa_pairs, _, _, _ = load_memory_resources()\n    if not all([model, tokenizer, qa_pairs]):\n        return {\n            \"answer\": \"Error: A required model or resource could not be loaded.\",\n            \"verification\": \"Error\",\n            \"confidence\": 0.0,",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2694,16 +2745,16 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "script_dir = Path(__file__).resolve().parent\n# Make sure this is the path where your PEFT adapter is saved\nDEFAULT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# ---------- Load FT model ----------\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nDEFAULT_MODEL_ID = \"microsoft/phi-2\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Cached Model & Resource Loading ---\n@st.cache_resource\ndef load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")",
         "detail": "src.ft_core",
         "documentation": {}
     },
     {
-        "label": "DEFAULT_MODEL_DIR",
+        "label": "DEFAULT_MODEL_ID",
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "DEFAULT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# ---------- Load FT model ----------\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,",
+        "peekOfCode": "DEFAULT_MODEL_ID = \"microsoft/phi-2\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Cached Model & Resource Loading ---\n@st.cache_resource\ndef load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2712,7 +2763,7 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "QA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# ---------- Load FT model ----------\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,",
+        "peekOfCode": "QA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Cached Model & Resource Loading ---\n@st.cache_resource\ndef load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Load the BASE model first",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2721,97 +2772,7 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "QA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# ---------- Load FT model ----------\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16, # Use float16 to save memory",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "device",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16, # Use float16 to save memory\n)\n# --- NEW: Load the fine-tuned PEFT adapter ---",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "base_model_name",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "base_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16, # Use float16 to save memory\n)\n# --- NEW: Load the fine-tuned PEFT adapter ---\ntry:\n    model = PeftModel.from_pretrained(base_model, DEFAULT_MODEL_DIR)\n    print(\"✅ Successfully loaded fine-tuned adapter.\")",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "base_model",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "base_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16, # Use float16 to save memory\n)\n# --- NEW: Load the fine-tuned PEFT adapter ---\ntry:\n    model = PeftModel.from_pretrained(base_model, DEFAULT_MODEL_DIR)\n    print(\"✅ Successfully loaded fine-tuned adapter.\")\nexcept Exception as e:",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "tokenizer",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\n# Merge the adapter and move to device\nmodel = model.merge_and_unload()\nmodel.to(device)\nmodel.eval()\n# ---------- Load memory Q/A & embeddings for verification ----------\ndef _load_qa_pairs():\n    pairs = []\n    if QA_JSON.exists():",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "tokenizer.pad_token",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token\n# Merge the adapter and move to device\nmodel = model.merge_and_unload()\nmodel.to(device)\nmodel.eval()\n# ---------- Load memory Q/A & embeddings for verification ----------\ndef _load_qa_pairs():\n    pairs = []\n    if QA_JSON.exists():\n        with open(QA_JSON, \"r\", encoding=\"utf-8\") as f:",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "model",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "model = model.merge_and_unload()\nmodel.to(device)\nmodel.eval()\n# ---------- Load memory Q/A & embeddings for verification ----------\ndef _load_qa_pairs():\n    pairs = []\n    if QA_JSON.exists():\n        with open(QA_JSON, \"r\", encoding=\"utf-8\") as f:\n            pairs = json.load(f)\n    elif QA_TXT.exists():",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "qa_pairs",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "qa_pairs = _load_qa_pairs()\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=(\"cuda\" if torch.cuda.is_available() else \"cpu\"))\n# Precompute embeddings for all answers\nanswer_corpus = [p[\"answer\"] for p in qa_pairs] if qa_pairs else []\nanswer_embeddings = embedder.encode(answer_corpus) if answer_corpus else None\n# ---------- Simple input guardrail ----------\nFINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "embedder",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "embedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=(\"cuda\" if torch.cuda.is_available() else \"cpu\"))\n# Precompute embeddings for all answers\nanswer_corpus = [p[\"answer\"] for p in qa_pairs] if qa_pairs else []\nanswer_embeddings = embedder.encode(answer_corpus) if answer_corpus else None\n# ---------- Simple input guardrail ----------\nFINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",\n    \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \"fiscal\", \"segment\",",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "answer_corpus",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "answer_corpus = [p[\"answer\"] for p in qa_pairs] if qa_pairs else []\nanswer_embeddings = embedder.encode(answer_corpus) if answer_corpus else None\n# ---------- Simple input guardrail ----------\nFINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",\n    \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \"fiscal\", \"segment\",\n    \"geographic\", \"capex\", \"r&d\", \"share repurchase\", \"buyback\", \"opex\",\n    \"cost of sales\", \"goodwill\", \"services\", \"iphone\", \"mac\", \"ipad\",",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "answer_embeddings",
-        "kind": 5,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "answer_embeddings = embedder.encode(answer_corpus) if answer_corpus else None\n# ---------- Simple input guardrail ----------\nFINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",\n    \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \"fiscal\", \"segment\",\n    \"geographic\", \"capex\", \"r&d\", \"share repurchase\", \"buyback\", \"opex\",\n    \"cost of sales\", \"goodwill\", \"services\", \"iphone\", \"mac\", \"ipad\",\n    \"spend\", \"expenditure\", \"expense\", \"cost\", \"marketing\", \"advertising\",",
+        "peekOfCode": "QA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Cached Model & Resource Loading ---\n@st.cache_resource\ndef load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Load the BASE model first\n        base_model = AutoModelForCausalLM.from_pretrained(",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2820,7 +2781,7 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "FINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",\n    \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \"fiscal\", \"segment\",\n    \"geographic\", \"capex\", \"r&d\", \"share repurchase\", \"buyback\", \"opex\",\n    \"cost of sales\", \"goodwill\", \"services\", \"iphone\", \"mac\", \"ipad\",\n    \"spend\", \"expenditure\", \"expense\", \"cost\", \"marketing\", \"advertising\",\n    \"profit\", \"loss\", \"amortization\", \"depreciation\", \"valuation\",\n    \"debt\", \"equity\", \"stock\", \"share\", \"Apple\", \"Microsoft\", \"Google\",",
+        "peekOfCode": "FINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\", \"balance sheet\", \n    \"income statement\", \"assets\", \"liabilities\", \"eps\", \"earnings per share\", \"dividends\", \n    \"gross margin\", \"operating margin\", \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \n    \"fiscal\", \"segment\", \"geographic\", \"capex\", \"r&d\", \"share repurchase\", \"buyback\", \n    \"opex\", \"cost of sales\", \"goodwill\", \"services\", \"iphone\", \"mac\", \"ipad\", \"spend\", \n    \"expenditure\", \"expense\", \"cost\", \"marketing\", \"advertising\", \"profit\", \"loss\", \n    \"amortization\", \"depreciation\", \"valuation\", \"debt\", \"equity\", \"stock\", \"share\", \n    \"Apple\", \"Microsoft\", \"Google\", \"investment\", \"portfolio\", \"risk\", \"return\", \"diversification\"\n}",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2829,7 +2790,7 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "DECODE = {\n    \"num_beams\": 5,\n    \"max_new_tokens\": 80,\n    \"early_stopping\": True,\n    \"no_repeat_ngram_size\": 2,\n    \"repetition_penalty\": 1.1,\n    \"temperature\": 0.3  # Added for better control\n}\ndef _postprocess(text: str) -> str:\n    sents = [s.strip() for s in text.split(\".\") if s.strip()]",
+        "peekOfCode": "DECODE = {\n    \"num_beams\": 5, \"max_new_tokens\": 80, \"early_stopping\": True, \n    \"no_repeat_ngram_size\": 2, \"repetition_penalty\": 1.1, \"temperature\": 0.3\n}\ndef _postprocess(text: str) -> str:\n    sents = [s.strip() for s in text.split(\".\") if s.strip()]\n    uniq = []\n    for s in sents:\n        if s not in uniq:\n            uniq.append(s)",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -3113,11 +3074,38 @@
         "documentation": {}
     },
     {
+        "label": "get_rag_llm",
+        "kind": 2,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "def get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceHub(\n        repo_id=\"microsoft/phi-2\",\n        model_kwargs={\"temperature\": 0.1, \"max_new_tokens\": 512}\n    )\n    print(\"Successfully connected to Hugging Face Inference API.\")\n    return llm\n@st.cache_resource",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "get_vector_db",
+        "kind": 2,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "def get_vector_db():\n    \"\"\"\n    Loads or creates a persistent ChromaDB instance.\n    This function handles the ephemeral filesystem on Streamlit Cloud.\n    \"\"\"\n    script_dir = Path(__file__).resolve().parent\n    data_path = script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\n    vector_db_path = script_dir.parent / \"vector_db\"\n    print(f\"Checking for existing vector database at: {vector_db_path}\")\n    if not vector_db_path.exists() or not os.listdir(vector_db_path):",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "get_bm25_retriever",
+        "kind": 2,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "def get_bm25_retriever():\n    \"\"\"\n    Loads documents from the CSV and builds a BM25 retriever, caching the result.\n    \"\"\"\n    script_dir = Path(__file__).resolve().parent\n    data_path = script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\n    try:\n        df = pd.read_csv(data_path)\n        docs = [\n            Document(page_content=row[\"text\"], metadata={\"section\": row[\"section\"], \"chunk_id\": row[\"chunk_id\"]})",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
         "label": "validate_query",
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def validate_query(llm: Any, query: str) -> str:\n    \"\"\"Classifies a user query as relevant, irrelevant, or harmful.\"\"\"\n    validation_prompt_template = \"\"\"\n    You are a financial query validator. Your task is to determine if a user's query is related to financial topics, a company's 10-K filing, or is a harmful request.\n    Classify the query into one of the following categories:\n    - RELEVANT_FINANCIAL: The query is about finance, a company, or a 10-K filing.\n    - IRRELEVANT: The query is unrelated to finance.\n    - HARMFUL: The query is a harmful, unethical, or dangerous request.\n    Query: {query}\n    Classification:",
+        "peekOfCode": "def validate_query(llm: Any, query: str) -> str:\n    \"\"\"Classifies a user query as relevant, irrelevant, or harmful.\"\"\"\n    validation_prompt_template = \"\"\"\n    You are a financial query validator. Your task is to determine if a user's query is related to financial topics, a company's 10-K filing, or is a harmful request.\n    <Instructions>\n    - If the query is about a company's financial performance, a specific financial term (e.g., revenue, EPS), a financial document (e.g., 10-K), or investment advice, classify it as 'RELEVANT_FINANCIAL'.\n    - If the query is a personal, non-financial, or general knowledge question, classify it as 'IRRELEVANT'.\n    - If the query contains any harmful, unethical, dangerous, or illegal content, classify it as 'HARMFUL'.\n    Output format should be a single line with the classification and a brief explanation.\n    e.g., Classification: RELEVANT_FINANCIAL. Explanation: The query asks about a company's revenue.",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3126,7 +3114,7 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def verify_answer(llm: Any, answer: str, source_documents: list) -> str:\n    \"\"\"Verifies if the answer is supported by the source documents.\"\"\"\n    source_texts = \"\\n\\n\".join([doc.page_content for doc in source_documents])\n    verification_prompt_template = \"\"\"\n    You are a fact-checker. Your task is to determine if the given Answer is directly and entirely supported by the provided Source Documents.\n    Instructions:\n    1. Read the Answer carefully.\n    2. Read all Source Documents.\n    3. Determine if every claim in the Answer can be found and verified in the Source Documents.\n    4. If the Answer is fully supported, respond with 'VERIFIED'.",
+        "peekOfCode": "def verify_answer(llm: Any, answer: str, source_documents: list) -> str:\n    \"\"\"Verifies if the answer is supported by the source documents.\"\"\"\n    source_texts = \"\\n\\n\".join([doc.page_content for doc in source_documents])\n    verification_prompt_template = \"\"\"\n    You are a fact-checker. Your task is to determine if the given Answer is directly and entirely supported by the provided Source Documents.\n    <Instructions>\n    - If the Answer is fully supported by the Source Documents, output 'VERIFIED'.\n    - If the Answer is not fully supported, contains information not in the Source Documents, or is a hallucination, output 'UNVERIFIED'.\n    Output format should be a single line with the verification status and a brief explanation.\n    e.g., Verification: VERIFIED. Explanation: The answer is directly from the source documents.",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3135,7 +3123,7 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_rag_response(query: str):\n    \"\"\"The main RAG function to get a response with guardrails.\"\"\"\n    # First check memory bank\n    memory_result = memory_retriever.query(query)\n    if memory_result:\n        return {\n            \"answer\": memory_result[\"answer\"],\n            \"source\": memory_result[\"source\"],\n            \"method\": \"Memory Bank\",\n            \"confidence\": memory_result.get(\"similarity\", \"N/A\"),",
+        "peekOfCode": "def get_rag_response(query: str):\n    \"\"\"The main RAG function to get a response with guardrails.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    memory_path = script_dir.parent / \"data\" / \"qa_pair.json\"  \n    memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n    memory_result = memory_retriever.query(query)\n    if memory_result:\n        return {\n            \"answer\": memory_result[\"answer\"],\n            \"source\": memory_result[\"source\"],",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3144,79 +3132,7 @@
         "kind": 5,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\nimport os\nimport pandas as pd\nfrom pathlib import Path\nfrom langchain_community.vectorstores import Chroma\nfrom langchain_community.embeddings import HuggingFaceEmbeddings\nfrom langchain.chains import RetrievalQA\nfrom langchain_community.llms import HuggingFaceHub\nfrom langchain_community.retrievers import BM25Retriever\nfrom langchain_core.documents import Document",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "script_dir",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "script_dir = Path(__file__).resolve().parent\n# Load and process documents to create the BM25Retriever\ndata_path =script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\nif not data_path.exists():\n    raise FileNotFoundError(f\"Ensure that {data_path} exists and contains your document chunks.\")\ntry:\n    df = pd.read_csv(data_path)\n    docs = [\n        Document(\n            page_content=row[\"text\"],",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "bm25_retriever",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "bm25_retriever = BM25Retriever.from_documents(docs)\n# Load embeddings and vector DB\nembedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\nvectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\n# Construct the absolute path to qa_pair.json\nmemory_path =script_dir.parent / \"data\" / \"qa_pair.json\"  \nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# Instantiate HybridRetriever with the correct objects\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "embedding_model",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\nvectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\n# Construct the absolute path to qa_pair.json\nmemory_path =script_dir.parent / \"data\" / \"qa_pair.json\"  \nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# Instantiate HybridRetriever with the correct objects\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "vectordb",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "vectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\n# Construct the absolute path to qa_pair.json\nmemory_path =script_dir.parent / \"data\" / \"qa_pair.json\"  \nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# Instantiate HybridRetriever with the correct objects\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "memory_retriever",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# Instantiate HybridRetriever with the correct objects\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4\n)\n# --- Load LLM from Hugging Face Hosted Inference API ---\nprint(\"Loading Hugging Face LLM via Inference API...\")",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "hybrid_retriever",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "hybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4\n)\n# --- Load LLM from Hugging Face Hosted Inference API ---\nprint(\"Loading Hugging Face LLM via Inference API...\")\n# This is the key change. We are now using an API call instead of local model loading.\n# You must set your Hugging Face API token as an environment variable in Streamlit Secrets.",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "llm",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "llm = HuggingFaceHub(\n    repo_id=\"microsoft/phi-2\",\n    model_kwargs={\"temperature\": 0.1, \"max_new_tokens\": 512}\n)\nprint(\"✅ Successfully connected to Hugging Face Inference API.\")\n# Setup QA chain with hybrid retriever\nqa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    retriever=hybrid_retriever,\n    return_source_documents=True",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "qa_chain",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "qa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    retriever=hybrid_retriever,\n    return_source_documents=True\n)\ndef get_rag_response(query: str):\n    \"\"\"The main RAG function to get a response with guardrails.\"\"\"\n    # First check memory bank\n    memory_result = memory_retriever.query(query)\n    if memory_result:",
+        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceHub(\n        repo_id=\"microsoft/phi-2\",\n        model_kwargs={\"temperature\": 0.1, \"max_new_tokens\": 512}\n    )",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3344,42 +3260,6 @@
         "description": "src.sparse_index",
         "peekOfCode": "metadata = df[[\"section\", \"chunk_id\"]].to_dict(orient=\"records\")\n# Save index and metadata\nos.makedirs(\"sparse_index_bm25\", exist_ok=True)\nwith open(\"sparse_index_bm25/bm25.pkl\", \"wb\") as f:\n    pickle.dump(bm25, f)\nwith open(\"sparse_index_bm25/tokenized_corpus.pkl\", \"wb\") as f:\n    pickle.dump(tokenized_corpus, f)\nwith open(\"sparse_index_bm25/metadata.pkl\", \"wb\") as f:\n    pickle.dump(metadata, f)\nprint(\"BM25 index built and saved successfully!\")",
         "detail": "src.sparse_index",
-        "documentation": {}
-    },
-    {
-        "label": "get_rag_llm",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def get_rag_llm():\n    from src.rag_core import llm\n    return llm\n# Get the RAG LLM\nrag_llm = get_rag_llm()\n# --- Function to load FT LLM with caching ---\n@st.cache_resource\ndef get_ft_llm():\n    from src.ft_core import ft_model\n    return ft_model",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "get_ft_llm",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def get_ft_llm():\n    from src.ft_core import ft_model\n    return ft_model\n# Get the Fine-tuned LLM\nft_llm = get_ft_llm()\n# Initialize session state for the current conversation thread\nif \"current_thread_id\" not in st.session_state:\n    st.session_state.current_thread_id = str(uuid.uuid4())\n    st.session_state.thread_title = \"\"\n# --- Sidebar ---",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "rag_llm",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "rag_llm = get_rag_llm()\n# --- Function to load FT LLM with caching ---\n@st.cache_resource\ndef get_ft_llm():\n    from src.ft_core import ft_model\n    return ft_model\n# Get the Fine-tuned LLM\nft_llm = get_ft_llm()\n# Initialize session state for the current conversation thread\nif \"current_thread_id\" not in st.session_state:",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "ft_llm",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "ft_llm = get_ft_llm()\n# Initialize session state for the current conversation thread\nif \"current_thread_id\" not in st.session_state:\n    st.session_state.current_thread_id = str(uuid.uuid4())\n    st.session_state.thread_title = \"\"\n# --- Sidebar ---\nwith st.sidebar:\n    st.header(\"Start a New Chat\")\n    if st.button(\"New Chat\",icon=\"✨\"):\n        st.session_state.current_thread_id = str(uuid.uuid4())",
-        "detail": "app",
         "documentation": {}
     },
     {

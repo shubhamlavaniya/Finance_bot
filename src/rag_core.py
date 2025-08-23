@@ -7,6 +7,7 @@ import shutil
 import pandas as pd
 import streamlit as st
 from pathlib import Path
+from typing import Any
 
 # LangChain and ChromaDB imports
 from langchain_community.vectorstores import Chroma
@@ -16,7 +17,6 @@ from langchain_community.llms import HuggingFaceHub
 from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 from langchain_core.prompts import PromptTemplate
-from typing import Any
 
 from src.hybrid_retriever import HybridRetriever
 from src.memory_retriever import MemoryRetriever
@@ -26,10 +26,10 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-# --- Shared Resources with Caching ---
+# --- Cached Resources ---
 
 @st.cache_resource
-def get_llm():
+def get_rag_llm():
     """Loads the Hugging Face LLM via Inference API and caches it."""
     print("Loading Hugging Face LLM via Inference API...")
     llm = HuggingFaceHub(
@@ -94,15 +94,46 @@ def get_vector_db():
         )
         return vectordb
 
+@st.cache_resource
+def get_bm25_retriever():
+    """
+    Loads documents from the CSV and builds a BM25 retriever, caching the result.
+    """
+    script_dir = Path(__file__).resolve().parent
+    data_path = script_dir.parent / "data" / "processed" / "chunks.csv"
+    
+    try:
+        df = pd.read_csv(data_path)
+        docs = [
+            Document(page_content=row["text"], metadata={"section": row["section"], "chunk_id": row["chunk_id"]})
+            for index, row in df.iterrows()
+        ]
+        bm25_retriever = BM25Retriever.from_documents(docs)
+        print("BM25 retriever built and cached.")
+        return bm25_retriever
+    except Exception as e:
+        print(f"Error building BM25 retriever: {e}")
+        return None
+
 # --- Guardrail Functions ---
 
 def validate_query(llm: Any, query: str) -> str:
     """Classifies a user query as relevant, irrelevant, or harmful."""
-    # This part of the code is unchanged from your original script
     validation_prompt_template = """
     You are a financial query validator. Your task is to determine if a user's query is related to financial topics, a company's 10-K filing, or is a harmful request.
 
-    ... (rest of the prompt) ...
+    <Instructions>
+    - If the query is about a company's financial performance, a specific financial term (e.g., revenue, EPS), a financial document (e.g., 10-K), or investment advice, classify it as 'RELEVANT_FINANCIAL'.
+    - If the query is a personal, non-financial, or general knowledge question, classify it as 'IRRELEVANT'.
+    - If the query contains any harmful, unethical, dangerous, or illegal content, classify it as 'HARMFUL'.
+
+    Output format should be a single line with the classification and a brief explanation.
+    e.g., Classification: RELEVANT_FINANCIAL. Explanation: The query asks about a company's revenue.
+    e.g., Classification: IRRELEVANT. Explanation: The query is a general knowledge question.
+    e.g., Classification: HARMFUL. Explanation: The query contains harmful content.
+    </Instructions>
+
+    Query: {query}
     """
     validation_prompt = PromptTemplate.from_template(validation_prompt_template)
     validation_chain = validation_prompt | llm
@@ -111,12 +142,21 @@ def validate_query(llm: Any, query: str) -> str:
 
 def verify_answer(llm: Any, answer: str, source_documents: list) -> str:
     """Verifies if the answer is supported by the source documents."""
-    # This part of the code is unchanged from your original script
     source_texts = "\n\n".join([doc.page_content for doc in source_documents])
     verification_prompt_template = """
     You are a fact-checker. Your task is to determine if the given Answer is directly and entirely supported by the provided Source Documents.
 
-    ... (rest of the prompt) ...
+    <Instructions>
+    - If the Answer is fully supported by the Source Documents, output 'VERIFIED'.
+    - If the Answer is not fully supported, contains information not in the Source Documents, or is a hallucination, output 'UNVERIFIED'.
+
+    Output format should be a single line with the verification status and a brief explanation.
+    e.g., Verification: VERIFIED. Explanation: The answer is directly from the source documents.
+    e.g., Verification: UNVERIFIED. Explanation: The answer contains information not found in the source documents.
+    </Instructions>
+
+    Answer: {answer}
+    Source Documents: {source_docs}
     """
     verification_prompt = PromptTemplate.from_template(verification_prompt_template)
     verification_chain = verification_prompt | llm
@@ -125,7 +165,7 @@ def verify_answer(llm: Any, answer: str, source_documents: list) -> str:
 
 # --- Main RAG Pipeline Function ---
 
-def get_rag_response(query: str, llm: Any):
+def get_rag_response(query: str):
     """The main RAG function to get a response with guardrails."""
 
     script_dir = Path(__file__).resolve().parent
@@ -143,6 +183,11 @@ def get_rag_response(query: str, llm: Any):
             "verification": "VERIFIED"
         }
     else:
+        # Get cached LLM for validation
+        llm = get_rag_llm()
+        if not llm:
+            return {"answer": "Error: LLM not available.", "method": "Error"}
+            
         validation_result = validate_query(llm, query)
         print(f"Validation: {validation_result}")
         if validation_result not in ["RELEVANT_FINANCIAL"]:
@@ -154,18 +199,12 @@ def get_rag_response(query: str, llm: Any):
                 "verification": "N/A"
             }
 
+        # Get cached resources
         vectordb = get_vector_db()
-        if not vectordb:
-            return {"answer": "Error: Vector database not available.", "method": "Error"}
-        
-        # Load and process documents for BM25Retriever
-        data_path = script_dir.parent / "data" / "processed" / "chunks.csv"
-        df = pd.read_csv(data_path)
-        docs = [
-            Document(page_content=row["text"], metadata={"section": row["section"], "chunk_id": row["chunk_id"]})
-            for index, row in df.iterrows()
-        ]
-        bm25_retriever = BM25Retriever.from_documents(docs)
+        bm25_retriever = get_bm25_retriever()
+
+        if not vectordb or not bm25_retriever:
+            return {"answer": "Error: Retrievers not available.", "method": "Error"}
 
         hybrid_retriever = HybridRetriever(
             vectordb=vectordb.as_retriever(),

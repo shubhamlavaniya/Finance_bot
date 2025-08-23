@@ -5,30 +5,18 @@
 
 import streamlit as st
 import time
-import uuid
-
-# Import the new functions from rag_core
-from src.rag_core import get_llm, get_rag_response, validate_query, verify_answer
-from src.ft_core import get_ft_response
+from src.rag_core import get_rag_response, get_rag_llm, validate_query
+from src.ft_core import get_ft_response, get_ft_llm
 from src.db_handler import init_db, save_chat, load_chats, update_chat_title
+import uuid
 
 # Initialize DB
 init_db()
 
 st.set_page_config(page_title="Financial Chatbot", layout="wide")
 
-# --- Function to load LLMs with caching ---
-# Get the RAG LLM from rag_core's cached function
-rag_llm = get_llm()
-
-# --- Function to load FT LLM with caching ---
-@st.cache_resource
-def get_ft_llm():
-    from src.ft_core import ft_model
-    return ft_model
-
-# Get the Fine-tuned LLM
-ft_llm = get_ft_llm()
+# --- All model loading functions are now gone from the top-level
+# They will be called only when needed inside the chat input block.
 
 # Initialize session state for the current conversation thread
 if "current_thread_id" not in st.session_state:
@@ -106,9 +94,14 @@ if prompt := st.chat_input("Enter your question here..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Use the appropriate LLM for validation
-    validation_llm = rag_llm if st.session_state.mode == "RAG" else ft_llm
-    
+    # --- THIS IS THE KEY CHANGE ---
+    # We now get the LLM inside the `if` block,
+    # ensuring only one LLM is ever loaded.
+    if st.session_state.mode == "RAG":
+        validation_llm = get_rag_llm()
+    else:
+        validation_llm = get_ft_llm()
+
     validation_status = validate_query(validation_llm, prompt)
     if validation_status in ["IRRELEVANT", "HARMFUL"]:
         response_text = f"Your query was flagged as **{validation_status}**. Please ask a relevant financial question."
@@ -121,7 +114,7 @@ if prompt := st.chat_input("Enter your question here..."):
         start_time = time.time()
 
         if st.session_state.mode == "RAG":
-            response_data = get_rag_response(prompt, rag_llm) # Pass the llm to the function
+            response_data = get_rag_response(prompt)
         else:
             response_data = get_ft_response(prompt)
 
@@ -129,11 +122,11 @@ if prompt := st.chat_input("Enter your question here..."):
         answer = response_data["answer"]
 
         with st.chat_message("assistant"):
-            if "VERIFIED" in response_data.get("verification", "N/A"):
+            if "VERIFIED" in response_data["verification"]:
                 st.success(f"**Answer (Verified):** {answer}")
             else:
                 st.warning(f"**Answer (Warning: Potential Hallucination):** {answer}")
-                st.info(f"Verification Status: {response_data.get('verification', 'N/A')}")
+                st.info(f"Verification Status: {response_data['verification']}")
 
             st.markdown("---")
             st.markdown(f"**Method Used:** {response_data['method']}")
