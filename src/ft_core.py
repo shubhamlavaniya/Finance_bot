@@ -19,6 +19,37 @@ DEFAULT_MODEL_ID = "microsoft/phi-2"
 QA_JSON = script_dir.parent / "data" / "qa_pair.json"
 QA_TXT = script_dir.parent / "data" / "qa_gpt2.txt"
 
+# --- Simple Validation Function (ADDED) ---
+def validate_query_simple(query: str) -> str:
+    """Simple rule-based query validation without API calls."""
+    query_lower = query.lower()
+    
+    # Harmful patterns
+    harmful_patterns = [
+        "harm", "attack", "malware", "virus", "hack", "exploit",
+        "self-harm", "suicide", "kill", "destroy", "bomb", "weapon"
+    ]
+    
+    if any(pattern in query_lower for pattern in harmful_patterns):
+        return "HARMFUL"
+    
+    # Financial keywords (from Apple 10-K context)
+    financial_keywords = [
+        "revenue", "income", "profit", "financial", "balance", "cash flow",
+        "10-k", "apple", "financial statement", "earnings", "margin",
+        "assets", "liabilities", "equity", "dividend", "investment",
+        "stock", "share", "ipo", "market cap", "valuation", "growth",
+        "sales", "expenses", "rd", "research", "development", "tax",
+        "debt", "credit", "loan", "interest", "currency", "exchange",
+        "segment", "geographic", "product", "service", "iphone", "mac",
+        "ipad", "wearables", "app store", "cloud", "subscription"
+    ]
+    
+    if any(keyword in query_lower for keyword in financial_keywords):
+        return "RELEVANT_FINANCIAL"
+    
+    return "IRRELEVANT"
+
 # --- Cached Model & Resource Loading ---
 @st.cache_resource
 def load_ft_model_and_tokenizer():
@@ -99,13 +130,6 @@ FINANCE_KEYWORDS = {
     "Apple", "Microsoft", "Google", "investment", "portfolio", "risk", "return", "diversification"
 }
 
-def validate_query_ft(query: str) -> str:
-    q = (query or "").lower()
-    if any(bad in q for bad in ["attack", "explosive", "malware", "self-harm"]):
-        return "HARMFUL"
-    if not any(k in q for k in FINANCE_KEYWORDS):
-        return "IRRELEVANT"
-    return "OK"
 
 DECODE = {
     "num_beams": 5, "max_new_tokens": 80, "early_stopping": True, 
@@ -171,7 +195,9 @@ def get_ft_response(question: str):
             "response_time": 0.0
         }
     
-    guard = validate_query_ft(question)
+    # ✅ FIXED: Use the new simple validation instead of the broken one
+    guard = validate_query_simple(question)
+    
     if guard in ("IRRELEVANT", "HARMFUL"):
         return {
             "answer": f"Your query was flagged as **{guard}**. Please ask a relevant financial question.",
