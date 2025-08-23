@@ -6,7 +6,7 @@
 import streamlit as st
 import time
 from src.rag_core import get_rag_response, get_rag_llm, validate_query
-from src.ft_core import get_ft_response, get_ft_llm
+from src.ft_core import get_ft_response, load_ft_model_and_tokenizer
 from src.db_handler import init_db, save_chat, load_chats, update_chat_title
 import uuid
 
@@ -100,7 +100,9 @@ if prompt := st.chat_input("Enter your question here..."):
     if st.session_state.mode == "RAG":
         validation_llm = get_rag_llm()
     else:
-        validation_llm = get_ft_llm()
+        # We now correctly call the function from ft_core that returns the LLM
+        ft_model, _, _ = load_ft_model_and_tokenizer()
+        validation_llm = ft_model
 
     validation_status = validate_query(validation_llm, prompt)
     if validation_status in ["IRRELEVANT", "HARMFUL"]:
