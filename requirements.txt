@@ -26,9 +26,10 @@ pdfplumber
 langchain-chroma
 langchain-huggingface
 pysqlite3-binary
-huggingface_hub
+#huggingface_hub
 peft
 langchain-community==0.0.32
 numpy==1.26.4
+huggingface-hub==0.17.3
 
 
