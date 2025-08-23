@@ -5,7 +5,7 @@
 
 import streamlit as st
 import time
-from src.rag_core import get_rag_response, get_rag_llm, validate_query,validate_query_simple
+from src.rag_core import get_rag_response, validate_query_simple
 from src.ft_core import get_ft_response, load_ft_model_and_tokenizer
 from src.db_handler import init_db, save_chat, load_chats, update_chat_title
 import uuid
@@ -15,9 +15,6 @@ init_db()
 
 st.set_page_config(page_title="Financial Chatbot", layout="wide")
 
-# --- All model loading functions are now gone from the top-level
-# They will be called only when needed inside the chat input block.
-
 # Initialize session state for the current conversation thread
 if "current_thread_id" not in st.session_state:
     st.session_state.current_thread_id = str(uuid.uuid4())
@@ -26,33 +23,34 @@ if "current_thread_id" not in st.session_state:
 # --- Sidebar ---
 with st.sidebar:
     st.header("Start a New Chat")
-    if st.button("New Chat",icon="✨"):
+    if st.button("New Chat", icon="✨"):
         st.session_state.current_thread_id = str(uuid.uuid4())
         st.session_state.thread_title = ""
         st.session_state.messages = []
         st.rerun()
-    
+
     st.markdown("---")
     st.title("Settings")
-    
+
     if "mode" not in st.session_state:
         st.session_state.mode = "RAG"
-    
+
     st.radio(
         "Select Mode:",
         options=["RAG", "Fine-tuned"],
         index=0 if st.session_state.mode == "RAG" else 1,
         key="mode"
     )
-    
+
     st.title("Recent")
     db_conversations = load_chats(limit=20)
-    
+
     for conv in db_conversations:
         chat_title = conv["title"]
-        
+
+        # Use columns to put the chat button and popover side-by-side
         col1, col2 = st.columns([0.7, 0.2])
-        
+
         with col1:
             if st.button(f"**{chat_title}**", use_container_width=True, key=f"chat_button_{conv['thread_id']}"):
                 st.session_state.messages = [
@@ -62,8 +60,9 @@ with st.sidebar:
                 st.session_state.current_thread_id = conv["thread_id"]
                 st.session_state.thread_title = conv["title"]
                 st.rerun()
-        
+
         with col2:
+            # Use st.popover to create a compact, floating UI for renaming
             with st.popover("⚙️", use_container_width=True):
                 st.markdown("### Rename Chat")
                 new_title = st.text_input(
@@ -78,7 +77,7 @@ with st.sidebar:
                     st.rerun()
 
 # --- Main Panel ---
-st.title("Financial Chatbot (RAG + Fine-tuned)")
+st.title("The Accountant (RAG + Fine-tuned)")
 st.write("Ask a financial question. Toggle between **RAG** and **Fine-tuned** modes from the sidebar.")
 
 if "messages" not in st.session_state:
@@ -94,17 +93,9 @@ if prompt := st.chat_input("Enter your question here..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # --- THIS IS THE KEY CHANGE ---
-    # We now get the LLM inside the `if` block,
-    # ensuring only one LLM is ever loaded.
-    if st.session_state.mode == "RAG":
-        validation_llm = get_rag_llm()
-    else:
-        # We now correctly call the function from ft_core that returns the LLM
-        ft_model, _, _ = load_ft_model_and_tokenizer()
-        validation_llm = ft_model
-
+    # --- Input Validation (USING SIMPLE VALIDATION FOR BOTH MODES) ---
     validation_status = validate_query_simple(prompt)
+    
     if validation_status in ["IRRELEVANT", "HARMFUL"]:
         response_text = f"Your query was flagged as **{validation_status}**. Please ask a relevant financial question."
         with st.chat_message("assistant"):
@@ -112,53 +103,63 @@ if prompt := st.chat_input("Enter your question here..."):
         st.session_state.messages.append({"query": prompt, "answer": response_text})
         st.stop()
 
+    # --- Process Query Based on Selected Mode ---
     with st.spinner(f"Thinking with {st.session_state.mode}..."):
         start_time = time.time()
 
         if st.session_state.mode == "RAG":
             response_data = get_rag_response(prompt)
-        else:
+            
+        elif st.session_state.mode == "Fine-tuned":
+            # Load fine-tuned model ONLY when in fine-tuned mode
+            with st.spinner("Loading financial expert..."):
+                ft_model, ft_tokenizer, ft_device = load_ft_model_and_tokenizer()
             response_data = get_ft_response(prompt)
 
         response_time = round(time.time() - start_time, 2)
         answer = response_data["answer"]
 
-        with st.chat_message("assistant"):
-            if "VERIFIED" in response_data["verification"]:
-                st.success(f"**Answer (Verified):** {answer}")
-            else:
-                st.warning(f"**Answer (Warning: Potential Hallucination):** {answer}")
-                st.info(f"Verification Status: {response_data['verification']}")
+    # --- Display Response ---
+    with st.chat_message("assistant"):
+        if "VERIFIED" in str(response_data.get("verification", "")):
+            st.success(f"**Answer (Verified):** {answer}")
+        else:
+            st.warning(f"**Answer (Warning: Potential Hallucination):** {answer}")
+            st.info(f"Verification Status: {response_data.get('verification', 'N/A')}")
 
-            st.markdown("---")
-            st.markdown(f"**Method Used:** {response_data['method']}")
-            st.markdown(f"**Response Time:** {response_time} seconds")
+    st.markdown("---")
+    st.markdown(f"**Method Used:** {response_data.get('method', 'N/A')}")
+    st.markdown(f"**Response Time:** {response_time} seconds")
 
-            if st.session_state.mode == "RAG":
-                confidence_score = response_data.get("confidence", "N/A")
-                if confidence_score != "N/A":
-                    st.markdown(f"**Retrieval Confidence:** {confidence_score:.2f}")
-                else:
-                    st.markdown(f"**Retrieval Confidence:** {confidence_score}")
+    # Only display confidence if it exists for the RAG method
+    if st.session_state.mode == "RAG":
+        confidence_score = response_data.get("confidence", "N/A")
+        if confidence_score != "N/A":
+            st.markdown(f"**Retrieval Confidence:** {confidence_score:.2f}")
+        else:
+            st.markdown(f"**Retrieval Confidence:** {confidence_score}")
 
-        st.session_state.messages.append(
-            {"query": prompt, "answer": answer, "response_data": response_data}
-        )
+    st.session_state.messages.append(
+        {"query": prompt, "answer": answer, "response_data": response_data}
+    )
 
-        chat_title = st.session_state.thread_title if st.session_state.thread_title else prompt
+    # Get the chat title (first question or saved title)
+    chat_title = st.session_state.thread_title if st.session_state.thread_title else prompt
 
-        save_chat(
-            st.session_state.current_thread_id,
-            chat_title,
-            prompt,
-            answer,
-            st.session_state.mode,
-            response_data,
-            response_time
-        )
-        
-        if not st.session_state.thread_title:
-            st.session_state.thread_title = prompt
+    # Save the chat with the new title
+    save_chat(
+        st.session_state.current_thread_id,
+        chat_title,
+        prompt,
+        answer,
+        st.session_state.mode,
+        response_data,
+        response_time
+    )
+
+    # Update the session state title after saving the first message
+    if not st.session_state.thread_title:
+        st.session_state.thread_title = prompt
 
 
 
