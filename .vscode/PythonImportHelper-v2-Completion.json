@@ -2973,16 +2973,16 @@
         "kind": 5,
         "importPath": "src.query_rag",
         "description": "src.query_rag",
-        "peekOfCode": "script_dir = Path(__file__).resolve().parent\n# --- Hugging Face Authentication ---\n# Option 1: Use your token (replace with your actual token)\n#HF_TOKEN = \"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\"\ntry:\n    # Login to Hugging Face\n    login(token=HF_TOKEN)\n    print(\"✅ Successfully authenticated with Hugging Face\")\nexcept Exception as e:\n    print(f\"❌ Authentication failed: {e}\")",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nHF_TOKEN = \"\"\ntry:\n    # Login to Hugging Face\n    login(token=HF_TOKEN)\n    print(\"✅ Successfully authenticated with Hugging Face\")\nexcept Exception as e:\n    print(f\"❌ Authentication failed: {e}\")\n    print(\"Please check your token or set HUGGING_FACE_HUB_TOKEN environment variable\")\n    exit(1)",
         "detail": "src.query_rag",
         "documentation": {}
     },
     {
-        "label": "#HF_TOKEN",
+        "label": "HF_TOKEN",
         "kind": 5,
         "importPath": "src.query_rag",
         "description": "src.query_rag",
-        "peekOfCode": "#HF_TOKEN = \"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\"\ntry:\n    # Login to Hugging Face\n    login(token=HF_TOKEN)\n    print(\"✅ Successfully authenticated with Hugging Face\")\nexcept Exception as e:\n    print(f\"❌ Authentication failed: {e}\")\n    print(\"Please check your token or set HUGGING_FACE_HUB_TOKEN environment variable\")\n    exit(1)\n# --- Step 1: Load and process documents to create the BM25Retriever ---",
+        "peekOfCode": "HF_TOKEN = \"\"\ntry:\n    # Login to Hugging Face\n    login(token=HF_TOKEN)\n    print(\"✅ Successfully authenticated with Hugging Face\")\nexcept Exception as e:\n    print(f\"❌ Authentication failed: {e}\")\n    print(\"Please check your token or set HUGGING_FACE_HUB_TOKEN environment variable\")\n    exit(1)\n# --- Step 1: Load and process documents to create the BM25Retriever ---",
         "detail": "src.query_rag",
         "documentation": {}
     },
