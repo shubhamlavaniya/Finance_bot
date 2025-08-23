@@ -219,7 +219,7 @@ def get_rag_response(query: str):
         if not llm:
             return {"answer": "Error: LLM not available.", "method": "Error"}
             
-        validation_result = validate_query(llm, query)
+        validation_result = validate_query_simple(query)
         print(f"Validation: {validation_result}")
         if validation_result not in ["RELEVANT_FINANCIAL"]:
             return {
