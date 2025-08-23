@@ -5,26 +5,21 @@
 
 import streamlit as st
 import time
-from src.rag_core import get_rag_response
+import uuid
+
+# Import the new functions from rag_core
+from src.rag_core import get_llm, get_rag_response, validate_query, verify_answer
 from src.ft_core import get_ft_response
 from src.db_handler import init_db, save_chat, load_chats, update_chat_title
-import uuid
 
 # Initialize DB
 init_db()
 
 st.set_page_config(page_title="Financial Chatbot", layout="wide")
 
-# --- Function to load LLM with caching ---
-# @st.cache_resource is the best practice for caching models,
-# database connections, and other global resources.
-@st.cache_resource
-def get_rag_llm():
-    from src.rag_core import llm
-    return llm
-
-# Get the RAG LLM
-rag_llm = get_rag_llm()
+# --- Function to load LLMs with caching ---
+# Get the RAG LLM from rag_core's cached function
+rag_llm = get_llm()
 
 # --- Function to load FT LLM with caching ---
 @st.cache_resource
@@ -68,7 +63,6 @@ with st.sidebar:
     for conv in db_conversations:
         chat_title = conv["title"]
         
-        # Use columns to put the chat button and popover side-by-side
         col1, col2 = st.columns([0.7, 0.2])
         
         with col1:
@@ -82,7 +76,6 @@ with st.sidebar:
                 st.rerun()
         
         with col2:
-            # Use st.popover to create a compact, floating UI for renaming
             with st.popover("⚙️", use_container_width=True):
                 st.markdown("### Rename Chat")
                 new_title = st.text_input(
@@ -113,9 +106,9 @@ if prompt := st.chat_input("Enter your question here..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Use the cached LLM for validation
+    # Use the appropriate LLM for validation
     validation_llm = rag_llm if st.session_state.mode == "RAG" else ft_llm
-    from src.rag_core import validate_query
+    
     validation_status = validate_query(validation_llm, prompt)
     if validation_status in ["IRRELEVANT", "HARMFUL"]:
         response_text = f"Your query was flagged as **{validation_status}**. Please ask a relevant financial question."
@@ -128,7 +121,7 @@ if prompt := st.chat_input("Enter your question here..."):
         start_time = time.time()
 
         if st.session_state.mode == "RAG":
-            response_data = get_rag_response(prompt)
+            response_data = get_rag_response(prompt, rag_llm) # Pass the llm to the function
         else:
             response_data = get_ft_response(prompt)
 
@@ -136,17 +129,16 @@ if prompt := st.chat_input("Enter your question here..."):
         answer = response_data["answer"]
 
         with st.chat_message("assistant"):
-            if "VERIFIED" in response_data["verification"]:
+            if "VERIFIED" in response_data.get("verification", "N/A"):
                 st.success(f"**Answer (Verified):** {answer}")
             else:
                 st.warning(f"**Answer (Warning: Potential Hallucination):** {answer}")
-                st.info(f"Verification Status: {response_data['verification']}")
+                st.info(f"Verification Status: {response_data.get('verification', 'N/A')}")
 
             st.markdown("---")
             st.markdown(f"**Method Used:** {response_data['method']}")
             st.markdown(f"**Response Time:** {response_time} seconds")
 
-            # Only display confidence if it exists for the RAG method
             if st.session_state.mode == "RAG":
                 confidence_score = response_data.get("confidence", "N/A")
                 if confidence_score != "N/A":
@@ -158,10 +150,8 @@ if prompt := st.chat_input("Enter your question here..."):
             {"query": prompt, "answer": answer, "response_data": response_data}
         )
 
-        # Get the chat title (first question or saved title)
         chat_title = st.session_state.thread_title if st.session_state.thread_title else prompt
 
-        # Save the chat with the new title
         save_chat(
             st.session_state.current_thread_id,
             chat_title,
@@ -172,11 +162,8 @@ if prompt := st.chat_input("Enter your question here..."):
             response_time
         )
         
-        # Update the session state title after saving the first message
         if not st.session_state.thread_title:
             st.session_state.thread_title = prompt
-
-
 
 
 
