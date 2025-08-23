@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+.DS_Store
+test.py
+app1.py
+test1.py
+.env
+
+#Ignore test files
+src/read_embed.py
+src/llm_segmenter.py
+#sparse_index_bm25/
+#src/sparse_index.py
+#models/
+
+# Ignore sensitive files
+langfuse.txt
+.streamlit/secrets.toml
+src/continual_finetune.py
+src/query_rag.py
+

@@ -1,0 +1,20 @@
+{
+    "model_path": "/Users/shubhamlavaniya/Downloads/Study/GenAI/RAG_Finance/models/financial_gpt2_v1",
+    "device": "cpu",
+    "decoding_params": {
+        "num_beams": 5,
+        "max_new_tokens": 100,
+        "no_repeat_ngram_size": 3,
+        "repetition_penalty": 1.2,
+        "early_stopping": true
+    },
+    "evaluation": {
+        "num_questions": 52,
+        "similarity_model": "all-MiniLM-L6-v2",
+        "similarity_threshold": 0.85,
+        "avg_similarity": 0.978,
+        "accuracy_at_threshold_percent": 100.0,
+        "total_inference_time_sec": 61.84,
+        "avg_inference_time_sec": 1.19
+    }
+}

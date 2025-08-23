@@ -1,0 +1,13 @@
+segment_name,year,section_type,length_chars,length_words
+business_overview_2022,2022,business_overview,25,5
+risk_factors_2022,2022,risk_factors,65977,9553
+notes_2022,2022,notes,52210,7876
+income_statement_2022,2022,income_statement,255,39
+balance_sheet_2022,2022,balance_sheet,211,33
+cash_flow_2022,2022,cash_flow,200027,33644
+business_overview_2023,2023,business_overview,25,5
+risk_factors_2023,2023,risk_factors,65003,9204
+notes_2023,2023,notes,51028,7510
+income_statement_2023,2023,income_statement,255,39
+balance_sheet_2023,2023,balance_sheet,211,33
+cash_flow_2023,2023,cash_flow,113594,18849

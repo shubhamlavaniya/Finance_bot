@@ -1,0 +1,15 @@
+question,keyword_coverage,semantic_coverage,similarity
+What was Apple's revenue in 2023?,Yes,No,0.7
+What was Apple's net income in 2023?,Yes,Yes,0.719
+What were Apple's R&D expenses in 2023?,Yes,Yes,0.738
+How many iPhones did Apple sell in 2023?,Yes,No,0.67
+How many employees work on sustainability at Apple in 2023?,Yes,No,0.58
+What is the capital of France?,Yes,No,0.175
+What was Apple's revenue in 2022?,Yes,Yes,0.717
+What was Apple's net income in 2022?,Yes,Yes,0.733
+What was Apple's total assets in 2022?,Yes,Yes,0.704
+How many iPads did Apple sell in 2022?,Yes,No,0.693
+How much did Apple spend on AI research in 2022?,Yes,No,0.572
+Who won the FIFA World Cup in 2022?,Yes,No,0.25
+what was the Total net sales of revenue recognized in 2023?,Yes,No,0.618
+what was the Total net sales of revenue recognized in 2023?,Yes,No,0.618

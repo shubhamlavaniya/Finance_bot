@@ -1,0 +1,103 @@
+[
+  {
+    "id": 1,
+    "system": "RAG",
+    "type": "relevant_high_confidence",
+    "question": "What was Apple's revenue in 2023?",
+    "answer": "$383.3B"
+  },
+  {
+    "id": 2,
+    "system": "RAG",
+    "type": "relevant_high_confidence",
+    "question": "What was Apple's net income in 2023?",
+    "answer": "$97.0B"
+  },
+  {
+    "id": 3,
+    "system": "RAG",
+    "type": "relevant_high_confidence",
+    "question": "What were Apple's R&D expenses in 2023?",
+    "answer": "$29.9B"
+  },
+  {
+    "id": 4,
+    "system": "RAG",
+    "type": "relevant_low_confidence",
+    "question": "How many iPhones did Apple sell in 2023?",
+    "answer": "Not disclosed"
+  },
+  {
+    "id": 5,
+    "system": "RAG",
+    "type": "relevant_low_confidence",
+    "question": "How many employees work on sustainability at Apple in 2023?",
+    "answer": "Not disclosed"
+  },
+  {
+    "id": 6,
+    "system": "RAG",
+    "type": "irrelevant",
+    "question": "What is the capital of France?",
+    "answer": "Not applicable"
+  },
+  {
+    "id": 7,
+    "system": "FineTuned",
+    "type": "relevant_high_confidence",
+    "question": "What was Apple's revenue in 2022?",
+    "answer": "$394.3B"
+  },
+  {
+    "id": 8,
+    "system": "FineTuned",
+    "type": "relevant_high_confidence",
+    "question": "What was Apple's net income in 2022?",
+    "answer": "$99.8B"
+  },
+  {
+    "id": 9,
+    "system": "FineTuned",
+    "type": "relevant_high_confidence",
+    "question": "What was Apple's total assets in 2022?",
+    "answer": "$352.7B"
+  },
+  {
+    "id": 10,
+    "system": "FineTuned",
+    "type": "relevant_low_confidence",
+    "question": "How many iPads did Apple sell in 2022?",
+    "answer": "Not disclosed"
+  },
+  {
+    "id": 11,
+    "system": "FineTuned",
+    "type": "relevant_low_confidence",
+    "question": "How much did Apple spend on AI research in 2022?",
+    "answer": "Not disclosed"
+  },
+  {
+    "id": 12,
+    "system": "FineTuned",
+    "type": "irrelevant",
+    "question": "Who won the FIFA World Cup in 2022?",
+    "answer": "Not applicable"
+  },
+
+  {
+    "id": 13,
+    "system": "RAG",
+    "type": "relevant",
+    "question": "what was the Total net sales of revenue recognized in 2023?",
+    "answer": "$ 8.2 billion"
+  },
+
+  {
+    "id": 14,
+    "system": "FineTuned",
+    "type": "relevant_low_confidence",
+    "question": "what was the Total net sales of revenue recognized in 2023?",
+    "answer": "$ 8.2 billion"
+  }
+
+]

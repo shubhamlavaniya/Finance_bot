@@ -1,0 +1,29 @@
+#mode: initial
+# model_name: distilgpt2
+# train_file: data/qa_pair.json
+# save_dir: models/financial_gpt2_v1
+# prev_model: null
+
+# learning_rate: 5e-5
+# epochs: 10
+# batch_size: 4
+# optimizer: AdamW
+# val_split: 0.1
+# max_length: 256
+# weight_decay: 0.01
+# grad_clip: 1.0
+#early_stopping_patience: 2
+
+model_name: microsoft/phi-2
+train_file: data/qa_pair.json
+save_dir: models/financial_phi2_v1
+prev_model: null
+
+learning_rate: 2e-4
+epochs: 3
+batch_size: 2
+optimizer: AdamW
+val_split: 0.1
+max_length: 512
+weight_decay: 0.01
+grad_clip: 1.0

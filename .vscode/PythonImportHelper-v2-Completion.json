@@ -1,0 +1,3529 @@
+[
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "os.path",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.path",
+        "description": "os.path",
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "ArgumentParser",
+        "importPath": "argparse",
+        "description": "argparse",
+        "isExtraImport": true,
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Container",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "TextIO",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "cast",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Container",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "pdfminer",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfminer",
+        "description": "pdfminer",
+        "detail": "pdfminer",
+        "documentation": {}
+    },
+    {
+        "label": "PDFDocument",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFNoOutlines",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFXRefFallback",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFIOError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFObjectNotFound",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFTypeError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFValueError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFValueError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFPage",
+        "importPath": "pdfminer.pdfpage",
+        "description": "pdfminer.pdfpage",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfpage",
+        "documentation": {}
+    },
+    {
+        "label": "PDFParser",
+        "importPath": "pdfminer.pdfparser",
+        "description": "pdfminer.pdfparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfparser",
+        "documentation": {}
+    },
+    {
+        "label": "PDFObjRef",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "PDFStream",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "resolve1",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "stream_value",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "LIT",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "PSKeyword",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "PSLiteral",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "isnumber",
+        "importPath": "pdfminer.utils",
+        "description": "pdfminer.utils",
+        "isExtraImport": true,
+        "detail": "pdfminer.utils",
+        "documentation": {}
+    },
+    {
+        "label": "AnyIO",
+        "importPath": "pdfminer.utils",
+        "description": "pdfminer.utils",
+        "isExtraImport": true,
+        "detail": "pdfminer.utils",
+        "documentation": {}
+    },
+    {
+        "label": "pdfminer.high_level",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfminer.high_level",
+        "description": "pdfminer.high_level",
+        "detail": "pdfminer.high_level",
+        "documentation": {}
+    },
+    {
+        "label": "LAParams",
+        "importPath": "pdfminer.layout",
+        "description": "pdfminer.layout",
+        "isExtraImport": true,
+        "detail": "pdfminer.layout",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceHub",
+        "importPath": "langchain_community.llms",
+        "description": "langchain_community.llms",
+        "isExtraImport": true,
+        "detail": "langchain_community.llms",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceHub",
+        "importPath": "langchain_community.llms",
+        "description": "langchain_community.llms",
+        "isExtraImport": true,
+        "detail": "langchain_community.llms",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2Tokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2LMHeadModel",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2LMHeadModel",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2Tokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BitsAndBytesConfig",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BitsAndBytesConfig",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "TrainingArguments",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "DataCollatorForLanguageModeling",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2LMHeadModel",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2Tokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BitsAndBytesConfig",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "pipeline",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2LMHeadModel",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2Tokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "PeftModel",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "LoraConfig",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "get_peft_model",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "prepare_model_for_kbit_training",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "LoraConfig",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "get_peft_model",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "prepare_model_for_kbit_training",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "PeftConfig",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "PeftModel",
+        "importPath": "peft",
+        "description": "peft",
+        "isExtraImport": true,
+        "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "nltk",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "nltk",
+        "description": "nltk",
+        "detail": "nltk",
+        "documentation": {}
+    },
+    {
+        "label": "word_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "word_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "yaml",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "yaml",
+        "description": "yaml",
+        "detail": "yaml",
+        "documentation": {}
+    },
+    {
+        "label": "Dataset",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "random_split",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "Dataset",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "DataLoader",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "random_split",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "Dataset",
+        "importPath": "torch.utils.data",
+        "description": "torch.utils.data",
+        "isExtraImport": true,
+        "detail": "torch.utils.data",
+        "documentation": {}
+    },
+    {
+        "label": "AdamW",
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "isExtraImport": true,
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "Adam",
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "isExtraImport": true,
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "SGD",
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "isExtraImport": true,
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "AdamW",
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "isExtraImport": true,
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "Adam",
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "isExtraImport": true,
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "SGD",
+        "importPath": "torch.optim",
+        "description": "torch.optim",
+        "isExtraImport": true,
+        "detail": "torch.optim",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "sqlite3",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sqlite3",
+        "description": "sqlite3",
+        "detail": "sqlite3",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain.vectorstores",
+        "description": "langchain.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain.embeddings",
+        "description": "langchain.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain.embeddings",
+        "description": "langchain.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain.docstore.document",
+        "description": "langchain.docstore.document",
+        "isExtraImport": true,
+        "detail": "langchain.docstore.document",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "pickle",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pickle",
+        "description": "pickle",
+        "detail": "pickle",
+        "documentation": {}
+    },
+    {
+        "label": "BaseRetriever",
+        "importPath": "langchain_core.retrievers",
+        "description": "langchain_core.retrievers",
+        "isExtraImport": true,
+        "detail": "langchain_core.retrievers",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain_core.documents",
+        "description": "langchain_core.documents",
+        "isExtraImport": true,
+        "detail": "langchain_core.documents",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain_core.documents",
+        "description": "langchain_core.documents",
+        "isExtraImport": true,
+        "detail": "langchain_core.documents",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain_core.documents",
+        "description": "langchain_core.documents",
+        "isExtraImport": true,
+        "detail": "langchain_core.documents",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "langchain_core.pydantic_v1",
+        "description": "langchain_core.pydantic_v1",
+        "isExtraImport": true,
+        "detail": "langchain_core.pydantic_v1",
+        "documentation": {}
+    },
+    {
+        "label": "ollama",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "ollama",
+        "description": "ollama",
+        "detail": "ollama",
+        "documentation": {}
+    },
+    {
+        "label": "unidecode",
+        "importPath": "unidecode",
+        "description": "unidecode",
+        "isExtraImport": true,
+        "detail": "unidecode",
+        "documentation": {}
+    },
+    {
+        "label": "unidecode",
+        "importPath": "unidecode",
+        "description": "unidecode",
+        "isExtraImport": true,
+        "detail": "unidecode",
+        "documentation": {}
+    },
+    {
+        "label": "cosine_similarity",
+        "importPath": "sklearn.metrics.pairwise",
+        "description": "sklearn.metrics.pairwise",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics.pairwise",
+        "documentation": {}
+    },
+    {
+        "label": "cosine_similarity",
+        "importPath": "sklearn.metrics.pairwise",
+        "description": "sklearn.metrics.pairwise",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics.pairwise",
+        "documentation": {}
+    },
+    {
+        "label": "fitz",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fitz",
+        "description": "fitz",
+        "detail": "fitz",
+        "documentation": {}
+    },
+    {
+        "label": "pdfplumber",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfplumber",
+        "description": "pdfplumber",
+        "detail": "pdfplumber",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_community.embeddings",
+        "description": "langchain_community.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain_community.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_community.embeddings",
+        "description": "langchain_community.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain_community.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "RetrievalQA",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "RetrievalQA",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "BM25Retriever",
+        "importPath": "langchain_community.retrievers",
+        "description": "langchain_community.retrievers",
+        "isExtraImport": true,
+        "detail": "langchain_community.retrievers",
+        "documentation": {}
+    },
+    {
+        "label": "BM25Retriever",
+        "importPath": "langchain_community.retrievers",
+        "description": "langchain_community.retrievers",
+        "isExtraImport": true,
+        "detail": "langchain_community.retrievers",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFacePipeline",
+        "importPath": "langchain_huggingface",
+        "description": "langchain_huggingface",
+        "isExtraImport": true,
+        "detail": "langchain_huggingface",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "huggingface_hub",
+        "description": "huggingface_hub",
+        "isExtraImport": true,
+        "detail": "huggingface_hub",
+        "documentation": {}
+    },
+    {
+        "label": "HybridRetriever",
+        "importPath": "src.hybrid_retriever",
+        "description": "src.hybrid_retriever",
+        "isExtraImport": true,
+        "detail": "src.hybrid_retriever",
+        "documentation": {}
+    },
+    {
+        "label": "HybridRetriever",
+        "importPath": "src.hybrid_retriever",
+        "description": "src.hybrid_retriever",
+        "isExtraImport": true,
+        "detail": "src.hybrid_retriever",
+        "documentation": {}
+    },
+    {
+        "label": "MemoryRetriever",
+        "importPath": "src.memory_retriever",
+        "description": "src.memory_retriever",
+        "isExtraImport": true,
+        "detail": "src.memory_retriever",
+        "documentation": {}
+    },
+    {
+        "label": "MemoryRetriever",
+        "importPath": "src.memory_retriever",
+        "description": "src.memory_retriever",
+        "isExtraImport": true,
+        "detail": "src.memory_retriever",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain_core.prompts",
+        "description": "langchain_core.prompts",
+        "isExtraImport": true,
+        "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "chromadb",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "chromadb",
+        "description": "chromadb",
+        "detail": "chromadb",
+        "documentation": {}
+    },
+    {
+        "label": "BM25Okapi",
+        "importPath": "rank_bm25",
+        "description": "rank_bm25",
+        "isExtraImport": true,
+        "detail": "rank_bm25",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "get_rag_response",
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "isExtraImport": true,
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "get_rag_response",
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "isExtraImport": true,
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "validate_query",
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "isExtraImport": true,
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "llm",
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "isExtraImport": true,
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "get_ft_response",
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "isExtraImport": true,
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "init_db",
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "isExtraImport": true,
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "save_chat",
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "isExtraImport": true,
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "load_chats",
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "isExtraImport": true,
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "update_chat_title",
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "isExtraImport": true,
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "gradio",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "gradio",
+        "description": "gradio",
+        "detail": "gradio",
+        "documentation": {}
+    },
+    {
+        "label": "escape",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def escape(s: Union[str, bytes]) -> str:\n    if isinstance(s, bytes):\n        us = str(s, \"latin-1\")\n    else:\n        us = s\n    return ESC_PAT.sub(lambda m: \"&#%d;\" % ord(m.group(0)), us)\ndef dumpxml(out: TextIO, obj: object, codec: Optional[str] = None) -> None:\n    if obj is None:\n        out.write(\"<null />\")\n        return",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpxml",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def dumpxml(out: TextIO, obj: object, codec: Optional[str] = None) -> None:\n    if obj is None:\n        out.write(\"<null />\")\n        return\n    if isinstance(obj, dict):\n        out.write('<dict size=\"%d\">\\n' % len(obj))\n        for k, v in obj.items():\n            out.write(\"<key>%s</key>\\n\" % k)\n            out.write(\"<value>\")\n            dumpxml(out, v)",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumptrailers",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def dumptrailers(\n    out: TextIO,\n    doc: PDFDocument,\n    show_fallback_xref: bool = False,\n) -> None:\n    for xref in doc.xrefs:\n        if not isinstance(xref, PDFXRefFallback) or show_fallback_xref:\n            out.write(\"<trailer>\\n\")\n            dumpxml(out, xref.get_trailer())\n            out.write(\"\\n</trailer>\\n\\n\")",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpallobjs",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def dumpallobjs(\n    out: TextIO,\n    doc: PDFDocument,\n    codec: Optional[str] = None,\n    show_fallback_xref: bool = False,\n) -> None:\n    visited = set()\n    out.write(\"<pdf>\")\n    for xref in doc.xrefs:\n        for objid in xref.get_objids():",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpoutline",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def dumpoutline(\n    outfp: TextIO,\n    fname: str,\n    objids: Any,\n    pagenos: Container[int],\n    password: str = \"\",\n    dumpall: bool = False,\n    codec: Optional[str] = None,\n    extractdir: Optional[str] = None,\n) -> None:",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "extractembedded",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def extractembedded(fname: str, password: str, extractdir: str) -> None:\n    def extract1(objid: int, obj: Dict[str, Any]) -> None:\n        filename = os.path.basename(obj.get(\"UF\") or cast(bytes, obj.get(\"F\")).decode())\n        fileref = obj[\"EF\"].get(\"UF\") or obj[\"EF\"].get(\"F\")\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            error_msg = (\n                \"unable to process PDF: reference for %r is not a \"\n                \"PDFStream\" % filename\n            )",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumppdf",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def dumppdf(\n    outfp: TextIO,\n    fname: str,\n    objids: Iterable[int],\n    pagenos: Container[int],\n    password: str = \"\",\n    dumpall: bool = False,\n    codec: Optional[str] = None,\n    extractdir: Optional[str] = None,\n    show_fallback_xref: bool = False,",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "create_parser",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def create_parser() -> ArgumentParser:\n    parser = ArgumentParser(description=__doc__, add_help=True)\n    parser.add_argument(\n        \"files\",\n        type=str,\n        default=None,\n        nargs=\"+\",\n        help=\"One or more paths to PDF files.\",\n    )\n    parser.add_argument(",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "def main(argv: Optional[List[str]] = None) -> None:\n    parser = create_parser()\n    args = parser.parse_args(args=argv)\n    if args.debug:\n        logging.getLogger().setLevel(logging.DEBUG)\n    if args.outfile == \"-\":\n        outfp = sys.stdout\n    else:\n        outfp = open(args.outfile, \"w\")\n    if args.objects:",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nESC_PAT = re.compile(r'[\\000-\\037&<>()\"\\042\\047\\134\\177-\\377]')\ndef escape(s: Union[str, bytes]) -> str:\n    if isinstance(s, bytes):\n        us = str(s, \"latin-1\")\n    else:\n        us = s\n    return ESC_PAT.sub(lambda m: \"&#%d;\" % ord(m.group(0)), us)\ndef dumpxml(out: TextIO, obj: object, codec: Optional[str] = None) -> None:\n    if obj is None:",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "ESC_PAT",
+        "kind": 5,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "ESC_PAT = re.compile(r'[\\000-\\037&<>()\"\\042\\047\\134\\177-\\377]')\ndef escape(s: Union[str, bytes]) -> str:\n    if isinstance(s, bytes):\n        us = str(s, \"latin-1\")\n    else:\n        us = s\n    return ESC_PAT.sub(lambda m: \"&#%d;\" % ord(m.group(0)), us)\ndef dumpxml(out: TextIO, obj: object, codec: Optional[str] = None) -> None:\n    if obj is None:\n        out.write(\"<null />\")",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "LITERAL_FILESPEC",
+        "kind": 5,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "LITERAL_FILESPEC = LIT(\"Filespec\")\nLITERAL_EMBEDDEDFILE = LIT(\"EmbeddedFile\")\ndef extractembedded(fname: str, password: str, extractdir: str) -> None:\n    def extract1(objid: int, obj: Dict[str, Any]) -> None:\n        filename = os.path.basename(obj.get(\"UF\") or cast(bytes, obj.get(\"F\")).decode())\n        fileref = obj[\"EF\"].get(\"UF\") or obj[\"EF\"].get(\"F\")\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            error_msg = (\n                \"unable to process PDF: reference for %r is not a \"",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "LITERAL_EMBEDDEDFILE",
+        "kind": 5,
+        "importPath": ".venv.bin.dumppdf",
+        "description": ".venv.bin.dumppdf",
+        "peekOfCode": "LITERAL_EMBEDDEDFILE = LIT(\"EmbeddedFile\")\ndef extractembedded(fname: str, password: str, extractdir: str) -> None:\n    def extract1(objid: int, obj: Dict[str, Any]) -> None:\n        filename = os.path.basename(obj.get(\"UF\") or cast(bytes, obj.get(\"F\")).decode())\n        fileref = obj[\"EF\"].get(\"UF\") or obj[\"EF\"].get(\"F\")\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            error_msg = (\n                \"unable to process PDF: reference for %r is not a \"\n                \"PDFStream\" % filename",
+        "detail": ".venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "float_or_disabled",
+        "kind": 2,
+        "importPath": ".venv.bin.pdf2txt",
+        "description": ".venv.bin.pdf2txt",
+        "peekOfCode": "def float_or_disabled(x: str) -> Optional[float]:\n    if x.lower().strip() == \"disabled\":\n        return None\n    try:\n        return float(x)\n    except ValueError:\n        raise argparse.ArgumentTypeError(f\"invalid float value: {x}\")\ndef extract_text(\n    files: Iterable[str] = [],\n    outfile: str = \"-\",",
+        "detail": ".venv.bin.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "extract_text",
+        "kind": 2,
+        "importPath": ".venv.bin.pdf2txt",
+        "description": ".venv.bin.pdf2txt",
+        "peekOfCode": "def extract_text(\n    files: Iterable[str] = [],\n    outfile: str = \"-\",\n    laparams: Optional[LAParams] = None,\n    output_type: str = \"text\",\n    codec: str = \"utf-8\",\n    strip_control: bool = False,\n    maxpages: int = 0,\n    page_numbers: Optional[Container[int]] = None,\n    password: str = \"\",",
+        "detail": ".venv.bin.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "create_parser",
+        "kind": 2,
+        "importPath": ".venv.bin.pdf2txt",
+        "description": ".venv.bin.pdf2txt",
+        "peekOfCode": "def create_parser() -> argparse.ArgumentParser:\n    parser = argparse.ArgumentParser(description=__doc__, add_help=True)\n    parser.add_argument(\n        \"files\",\n        type=str,\n        default=None,\n        nargs=\"+\",\n        help=\"One or more paths to PDF files.\",\n    )\n    parser.add_argument(",
+        "detail": ".venv.bin.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "parse_args",
+        "kind": 2,
+        "importPath": ".venv.bin.pdf2txt",
+        "description": ".venv.bin.pdf2txt",
+        "peekOfCode": "def parse_args(args: Optional[List[str]]) -> argparse.Namespace:\n    parsed_args = create_parser().parse_args(args=args)\n    # Propagate parsed layout parameters to LAParams object\n    if parsed_args.no_laparams:\n        parsed_args.laparams = None\n    else:\n        parsed_args.laparams = LAParams(\n            line_overlap=parsed_args.line_overlap,\n            char_margin=parsed_args.char_margin,\n            line_margin=parsed_args.line_margin,",
+        "detail": ".venv.bin.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": ".venv.bin.pdf2txt",
+        "description": ".venv.bin.pdf2txt",
+        "peekOfCode": "def main(args: Optional[List[str]] = None) -> int:\n    parsed_args = parse_args(args)\n    outfp = extract_text(**vars(parsed_args))\n    outfp.close()\n    return 0\nif __name__ == \"__main__\":\n    sys.exit(main())",
+        "detail": ".venv.bin.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "OUTPUT_TYPES",
+        "kind": 5,
+        "importPath": ".venv.bin.pdf2txt",
+        "description": ".venv.bin.pdf2txt",
+        "peekOfCode": "OUTPUT_TYPES = ((\".htm\", \"html\"), (\".html\", \"html\"), (\".xml\", \"xml\"), (\".tag\", \"tag\"))\ndef float_or_disabled(x: str) -> Optional[float]:\n    if x.lower().strip() == \"disabled\":\n        return None\n    try:\n        return float(x)\n    except ValueError:\n        raise argparse.ArgumentTypeError(f\"invalid float value: {x}\")\ndef extract_text(\n    files: Iterable[str] = [],",
+        "detail": ".venv.bin.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "evaluate_correctness",
+        "kind": 2,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "def evaluate_correctness(answer: str, ground_truth: str) -> str:\n    \"\"\"Calculates semantic similarity and returns 'Y' or 'N'.\"\"\"\n    if not ground_truth or not answer:\n        return \"N\"\n    answer_emb = embed_model.encode(answer, convert_to_tensor=True)\n    gt_emb = embed_model.encode(ground_truth, convert_to_tensor=True)\n    similarity = util.cos_sim(answer_emb, gt_emb).item()\n    return \"Y\" if similarity >= SEMANTIC_THRESHOLD else \"N\"\ndef get_semantic_score(answer: str, ground_truth: str) -> float:\n    \"\"\"Calculates the raw semantic similarity score.\"\"\"",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "get_semantic_score",
+        "kind": 2,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "def get_semantic_score(answer: str, ground_truth: str) -> float:\n    \"\"\"Calculates the raw semantic similarity score.\"\"\"\n    if not ground_truth or not answer:\n        return 0.0\n    answer_emb = embed_model.encode(answer, convert_to_tensor=True)\n    gt_emb = embed_model.encode(ground_truth, convert_to_tensor=True)\n    return util.cos_sim(answer_emb, gt_emb).item()\n# -----------------------------\n# RAG (Hugging Face API)\n# -----------------------------",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "query_rag",
+        "kind": 2,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "def query_rag(question: str):\n    start_time = time.time()\n    # --- Use Sentence-Transformers for semantic search to find context ---\n    q_emb = embed_model.encode(question, convert_to_tensor=True)\n    scores = util.cos_sim(q_emb, chunk_embeddings)[0]\n    top_scores, top_indices = torch.topk(scores, k=3)\n    context = \"\"\n    for i, idx in enumerate(top_indices):\n        chunk_text = chunks_df.iloc[idx.item()][\"text\"]\n        context += f\"--- Source {i+1} ---\\n{chunk_text}\\n\\n\"",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "query_finetuned",
+        "kind": 2,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "def query_finetuned(question: str):\n    start_time = time.time()\n    prompt_text = f\"Q: {question} A:\"\n    input_ids = ft_tokenizer.encode(prompt_text, return_tensors=\"pt\").to(ft_device)\n    with torch.no_grad():\n        output = ft_model.generate(\n            input_ids,\n            max_new_tokens=80,\n            do_sample=True,\n            top_k=50,",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nQUESTIONS_FILE = script_dir / \"questions.json\"\nCHUNKS_FILE = script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\nOUTPUT_FILE = script_dir / \"eval_results.csv\"\n# --- NEW: Path to the fine-tuned PEFT adapter ---\nFT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\n# -----------------------------\n# Evaluation Configuration\n# -----------------------------\n# Threshold for semantic correctness (0.0 to 1.0)",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "QUESTIONS_FILE",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "QUESTIONS_FILE = script_dir / \"questions.json\"\nCHUNKS_FILE = script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\nOUTPUT_FILE = script_dir / \"eval_results.csv\"\n# --- NEW: Path to the fine-tuned PEFT adapter ---\nFT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\n# -----------------------------\n# Evaluation Configuration\n# -----------------------------\n# Threshold for semantic correctness (0.0 to 1.0)\nSEMANTIC_THRESHOLD = 0.80",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "CHUNKS_FILE",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "CHUNKS_FILE = script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\nOUTPUT_FILE = script_dir / \"eval_results.csv\"\n# --- NEW: Path to the fine-tuned PEFT adapter ---\nFT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\n# -----------------------------\n# Evaluation Configuration\n# -----------------------------\n# Threshold for semantic correctness (0.0 to 1.0)\nSEMANTIC_THRESHOLD = 0.80\n# -----------------------------",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "OUTPUT_FILE",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "OUTPUT_FILE = script_dir / \"eval_results.csv\"\n# --- NEW: Path to the fine-tuned PEFT adapter ---\nFT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\n# -----------------------------\n# Evaluation Configuration\n# -----------------------------\n# Threshold for semantic correctness (0.0 to 1.0)\nSEMANTIC_THRESHOLD = 0.80\n# -----------------------------\n# Load Data & Models",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "FT_MODEL_DIR",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "FT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\n# -----------------------------\n# Evaluation Configuration\n# -----------------------------\n# Threshold for semantic correctness (0.0 to 1.0)\nSEMANTIC_THRESHOLD = 0.80\n# -----------------------------\n# Load Data & Models\n# -----------------------------\n# You must set your Hugging Face API token as an environment variable",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "SEMANTIC_THRESHOLD",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "SEMANTIC_THRESHOLD = 0.80\n# -----------------------------\n# Load Data & Models\n# -----------------------------\n# You must set your Hugging Face API token as an environment variable\n# export HUGGINGFACEHUB_API_TOKEN=\"hf_...\"\n# Or set it here for testing\n# os.environ[\"HUGGINGFACEHUB_API_TOKEN\"] = \"hf_...\"\ntry:\n    with open(QUESTIONS_FILE, \"r\") as f:",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "embed_model",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "embed_model = SentenceTransformer(\"sentence-transformers/all-MiniLM-L6-v2\")\nchunk_embeddings = embed_model.encode(chunks_df[\"text\"].tolist(), convert_to_tensor=True)\ndef evaluate_correctness(answer: str, ground_truth: str) -> str:\n    \"\"\"Calculates semantic similarity and returns 'Y' or 'N'.\"\"\"\n    if not ground_truth or not answer:\n        return \"N\"\n    answer_emb = embed_model.encode(answer, convert_to_tensor=True)\n    gt_emb = embed_model.encode(ground_truth, convert_to_tensor=True)\n    similarity = util.cos_sim(answer_emb, gt_emb).item()\n    return \"Y\" if similarity >= SEMANTIC_THRESHOLD else \"N\"",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "chunk_embeddings",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "chunk_embeddings = embed_model.encode(chunks_df[\"text\"].tolist(), convert_to_tensor=True)\ndef evaluate_correctness(answer: str, ground_truth: str) -> str:\n    \"\"\"Calculates semantic similarity and returns 'Y' or 'N'.\"\"\"\n    if not ground_truth or not answer:\n        return \"N\"\n    answer_emb = embed_model.encode(answer, convert_to_tensor=True)\n    gt_emb = embed_model.encode(ground_truth, convert_to_tensor=True)\n    similarity = util.cos_sim(answer_emb, gt_emb).item()\n    return \"Y\" if similarity >= SEMANTIC_THRESHOLD else \"N\"\ndef get_semantic_score(answer: str, ground_truth: str) -> float:",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "llm_rag",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "llm_rag = HuggingFaceHub(\n    repo_id=\"microsoft/phi-2\",\n    model_kwargs={\"temperature\": 0.1, \"max_new_tokens\": 512}\n)\ndef query_rag(question: str):\n    start_time = time.time()\n    # --- Use Sentence-Transformers for semantic search to find context ---\n    q_emb = embed_model.encode(question, convert_to_tensor=True)\n    scores = util.cos_sim(q_emb, chunk_embeddings)[0]\n    top_scores, top_indices = torch.topk(scores, k=3)",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "ft_device",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "ft_device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n# --- NEW: Load the base model first, then the PEFT adapter ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n)\ntry:\n    ft_model = PeftModel.from_pretrained(base_model, FT_MODEL_DIR)",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "base_model_name",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "base_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n)\ntry:\n    ft_model = PeftModel.from_pretrained(base_model, FT_MODEL_DIR)\n    ft_model = ft_model.merge_and_unload() # Merge weights for inference\n    ft_tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=True)",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "base_model",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "base_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n)\ntry:\n    ft_model = PeftModel.from_pretrained(base_model, FT_MODEL_DIR)\n    ft_model = ft_model.merge_and_unload() # Merge weights for inference\n    ft_tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=True)\n    ft_tokenizer.pad_token = ft_tokenizer.eos_token",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "results",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "results = []\nfor q in questions:\n    q_text = q[\"question\"]\n    ground_truth = q.get(\"answer\", \"\").strip()\n    # --- RAG ---\n    rag_ans, rag_conf, rag_time = query_rag(q_text)\n    rag_semantic_score = get_semantic_score(rag_ans, ground_truth)\n    rag_correct = evaluate_correctness(rag_ans, ground_truth)\n    results.append({\n        \"question\": q_text,",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "evaluation.evaluation",
+        "description": "evaluation.evaluation",
+        "peekOfCode": "df = pd.DataFrame(results)\ndf.to_csv(OUTPUT_FILE, index=False)\nprint(f\"Evaluation results saved to {OUTPUT_FILE}\")\n#older v2-----------------------------------------------\n# import json\n# import time\n# import re\n# import pandas as pd\n# from sentence_transformers import SentenceTransformer, util\n# import ollama  # Ollama must be running",
+        "detail": "evaluation.evaluation",
+        "documentation": {}
+    },
+    {
+        "label": "input_file",
+        "kind": 5,
+        "importPath": "scripts.convert_to_finetune",
+        "description": "scripts.convert_to_finetune",
+        "peekOfCode": "input_file = \"data/qa_pair.json\"  # your existing file\noutput_file = \"data/finetune_dataset.jsonl\"  # model-ready file\nwith open(input_file, \"r\") as f:\n    qa_pairs = json.load(f)\nwith open(output_file, \"w\") as out_f:\n    for pair in qa_pairs:\n        prompt = f\"Question: {pair['question']}\\nAnswer:\"\n        completion = f\" {pair['answer']}\"  # space at start is common in HF training\n        json.dump({\"prompt\": prompt, \"completion\": completion}, out_f)\n        out_f.write(\"\\n\")",
+        "detail": "scripts.convert_to_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "output_file",
+        "kind": 5,
+        "importPath": "scripts.convert_to_finetune",
+        "description": "scripts.convert_to_finetune",
+        "peekOfCode": "output_file = \"data/finetune_dataset.jsonl\"  # model-ready file\nwith open(input_file, \"r\") as f:\n    qa_pairs = json.load(f)\nwith open(output_file, \"w\") as out_f:\n    for pair in qa_pairs:\n        prompt = f\"Question: {pair['question']}\\nAnswer:\"\n        completion = f\" {pair['answer']}\"  # space at start is common in HF training\n        json.dump({\"prompt\": prompt, \"completion\": completion}, out_f)\n        out_f.write(\"\\n\")\nprint(f\"Converted {len(qa_pairs)} Q/A pairs to fine-tune format at {output_file}\")",
+        "detail": "scripts.convert_to_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"    \nOUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"distilgpt2\" #or give gpt2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "QA_JSON_PATH",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "QA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"    \nOUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"distilgpt2\" #or give gpt2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "OUTPUT_CSV_PATH",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "OUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"distilgpt2\" #or give gpt2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_NAME",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "MODEL_NAME = \"distilgpt2\" #or give gpt2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "MAX_LENGTH",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "MAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer\nprint(f\"Loading model: {MODEL_NAME}\")",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "NUM_SAMPLES",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "NUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer\nprint(f\"Loading model: {MODEL_NAME}\")\ntokenizer = GPT2Tokenizer.from_pretrained(MODEL_NAME)",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "qa_samples",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "qa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer\nprint(f\"Loading model: {MODEL_NAME}\")\ntokenizer = GPT2Tokenizer.from_pretrained(MODEL_NAME)\nmodel = GPT2LMHeadModel.from_pretrained(MODEL_NAME)\nmodel.eval()\nresults = []\n# Run baseline inference\nfor sample in qa_samples:\n    question = sample[\"question\"]",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "tokenizer = GPT2Tokenizer.from_pretrained(MODEL_NAME)\nmodel = GPT2LMHeadModel.from_pretrained(MODEL_NAME)\nmodel.eval()\nresults = []\n# Run baseline inference\nfor sample in qa_samples:\n    question = sample[\"question\"]\n    true_answer = sample[\"answer\"]\n    input_text = f\"Q: {question}\\nA:\"\n    inputs = tokenizer.encode(input_text, return_tensors=\"pt\")",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "model = GPT2LMHeadModel.from_pretrained(MODEL_NAME)\nmodel.eval()\nresults = []\n# Run baseline inference\nfor sample in qa_samples:\n    question = sample[\"question\"]\n    true_answer = sample[\"answer\"]\n    input_text = f\"Q: {question}\\nA:\"\n    inputs = tokenizer.encode(input_text, return_tensors=\"pt\")\n    start_time = time.time()",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "results",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "results = []\n# Run baseline inference\nfor sample in qa_samples:\n    question = sample[\"question\"]\n    true_answer = sample[\"answer\"]\n    input_text = f\"Q: {question}\\nA:\"\n    inputs = tokenizer.encode(input_text, return_tensors=\"pt\")\n    start_time = time.time()\n    outputs = model.generate(\n        inputs,",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "df = pd.DataFrame(results)\ndf.to_csv(OUTPUT_CSV_PATH, index=False)\nprint(f\"Baseline results saved to {OUTPUT_CSV_PATH}\")\n# Old version-----------------------------------------------------\n# import time\n# import json\n# import csv\n# from pathlib import Path\n# from transformers import GPT2LMHeadModel, GPT2Tokenizer\n# # --- Paths ---",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "chunk_text",
+        "kind": 2,
+        "importPath": "src.chunker",
+        "description": "src.chunker",
+        "peekOfCode": "def chunk_text(text: str, chunk_size: int = 150, overlap: int = 30) -> list:\n    \"\"\"\n    Splits text into chunks using a sliding window approach.\n    Each chunk will overlap with the next one.\n    \"\"\"\n    if overlap >= chunk_size:\n        raise ValueError(\"Overlap must be smaller than the chunk size.\")\n    tokens = word_tokenize(text)\n    chunks = []\n    # the loop to create a sliding window",
+        "detail": "src.chunker",
+        "documentation": {}
+    },
+    {
+        "label": "process_segments_directory",
+        "kind": 2,
+        "importPath": "src.chunker",
+        "description": "src.chunker",
+        "peekOfCode": "def process_segments_directory() -> pd.DataFrame:\n    \"\"\"Process all segment files from the segments directory\"\"\"\n    input_dir = \"data/processed/segments\"\n    all_chunks = []\n    for filename in tqdm(os.listdir(input_dir), desc=\"Chunking segments\"):\n        if not filename.endswith(\".txt\"):\n            continue\n        section_name = filename.replace(\".txt\", \"\")\n        file_path = os.path.join(input_dir, filename)\n        with open(file_path, 'r', encoding='utf-8') as f:",
+        "detail": "src.chunker",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nmodel_path = script_dir.parent / \"models\" / \"financial_gpt2_v1\"\nqa_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\noutput_csv = script_dir.parent / \"distilgpt2_benchmark_results.csv\"\nlog_file = script_dir.parent / \"logs\" / \"distilgpt2_benchmark_log.json\"\n# --- Eval config / thresholds ---\nSIM_THRESHOLD = 0.85  # counts as \"correct\" if similarity >= 0.85\n# --- Load model & tokenizer ---\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\ndevice_str = \"cuda\" if torch.cuda.is_available() else \"cpu\"",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "model_path",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "model_path = script_dir.parent / \"models\" / \"financial_gpt2_v1\"\nqa_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\noutput_csv = script_dir.parent / \"distilgpt2_benchmark_results.csv\"\nlog_file = script_dir.parent / \"logs\" / \"distilgpt2_benchmark_log.json\"\n# --- Eval config / thresholds ---\nSIM_THRESHOLD = 0.85  # counts as \"correct\" if similarity >= 0.85\n# --- Load model & tokenizer ---\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\ndevice_str = \"cuda\" if torch.cuda.is_available() else \"cpu\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_path)",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "qa_file",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "qa_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\noutput_csv = script_dir.parent / \"distilgpt2_benchmark_results.csv\"\nlog_file = script_dir.parent / \"logs\" / \"distilgpt2_benchmark_log.json\"\n# --- Eval config / thresholds ---\nSIM_THRESHOLD = 0.85  # counts as \"correct\" if similarity >= 0.85\n# --- Load model & tokenizer ---\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\ndevice_str = \"cuda\" if torch.cuda.is_available() else \"cpu\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_path)\ntokenizer.pad_token = tokenizer.eos_token",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "output_csv",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "output_csv = script_dir.parent / \"distilgpt2_benchmark_results.csv\"\nlog_file = script_dir.parent / \"logs\" / \"distilgpt2_benchmark_log.json\"\n# --- Eval config / thresholds ---\nSIM_THRESHOLD = 0.85  # counts as \"correct\" if similarity >= 0.85\n# --- Load model & tokenizer ---\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\ndevice_str = \"cuda\" if torch.cuda.is_available() else \"cpu\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_path)\ntokenizer.pad_token = tokenizer.eos_token\nmodel = GPT2LMHeadModel.from_pretrained(model_path).to(device)",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "log_file",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "log_file = script_dir.parent / \"logs\" / \"distilgpt2_benchmark_log.json\"\n# --- Eval config / thresholds ---\nSIM_THRESHOLD = 0.85  # counts as \"correct\" if similarity >= 0.85\n# --- Load model & tokenizer ---\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\ndevice_str = \"cuda\" if torch.cuda.is_available() else \"cpu\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_path)\ntokenizer.pad_token = tokenizer.eos_token\nmodel = GPT2LMHeadModel.from_pretrained(model_path).to(device)\nmodel.eval()",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "SIM_THRESHOLD",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "SIM_THRESHOLD = 0.85  # counts as \"correct\" if similarity >= 0.85\n# --- Load model & tokenizer ---\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\ndevice_str = \"cuda\" if torch.cuda.is_available() else \"cpu\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_path)\ntokenizer.pad_token = tokenizer.eos_token\nmodel = GPT2LMHeadModel.from_pretrained(model_path).to(device)\nmodel.eval()\n# --- Load embedding model for semantic similarity ---\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device_str)",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "device",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\ndevice_str = \"cuda\" if torch.cuda.is_available() else \"cpu\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_path)\ntokenizer.pad_token = tokenizer.eos_token\nmodel = GPT2LMHeadModel.from_pretrained(model_path).to(device)\nmodel.eval()\n# --- Load embedding model for semantic similarity ---\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device_str)\n# --- Read Q/A pairs from the text file ---\nqa_pairs = []",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "device_str",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "device_str = \"cuda\" if torch.cuda.is_available() else \"cpu\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_path)\ntokenizer.pad_token = tokenizer.eos_token\nmodel = GPT2LMHeadModel.from_pretrained(model_path).to(device)\nmodel.eval()\n# --- Load embedding model for semantic similarity ---\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device_str)\n# --- Read Q/A pairs from the text file ---\nqa_pairs = []\nwith open(qa_file, \"r\", encoding=\"utf-8\") as f:",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "tokenizer = GPT2Tokenizer.from_pretrained(model_path)\ntokenizer.pad_token = tokenizer.eos_token\nmodel = GPT2LMHeadModel.from_pretrained(model_path).to(device)\nmodel.eval()\n# --- Load embedding model for semantic similarity ---\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device_str)\n# --- Read Q/A pairs from the text file ---\nqa_pairs = []\nwith open(qa_file, \"r\", encoding=\"utf-8\") as f:\n    lines = f.read().split(\"\\n\")",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token\nmodel = GPT2LMHeadModel.from_pretrained(model_path).to(device)\nmodel.eval()\n# --- Load embedding model for semantic similarity ---\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device_str)\n# --- Read Q/A pairs from the text file ---\nqa_pairs = []\nwith open(qa_file, \"r\", encoding=\"utf-8\") as f:\n    lines = f.read().split(\"\\n\")\n    question, answer = None, None",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "model = GPT2LMHeadModel.from_pretrained(model_path).to(device)\nmodel.eval()\n# --- Load embedding model for semantic similarity ---\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device_str)\n# --- Read Q/A pairs from the text file ---\nqa_pairs = []\nwith open(qa_file, \"r\", encoding=\"utf-8\") as f:\n    lines = f.read().split(\"\\n\")\n    question, answer = None, None\n    for line in lines:",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "embedder",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "embedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device_str)\n# --- Read Q/A pairs from the text file ---\nqa_pairs = []\nwith open(qa_file, \"r\", encoding=\"utf-8\") as f:\n    lines = f.read().split(\"\\n\")\n    question, answer = None, None\n    for line in lines:\n        if line.startswith(\"Q:\"):\n            question = line[2:].strip()\n        elif line.startswith(\"A:\"):",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "qa_pairs",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "qa_pairs = []\nwith open(qa_file, \"r\", encoding=\"utf-8\") as f:\n    lines = f.read().split(\"\\n\")\n    question, answer = None, None\n    for line in lines:\n        if line.startswith(\"Q:\"):\n            question = line[2:].strip()\n        elif line.startswith(\"A:\"):\n            answer = line[2:].strip()\n        elif line.strip() == \"\" and question and answer:",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "results",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "results = []\ntotal_time = 0.0\nsims = []\nnum_correct = 0\nfor pair in qa_pairs:\n    #prompt = f\"Question: {pair['question']} Answer:\"\n    prompt = f\"Q: {pair['question']} A:\"\n    inputs = tokenizer(prompt, return_tensors=\"pt\").to(device)\n    start_time = time.time()\n    output_ids = model.generate(",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "total_time",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "total_time = 0.0\nsims = []\nnum_correct = 0\nfor pair in qa_pairs:\n    #prompt = f\"Question: {pair['question']} Answer:\"\n    prompt = f\"Q: {pair['question']} A:\"\n    inputs = tokenizer(prompt, return_tensors=\"pt\").to(device)\n    start_time = time.time()\n    output_ids = model.generate(\n        **inputs,",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "sims",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "sims = []\nnum_correct = 0\nfor pair in qa_pairs:\n    #prompt = f\"Question: {pair['question']} Answer:\"\n    prompt = f\"Q: {pair['question']} A:\"\n    inputs = tokenizer(prompt, return_tensors=\"pt\").to(device)\n    start_time = time.time()\n    output_ids = model.generate(\n        **inputs,\n        max_length=inputs.input_ids.shape[1] + 50,",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "num_correct",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "num_correct = 0\nfor pair in qa_pairs:\n    #prompt = f\"Question: {pair['question']} Answer:\"\n    prompt = f\"Q: {pair['question']} A:\"\n    inputs = tokenizer(prompt, return_tensors=\"pt\").to(device)\n    start_time = time.time()\n    output_ids = model.generate(\n        **inputs,\n        max_length=inputs.input_ids.shape[1] + 50,\n        num_beams=3,",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "avg_time",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "avg_time = round(total_time / max(len(qa_pairs), 1), 2)\navg_sim = round(sum(sims) / max(len(sims), 1), 3)\naccuracy = round(100.0 * num_correct / max(len(qa_pairs), 1), 2)\n# --- Save results to CSV ---\noutput_csv.parent.mkdir(exist_ok=True)\nwith open(output_csv, \"w\", newline=\"\", encoding=\"utf-8\") as csvfile:\n    fieldnames = [\"question\", \"true_answer\", \"generated_answer\", \"similarity_score\", \"inference_time_sec\"]\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for r in results:",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "avg_sim",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "avg_sim = round(sum(sims) / max(len(sims), 1), 3)\naccuracy = round(100.0 * num_correct / max(len(qa_pairs), 1), 2)\n# --- Save results to CSV ---\noutput_csv.parent.mkdir(exist_ok=True)\nwith open(output_csv, \"w\", newline=\"\", encoding=\"utf-8\") as csvfile:\n    fieldnames = [\"question\", \"true_answer\", \"generated_answer\", \"similarity_score\", \"inference_time_sec\"]\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for r in results:\n        writer.writerow(r)",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "accuracy = round(100.0 * num_correct / max(len(qa_pairs), 1), 2)\n# --- Save results to CSV ---\noutput_csv.parent.mkdir(exist_ok=True)\nwith open(output_csv, \"w\", newline=\"\", encoding=\"utf-8\") as csvfile:\n    fieldnames = [\"question\", \"true_answer\", \"generated_answer\", \"similarity_score\", \"inference_time_sec\"]\n    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)\n    writer.writeheader()\n    for r in results:\n        writer.writerow(r)\n# --- Save run metadata ---",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "metadata",
+        "kind": 5,
+        "importPath": "src.continual_baseline",
+        "description": "src.continual_baseline",
+        "peekOfCode": "metadata = {\n    \"model_path\": str(model_path),\n    \"device\": device_str,\n    \"decoding_params\": {\n        \"num_beams\": 5,\n        \"max_new_tokens\": 100,\n        \"no_repeat_ngram_size\": 3,\n        \"repetition_penalty\": 1.2,\n        \"early_stopping\": True\n    },",
+        "detail": "src.continual_baseline",
+        "documentation": {}
+    },
+    {
+        "label": "QADataset",
+        "kind": 6,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "class QADataset(Dataset):\n    def __init__(self, qa_pairs, tokenizer, max_length=256):\n        self.encodings = []\n        for qa in qa_pairs:\n            text = f\"Q: {qa['question']} A: {qa['answer']}\"\n            enc = tokenizer(\n                text,\n                truncation=True,\n                padding=\"max_length\",\n                max_length=max_length,",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nclass QADataset(Dataset):\n    def __init__(self, qa_pairs, tokenizer, max_length=256):\n        self.encodings = []\n        for qa in qa_pairs:\n            text = f\"Q: {qa['question']} A: {qa['answer']}\"\n            enc = tokenizer(\n                text,\n                truncation=True,\n                padding=\"max_length\",",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "save_dir",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "save_dir = Path(cfg[\"save_dir\"])\n# -----------------------------\n# Tokenizer + Model\n# -----------------------------\n# --- CHANGE 3: Load tokenizer with AutoTokenizer ---\ntokenizer = AutoTokenizer.from_pretrained(cfg[\"model_name\"], trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(cfg[\"model_name\"], trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "bnb_config",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "bnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")\n    # Load the base model and then the PEFT adapter\n    base_model = AutoModelForCausalLM.from_pretrained(",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "dataset = QADataset(qa_pairs, tokenizer, max_length=cfg.get(\"max_length\", 256))\n# Train/val split\nval_ratio = cfg.get(\"val_split\", 0.1)\nval_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "val_ratio",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "val_ratio = cfg.get(\"val_split\", 0.1)\nval_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "val_size",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "val_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "train_size",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "train_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "train_loader",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "train_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "val_loader",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "val_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)\nelse:",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "opt_choice",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "opt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)\nelse:\n    optimizer = AdamW(model.parameters(), lr=float(cfg[\"learning_rate\"]), weight_decay=cfg.get(\"weight_decay\", 0.01))\n# -----------------------------\n# Training Loop\n# -----------------------------",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "epoch_losses",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "epoch_losses = []\nearly_stop_counter = 0\nbest_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "early_stop_counter",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "early_stop_counter = 0\nbest_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "best_val_loss",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "best_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "patience",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "patience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)\n        loss = outputs.loss",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "log_file",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "log_file = script_dir.parent / \"logs\" / \"continual_training.json\"\nlog_entry = {\n    \"timestamp\": datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\"),\n    \"mode\": mode,\n    \"train_file\": cfg[\"train_file\"],\n    \"save_dir\": str(save_dir),\n    \"epochs\": cfg[\"epochs\"],\n    \"batch_size\": cfg[\"batch_size\"],\n    \"learning_rate\": cfg[\"learning_rate\"],\n    \"optimizer\": opt_choice,",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "log_entry",
+        "kind": 5,
+        "importPath": "src.continual_finetune",
+        "description": "src.continual_finetune",
+        "peekOfCode": "log_entry = {\n    \"timestamp\": datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\"),\n    \"mode\": mode,\n    \"train_file\": cfg[\"train_file\"],\n    \"save_dir\": str(save_dir),\n    \"epochs\": cfg[\"epochs\"],\n    \"batch_size\": cfg[\"batch_size\"],\n    \"learning_rate\": cfg[\"learning_rate\"],\n    \"optimizer\": opt_choice,\n    # --- CHANGE 8: Use the model's device",
+        "detail": "src.continual_finetune",
+        "documentation": {}
+    },
+    {
+        "label": "QADataset",
+        "kind": 6,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "class QADataset(Dataset):\n    def __init__(self, qa_pairs, tokenizer, max_length=256):\n        self.encodings = []\n        for qa in qa_pairs:\n            text = f\"Q: {qa['question']} A: {qa['answer']}\"\n            enc = tokenizer(\n                text,\n                truncation=True,\n                padding=\"max_length\",\n                max_length=max_length,",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nclass QADataset(Dataset):\n    def __init__(self, qa_pairs, tokenizer, max_length=256):\n        self.encodings = []\n        for qa in qa_pairs:\n            text = f\"Q: {qa['question']} A: {qa['answer']}\"\n            enc = tokenizer(\n                text,\n                truncation=True,\n                padding=\"max_length\",",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "save_dir",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "save_dir = Path(cfg[\"save_dir\"])\n# -----------------------------\n# Tokenizer + Model\n# -----------------------------\n# --- CHANGE 3: Load tokenizer with AutoTokenizer ---\ntokenizer = AutoTokenizer.from_pretrained(cfg[\"model_name\"], trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(cfg[\"model_name\"], trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "bnb_config",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "bnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")\n    # Load the base model and then the PEFT adapter\n    base_model = AutoModelForCausalLM.from_pretrained(",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "dataset = QADataset(qa_pairs, tokenizer, max_length=cfg.get(\"max_length\", 256))\n# Train/val split\nval_ratio = cfg.get(\"val_split\", 0.1)\nval_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "val_ratio",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "val_ratio = cfg.get(\"val_split\", 0.1)\nval_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "val_size",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "val_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "train_size",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "train_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "train_loader",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "train_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "val_loader",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "val_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)\nelse:",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "opt_choice",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "opt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)\nelse:\n    optimizer = AdamW(model.parameters(), lr=float(cfg[\"learning_rate\"]), weight_decay=cfg.get(\"weight_decay\", 0.01))\n# -----------------------------\n# Training Loop\n# -----------------------------",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "epoch_losses",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "epoch_losses = []\nearly_stop_counter = 0\nbest_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "early_stop_counter",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "early_stop_counter = 0\nbest_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "best_val_loss",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "best_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "patience",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "patience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)\n        loss = outputs.loss",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "log_file",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "log_file = Path(\"logs\") / \"continual_training.json\"\nlog_entry = {\n    \"timestamp\": datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\"),\n    \"mode\": mode,\n    \"train_file\": cfg[\"train_file\"],\n    \"save_dir\": str(save_dir),\n    \"epochs\": cfg[\"epochs\"],\n    \"batch_size\": cfg[\"batch_size\"],\n    \"learning_rate\": cfg[\"learning_rate\"],\n    \"optimizer\": opt_choice,",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "log_entry",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "log_entry = {\n    \"timestamp\": datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\"),\n    \"mode\": mode,\n    \"train_file\": cfg[\"train_file\"],\n    \"save_dir\": str(save_dir),\n    \"epochs\": cfg[\"epochs\"],\n    \"batch_size\": cfg[\"batch_size\"],\n    \"learning_rate\": cfg[\"learning_rate\"],\n    \"optimizer\": opt_choice,\n    # --- CHANGE 8: Use the model's device",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "init_db",
+        "kind": 2,
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "peekOfCode": "def init_db():\n    \"\"\"Initialize the SQLite DB with a fresh chat_history table.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    # Drop the existing table to start fresh with the new schema\n    #cursor.execute(\"DROP TABLE IF EXISTS chat_history\")\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            thread_id TEXT NOT NULL,",
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "save_chat",
+        "kind": 2,
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "peekOfCode": "def save_chat(thread_id, title, query, answer, mode, response_data, response_time):\n    \"\"\"Save a single chat interaction to the DB, linked by a thread_id.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        INSERT INTO chat_history\n        (thread_id, title, query, answer, mode, method, verification, confidence, source, response_time, timestamp)\n        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n    \"\"\", (\n        thread_id,",
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "update_chat_title",
+        "kind": 2,
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "peekOfCode": "def update_chat_title(thread_id, new_title):\n    \"\"\"Updates the title for a given chat thread.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        UPDATE chat_history\n        SET title = ?\n        WHERE thread_id = ?\n    \"\"\", (new_title, thread_id))\n    conn.commit()",
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "load_chats",
+        "kind": 2,
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "peekOfCode": "def load_chats(limit=20):\n    \"\"\"Load the most recent chat conversations, grouped by thread_id.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        SELECT DISTINCT thread_id, title FROM chat_history\n        ORDER BY timestamp DESC\n        LIMIT ?\n    \"\"\", (limit,))\n    thread_info = cursor.fetchall()",
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "DB_PATH",
+        "kind": 5,
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "peekOfCode": "DB_PATH = \"chat_history.db\"\ndef init_db():\n    \"\"\"Initialize the SQLite DB with a fresh chat_history table.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    # Drop the existing table to start fresh with the new schema\n    #cursor.execute(\"DROP TABLE IF EXISTS chat_history\")\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,",
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "src.embed_and_store",
+        "description": "src.embed_and_store",
+        "peekOfCode": "df = pd.read_csv(\"data/processed/chunks.csv\")\n# Convert rows to LangChain Documents with metadata\ndocuments = [\n    Document(page_content=row[\"text\"], metadata={\n        \"section\": row[\"section\"],\n        \"chunk_id\": row[\"chunk_id\"]\n    })\n    for _, row in df.iterrows()\n]\n# Embed & store using LangChain's Chroma",
+        "detail": "src.embed_and_store",
+        "documentation": {}
+    },
+    {
+        "label": "documents",
+        "kind": 5,
+        "importPath": "src.embed_and_store",
+        "description": "src.embed_and_store",
+        "peekOfCode": "documents = [\n    Document(page_content=row[\"text\"], metadata={\n        \"section\": row[\"section\"],\n        \"chunk_id\": row[\"chunk_id\"]\n    })\n    for _, row in df.iterrows()\n]\n# Embed & store using LangChain's Chroma\nembedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\nvectordb = Chroma.from_documents(",
+        "detail": "src.embed_and_store",
+        "documentation": {}
+    },
+    {
+        "label": "embedding_model",
+        "kind": 5,
+        "importPath": "src.embed_and_store",
+        "description": "src.embed_and_store",
+        "peekOfCode": "embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\nvectordb = Chroma.from_documents(\n    documents=documents,\n    embedding=embedding_model,\n    persist_directory=\"vector_db\"\n)\nvectordb.persist()\nprint(\"Embedding and storing complete!\")\n# Uncomment the following lines to run the code directly without langchain\n# import pandas as pd",
+        "detail": "src.embed_and_store",
+        "documentation": {}
+    },
+    {
+        "label": "vectordb",
+        "kind": 5,
+        "importPath": "src.embed_and_store",
+        "description": "src.embed_and_store",
+        "peekOfCode": "vectordb = Chroma.from_documents(\n    documents=documents,\n    embedding=embedding_model,\n    persist_directory=\"vector_db\"\n)\nvectordb.persist()\nprint(\"Embedding and storing complete!\")\n# Uncomment the following lines to run the code directly without langchain\n# import pandas as pd\n# from sentence_transformers import SentenceTransformer",
+        "detail": "src.embed_and_store",
+        "documentation": {}
+    },
+    {
+        "label": "QADataset",
+        "kind": 6,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "class QADataset(Dataset):\n    def __init__(self, data, tokenizer):\n        self.tokenizer = tokenizer\n        self.inputs = [self.tokenizer(d[\"text\"], truncation=True, padding=\"max_length\", max_length=256) for d in data]\n    def __len__(self):\n        return len(self.inputs)\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val) for key, val in self.inputs[idx].items()}\n        return item\ntrain_dataset = QADataset(train_texts, tokenizer)",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "tokenize_function",
+        "kind": 2,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "def tokenize_function(examples):\n    return tokenizer(examples[\"text\"], truncation=True, padding=\"max_length\", max_length=256)\nclass QADataset(Dataset):\n    def __init__(self, data, tokenizer):\n        self.tokenizer = tokenizer\n        self.inputs = [self.tokenizer(d[\"text\"], truncation=True, padding=\"max_length\", max_length=256) for d in data]\n    def __len__(self):\n        return len(self.inputs)\n    def __getitem__(self, idx):\n        item = {key: torch.tensor(val) for key, val in self.inputs[idx].items()}",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\ninput_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\noutput_dir = script_dir.parent / \"models\" / \"distilgpt2-finetuned\"\n# --- Load tokenizer & model ---\nmodel_name = \"distilgpt2\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_name)\ntokenizer.pad_token = tokenizer.eos_token  # padding token\nmodel = GPT2LMHeadModel.from_pretrained(model_name)\n# --- Read dataset ---\nwith open(input_file, \"r\") as f:",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "input_file",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "input_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\noutput_dir = script_dir.parent / \"models\" / \"distilgpt2-finetuned\"\n# --- Load tokenizer & model ---\nmodel_name = \"distilgpt2\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_name)\ntokenizer.pad_token = tokenizer.eos_token  # padding token\nmodel = GPT2LMHeadModel.from_pretrained(model_name)\n# --- Read dataset ---\nwith open(input_file, \"r\") as f:\n    lines = f.readlines()",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "output_dir",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "output_dir = script_dir.parent / \"models\" / \"distilgpt2-finetuned\"\n# --- Load tokenizer & model ---\nmodel_name = \"distilgpt2\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_name)\ntokenizer.pad_token = tokenizer.eos_token  # padding token\nmodel = GPT2LMHeadModel.from_pretrained(model_name)\n# --- Read dataset ---\nwith open(input_file, \"r\") as f:\n    lines = f.readlines()\n# Join lines and split into samples by double newlines",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "model_name",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "model_name = \"distilgpt2\"\ntokenizer = GPT2Tokenizer.from_pretrained(model_name)\ntokenizer.pad_token = tokenizer.eos_token  # padding token\nmodel = GPT2LMHeadModel.from_pretrained(model_name)\n# --- Read dataset ---\nwith open(input_file, \"r\") as f:\n    lines = f.readlines()\n# Join lines and split into samples by double newlines\nsamples = [line.strip() for line in \"\".join(lines).split(\"\\n\\n\") if line.strip()]\n# Prepare dataset as list of dicts",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "tokenizer = GPT2Tokenizer.from_pretrained(model_name)\ntokenizer.pad_token = tokenizer.eos_token  # padding token\nmodel = GPT2LMHeadModel.from_pretrained(model_name)\n# --- Read dataset ---\nwith open(input_file, \"r\") as f:\n    lines = f.readlines()\n# Join lines and split into samples by double newlines\nsamples = [line.strip() for line in \"\".join(lines).split(\"\\n\\n\") if line.strip()]\n# Prepare dataset as list of dicts\ntrain_texts = [{\"text\": sample} for sample in samples]",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # padding token\nmodel = GPT2LMHeadModel.from_pretrained(model_name)\n# --- Read dataset ---\nwith open(input_file, \"r\") as f:\n    lines = f.readlines()\n# Join lines and split into samples by double newlines\nsamples = [line.strip() for line in \"\".join(lines).split(\"\\n\\n\") if line.strip()]\n# Prepare dataset as list of dicts\ntrain_texts = [{\"text\": sample} for sample in samples]\n# Tokenization",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "model = GPT2LMHeadModel.from_pretrained(model_name)\n# --- Read dataset ---\nwith open(input_file, \"r\") as f:\n    lines = f.readlines()\n# Join lines and split into samples by double newlines\nsamples = [line.strip() for line in \"\".join(lines).split(\"\\n\\n\") if line.strip()]\n# Prepare dataset as list of dicts\ntrain_texts = [{\"text\": sample} for sample in samples]\n# Tokenization\ndef tokenize_function(examples):",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "samples",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "samples = [line.strip() for line in \"\".join(lines).split(\"\\n\\n\") if line.strip()]\n# Prepare dataset as list of dicts\ntrain_texts = [{\"text\": sample} for sample in samples]\n# Tokenization\ndef tokenize_function(examples):\n    return tokenizer(examples[\"text\"], truncation=True, padding=\"max_length\", max_length=256)\nclass QADataset(Dataset):\n    def __init__(self, data, tokenizer):\n        self.tokenizer = tokenizer\n        self.inputs = [self.tokenizer(d[\"text\"], truncation=True, padding=\"max_length\", max_length=256) for d in data]",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "train_texts",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "train_texts = [{\"text\": sample} for sample in samples]\n# Tokenization\ndef tokenize_function(examples):\n    return tokenizer(examples[\"text\"], truncation=True, padding=\"max_length\", max_length=256)\nclass QADataset(Dataset):\n    def __init__(self, data, tokenizer):\n        self.tokenizer = tokenizer\n        self.inputs = [self.tokenizer(d[\"text\"], truncation=True, padding=\"max_length\", max_length=256) for d in data]\n    def __len__(self):\n        return len(self.inputs)",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "train_dataset",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "train_dataset = QADataset(train_texts, tokenizer)\n# Data collator\ndata_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)\n# Training arguments\ntraining_args = TrainingArguments(\n    output_dir=output_dir,\n    overwrite_output_dir=True,\n    num_train_epochs=10,\n    per_device_train_batch_size=2,\n    save_steps=200,",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "data_collator",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False)\n# Training arguments\ntraining_args = TrainingArguments(\n    output_dir=output_dir,\n    overwrite_output_dir=True,\n    num_train_epochs=10,\n    per_device_train_batch_size=2,\n    save_steps=200,\n    save_total_limit=1,\n    logging_dir=script_dir.parent / \"logs\",",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "training_args",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "training_args = TrainingArguments(\n    output_dir=output_dir,\n    overwrite_output_dir=True,\n    num_train_epochs=10,\n    per_device_train_batch_size=2,\n    save_steps=200,\n    save_total_limit=1,\n    logging_dir=script_dir.parent / \"logs\",\n    logging_steps=10\n)",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "trainer",
+        "kind": 5,
+        "importPath": "src.fine_tune_gpt2",
+        "description": "src.fine_tune_gpt2",
+        "peekOfCode": "trainer = Trainer(\n    model=model,\n    args=training_args,\n    train_dataset=train_dataset,\n    tokenizer=tokenizer,\n    data_collator=data_collator\n)\n# Fine-tune\ntrainer.train()\n# Save model & tokenizer",
+        "detail": "src.fine_tune_gpt2",
+        "documentation": {}
+    },
+    {
+        "label": "validate_query_ft",
+        "kind": 2,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "def validate_query_ft(query: str) -> str:\n    q = (query or \"\").lower()\n    if any(bad in q for bad in [\"attack\", \"explosive\", \"malware\", \"self-harm\"]):\n        return \"HARMFUL\"\n    if not any(k in q for k in FINANCE_KEYWORDS):\n        return \"IRRELEVANT\"\n    return \"OK\"\n# ---------- FT answerer ----------\nDECODE = {\n    \"num_beams\": 5,",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "get_ft_response",
+        "kind": 2,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "def get_ft_response(question: str):\n    \"\"\"Uniform response shape with RAG for the UI.\"\"\"\n    guard = validate_query_ft(question)\n    if guard in (\"IRRELEVANT\", \"HARMFUL\"):\n        return {\n            \"answer\": f\"Your query was flagged as **{guard}**. Please ask a relevant financial question.\",\n            \"verification\": \"BLOCKED\",\n            \"confidence\": 0.0,\n            \"method\": \"Fine-tuned\",\n            \"response_time\": 0.0",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\n# Make sure this is the path where your PEFT adapter is saved\nDEFAULT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# ---------- Load FT model ----------\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_MODEL_DIR",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "DEFAULT_MODEL_DIR = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# ---------- Load FT model ----------\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "QA_JSON",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "QA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# ---------- Load FT model ----------\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "QA_TXT",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "QA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# ---------- Load FT model ----------\ndevice = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16, # Use float16 to save memory",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "device",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\nprint(f\"Loading model on device: {device}\")\n# --- NEW: Load the BASE model first ---\nbase_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16, # Use float16 to save memory\n)\n# --- NEW: Load the fine-tuned PEFT adapter ---",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "base_model_name",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "base_model_name = \"microsoft/phi-2\"\nbase_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16, # Use float16 to save memory\n)\n# --- NEW: Load the fine-tuned PEFT adapter ---\ntry:\n    model = PeftModel.from_pretrained(base_model, DEFAULT_MODEL_DIR)\n    print(\"✅ Successfully loaded fine-tuned adapter.\")",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "base_model",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "base_model = AutoModelForCausalLM.from_pretrained(\n    base_model_name,\n    trust_remote_code=True,\n    torch_dtype=torch.float16, # Use float16 to save memory\n)\n# --- NEW: Load the fine-tuned PEFT adapter ---\ntry:\n    model = PeftModel.from_pretrained(base_model, DEFAULT_MODEL_DIR)\n    print(\"✅ Successfully loaded fine-tuned adapter.\")\nexcept Exception as e:",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(base_model_name, trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\n# Merge the adapter and move to device\nmodel = model.merge_and_unload()\nmodel.to(device)\nmodel.eval()\n# ---------- Load memory Q/A & embeddings for verification ----------\ndef _load_qa_pairs():\n    pairs = []\n    if QA_JSON.exists():",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token\n# Merge the adapter and move to device\nmodel = model.merge_and_unload()\nmodel.to(device)\nmodel.eval()\n# ---------- Load memory Q/A & embeddings for verification ----------\ndef _load_qa_pairs():\n    pairs = []\n    if QA_JSON.exists():\n        with open(QA_JSON, \"r\", encoding=\"utf-8\") as f:",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "model = model.merge_and_unload()\nmodel.to(device)\nmodel.eval()\n# ---------- Load memory Q/A & embeddings for verification ----------\ndef _load_qa_pairs():\n    pairs = []\n    if QA_JSON.exists():\n        with open(QA_JSON, \"r\", encoding=\"utf-8\") as f:\n            pairs = json.load(f)\n    elif QA_TXT.exists():",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "qa_pairs",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "qa_pairs = _load_qa_pairs()\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=(\"cuda\" if torch.cuda.is_available() else \"cpu\"))\n# Precompute embeddings for all answers\nanswer_corpus = [p[\"answer\"] for p in qa_pairs] if qa_pairs else []\nanswer_embeddings = embedder.encode(answer_corpus) if answer_corpus else None\n# ---------- Simple input guardrail ----------\nFINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "embedder",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "embedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=(\"cuda\" if torch.cuda.is_available() else \"cpu\"))\n# Precompute embeddings for all answers\nanswer_corpus = [p[\"answer\"] for p in qa_pairs] if qa_pairs else []\nanswer_embeddings = embedder.encode(answer_corpus) if answer_corpus else None\n# ---------- Simple input guardrail ----------\nFINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",\n    \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \"fiscal\", \"segment\",",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "answer_corpus",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "answer_corpus = [p[\"answer\"] for p in qa_pairs] if qa_pairs else []\nanswer_embeddings = embedder.encode(answer_corpus) if answer_corpus else None\n# ---------- Simple input guardrail ----------\nFINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",\n    \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \"fiscal\", \"segment\",\n    \"geographic\", \"capex\", \"r&d\", \"share repurchase\", \"buyback\", \"opex\",\n    \"cost of sales\", \"goodwill\", \"services\", \"iphone\", \"mac\", \"ipad\",",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "answer_embeddings",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "answer_embeddings = embedder.encode(answer_corpus) if answer_corpus else None\n# ---------- Simple input guardrail ----------\nFINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",\n    \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \"fiscal\", \"segment\",\n    \"geographic\", \"capex\", \"r&d\", \"share repurchase\", \"buyback\", \"opex\",\n    \"cost of sales\", \"goodwill\", \"services\", \"iphone\", \"mac\", \"ipad\",\n    \"spend\", \"expenditure\", \"expense\", \"cost\", \"marketing\", \"advertising\",",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "FINANCE_KEYWORDS",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "FINANCE_KEYWORDS = {\n    \"revenue\", \"net sales\", \"income\", \"operating income\", \"cash flow\",\n    \"balance sheet\", \"income statement\", \"assets\", \"liabilities\", \"eps\",\n    \"earnings per share\", \"dividends\", \"gross margin\", \"operating margin\",\n    \"guidance\", \"10-k\", \"10q\", \"financial\", \"quarter\", \"fiscal\", \"segment\",\n    \"geographic\", \"capex\", \"r&d\", \"share repurchase\", \"buyback\", \"opex\",\n    \"cost of sales\", \"goodwill\", \"services\", \"iphone\", \"mac\", \"ipad\",\n    \"spend\", \"expenditure\", \"expense\", \"cost\", \"marketing\", \"advertising\",\n    \"profit\", \"loss\", \"amortization\", \"depreciation\", \"valuation\",\n    \"debt\", \"equity\", \"stock\", \"share\", \"Apple\", \"Microsoft\", \"Google\",",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "DECODE",
+        "kind": 5,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "DECODE = {\n    \"num_beams\": 5,\n    \"max_new_tokens\": 80,\n    \"early_stopping\": True,\n    \"no_repeat_ngram_size\": 2,\n    \"repetition_penalty\": 1.1,\n    \"temperature\": 0.3  # Added for better control\n}\ndef _postprocess(text: str) -> str:\n    sents = [s.strip() for s in text.split(\".\") if s.strip()]",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "HybridRetriever",
+        "kind": 6,
+        "importPath": "src.hybrid_retriever",
+        "description": "src.hybrid_retriever",
+        "peekOfCode": "class HybridRetriever(BaseRetriever):\n    vectordb: Any = Field(None)\n    bm25_retriever: Any = Field(None)\n    alpha: float = 0.5\n    k: int = 4  # <-- Add a 'k' field to the class\n    def __init__(self, vectordb: Any, bm25_retriever: Any, alpha=0.5, k=4):\n        super().__init__()\n        self.vectordb = vectordb\n        self.bm25_retriever = bm25_retriever\n        self.alpha = alpha",
+        "detail": "src.hybrid_retriever",
+        "documentation": {}
+    },
+    {
+        "label": "load_cleaned_text",
+        "kind": 2,
+        "importPath": "src.llm_segmenter",
+        "description": "src.llm_segmenter",
+        "peekOfCode": "def load_cleaned_text(file_path: str, max_chars: int = 4000) -> str:\n    with open(file_path, 'r', encoding='utf-8') as f:\n        text = f.read()\n    return unidecode(text[:max_chars])  # truncate for LLM input limits\ndef segment_with_llm(text: str) -> str:\n    prompt = f\"\"\"\nSegment the following annual report text into logical financial sections such as:\n- Income Statement\n- Balance Sheet\n- Cash Flow Statement",
+        "detail": "src.llm_segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "segment_with_llm",
+        "kind": 2,
+        "importPath": "src.llm_segmenter",
+        "description": "src.llm_segmenter",
+        "peekOfCode": "def segment_with_llm(text: str) -> str:\n    prompt = f\"\"\"\nSegment the following annual report text into logical financial sections such as:\n- Income Statement\n- Balance Sheet\n- Cash Flow Statement\n- Management Discussion\n- Risk Factors\n- Notes to Financial Statements\nFor each section, return the section name as a heading and the corresponding text. Example format:",
+        "detail": "src.llm_segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "parse_llm_output",
+        "kind": 2,
+        "importPath": "src.llm_segmenter",
+        "description": "src.llm_segmenter",
+        "peekOfCode": "def parse_llm_output(text: str) -> Dict[str, str]:\n    \"\"\"Split the LLM output into a dictionary of sections.\"\"\"\n    sections = {}\n    current_section = None\n    buffer = []\n    for line in text.splitlines():\n        header_match = re.match(r\"^(Income Statement|Balance Sheet|Cash Flow Statement|Management.*|Risk Factors|Notes.*):\", line.strip(), re.IGNORECASE)\n        if header_match:\n            if current_section and buffer:\n                sections[current_section] = '\\n'.join(buffer).strip()",
+        "detail": "src.llm_segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "save_segments",
+        "kind": 2,
+        "importPath": "src.llm_segmenter",
+        "description": "src.llm_segmenter",
+        "peekOfCode": "def save_segments(segments: Dict[str, str], output_dir: str):\n    os.makedirs(output_dir, exist_ok=True)\n    for name, content in segments.items():\n        path = os.path.join(output_dir, f\"{name}.txt\")\n        with open(path, 'w', encoding='utf-8') as f:\n            f.write(content)\n    print(f\"LLM-based segments saved to: {output_dir}\")\nif __name__ == \"__main__\":\n    input_path = \"data/processed/cleaned_apple_10k_2023.txt\"\n    output_dir = \"data/processed/segments_llm\"",
+        "detail": "src.llm_segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "MemoryRetriever",
+        "kind": 6,
+        "importPath": "src.memory_retriever",
+        "description": "src.memory_retriever",
+        "peekOfCode": "class MemoryRetriever:\n    def __init__(self, memory_path: str = \"../data/qa_pair.json\", threshold: float = 0.9):\n        self.threshold = threshold\n        self.embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\n        self.memories = self._load_memory(memory_path)\n        self._embed_questions()\n    def _load_memory(self, path: str) -> list:\n        with open(path, \"r\") as f:\n            return json.load(f)\n    def _embed_questions(self):",
+        "detail": "src.memory_retriever",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.prepare_data",
+        "description": "src.prepare_data",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\ninput_file = script_dir.parent / \"data\" / \"qa_pair.json\"\noutput_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\nwith open(input_file, \"r\") as f:\n    data = json.load(f)\nwith open(output_file, \"w\") as f:\n    for entry in data:\n        q = entry[\"question\"].strip()\n        a = entry[\"answer\"].strip()\n        f.write(f\"Q: {q}\\nA: {a}\\n\\n\")",
+        "detail": "src.prepare_data",
+        "documentation": {}
+    },
+    {
+        "label": "input_file",
+        "kind": 5,
+        "importPath": "src.prepare_data",
+        "description": "src.prepare_data",
+        "peekOfCode": "input_file = script_dir.parent / \"data\" / \"qa_pair.json\"\noutput_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\nwith open(input_file, \"r\") as f:\n    data = json.load(f)\nwith open(output_file, \"w\") as f:\n    for entry in data:\n        q = entry[\"question\"].strip()\n        a = entry[\"answer\"].strip()\n        f.write(f\"Q: {q}\\nA: {a}\\n\\n\")\nprint(f\"Dataset saved to {output_file}\")",
+        "detail": "src.prepare_data",
+        "documentation": {}
+    },
+    {
+        "label": "output_file",
+        "kind": 5,
+        "importPath": "src.prepare_data",
+        "description": "src.prepare_data",
+        "peekOfCode": "output_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\nwith open(input_file, \"r\") as f:\n    data = json.load(f)\nwith open(output_file, \"w\") as f:\n    for entry in data:\n        q = entry[\"question\"].strip()\n        a = entry[\"answer\"].strip()\n        f.write(f\"Q: {q}\\nA: {a}\\n\\n\")\nprint(f\"Dataset saved to {output_file}\")",
+        "detail": "src.prepare_data",
+        "documentation": {}
+    },
+    {
+        "label": "extract_text_from_pdf",
+        "kind": 2,
+        "importPath": "src.preprocess",
+        "description": "src.preprocess",
+        "peekOfCode": "def extract_text_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract all text (non-tabular) from a PDF file.\"\"\"\n    doc = fitz.open(pdf_path)\n    full_text = \"\"\n    for page in doc:\n        full_text += page.get_text(\"text\")\n    return full_text\ndef extract_tables_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract tables from PDF and convert them into readable text.\"\"\"\n    table_text = \"\"",
+        "detail": "src.preprocess",
+        "documentation": {}
+    },
+    {
+        "label": "extract_tables_from_pdf",
+        "kind": 2,
+        "importPath": "src.preprocess",
+        "description": "src.preprocess",
+        "peekOfCode": "def extract_tables_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract tables from PDF and convert them into readable text.\"\"\"\n    table_text = \"\"\n    with pdfplumber.open(pdf_path) as pdf:\n        for i, page in enumerate(pdf.pages, 1):\n            tables = page.extract_tables()\n            for table in tables:\n                # Flatten table rows into readable lines\n                for row in table:\n                    clean_row = [cell.strip() if cell else \"\" for cell in row]",
+        "detail": "src.preprocess",
+        "documentation": {}
+    },
+    {
+        "label": "clean_text",
+        "kind": 2,
+        "importPath": "src.preprocess",
+        "description": "src.preprocess",
+        "peekOfCode": "def clean_text(text: str) -> str:\n    \"\"\"Remove headers, footers, page numbers, but PRESERVE FINANCIAL DATA\"\"\"\n    lines = text.split('\\n')\n    cleaned_lines = []\n    for line in lines:\n        line = line.strip()\n        if re.match(r'^\\s*Page \\d+\\s*$', line):\n            continue\n        if len(line) > 1:\n            cleaned_lines.append(line)",
+        "detail": "src.preprocess",
+        "documentation": {}
+    },
+    {
+        "label": "save_text",
+        "kind": 2,
+        "importPath": "src.preprocess",
+        "description": "src.preprocess",
+        "peekOfCode": "def save_text(text: str, output_path: str):\n    with open(output_path, 'w', encoding='utf-8') as f:\n        f.write(text)\nif __name__ == \"__main__\":\n    # Process both years\n    for year in [2022, 2023]:\n        pdf_path = f\"data/raw/apple_10k_{year}.pdf\"\n        output_path = f\"data/processed/cleaned_apple_10k_{year}.txt\"\n        # Extract narrative text\n        narrative_text = extract_text_from_pdf(pdf_path)",
+        "detail": "src.preprocess",
+        "documentation": {}
+    },
+    {
+        "label": "validate_query",
+        "kind": 2,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "def validate_query(query: str) -> str:\n    \"\"\"Simple validation without LLM call\"\"\"\n    finance_keywords = [\"revenue\", \"income\", \"profit\", \"financial\", \"balance\", \"cash flow\", \"10-k\", \"apple\"]\n    query_lower = query.lower()\n    if any(bad in query_lower for bad in [\"harm\", \"attack\", \"malware\", \"virus\"]):\n        return \"HARMFUL\"\n    elif any(keyword in query_lower for keyword in finance_keywords):\n        return \"RELEVANT_FINANCIAL\"\n    else:\n        return \"IRRELEVANT\"",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "verify_answer",
+        "kind": 2,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "def verify_answer(answer: str, source_documents: list) -> str:\n    \"\"\"Simple verification without LLM call\"\"\"\n    # Basic check: if answer contains numbers or financial terms\n    financial_terms = [\"$\", \"million\", \"billion\", \"percent\", \"%\", \"revenue\", \"income\"]\n    if any(term in answer.lower() for term in financial_terms):\n        return \"VERIFIED\"\n    else:\n        return \"UNCERTAIN\"\n# --- Main interaction loop ---\nprint(f\"\\n💬 Financial QA System Ready (using {SELECTED_MODEL})\")",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\n# --- Hugging Face Authentication ---\n# Option 1: Use your token (replace with your actual token)\n#HF_TOKEN = \"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\"\ntry:\n    # Login to Hugging Face\n    login(token=HF_TOKEN)\n    print(\"✅ Successfully authenticated with Hugging Face\")\nexcept Exception as e:\n    print(f\"❌ Authentication failed: {e}\")",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "#HF_TOKEN",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "#HF_TOKEN = \"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\"\ntry:\n    # Login to Hugging Face\n    login(token=HF_TOKEN)\n    print(\"✅ Successfully authenticated with Hugging Face\")\nexcept Exception as e:\n    print(f\"❌ Authentication failed: {e}\")\n    print(\"Please check your token or set HUGGING_FACE_HUB_TOKEN environment variable\")\n    exit(1)\n# --- Step 1: Load and process documents to create the BM25Retriever ---",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "data_path",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "data_path = script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\nif not data_path.exists():\n    raise FileNotFoundError(f\"Ensure that {data_path} exists and contains your document chunks.\")\ndf = pd.read_csv(data_path)\ndocs = [\n    Document(\n        page_content=row[\"text\"],\n        metadata={\n            \"section\": row[\"section\"],\n            \"chunk_id\": row[\"chunk_id\"],",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "df = pd.read_csv(data_path)\ndocs = [\n    Document(\n        page_content=row[\"text\"],\n        metadata={\n            \"section\": row[\"section\"],\n            \"chunk_id\": row[\"chunk_id\"],\n        },\n    )\n    for index, row in df.iterrows()",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "docs",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "docs = [\n    Document(\n        page_content=row[\"text\"],\n        metadata={\n            \"section\": row[\"section\"],\n            \"chunk_id\": row[\"chunk_id\"],\n        },\n    )\n    for index, row in df.iterrows()\n]",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "bm25_retriever",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "bm25_retriever = BM25Retriever.from_documents(docs)\n# --- Step 2: Set up other components ---\nembedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\nvectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\nmemory_path = script_dir.parent / \"data\" / \"qa_pair.json\"\nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# --- Step 3: Instantiate HybridRetriever ---\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "embedding_model",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\nvectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\nmemory_path = script_dir.parent / \"data\" / \"qa_pair.json\"\nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# --- Step 3: Instantiate HybridRetriever ---\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "vectordb",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "vectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\nmemory_path = script_dir.parent / \"data\" / \"qa_pair.json\"\nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# --- Step 3: Instantiate HybridRetriever ---\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4\n)",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "memory_path",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "memory_path = script_dir.parent / \"data\" / \"qa_pair.json\"\nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# --- Step 3: Instantiate HybridRetriever ---\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4\n)\n# --- Load LLM with ALTERNATIVE MODELS (no authentication required) ---",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "memory_retriever",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# --- Step 3: Instantiate HybridRetriever ---\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4\n)\n# --- Load LLM with ALTERNATIVE MODELS (no authentication required) ---\nprint(\"Loading Hugging Face LLM...\")",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "hybrid_retriever",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "hybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4\n)\n# --- Load LLM with ALTERNATIVE MODELS (no authentication required) ---\nprint(\"Loading Hugging Face LLM...\")\n# CHOOSE ONE OF THESE MODELS (no authentication required):\nMODEL_OPTIONS = {",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_OPTIONS",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "MODEL_OPTIONS = {\n    \"microsoft/phi-2\": \"Small but capable model\",\n    \"microsoft/DialoGPT-medium\": \"Good for dialogue\",\n    \"distilgpt2\": \"Lightweight GPT-2\",\n    \"gpt2\": \"Standard GPT-2\",\n    \"facebook/opt-1.3b\": \"Medium-sized model\"\n}\nSELECTED_MODEL = \"microsoft/phi-2\"  # Change this to try different models\ntry:\n    # Load the model and tokenizer",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "SELECTED_MODEL",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "SELECTED_MODEL = \"microsoft/phi-2\"  # Change this to try different models\ntry:\n    # Load the model and tokenizer\n    tokenizer = AutoTokenizer.from_pretrained(SELECTED_MODEL)\n    # For some models, you might need to add padding token\n    if tokenizer.pad_token is None:\n        tokenizer.pad_token = tokenizer.eos_token\n    # Load model with quantization for efficiency\n    model = AutoModelForCausalLM.from_pretrained(\n        SELECTED_MODEL,",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "pipe",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "pipe = pipeline(\n    \"text-generation\",\n    model=model,\n    tokenizer=tokenizer,\n    max_new_tokens=256,  # Reduced for faster response\n    do_sample=True,\n    top_k=30,\n    temperature=0.7,\n    pad_token_id=tokenizer.eos_token_id,\n    eos_token_id=tokenizer.eos_token_id",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "llm",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "llm = HuggingFacePipeline(pipeline=pipe)\nprint(\"✅ LLM pipeline created successfully\")\n# --- Setup QA chain ---\nqa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    retriever=hybrid_retriever,\n    return_source_documents=True\n)\n# --- Guardrail functions (simplified) ---\nfrom langchain_core.prompts import PromptTemplate",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "qa_chain",
+        "kind": 5,
+        "importPath": "src.query_rag",
+        "description": "src.query_rag",
+        "peekOfCode": "qa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    retriever=hybrid_retriever,\n    return_source_documents=True\n)\n# --- Guardrail functions (simplified) ---\nfrom langchain_core.prompts import PromptTemplate\ndef validate_query(query: str) -> str:\n    \"\"\"Simple validation without LLM call\"\"\"\n    finance_keywords = [\"revenue\", \"income\", \"profit\", \"financial\", \"balance\", \"cash flow\", \"10-k\", \"apple\"]",
+        "detail": "src.query_rag",
+        "documentation": {}
+    },
+    {
+        "label": "validate_query",
+        "kind": 2,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "def validate_query(llm: Any, query: str) -> str:\n    \"\"\"Classifies a user query as relevant, irrelevant, or harmful.\"\"\"\n    validation_prompt_template = \"\"\"\n    You are a financial query validator. Your task is to determine if a user's query is related to financial topics, a company's 10-K filing, or is a harmful request.\n    Classify the query into one of the following categories:\n    - RELEVANT_FINANCIAL: The query is about finance, a company, or a 10-K filing.\n    - IRRELEVANT: The query is unrelated to finance.\n    - HARMFUL: The query is a harmful, unethical, or dangerous request.\n    Query: {query}\n    Classification:",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "verify_answer",
+        "kind": 2,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "def verify_answer(llm: Any, answer: str, source_documents: list) -> str:\n    \"\"\"Verifies if the answer is supported by the source documents.\"\"\"\n    source_texts = \"\\n\\n\".join([doc.page_content for doc in source_documents])\n    verification_prompt_template = \"\"\"\n    You are a fact-checker. Your task is to determine if the given Answer is directly and entirely supported by the provided Source Documents.\n    Instructions:\n    1. Read the Answer carefully.\n    2. Read all Source Documents.\n    3. Determine if every claim in the Answer can be found and verified in the Source Documents.\n    4. If the Answer is fully supported, respond with 'VERIFIED'.",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "get_rag_response",
+        "kind": 2,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "def get_rag_response(query: str):\n    \"\"\"The main RAG function to get a response with guardrails.\"\"\"\n    # First check memory bank\n    memory_result = memory_retriever.query(query)\n    if memory_result:\n        return {\n            \"answer\": memory_result[\"answer\"],\n            \"source\": memory_result[\"source\"],\n            \"method\": \"Memory Bank\",\n            \"confidence\": memory_result.get(\"similarity\", \"N/A\"),",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\n# Load and process documents to create the BM25Retriever\ndata_path =script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\nif not data_path.exists():\n    raise FileNotFoundError(f\"Ensure that {data_path} exists and contains your document chunks.\")\ntry:\n    df = pd.read_csv(data_path)\n    docs = [\n        Document(\n            page_content=row[\"text\"],",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "bm25_retriever",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "bm25_retriever = BM25Retriever.from_documents(docs)\n# Load embeddings and vector DB\nembedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\nvectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\n# Construct the absolute path to qa_pair.json\nmemory_path =script_dir.parent / \"data\" / \"qa_pair.json\"  \nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# Instantiate HybridRetriever with the correct objects\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "embedding_model",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\nvectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\n# Construct the absolute path to qa_pair.json\nmemory_path =script_dir.parent / \"data\" / \"qa_pair.json\"  \nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# Instantiate HybridRetriever with the correct objects\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "vectordb",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "vectordb = Chroma(persist_directory=\"vector_db\", embedding_function=embedding_model)\n# Construct the absolute path to qa_pair.json\nmemory_path =script_dir.parent / \"data\" / \"qa_pair.json\"  \nmemory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# Instantiate HybridRetriever with the correct objects\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "memory_retriever",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n# Instantiate HybridRetriever with the correct objects\nhybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4\n)\n# --- Load LLM from Hugging Face Hosted Inference API ---\nprint(\"Loading Hugging Face LLM via Inference API...\")",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "hybrid_retriever",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "hybrid_retriever = HybridRetriever(\n    vectordb=vectordb.as_retriever(),\n    bm25_retriever=bm25_retriever,\n    alpha=0.5,\n    k=4\n)\n# --- Load LLM from Hugging Face Hosted Inference API ---\nprint(\"Loading Hugging Face LLM via Inference API...\")\n# This is the key change. We are now using an API call instead of local model loading.\n# You must set your Hugging Face API token as an environment variable in Streamlit Secrets.",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "llm",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "llm = HuggingFaceHub(\n    repo_id=\"microsoft/phi-2\",\n    model_kwargs={\"temperature\": 0.1, \"max_new_tokens\": 512}\n)\nprint(\"✅ Successfully connected to Hugging Face Inference API.\")\n# Setup QA chain with hybrid retriever\nqa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    retriever=hybrid_retriever,\n    return_source_documents=True",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "qa_chain",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "qa_chain = RetrievalQA.from_chain_type(\n    llm=llm,\n    retriever=hybrid_retriever,\n    return_source_documents=True\n)\ndef get_rag_response(query: str):\n    \"\"\"The main RAG function to get a response with guardrails.\"\"\"\n    # First check memory bank\n    memory_result = memory_retriever.query(query)\n    if memory_result:",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "persist_directory",
+        "kind": 5,
+        "importPath": "src.read_embed",
+        "description": "src.read_embed",
+        "peekOfCode": "persist_directory = \"./vector_db\"\n# Load the ChromaDB client\nchroma_client = chromadb.PersistentClient(path=persist_directory)\n# Get the collection you stored embeddings into\ncollection = chroma_client.get_or_create_collection(name=\"apple_10k\")\n# --- Option 1: Retrieve a known ID ---\n# If you know one of the IDs you stored, e.g., \"chunk_0\"\nsample_id_to_retrieve = \"chunk_0\" # Or \"chunk_1\", \"chunk_2\", etc.\nprint(f\"Attempting to retrieve data for ID: '{sample_id_to_retrieve}'\")\nretrieved_data = collection.get(ids=[sample_id_to_retrieve], include=['documents', 'embeddings'])",
+        "detail": "src.read_embed",
+        "documentation": {}
+    },
+    {
+        "label": "chroma_client",
+        "kind": 5,
+        "importPath": "src.read_embed",
+        "description": "src.read_embed",
+        "peekOfCode": "chroma_client = chromadb.PersistentClient(path=persist_directory)\n# Get the collection you stored embeddings into\ncollection = chroma_client.get_or_create_collection(name=\"apple_10k\")\n# --- Option 1: Retrieve a known ID ---\n# If you know one of the IDs you stored, e.g., \"chunk_0\"\nsample_id_to_retrieve = \"chunk_0\" # Or \"chunk_1\", \"chunk_2\", etc.\nprint(f\"Attempting to retrieve data for ID: '{sample_id_to_retrieve}'\")\nretrieved_data = collection.get(ids=[sample_id_to_retrieve], include=['documents', 'embeddings'])\nif retrieved_data and retrieved_data['embeddings']:\n    print(f\"\\nRetrieved document for ID '{sample_id_to_retrieve}':\")",
+        "detail": "src.read_embed",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "kind": 5,
+        "importPath": "src.read_embed",
+        "description": "src.read_embed",
+        "peekOfCode": "collection = chroma_client.get_or_create_collection(name=\"apple_10k\")\n# --- Option 1: Retrieve a known ID ---\n# If you know one of the IDs you stored, e.g., \"chunk_0\"\nsample_id_to_retrieve = \"chunk_0\" # Or \"chunk_1\", \"chunk_2\", etc.\nprint(f\"Attempting to retrieve data for ID: '{sample_id_to_retrieve}'\")\nretrieved_data = collection.get(ids=[sample_id_to_retrieve], include=['documents', 'embeddings'])\nif retrieved_data and retrieved_data['embeddings']:\n    print(f\"\\nRetrieved document for ID '{sample_id_to_retrieve}':\")\n    print(retrieved_data['documents'][0][:100], \"...\") # Print first 100 characters\n    print(f\"Retrieved embedding (first 5 values): {retrieved_data['embeddings'][0][:5]}\")",
+        "detail": "src.read_embed",
+        "documentation": {}
+    },
+    {
+        "label": "sample_id_to_retrieve",
+        "kind": 5,
+        "importPath": "src.read_embed",
+        "description": "src.read_embed",
+        "peekOfCode": "sample_id_to_retrieve = \"chunk_0\" # Or \"chunk_1\", \"chunk_2\", etc.\nprint(f\"Attempting to retrieve data for ID: '{sample_id_to_retrieve}'\")\nretrieved_data = collection.get(ids=[sample_id_to_retrieve], include=['documents', 'embeddings'])\nif retrieved_data and retrieved_data['embeddings']:\n    print(f\"\\nRetrieved document for ID '{sample_id_to_retrieve}':\")\n    print(retrieved_data['documents'][0][:100], \"...\") # Print first 100 characters\n    print(f\"Retrieved embedding (first 5 values): {retrieved_data['embeddings'][0][:5]}\")\n    print(f\"Length of retrieved embedding: {len(retrieved_data['embeddings'][0])}\")\nelse:\n    print(f\"Could not retrieve data for ID '{sample_id_to_retrieve}'. It might not exist or the DB is empty.\")",
+        "detail": "src.read_embed",
+        "documentation": {}
+    },
+    {
+        "label": "retrieved_data",
+        "kind": 5,
+        "importPath": "src.read_embed",
+        "description": "src.read_embed",
+        "peekOfCode": "retrieved_data = collection.get(ids=[sample_id_to_retrieve], include=['documents', 'embeddings'])\nif retrieved_data and retrieved_data['embeddings']:\n    print(f\"\\nRetrieved document for ID '{sample_id_to_retrieve}':\")\n    print(retrieved_data['documents'][0][:100], \"...\") # Print first 100 characters\n    print(f\"Retrieved embedding (first 5 values): {retrieved_data['embeddings'][0][:5]}\")\n    print(f\"Length of retrieved embedding: {len(retrieved_data['embeddings'][0])}\")\nelse:\n    print(f\"Could not retrieve data for ID '{sample_id_to_retrieve}'. It might not exist or the DB is empty.\")",
+        "detail": "src.read_embed",
+        "documentation": {}
+    },
+    {
+        "label": "load_cleaned_text",
+        "kind": 2,
+        "importPath": "src.segmenter",
+        "description": "src.segmenter",
+        "peekOfCode": "def load_cleaned_text(year: int) -> str:\n    \"\"\"Load cleaned text for a specific year\"\"\"\n    file_path = f\"data/processed/cleaned_apple_10k_{year}.txt\"\n    with open(file_path, 'r', encoding='utf-8') as f:\n        return f.read()\ndef segment_text(text: str, year: int) -> Dict[str, str]:\n    \"\"\"Segment text into financial sections\"\"\"\n    sections = {\n        \"income_statement\": r\"(consolidated\\s+)?(statements|statement)\\s+of\\s+(operations|income)\",\n        \"balance_sheet\": r\"(consolidated\\s+)?balance\\s+sheets?\",",
+        "detail": "src.segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "segment_text",
+        "kind": 2,
+        "importPath": "src.segmenter",
+        "description": "src.segmenter",
+        "peekOfCode": "def segment_text(text: str, year: int) -> Dict[str, str]:\n    \"\"\"Segment text into financial sections\"\"\"\n    sections = {\n        \"income_statement\": r\"(consolidated\\s+)?(statements|statement)\\s+of\\s+(operations|income)\",\n        \"balance_sheet\": r\"(consolidated\\s+)?balance\\s+sheets?\",\n        \"cash_flow\": r\"(consolidated\\s+)?statements?\\s+of\\s+cash\\s+flows?\",\n        \"equity\": r\"(consolidated\\s+)?statements?\\s+of\\s+(stockholders'|shareholders')?\\s*equity\",\n        \"financial_highlights\": r\"(selected\\s+financial\\s+data|financial\\s+highlights|summary\\s+of\\s+operations)\",\n        \"notes\": r\"notes\\s+to\\s+(consolidated\\s+)?financial\\s+statements?\",\n        \"management_discussion\": r\"management(?:'s)?\\s+discussion\\s+and\\s+analysis\",",
+        "detail": "src.segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "save_segments",
+        "kind": 2,
+        "importPath": "src.segmenter",
+        "description": "src.segmenter",
+        "peekOfCode": "def save_segments(segments: Dict[str, str]):\n    \"\"\"Save segments to the processed directory\"\"\"\n    segments_dir = \"data/processed/segments\"\n    os.makedirs(segments_dir, exist_ok=True)\n    for name, content in segments.items():\n        filename = os.path.join(segments_dir, f\"{name}.txt\")\n        with open(filename, 'w', encoding='utf-8') as f:\n            f.write(content)\ndef process_all_years(years=[2022, 2023]):\n    \"\"\"Process segmentation for all years\"\"\"",
+        "detail": "src.segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "process_all_years",
+        "kind": 2,
+        "importPath": "src.segmenter",
+        "description": "src.segmenter",
+        "peekOfCode": "def process_all_years(years=[2022, 2023]):\n    \"\"\"Process segmentation for all years\"\"\"\n    all_segments = {}\n    for year in years:\n        print(f\"Segmenting {year}...\")\n        text = load_cleaned_text(year)\n        segments = segment_text(text, year)\n        all_segments.update(segments)\n        print(f\"  Found {len(segments)} sections\")\n    save_segments(all_segments)",
+        "detail": "src.segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "src.sparse_index",
+        "description": "src.sparse_index",
+        "peekOfCode": "df = pd.read_csv(\"data/processed/chunks.csv\")\n# Tokenize texts\ntexts = df[\"text\"].tolist()\ntokenized_corpus = [word_tokenize(text.lower()) for text in texts]\n# Build BM25 index\nbm25 = BM25Okapi(tokenized_corpus)\n# Extract metadata\nmetadata = df[[\"section\", \"chunk_id\"]].to_dict(orient=\"records\")\n# Save index and metadata\nos.makedirs(\"sparse_index_bm25\", exist_ok=True)",
+        "detail": "src.sparse_index",
+        "documentation": {}
+    },
+    {
+        "label": "texts",
+        "kind": 5,
+        "importPath": "src.sparse_index",
+        "description": "src.sparse_index",
+        "peekOfCode": "texts = df[\"text\"].tolist()\ntokenized_corpus = [word_tokenize(text.lower()) for text in texts]\n# Build BM25 index\nbm25 = BM25Okapi(tokenized_corpus)\n# Extract metadata\nmetadata = df[[\"section\", \"chunk_id\"]].to_dict(orient=\"records\")\n# Save index and metadata\nos.makedirs(\"sparse_index_bm25\", exist_ok=True)\nwith open(\"sparse_index_bm25/bm25.pkl\", \"wb\") as f:\n    pickle.dump(bm25, f)",
+        "detail": "src.sparse_index",
+        "documentation": {}
+    },
+    {
+        "label": "tokenized_corpus",
+        "kind": 5,
+        "importPath": "src.sparse_index",
+        "description": "src.sparse_index",
+        "peekOfCode": "tokenized_corpus = [word_tokenize(text.lower()) for text in texts]\n# Build BM25 index\nbm25 = BM25Okapi(tokenized_corpus)\n# Extract metadata\nmetadata = df[[\"section\", \"chunk_id\"]].to_dict(orient=\"records\")\n# Save index and metadata\nos.makedirs(\"sparse_index_bm25\", exist_ok=True)\nwith open(\"sparse_index_bm25/bm25.pkl\", \"wb\") as f:\n    pickle.dump(bm25, f)\nwith open(\"sparse_index_bm25/tokenized_corpus.pkl\", \"wb\") as f:",
+        "detail": "src.sparse_index",
+        "documentation": {}
+    },
+    {
+        "label": "bm25",
+        "kind": 5,
+        "importPath": "src.sparse_index",
+        "description": "src.sparse_index",
+        "peekOfCode": "bm25 = BM25Okapi(tokenized_corpus)\n# Extract metadata\nmetadata = df[[\"section\", \"chunk_id\"]].to_dict(orient=\"records\")\n# Save index and metadata\nos.makedirs(\"sparse_index_bm25\", exist_ok=True)\nwith open(\"sparse_index_bm25/bm25.pkl\", \"wb\") as f:\n    pickle.dump(bm25, f)\nwith open(\"sparse_index_bm25/tokenized_corpus.pkl\", \"wb\") as f:\n    pickle.dump(tokenized_corpus, f)\nwith open(\"sparse_index_bm25/metadata.pkl\", \"wb\") as f:",
+        "detail": "src.sparse_index",
+        "documentation": {}
+    },
+    {
+        "label": "metadata",
+        "kind": 5,
+        "importPath": "src.sparse_index",
+        "description": "src.sparse_index",
+        "peekOfCode": "metadata = df[[\"section\", \"chunk_id\"]].to_dict(orient=\"records\")\n# Save index and metadata\nos.makedirs(\"sparse_index_bm25\", exist_ok=True)\nwith open(\"sparse_index_bm25/bm25.pkl\", \"wb\") as f:\n    pickle.dump(bm25, f)\nwith open(\"sparse_index_bm25/tokenized_corpus.pkl\", \"wb\") as f:\n    pickle.dump(tokenized_corpus, f)\nwith open(\"sparse_index_bm25/metadata.pkl\", \"wb\") as f:\n    pickle.dump(metadata, f)\nprint(\"BM25 index built and saved successfully!\")",
+        "detail": "src.sparse_index",
+        "documentation": {}
+    },
+    {
+        "label": "get_rag_llm",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_rag_llm():\n    from src.rag_core import llm\n    return llm\n# Get the RAG LLM\nrag_llm = get_rag_llm()\n# --- Function to load FT LLM with caching ---\n@st.cache_resource\ndef get_ft_llm():\n    from src.ft_core import ft_model\n    return ft_model",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "get_ft_llm",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def get_ft_llm():\n    from src.ft_core import ft_model\n    return ft_model\n# Get the Fine-tuned LLM\nft_llm = get_ft_llm()\n# Initialize session state for the current conversation thread\nif \"current_thread_id\" not in st.session_state:\n    st.session_state.current_thread_id = str(uuid.uuid4())\n    st.session_state.thread_title = \"\"\n# --- Sidebar ---",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "rag_llm",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "rag_llm = get_rag_llm()\n# --- Function to load FT LLM with caching ---\n@st.cache_resource\ndef get_ft_llm():\n    from src.ft_core import ft_model\n    return ft_model\n# Get the Fine-tuned LLM\nft_llm = get_ft_llm()\n# Initialize session state for the current conversation thread\nif \"current_thread_id\" not in st.session_state:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "ft_llm",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "ft_llm = get_ft_llm()\n# Initialize session state for the current conversation thread\nif \"current_thread_id\" not in st.session_state:\n    st.session_state.current_thread_id = str(uuid.uuid4())\n    st.session_state.thread_title = \"\"\n# --- Sidebar ---\nwith st.sidebar:\n    st.header(\"Start a New Chat\")\n    if st.button(\"New Chat\",icon=\"✨\"):\n        st.session_state.current_thread_id = str(uuid.uuid4())",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "respond",
+        "kind": 2,
+        "importPath": "app1",
+        "description": "app1",
+        "peekOfCode": "def respond(message, chat_history):\n    \"\"\"\n    This function processes the user's message, applies guardrails,\n    and returns a formatted response.\n    \"\"\"\n    # Apply input-side guardrail first\n    validation_status = validate_query(llm, message)\n    if validation_status in [\"IRRELEVANT\", \"HARMFUL\"]:\n        response_text = f\"Your query was flagged as **{validation_status}**. Please ask a relevant financial question.\"\n        chat_history.append((message, response_text))",
+        "detail": "app1",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "eval_analysis",
+        "description": "eval_analysis",
+        "peekOfCode": "df = pd.read_csv(\"evaluation/eval_results.csv\")\n# Group by method to calculate averages\ngrouped_results = df.groupby(\"method\").agg(\n    avg_time_s=('time_s', 'mean'),\n    avg_semantic_score=('semantic_score', 'mean'),\n    correctness_rate=('correct', lambda x: (x == 'Y').mean())\n)\nprint(grouped_results)",
+        "detail": "eval_analysis",
+        "documentation": {}
+    },
+    {
+        "label": "grouped_results",
+        "kind": 5,
+        "importPath": "eval_analysis",
+        "description": "eval_analysis",
+        "peekOfCode": "grouped_results = df.groupby(\"method\").agg(\n    avg_time_s=('time_s', 'mean'),\n    avg_semantic_score=('semantic_score', 'mean'),\n    correctness_rate=('correct', lambda x: (x == 'Y').mean())\n)\nprint(grouped_results)",
+        "detail": "eval_analysis",
+        "documentation": {}
+    },
+    {
+        "label": "get_embedding",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def get_embedding(text):\n    \"\"\"Generate embedding for text using HuggingFace model\"\"\"\n    return embedder.encode(text, convert_to_numpy=True)\ndef check_keyword_coverage(questions, chunks_df):\n    results = []\n    chunk_texts = chunks_df[\"text\"].tolist()\n    for q in questions:\n        q_text = q[\"question\"].lower()\n        covered = any(word in chunk.lower() for word in q_text.split() for chunk in chunk_texts)\n        results.append({\"question\": q[\"question\"], \"keyword_coverage\": \"Yes\" if covered else \"No\"})",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "check_keyword_coverage",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def check_keyword_coverage(questions, chunks_df):\n    results = []\n    chunk_texts = chunks_df[\"text\"].tolist()\n    for q in questions:\n        q_text = q[\"question\"].lower()\n        covered = any(word in chunk.lower() for word in q_text.split() for chunk in chunk_texts)\n        results.append({\"question\": q[\"question\"], \"keyword_coverage\": \"Yes\" if covered else \"No\"})\n    return results\ndef check_semantic_coverage(questions, chunks_df, threshold=0.70):\n    results = []",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "check_semantic_coverage",
+        "kind": 2,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "def check_semantic_coverage(questions, chunks_df, threshold=0.70):\n    results = []\n    chunk_texts = chunks_df[\"text\"].tolist()\n    chunk_embeddings = [get_embedding(chunk) for chunk in chunk_texts]\n    for q in questions:\n        q_emb = get_embedding(q[\"question\"])\n        sims = cosine_similarity([q_emb], chunk_embeddings)[0]\n        max_sim = float(np.max(sims))\n        covered = \"Yes\" if max_sim >= threshold else \"No\"\n        results.append({",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "device",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\nembedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device)\n# Load data\nquestions = json.load(open(\"evaluation/questions.json\", \"r\"))\nchunks_df = pd.read_csv(\"data/processed/chunks.csv\")\ndef get_embedding(text):\n    \"\"\"Generate embedding for text using HuggingFace model\"\"\"\n    return embedder.encode(text, convert_to_numpy=True)\ndef check_keyword_coverage(questions, chunks_df):\n    results = []",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "embedder",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "embedder = SentenceTransformer(\"all-MiniLM-L6-v2\", device=device)\n# Load data\nquestions = json.load(open(\"evaluation/questions.json\", \"r\"))\nchunks_df = pd.read_csv(\"data/processed/chunks.csv\")\ndef get_embedding(text):\n    \"\"\"Generate embedding for text using HuggingFace model\"\"\"\n    return embedder.encode(text, convert_to_numpy=True)\ndef check_keyword_coverage(questions, chunks_df):\n    results = []\n    chunk_texts = chunks_df[\"text\"].tolist()",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "questions",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "questions = json.load(open(\"evaluation/questions.json\", \"r\"))\nchunks_df = pd.read_csv(\"data/processed/chunks.csv\")\ndef get_embedding(text):\n    \"\"\"Generate embedding for text using HuggingFace model\"\"\"\n    return embedder.encode(text, convert_to_numpy=True)\ndef check_keyword_coverage(questions, chunks_df):\n    results = []\n    chunk_texts = chunks_df[\"text\"].tolist()\n    for q in questions:\n        q_text = q[\"question\"].lower()",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "chunks_df",
+        "kind": 5,
+        "importPath": "test",
+        "description": "test",
+        "peekOfCode": "chunks_df = pd.read_csv(\"data/processed/chunks.csv\")\ndef get_embedding(text):\n    \"\"\"Generate embedding for text using HuggingFace model\"\"\"\n    return embedder.encode(text, convert_to_numpy=True)\ndef check_keyword_coverage(questions, chunks_df):\n    results = []\n    chunk_texts = chunks_df[\"text\"].tolist()\n    for q in questions:\n        q_text = q[\"question\"].lower()\n        covered = any(word in chunk.lower() for word in q_text.split() for chunk in chunk_texts)",
+        "detail": "test",
+        "documentation": {}
+    },
+    {
+        "label": "MODEL_DIR",
+        "kind": 5,
+        "importPath": "test1",
+        "description": "test1",
+        "peekOfCode": "MODEL_DIR = \"models/financial_gpt2_v1\"\n# -----------------------------\n# Load model and tokenizer\n# -----------------------------\nprint(f\"Loading fine-tuned model from {MODEL_DIR} ...\")\ntokenizer = GPT2Tokenizer.from_pretrained(MODEL_DIR)\nmodel = GPT2LMHeadModel.from_pretrained(MODEL_DIR)\nmodel.eval()\n# -----------------------------\n# Test question (hardcoded)",
+        "detail": "test1",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer",
+        "kind": 5,
+        "importPath": "test1",
+        "description": "test1",
+        "peekOfCode": "tokenizer = GPT2Tokenizer.from_pretrained(MODEL_DIR)\nmodel = GPT2LMHeadModel.from_pretrained(MODEL_DIR)\nmodel.eval()\n# -----------------------------\n# Test question (hardcoded)\n# -----------------------------\nquestion = \"What is the revenue of Apple in 2023?\"\ninput_text = f\"Q: {question}\\nA:\"\n# Tokenize\ninputs = tokenizer.encode(input_text, return_tensors=\"pt\")",
+        "detail": "test1",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "test1",
+        "description": "test1",
+        "peekOfCode": "model = GPT2LMHeadModel.from_pretrained(MODEL_DIR)\nmodel.eval()\n# -----------------------------\n# Test question (hardcoded)\n# -----------------------------\nquestion = \"What is the revenue of Apple in 2023?\"\ninput_text = f\"Q: {question}\\nA:\"\n# Tokenize\ninputs = tokenizer.encode(input_text, return_tensors=\"pt\")\n# -----------------------------",
+        "detail": "test1",
+        "documentation": {}
+    },
+    {
+        "label": "question",
+        "kind": 5,
+        "importPath": "test1",
+        "description": "test1",
+        "peekOfCode": "question = \"What is the revenue of Apple in 2023?\"\ninput_text = f\"Q: {question}\\nA:\"\n# Tokenize\ninputs = tokenizer.encode(input_text, return_tensors=\"pt\")\n# -----------------------------\n# Generate answer\n# -----------------------------\nwith torch.no_grad():\n    outputs = model.generate(\n        inputs,",
+        "detail": "test1",
+        "documentation": {}
+    },
+    {
+        "label": "input_text",
+        "kind": 5,
+        "importPath": "test1",
+        "description": "test1",
+        "peekOfCode": "input_text = f\"Q: {question}\\nA:\"\n# Tokenize\ninputs = tokenizer.encode(input_text, return_tensors=\"pt\")\n# -----------------------------\n# Generate answer\n# -----------------------------\nwith torch.no_grad():\n    outputs = model.generate(\n        inputs,\n        max_length=100,",
+        "detail": "test1",
+        "documentation": {}
+    },
+    {
+        "label": "inputs",
+        "kind": 5,
+        "importPath": "test1",
+        "description": "test1",
+        "peekOfCode": "inputs = tokenizer.encode(input_text, return_tensors=\"pt\")\n# -----------------------------\n# Generate answer\n# -----------------------------\nwith torch.no_grad():\n    outputs = model.generate(\n        inputs,\n        max_length=100,\n        num_beams=3,       # beam search for better output\n        temperature=0.7,   # controls randomness",
+        "detail": "test1",
+        "documentation": {}
+    },
+    {
+        "label": "generated_text",
+        "kind": 5,
+        "importPath": "test1",
+        "description": "test1",
+        "peekOfCode": "generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)\n# -----------------------------\n# Print result\n# -----------------------------\nprint(\"\\n=== Generated Answer ===\")\nprint(generated_text)",
+        "detail": "test1",
+        "documentation": {}
+    }
+]
