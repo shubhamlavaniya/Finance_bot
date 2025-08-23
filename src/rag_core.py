@@ -14,6 +14,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 from langchain_community.llms import HuggingFaceHub
+from langchain_community.llms import HuggingFaceEndpoint
 from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 from langchain_core.prompts import PromptTemplate
@@ -26,15 +27,22 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
+model_name = "microsoft/phi-2"
 # --- Cached Resources ---
 
 @st.cache_resource
 def get_rag_llm():
     """Loads the Hugging Face LLM via Inference API and caches it."""
     print("Loading Hugging Face LLM via Inference API...")
-    llm = HuggingFaceHub(
-        repo_id="microsoft/phi-2",
-        model_kwargs={"temperature": 0.1, "max_new_tokens": 512}
+    llm = HuggingFaceEndpoint(
+        repo_id=model_name,
+        huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"],
+        task="text-generation",
+        model_kwargs={
+            "temperature": 0.1,
+            "max_new_tokens": 512,
+            "do_sample": True
+        }
     )
     print("Successfully connected to Hugging Face Inference API.")
     return llm
