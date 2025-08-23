@@ -17,7 +17,7 @@ langchain
 transformers
 torch
 nomic
-gradio==4.44.0 # or a newer version
+#gradio==4.44.0 # or a newer version
 ollama
 langfuse
 openai
