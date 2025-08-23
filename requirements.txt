@@ -36,7 +36,7 @@ accelerate
 bitsandbytes
 langchain==0.1.10
 langchain-community==0.0.29
-langchain-core==0.1.33
+langchain-core>=0.1.40,<0.2.0
 huggingface-hub==0.22.2
 transformers==4.38.2
 sentence-transformers==2.2.2
