@@ -27,17 +27,17 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-model_name = "microsoft/phi-2"
+
 # --- Cached Resources ---
 
 @st.cache_resource
 def get_rag_llm():
     """Loads the Hugging Face LLM via Inference API and caches it."""
     print("Loading Hugging Face LLM via Inference API...")
-    llm = HuggingFaceEndpoint(
-        repo_id=model_name,
+    llm = HuggingFaceHub(
+        repo_id="microsoft/phi-2",
         huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"],
-        task="text-generation",
+        #task="text-generation",
         model_kwargs={
             "temperature": 0.1,
             "max_new_tokens": 512,
