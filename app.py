@@ -49,7 +49,7 @@ with st.sidebar:
 
     st.title("Recent")
     # Pass the user_id to load chats
-    db_conversations = load_chats(user_id=st.session_state.user_id, limit=20)
+    db_conversations = load_chats(limit=20)
 
     for conv in db_conversations:
         chat_title = conv["title"]
