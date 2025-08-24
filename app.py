@@ -12,11 +12,13 @@ import uuid
 
 # Initialize DB and run migration logic
 init_db()
-migrate_schema()
+#migrate_schema()
 
-# Add unique user ID for each user session
-if "user_id" not in st.session_state:
-    st.session_state.user_id = str(uuid.uuid4())
+# # Add unique user ID for each user session
+# if "user_id" not in st.session_state:
+#     st.session_state.user_id = str(uuid.uuid4())
+
+st.set_page_config(page_title="Financial Chatbot", layout="wide")
 
 # Initialize session state for the current conversation thread
 if "current_thread_id" not in st.session_state:
