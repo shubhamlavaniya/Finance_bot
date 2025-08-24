@@ -8,12 +8,11 @@ import streamlit as st
 import time
 from src.rag_core import get_rag_response, validate_query_simple
 from src.ft_core import get_ft_response, load_ft_model_and_tokenizer, validate_query_simple
-from src.db_handler import init_db, save_chat, load_chats, update_chat_title, migrate_schema
+from src.db_handler import init_db, save_chat, load_chats, update_chat_title, check_and_reset_db
 import uuid
 
-# Initialize DB and run migration logic
+# Initialize DB (creates the file on first run, reuses it on subsequent runs)
 init_db()
-migrate_schema()
 
 # Add unique user ID for each user session
 if "user_id" not in st.session_state:
@@ -74,7 +73,6 @@ with st.sidebar:
                     key=f"rename_input_{conv['thread_id']}"
                 )
                 if st.button("Save Name", use_container_width=True, key=f"rename_button_{conv['thread_id']}"):
-                    # Pass the user_id to update the title
                     update_chat_title(st.session_state.user_id, conv["thread_id"], new_title)
                     st.success("Chat name updated!")
                     time.sleep(1)
@@ -144,7 +142,6 @@ if prompt := st.chat_input("Enter your question here..."):
 
     chat_title = st.session_state.thread_title if st.session_state.thread_title else prompt
 
-    # Pass the user_id and thread_id to save the chat
     save_chat(
         st.session_state.user_id,
         st.session_state.current_thread_id,

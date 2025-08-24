@@ -1554,6 +1554,14 @@
         "documentation": {}
     },
     {
+        "label": "check_and_reset_db",
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "isExtraImport": true,
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
         "label": "uuid",
         "kind": 6,
         "isExtraImport": true,
@@ -1905,6 +1913,213 @@
         "documentation": {}
     },
     {
+        "label": "DistillationLoss",
+        "kind": 6,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "class DistillationLoss:\n    def __init__(self, temperature=2.0, alpha=0.5):\n        self.temperature = temperature\n        self.alpha = alpha  # Weight for distillation vs student loss\n        self.lm_loss = nn.CrossEntropyLoss()\n    def __call__(self, student_logits, teacher_logits, labels):\n        # Knowledge distillation loss\n        distillation_loss = F.kl_div(\n            F.log_softmax(student_logits / self.temperature, dim=-1),\n            F.softmax(teacher_logits / self.temperature, dim=-1),",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "DistillationTrainer",
+        "kind": 6,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "class DistillationTrainer(Trainer):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.distillation_loss = DistillationLoss()\n    def compute_loss(self, model, inputs, return_outputs=False):\n        labels = inputs.pop(\"labels\")\n        teacher_logits = inputs.pop(\"teacher_logits\")\n        outputs = model(**inputs)\n        student_logits = outputs.logits\n        loss = self.distillation_loss(student_logits, teacher_logits, labels)",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "prepare_distillation_data",
+        "kind": 2,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "def prepare_distillation_data(samples):\n    formatted_texts = []\n    for item in samples:\n        text = f\"Q: {item['question']}\\nA: {item['answer']}\"\n        formatted_texts.append(text)\n    return formatted_texts\ndistillation_texts = prepare_distillation_data(qa_data)\ndataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "tokenize_function",
+        "kind": 2,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "def tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,\n        return_tensors=\"pt\"\n    )\n    # Get teacher logits (no gradients to save memory)",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nTEACHER_MODEL_PATH = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nSTUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "TEACHER_MODEL_PATH",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "TEACHER_MODEL_PATH = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nSTUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "STUDENT_MODEL_NAME",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "STUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "QA_JSON_PATH",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "QA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "DISTILLED_MODEL_PATH",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "DISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "BATCH_SIZE",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "BATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "LEARNING_RATE",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "LEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "NUM_EPOCHS",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "NUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "teacher_tokenizer",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "teacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "teacher_tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "teacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model\nprint(\"Loading student model...\")",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "teacher_model",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "teacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model\nprint(\"Loading student model...\")\nstudent_tokenizer = AutoTokenizer.from_pretrained(STUDENT_MODEL_NAME, trust_remote_code=True)",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "student_tokenizer",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "student_tokenizer = AutoTokenizer.from_pretrained(STUDENT_MODEL_NAME, trust_remote_code=True)\nstudent_tokenizer.pad_token = student_tokenizer.eos_token\nstudent_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "student_tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "student_tokenizer.pad_token = student_tokenizer.eos_token\nstudent_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")\nwith open(QA_JSON_PATH, \"r\") as f:",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "student_model",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "student_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "distillation_texts",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "distillation_texts = prepare_distillation_data(qa_data)\ndataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "dataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,\n        return_tensors=\"pt\"",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "tokenized_dataset",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "tokenized_dataset = dataset.map(tokenize_function, batched=True, batch_size=BATCH_SIZE)\n# Knowledge distillation loss\nclass DistillationLoss:\n    def __init__(self, temperature=2.0, alpha=0.5):\n        self.temperature = temperature\n        self.alpha = alpha  # Weight for distillation vs student loss\n        self.lm_loss = nn.CrossEntropyLoss()\n    def __call__(self, student_logits, teacher_logits, labels):\n        # Knowledge distillation loss\n        distillation_loss = F.kl_div(",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "training_args",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "training_args = TrainingArguments(\n    output_dir=str(DISTILLED_MODEL_PATH),\n    num_train_epochs=NUM_EPOCHS,\n    per_device_train_batch_size=BATCH_SIZE,\n    per_device_eval_batch_size=BATCH_SIZE,\n    warmup_steps=100,\n    weight_decay=0.01,\n    logging_dir=\"./logs\",\n    logging_steps=10,\n    save_steps=500,",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "trainer",
+        "kind": 5,
+        "importPath": "knowledge_distil.knowledge_distillation",
+        "description": "knowledge_distil.knowledge_distillation",
+        "peekOfCode": "trainer = DistillationTrainer(\n    model=student_model,\n    args=training_args,\n    train_dataset=tokenized_dataset,\n    tokenizer=student_tokenizer,\n)\n# Train\nprint(\"Starting knowledge distillation...\")\ntrainer.train()\n# Save distilled model",
+        "detail": "knowledge_distil.knowledge_distillation",
+        "documentation": {}
+    },
+    {
         "label": "input_file",
         "kind": 5,
         "importPath": "scripts.convert_to_finetune",
@@ -1920,213 +2135,6 @@
         "description": "scripts.convert_to_finetune",
         "peekOfCode": "output_file = \"data/finetune_dataset.jsonl\"  # model-ready file\nwith open(input_file, \"r\") as f:\n    qa_pairs = json.load(f)\nwith open(output_file, \"w\") as out_f:\n    for pair in qa_pairs:\n        prompt = f\"Question: {pair['question']}\\nAnswer:\"\n        completion = f\" {pair['answer']}\"  # space at start is common in HF training\n        json.dump({\"prompt\": prompt, \"completion\": completion}, out_f)\n        out_f.write(\"\\n\")\nprint(f\"Converted {len(qa_pairs)} Q/A pairs to fine-tune format at {output_file}\")",
         "detail": "scripts.convert_to_finetune",
-        "documentation": {}
-    },
-    {
-        "label": "DistillationLoss",
-        "kind": 6,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "class DistillationLoss:\n    def __init__(self, temperature=2.0, alpha=0.5):\n        self.temperature = temperature\n        self.alpha = alpha  # Weight for distillation vs student loss\n        self.lm_loss = nn.CrossEntropyLoss()\n    def __call__(self, student_logits, teacher_logits, labels):\n        # Knowledge distillation loss\n        distillation_loss = F.kl_div(\n            F.log_softmax(student_logits / self.temperature, dim=-1),\n            F.softmax(teacher_logits / self.temperature, dim=-1),",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "DistillationTrainer",
-        "kind": 6,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "class DistillationTrainer(Trainer):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.distillation_loss = DistillationLoss()\n    def compute_loss(self, model, inputs, return_outputs=False):\n        labels = inputs.pop(\"labels\")\n        teacher_logits = inputs.pop(\"teacher_logits\")\n        outputs = model(**inputs)\n        student_logits = outputs.logits\n        loss = self.distillation_loss(student_logits, teacher_logits, labels)",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "prepare_distillation_data",
-        "kind": 2,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "def prepare_distillation_data(samples):\n    formatted_texts = []\n    for item in samples:\n        text = f\"Q: {item['question']}\\nA: {item['answer']}\"\n        formatted_texts.append(text)\n    return formatted_texts\ndistillation_texts = prepare_distillation_data(qa_data)\ndataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "tokenize_function",
-        "kind": 2,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "def tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,\n        return_tensors=\"pt\"\n    )\n    # Get teacher logits (no gradients to save memory)",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "script_dir",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nTEACHER_MODEL_PATH = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nSTUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "TEACHER_MODEL_PATH",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "TEACHER_MODEL_PATH = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nSTUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "STUDENT_MODEL_NAME",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "STUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "QA_JSON_PATH",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "QA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "DISTILLED_MODEL_PATH",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "DISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "BATCH_SIZE",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "BATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "LEARNING_RATE",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "LEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "NUM_EPOCHS",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "NUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "teacher_tokenizer",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "teacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "teacher_tokenizer.pad_token",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "teacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model\nprint(\"Loading student model...\")",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "teacher_model",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "teacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model\nprint(\"Loading student model...\")\nstudent_tokenizer = AutoTokenizer.from_pretrained(STUDENT_MODEL_NAME, trust_remote_code=True)",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "student_tokenizer",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "student_tokenizer = AutoTokenizer.from_pretrained(STUDENT_MODEL_NAME, trust_remote_code=True)\nstudent_tokenizer.pad_token = student_tokenizer.eos_token\nstudent_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "student_tokenizer.pad_token",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "student_tokenizer.pad_token = student_tokenizer.eos_token\nstudent_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")\nwith open(QA_JSON_PATH, \"r\") as f:",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "student_model",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "student_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "distillation_texts",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "distillation_texts = prepare_distillation_data(qa_data)\ndataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "dataset",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "dataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,\n        return_tensors=\"pt\"",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "tokenized_dataset",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "tokenized_dataset = dataset.map(tokenize_function, batched=True, batch_size=BATCH_SIZE)\n# Knowledge distillation loss\nclass DistillationLoss:\n    def __init__(self, temperature=2.0, alpha=0.5):\n        self.temperature = temperature\n        self.alpha = alpha  # Weight for distillation vs student loss\n        self.lm_loss = nn.CrossEntropyLoss()\n    def __call__(self, student_logits, teacher_logits, labels):\n        # Knowledge distillation loss\n        distillation_loss = F.kl_div(",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "training_args",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "training_args = TrainingArguments(\n    output_dir=str(DISTILLED_MODEL_PATH),\n    num_train_epochs=NUM_EPOCHS,\n    per_device_train_batch_size=BATCH_SIZE,\n    per_device_eval_batch_size=BATCH_SIZE,\n    warmup_steps=100,\n    weight_decay=0.01,\n    logging_dir=\"./logs\",\n    logging_steps=10,\n    save_steps=500,",
-        "detail": "scripts.knowledge_distillation",
-        "documentation": {}
-    },
-    {
-        "label": "trainer",
-        "kind": 5,
-        "importPath": "scripts.knowledge_distillation",
-        "description": "scripts.knowledge_distillation",
-        "peekOfCode": "trainer = DistillationTrainer(\n    model=student_model,\n    args=training_args,\n    train_dataset=tokenized_dataset,\n    tokenizer=student_tokenizer,\n)\n# Train\nprint(\"Starting knowledge distillation...\")\ntrainer.train()\n# Save distilled model",
-        "detail": "scripts.knowledge_distillation",
         "documentation": {}
     },
     {
@@ -2791,7 +2799,7 @@
         "kind": 2,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "def init_db():\n    \"\"\"Initialize the SQLite DB with a fresh chat_history table.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    # Drop the existing table to start fresh with the new schema\n    #cursor.execute(\"DROP TABLE IF EXISTS chat_history\")\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            thread_id TEXT NOT NULL,",
+        "peekOfCode": "def init_db():\n    \"\"\"Initialize the SQLite DB with a chat_history table.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            thread_id TEXT NOT NULL,\n            user_id TEXT NOT NULL,\n            title TEXT,",
         "detail": "src.db_handler",
         "documentation": {}
     },
@@ -2800,7 +2808,7 @@
         "kind": 2,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "def save_chat(thread_id, title, query, answer, mode, response_data, response_time):\n    \"\"\"Save a single chat interaction to the DB, linked by a thread_id.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        INSERT INTO chat_history\n        (thread_id, title, query, answer, mode, method, verification, confidence, source, response_time, timestamp)\n        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n    \"\"\", (\n        thread_id,",
+        "peekOfCode": "def save_chat(user_id, thread_id, title, query, answer, mode, response_data, response_time):\n    \"\"\"Save a chat interaction with a user_id.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        INSERT INTO chat_history\n        (thread_id, user_id, title, query, answer, mode, method, verification, confidence, source, response_time, timestamp)\n        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n    \"\"\", (\n        thread_id,",
         "detail": "src.db_handler",
         "documentation": {}
     },
@@ -2809,7 +2817,7 @@
         "kind": 2,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "def update_chat_title(thread_id, new_title):\n    \"\"\"Updates the title for a given chat thread.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        UPDATE chat_history\n        SET title = ?\n        WHERE thread_id = ?\n    \"\"\", (new_title, thread_id))\n    conn.commit()",
+        "peekOfCode": "def update_chat_title(user_id, thread_id, new_title):\n    \"\"\"Updates the title for a given chat thread for a specific user.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        UPDATE chat_history\n        SET title = ?\n        WHERE thread_id = ? AND user_id = ?\n    \"\"\", (new_title, thread_id, user_id))\n    conn.commit()",
         "detail": "src.db_handler",
         "documentation": {}
     },
@@ -2818,7 +2826,16 @@
         "kind": 2,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "def load_chats(limit=20):\n    \"\"\"Load the most recent chat conversations, grouped by thread_id.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        SELECT DISTINCT thread_id, title FROM chat_history\n        ORDER BY timestamp DESC\n        LIMIT ?\n    \"\"\", (limit,))\n    thread_info = cursor.fetchall()",
+        "peekOfCode": "def load_chats(user_id, limit=20):\n    \"\"\"Load the most recent chat conversations for a specific user.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        SELECT DISTINCT thread_id, title FROM chat_history\n        WHERE user_id = ?\n        ORDER BY timestamp DESC\n        LIMIT ?\n    \"\"\", (user_id, limit))",
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "migrate_schema",
+        "kind": 2,
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "peekOfCode": "def migrate_schema():\n    \"\"\"Add user_id column to existing database and migrate old data.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    try:\n        # Check if user_id column exists\n        cursor.execute(\"PRAGMA table_info(chat_history)\")\n        columns = [col[1] for col in cursor.fetchall()]\n        if \"user_id\" not in columns:\n            print(\"Migrating database: adding user_id column...\")",
         "detail": "src.db_handler",
         "documentation": {}
     },
@@ -2827,7 +2844,7 @@
         "kind": 5,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "DB_PATH = \"chat_history.db\"\ndef init_db():\n    \"\"\"Initialize the SQLite DB with a fresh chat_history table.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    # Drop the existing table to start fresh with the new schema\n    #cursor.execute(\"DROP TABLE IF EXISTS chat_history\")\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,",
+        "peekOfCode": "DB_PATH = \"chat_history.db\"\ndef init_db():\n    \"\"\"Initialize the SQLite DB with a chat_history table.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            thread_id TEXT NOT NULL,\n            user_id TEXT NOT NULL,",
         "detail": "src.db_handler",
         "documentation": {}
     },

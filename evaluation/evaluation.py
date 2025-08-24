@@ -1,6 +1,6 @@
 # This script is for evaluation of RAG and Fine-Tuned models
 # using LangChain with a hybrid retriever setup.    
-# using a fine-tuned GPT-2 model for financial question answering.
+# using a fine-tuned phi-2 model for financial question answering.
 
 import json
 import time

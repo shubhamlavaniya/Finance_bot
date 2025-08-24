@@ -1,5 +1,5 @@
 # This file is part of the Financial RAG Chatbot project.
-# prepare gpt2 dataset for fine-tuning
+# prepare dataset for fine-tuning
 # It converts the Q/A pairs into a text format suitable for GPT-2 training.
 
 import json

@@ -1,3 +1,6 @@
+# This script is for knowledge distiliation 
+# Teacher-Student Architecture: fine-tuned Phi-2 teaches a smaller Phi-3-mini model
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

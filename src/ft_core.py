@@ -207,7 +207,6 @@ def get_ft_response(question: str):
             "response_time": 0.0
         }
     
-    # ✅ FIXED: Use the new simple validation instead of the broken one
     guard = validate_query_simple(question)
     
     if guard in ("IRRELEVANT", "HARMFUL"):

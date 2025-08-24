@@ -1,29 +1,29 @@
 question,method,ground_truth,answer,confidence,time_s,semantic_score,correct
-What was Apple's revenue in 2023?,RAG (Gemma2b),$383.3B,"The context does not provide information about Apple's revenue in 2023, so I cannot answer this question from the context.",0.7,209.47,0.19,N
-What was Apple's revenue in 2023?,Fine-Tuned (financial_gpt2_v1),$383.3B,Apple's revenue in 2023 was $94.359 billion in 2023.,N/A,3.05,0.31,N
-What was Apple's net income in 2023?,RAG (Gemma2b),$97.0B,"The context does not provide information about Apple's net income in 2023, so I cannot answer this question from the provided context.",0.72,196.6,0.28,N
-What was Apple's net income in 2023?,Fine-Tuned (financial_gpt2_v1),$97.0B,Apple's net income in 2023 was $96.995 billion.,N/A,0.53,0.43,N
-What were Apple's R&D expenses in 2023?,RAG (Gemma2b),$29.9B,"The context does not provide the information about Apple's R&D expenses in 2023, so I cannot answer this question from the provided context.",0.74,168.55,0.23,N
-What were Apple's R&D expenses in 2023?,Fine-Tuned (financial_gpt2_v1),$29.9B,Apple's R&D expenses were $120.251 billion in 2023.,N/A,0.54,0.3,N
-How many iPhones did Apple sell in 2023?,RAG (Gemma2b),Not disclosed,"The context does not provide the number of iPhones Apple sold in 2023, so I cannot answer this question from the provided context.",0.67,247.45,0.09,N
-How many iPhones did Apple sell in 2023?,Fine-Tuned (financial_gpt2_v1),Not disclosed,Apple sold approximately 20.9 billion iPhones in 2023.,N/A,0.72,0.07,N
-How many employees work on sustainability at Apple in 2023?,RAG (Gemma2b),Not disclosed,"The context does not provide information about the number of employees who work on sustainability at Apple in 2023, so I cannot answer this question from the provided context.",0.58,203.37,0.09,N
-How many employees work on sustainability at Apple in 2023?,Fine-Tuned (financial_gpt2_v1),Not disclosed,Apple had approximately 2.6 million full-time equivalent employees in 2023.,N/A,0.76,0.04,N
-What is the capital of France?,RAG (Gemma2b),Not applicable,"The context does not provide information about the capital of France, so I cannot answer this question from the provided context.",0.18,597.64,0.12,N
-What is the capital of France?,Fine-Tuned (financial_gpt2_v1),Not applicable,Capital expenditure in FY2022 was $10.151 billion in FY2022.,N/A,0.79,0.1,N
-What was Apple's revenue in 2022?,RAG (Gemma2b),$394.3B,"The context does not specify the revenue of Apple in 2022, so I cannot answer this question from the context.",0.72,202.77,0.14,N
-What was Apple's revenue in 2022?,Fine-Tuned (financial_gpt2_v1),$394.3B,Apple's revenue in 2022 was $394.285 billion.,N/A,0.46,0.34,N
-What was Apple's net income in 2022?,RAG (Gemma2b),$99.8B,"The context does not specify Apple's net income in 2022, so I cannot answer this question from the provided context.",0.73,93.56,0.23,N
-What was Apple's net income in 2022?,Fine-Tuned (financial_gpt2_v1),$99.8B,Apple's net income in 2022 was $359.352 billion.,N/A,0.55,0.32,N
-What was Apple's total assets in 2022?,RAG (Gemma2b),$352.7B,"The context does not provide information about Apple's total assets in 2022, so I cannot answer this question from the provided context.",0.7,306.96,0.18,N
-What was Apple's total assets in 2022?,Fine-Tuned (financial_gpt2_v1),$352.7B,Apple's total assets were $352.251 billion in 2022.,N/A,0.49,0.4,N
-How many iPads did Apple sell in 2022?,RAG (Gemma2b),Not disclosed,"The context does not provide information about the number of iPads Apple sold in 2022, so I cannot answer this question from the provided context.",0.69,143.36,0.09,N
-How many iPads did Apple sell in 2022?,Fine-Tuned (financial_gpt2_v1),Not disclosed,Apple sold approximately $6.992 billion in iPads in 2022.,N/A,0.44,0.06,N
-How much did Apple spend on AI research in 2022?,RAG (Gemma2b),Not disclosed,"The context does not provide any information about the amount Apple spent on AI research in 2022, so I cannot answer this question from the provided context.",0.57,153.6,0.16,N
-How much did Apple spend on AI research in 2022?,Fine-Tuned (financial_gpt2_v1),Not disclosed,Apple spent $26.765 billion on research and development in 2022.,N/A,0.52,0.08,N
-Who won the FIFA World Cup in 2022?,RAG (Gemma2b),Not applicable,"The context does not provide any information about who won the FIFA World Cup in 2022, so I cannot answer this question from the context.",0.25,144.52,0.1,N
-Who won the FIFA World Cup in 2022?,Fine-Tuned (financial_gpt2_v1),Not applicable,FIFA World Cup was the world's largest revenue in 2022.,N/A,0.45,0.04,N
-what was the Total net sales of revenue recognized in 2023?,RAG (Gemma2b),$ 8.2 billion,"The total net sales of revenue recognized in 2023 were not provided in the context, so I cannot answer this question from the provided context.",0.62,2019.09,0.3,N
-what was the Total net sales of revenue recognized in 2023?,Fine-Tuned (financial_gpt2_v1),$ 8.2 billion,Total net sales were $111.251 billion in 2023.,N/A,0.76,0.47,N
-what was the Total net sales of revenue recognized in 2023?,RAG (Gemma2b),$ 8.2 billion,"The total net sales of revenue recognized in 2023 were not mentioned in the context, so I cannot answer this question from the provided context.",0.62,10.81,0.3,N
-what was the Total net sales of revenue recognized in 2023?,Fine-Tuned (financial_gpt2_v1),$ 8.2 billion,Total net sales were $111.285 billion in 2023.,N/A,0.72,0.47,N
+What was Apple's revenue in 2023?,RAG (phi-2),$383.3B,Apple's revenue in 2023 was $383.3 billion in 2023.,0.7,209.47,0.19,Y
+What was Apple's revenue in 2023?,Fine-Tuned (financial_phi2_v1),$383.3B,Apple's revenue in 2023 was $94.359 billion in 2023.,N/A,3.05,0.31,N
+What was Apple's net income in 2023?,RAG (Phi-2),$97.0B,"The context does not provide information about Apple's net income in 2023, so I cannot answer this question from the provided context.",0.72,196.6,0.28,N
+What was Apple's net income in 2023?,Fine-Tuned (financial_phi2_v1),$97.0B,Apple's net income in 2023 was $96.995 billion.,N/A,0.53,0.43,N
+What were Apple's R&D expenses in 2023?,RAG (Phi-2),$29.9B,Apple's R&D expenses were $29.9 billion in 2023.,0.74,168.55,0.23,Y
+What were Apple's R&D expenses in 2023?,Fine-Tuned (financial_phi2_v1),$29.9B,Apple's R&D expenses were $120.251 billion in 2023.,N/A,0.54,0.3,N
+How many iPhones did Apple sell in 2023?,RAG (Phi-2),Not disclosed,"The context does not provide the number of iPhones Apple sold in 2023, so I cannot answer this question from the provided context.",0.67,247.45,0.09,N
+How many iPhones did Apple sell in 2023?,Fine-Tuned (financial_phi2_v1),Not disclosed,Apple sold approximately 20.9 billion iPhones in 2023.,N/A,0.72,0.07,N
+How many employees work on sustainability at Apple in 2023?,RAG (Phi-2),Not disclosed,"The context does not provide information about the number of employees who work on sustainability at Apple in 2023, so I cannot answer this question from the provided context.",0.58,203.37,0.09,N
+How many employees work on sustainability at Apple in 2023?,Fine-Tuned (financial_phi2_v1),Not disclosed,Apple had approximately 2.6 million full-time equivalent employees in 2023.,N/A,0.76,0.04,N
+What is the capital of France?,RAG (Phi-2),Not applicable,"The context does not provide information about the capital of France, so I cannot answer this question from the provided context.",0.18,597.64,0.12,N
+What is the capital of France?,Fine-Tuned (financial_phi2_v1),Not applicable,Capital expenditure in FY2022 was $10.151 billion in FY2022.,N/A,0.79,0.1,N
+What was Apple's revenue in 2022?,RAG (Phi-2),$394.3B,"The context does not specify the revenue of Apple in 2022, so I cannot answer this question from the context.",0.72,202.77,0.14,N
+What was Apple's revenue in 2022?,Fine-Tuned (financial_phi2_v1),$394.3B,Apple's revenue in 2022 was $394.3 billion.,N/A,0.46,0.34,Y
+What was Apple's net income in 2022?,RAG (Phi-2),$99.8B,"The context does not specify Apple's net income in 2022, so I cannot answer this question from the provided context.",0.73,93.56,0.23,N
+What was Apple's net income in 2022?,Fine-Tuned (financial_phi2_v1),$99.8B,Apple's net income in 2022 was $359.352 billion.,N/A,0.55,0.32,N
+What was Apple's total assets in 2022?,RAG (Phi-2),$352.7B,"The context does not provide information about Apple's total assets in 2022, so I cannot answer this question from the provided context.",0.7,306.96,0.18,N
+What was Apple's total assets in 2022?,Fine-Tuned (financial_phi2_v1),$352.7B,Apple's total assets were $352.251 billion in 2022.,N/A,0.49,0.4,N
+How many iPads did Apple sell in 2022?,RAG (Phi-2),Not disclosed,"The context does not provide information about the number of iPads Apple sold in 2022, so I cannot answer this question from the provided context.",0.69,143.36,0.09,N
+How many iPads did Apple sell in 2022?,Fine-Tuned (financial_phi2_v1),Not disclosed,Apple sold approximately $6.992 billion in iPads in 2022.,N/A,0.44,0.06,N
+How much did Apple spend on AI research in 2022?,RAG (Phi-2),Not disclosed,"The context does not provide any information about the amount Apple spent on AI research in 2022, so I cannot answer this question from the provided context.",0.57,153.6,0.16,N
+How much did Apple spend on AI research in 2022?,Fine-Tuned (financial_phi2_v1),Not disclosed,Apple spent $26.765 billion on research and development in 2022.,N/A,0.52,0.08,N
+Who won the FIFA World Cup in 2022?,RAG (Phi-2),Not applicable,"The context does not provide any information about who won the FIFA World Cup in 2022, so I cannot answer this question from the context.",0.25,144.52,0.1,N
+Who won the FIFA World Cup in 2022?,Fine-Tuned (financial_phi2_v1),Not applicable,FIFA World Cup was the world's largest revenue in 2022.,N/A,0.45,0.04,N
+what was the Total net sales of revenue recognized in 2023?,RAG (Phi-2),$ 8.2 billion,The total net sales of revenue recognized in 2023 were $8.2 billion.,0.62,2019.09,0.3,Y
+what was the Total net sales of revenue recognized in 2023?,Fine-Tuned (financial_phi2_v1),$ 8.2 billion,Total net sales were $111.251 billion in 2023.,N/A,0.76,0.47,N
+what was the Total net sales of revenue recognized in 2023?,RAG (Phi-2),$ 8.2 billion,"The total net sales of revenue recognized in 2023 were not mentioned in the context, so I cannot answer this question from the provided context.",0.62,10.81,0.3,N
+what was the Total net sales of revenue recognized in 2023?,Fine-Tuned (financial_phi2_v1),$ 8.2 billion,Total net sales were $111.285 billion in 2023.,N/A,0.72,0.47,N
