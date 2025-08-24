@@ -7,7 +7,7 @@ import streamlit as st
 import time
 from src.rag_core import get_rag_response, validate_query_simple
 from src.ft_core import get_ft_response, load_ft_model_and_tokenizer, validate_query_simple
-from src.db_handler import init_db, save_chat, load_chats, update_chat_title, migrate_schema
+from src.db_handler import init_db, save_chat, load_chats, update_chat_title
 import uuid
 
 # Initialize DB and run migration logic
