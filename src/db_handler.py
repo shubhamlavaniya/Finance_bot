@@ -5,12 +5,11 @@
 import sqlite3
 from datetime import datetime
 import json
-import streamlit as st
 
 DB_PATH = "chat_history.db"
 
 def init_db():
-    """Initialize the SQLite DB with user isolation."""
+    """Initialize the SQLite DB with a chat_history table."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     
@@ -18,7 +17,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS chat_history (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             thread_id TEXT NOT NULL,
-            user_id TEXT NOT NULL,  -- ← NEW: User isolation
+            user_id TEXT NOT NULL,
             title TEXT,
             query TEXT NOT NULL,
             answer TEXT NOT NULL,
@@ -32,18 +31,15 @@ def init_db():
         )
     """)
     cursor.execute("CREATE INDEX IF NOT EXISTS idx_thread_id ON chat_history (thread_id)")
-    cursor.execute("CREATE INDEX IF NOT EXISTS idx_user_id ON chat_history (user_id)")  # ← NEW
+    cursor.execute("CREATE INDEX IF NOT EXISTS idx_user_id ON chat_history (user_id)")
     conn.commit()
     conn.close()
 
 
-def save_chat(thread_id, title, query, answer, mode, response_data, response_time):
-    """Save a single chat interaction with user isolation."""
+def save_chat(user_id, thread_id, title, query, answer, mode, response_data, response_time):
+    """Save a chat interaction with a user_id."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-
-    # Get user_id from session state
-    user_id = st.session_state.get("user_id", "anonymous")
 
     cursor.execute("""
         INSERT INTO chat_history
@@ -51,7 +47,7 @@ def save_chat(thread_id, title, query, answer, mode, response_data, response_tim
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         thread_id,
-        user_id,  # ← NEW
+        user_id,
         title,
         query,
         answer,
@@ -68,11 +64,10 @@ def save_chat(thread_id, title, query, answer, mode, response_data, response_tim
     conn.close()
 
 
-def update_chat_title(thread_id, new_title):
-    """Updates the title for a given chat thread with user check."""
+def update_chat_title(user_id, thread_id, new_title):
+    """Updates the title for a given chat thread for a specific user."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    user_id = st.session_state.get("user_id", "anonymous")
     
     cursor.execute("""
         UPDATE chat_history
@@ -83,16 +78,14 @@ def update_chat_title(thread_id, new_title):
     conn.close()
 
 
-def load_chats(limit=20):
-    """Load the most recent chat conversations for current user only."""
+def load_chats(user_id, limit=20):
+    """Load the most recent chat conversations for a specific user."""
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    user_id = st.session_state.get("user_id", "anonymous")
-
     cursor.execute("""
         SELECT DISTINCT thread_id, title FROM chat_history
-        WHERE user_id = ?  -- ← FILTER BY USER
+        WHERE user_id = ?
         ORDER BY timestamp DESC
         LIMIT ?
     """, (user_id, limit))
@@ -128,14 +121,12 @@ def load_chats(limit=20):
                 "thread_id": thread_id,
                 "title": chat_title,
                 "messages": messages,
-                "user_id": user_id  # ← For debugging
+                "user_id": user_id
             })
             
     conn.close()
     return conversations
 
-
-# === DATABASE MIGRATION ===
 def migrate_schema():
     """Add user_id column to existing database and migrate old data."""
     conn = sqlite3.connect(DB_PATH)
@@ -148,7 +139,6 @@ def migrate_schema():
         
         if "user_id" not in columns:
             print("Migrating database: adding user_id column...")
-            # Add user_id column
             cursor.execute("ALTER TABLE chat_history ADD COLUMN user_id TEXT DEFAULT 'legacy'")
             conn.commit()
             print("Migration completed! Existing chats marked as 'legacy'")
