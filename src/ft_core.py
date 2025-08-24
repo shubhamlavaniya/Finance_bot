@@ -2,8 +2,6 @@
 
 
 
-# This script is for Fine-Tuning (FT) and will be used to answer financial questions using fine tuned model
-
 import streamlit as st
 import time
 from pathlib import Path
@@ -58,32 +56,46 @@ def load_ft_model_and_tokenizer():
     print(f"Loading model on device: {device}")
 
     try:
-        # Load the BASE model first
-        base_model = AutoModelForCausalLM.from_pretrained(
-            DEFAULT_MODEL_ID,
+        # Load the FULL fine-tuned model (not PEFT adapter)
+        model_path = script_dir.parent / "models" / "financial_phi2_v1"
+        
+        model = AutoModelForCausalLM.from_pretrained(
+            model_path,  # ← Load from your model directory
             trust_remote_code=True,
             torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+            device_map="auto" if device == "cuda" else None
         )
-
-        # Load the fine-tuned PEFT adapter (from your local repo)
-        adapter_path = script_dir.parent / "models" / "financial_phi2_v1"
-        model = PeftModel.from_pretrained(base_model, adapter_path)
-        print("Successfully loaded fine-tuned adapter.")
-
-        # Get the tokenizer from the base model
-        tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL_ID, trust_remote_code=True)
+        
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_path,  # ← Load from your model directory
+            trust_remote_code=True
+        )
         tokenizer.pad_token = tokenizer.eos_token
 
-        # Merge the adapter
-        model = model.merge_and_unload()
-        model.to(device)
         model.eval()
-
+        print("Successfully loaded fine-tuned model")
         return model, tokenizer, device
     
     except Exception as e:
         st.error(f"Failed to load fine-tuned model: {e}")
-        return None, None, None
+        
+        # Fallback to base model
+        try:
+            print("Falling back to base model...")
+            model = AutoModelForCausalLM.from_pretrained(
+                DEFAULT_MODEL_ID,
+                trust_remote_code=True,
+                torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+            )
+            tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL_ID, trust_remote_code=True)
+            tokenizer.pad_token = tokenizer.eos_token
+            model.to(device)
+            model.eval()
+            st.warning("Using base model as fallback")
+            return model, tokenizer, device
+        except Exception as fallback_error:
+            st.error(f"Fallback also failed: {fallback_error}")
+            return None, None, None
 
 @st.cache_resource
 def load_memory_resources():

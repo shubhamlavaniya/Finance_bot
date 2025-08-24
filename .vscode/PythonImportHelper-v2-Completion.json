@@ -570,6 +570,14 @@
         "documentation": {}
     },
     {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -604,6 +612,14 @@
         "documentation": {}
     },
     {
+        "label": "HuggingFaceEndpoint",
+        "importPath": "langchain_community.llms",
+        "description": "langchain_community.llms",
+        "isExtraImport": true,
+        "detail": "langchain_community.llms",
+        "documentation": {}
+    },
+    {
         "label": "AutoTokenizer",
         "importPath": "transformers",
         "description": "transformers",
@@ -620,7 +636,7 @@
         "documentation": {}
     },
     {
-        "label": "GPT2Tokenizer",
+        "label": "AutoTokenizer",
         "importPath": "transformers",
         "description": "transformers",
         "isExtraImport": true,
@@ -628,7 +644,39 @@
         "documentation": {}
     },
     {
-        "label": "GPT2LMHeadModel",
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "TrainingArguments",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
         "importPath": "transformers",
         "description": "transformers",
         "isExtraImport": true,
@@ -873,6 +921,32 @@
         "description": "peft",
         "isExtraImport": true,
         "detail": "peft",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn",
+        "description": "torch.nn",
+        "detail": "torch.nn",
+        "documentation": {}
+    },
+    {
+        "label": "torch.nn.functional",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch.nn.functional",
+        "description": "torch.nn.functional",
+        "detail": "torch.nn.functional",
+        "documentation": {}
+    },
+    {
+        "label": "Dataset",
+        "importPath": "datasets",
+        "description": "datasets",
+        "isExtraImport": true,
+        "detail": "datasets",
         "documentation": {}
     },
     {
@@ -1384,15 +1458,7 @@
         "documentation": {}
     },
     {
-        "label": "get_rag_llm",
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "isExtraImport": true,
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "validate_query",
+        "label": "validate_query_simple",
         "importPath": "src.rag_core",
         "description": "src.rag_core",
         "isExtraImport": true,
@@ -1432,7 +1498,15 @@
         "documentation": {}
     },
     {
-        "label": "get_ft_llm",
+        "label": "load_ft_model_and_tokenizer",
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "isExtraImport": true,
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
+        "label": "validate_query_simple",
         "importPath": "src.ft_core",
         "description": "src.ft_core",
         "isExtraImport": true,
@@ -1841,11 +1915,218 @@
         "documentation": {}
     },
     {
+        "label": "DistillationLoss",
+        "kind": 6,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "class DistillationLoss:\n    def __init__(self, temperature=2.0, alpha=0.5):\n        self.temperature = temperature\n        self.alpha = alpha  # Weight for distillation vs student loss\n        self.lm_loss = nn.CrossEntropyLoss()\n    def __call__(self, student_logits, teacher_logits, labels):\n        # Knowledge distillation loss\n        distillation_loss = F.kl_div(\n            F.log_softmax(student_logits / self.temperature, dim=-1),\n            F.softmax(teacher_logits / self.temperature, dim=-1),",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "DistillationTrainer",
+        "kind": 6,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "class DistillationTrainer(Trainer):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.distillation_loss = DistillationLoss()\n    def compute_loss(self, model, inputs, return_outputs=False):\n        labels = inputs.pop(\"labels\")\n        teacher_logits = inputs.pop(\"teacher_logits\")\n        outputs = model(**inputs)\n        student_logits = outputs.logits\n        loss = self.distillation_loss(student_logits, teacher_logits, labels)",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "prepare_distillation_data",
+        "kind": 2,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "def prepare_distillation_data(samples):\n    formatted_texts = []\n    for item in samples:\n        text = f\"Q: {item['question']}\\nA: {item['answer']}\"\n        formatted_texts.append(text)\n    return formatted_texts\ndistillation_texts = prepare_distillation_data(qa_data)\ndataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "tokenize_function",
+        "kind": 2,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "def tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,\n        return_tensors=\"pt\"\n    )\n    # Get teacher logits (no gradients to save memory)",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "script_dir",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nTEACHER_MODEL_PATH = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nSTUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "TEACHER_MODEL_PATH",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "TEACHER_MODEL_PATH = script_dir.parent / \"models\" / \"financial_phi2_v1\"\nSTUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "STUDENT_MODEL_NAME",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "STUDENT_MODEL_NAME = \"microsoft/Phi-3-mini-4k-instruct\"  # Smaller student model\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "QA_JSON_PATH",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "QA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"\nDISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "DISTILLED_MODEL_PATH",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "DISTILLED_MODEL_PATH = script_dir.parent / \"distilled_model\"\nBATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "BATCH_SIZE",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "BATCH_SIZE = 2\nLEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "LEARNING_RATE",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "LEARNING_RATE = 5e-5\nNUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "NUM_EPOCHS",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "NUM_EPOCHS = 3\n# ====================\n# Load teacher model (your fine-tuned Phi-2)\nprint(\"Loading teacher model...\")\nteacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "teacher_tokenizer",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "teacher_tokenizer = AutoTokenizer.from_pretrained(TEACHER_MODEL_PATH, trust_remote_code=True)\nteacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "teacher_tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "teacher_tokenizer.pad_token = teacher_tokenizer.eos_token\nteacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model\nprint(\"Loading student model...\")",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "teacher_model",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "teacher_model = AutoModelForCausalLM.from_pretrained(\n    TEACHER_MODEL_PATH,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\nteacher_model.eval()\n# Load student model\nprint(\"Loading student model...\")\nstudent_tokenizer = AutoTokenizer.from_pretrained(STUDENT_MODEL_NAME, trust_remote_code=True)",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "student_tokenizer",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "student_tokenizer = AutoTokenizer.from_pretrained(STUDENT_MODEL_NAME, trust_remote_code=True)\nstudent_tokenizer.pad_token = student_tokenizer.eos_token\nstudent_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "student_tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "student_tokenizer.pad_token = student_tokenizer.eos_token\nstudent_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")\nwith open(QA_JSON_PATH, \"r\") as f:",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "student_model",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "student_model = AutoModelForCausalLM.from_pretrained(\n    STUDENT_MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,\n    device_map=\"auto\"\n)\n# Load QA data\nprint(\"Loading QA data...\")\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "distillation_texts",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "distillation_texts = prepare_distillation_data(qa_data)\ndataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "dataset",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "dataset = Dataset.from_dict({\"text\": distillation_texts})\n# Tokenize function\ndef tokenize_function(examples):\n    # Tokenize with teacher tokenizer (since teacher was trained with this)\n    teacher_encodings = teacher_tokenizer(\n        examples[\"text\"],\n        truncation=True,\n        padding=\"max_length\",\n        max_length=512,\n        return_tensors=\"pt\"",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "tokenized_dataset",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "tokenized_dataset = dataset.map(tokenize_function, batched=True, batch_size=BATCH_SIZE)\n# Knowledge distillation loss\nclass DistillationLoss:\n    def __init__(self, temperature=2.0, alpha=0.5):\n        self.temperature = temperature\n        self.alpha = alpha  # Weight for distillation vs student loss\n        self.lm_loss = nn.CrossEntropyLoss()\n    def __call__(self, student_logits, teacher_logits, labels):\n        # Knowledge distillation loss\n        distillation_loss = F.kl_div(",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "training_args",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "training_args = TrainingArguments(\n    output_dir=str(DISTILLED_MODEL_PATH),\n    num_train_epochs=NUM_EPOCHS,\n    per_device_train_batch_size=BATCH_SIZE,\n    per_device_eval_batch_size=BATCH_SIZE,\n    warmup_steps=100,\n    weight_decay=0.01,\n    logging_dir=\"./logs\",\n    logging_steps=10,\n    save_steps=500,",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
+        "label": "trainer",
+        "kind": 5,
+        "importPath": "scripts.knowledge_distillation",
+        "description": "scripts.knowledge_distillation",
+        "peekOfCode": "trainer = DistillationTrainer(\n    model=student_model,\n    args=training_args,\n    train_dataset=tokenized_dataset,\n    tokenizer=student_tokenizer,\n)\n# Train\nprint(\"Starting knowledge distillation...\")\ntrainer.train()\n# Save distilled model",
+        "detail": "scripts.knowledge_distillation",
+        "documentation": {}
+    },
+    {
         "label": "script_dir",
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"    \nOUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"distilgpt2\" #or give gpt2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nQA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"    \nOUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"microsoft/phi-2\"  # Changed to phi-2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1854,7 +2135,7 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "QA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"    \nOUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"distilgpt2\" #or give gpt2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES",
+        "peekOfCode": "QA_JSON_PATH = script_dir.parent / \"data\" / \"qa_pair.json\"    \nOUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"microsoft/phi-2\"  # Changed to phi-2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1863,7 +2144,7 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "OUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"distilgpt2\" #or give gpt2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]",
+        "peekOfCode": "OUTPUT_CSV_PATH = script_dir.parent / \"baseline_results.csv\"\nMODEL_NAME = \"microsoft/phi-2\"  # Changed to phi-2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1872,7 +2153,7 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "MODEL_NAME = \"distilgpt2\" #or give gpt2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer",
+        "peekOfCode": "MODEL_NAME = \"microsoft/phi-2\"  # Changed to phi-2\nMAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer for phi-2",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1881,7 +2162,7 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "MAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer\nprint(f\"Loading model: {MODEL_NAME}\")",
+        "peekOfCode": "MAX_LENGTH = 150  # max tokens to generate\nNUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer for phi-2\nprint(f\"Loading model: {MODEL_NAME}\")",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1890,7 +2171,7 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "NUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer\nprint(f\"Loading model: {MODEL_NAME}\")\ntokenizer = GPT2Tokenizer.from_pretrained(MODEL_NAME)",
+        "peekOfCode": "NUM_SAMPLES = 10  # number of Qs to test\n# ====================\n# Load Q/A dataset\nwith open(QA_JSON_PATH, \"r\") as f:\n    qa_data = json.load(f)\n# Take only first NUM_SAMPLES\nqa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer for phi-2\nprint(f\"Loading model: {MODEL_NAME}\")\ntokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1899,7 +2180,7 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "qa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer\nprint(f\"Loading model: {MODEL_NAME}\")\ntokenizer = GPT2Tokenizer.from_pretrained(MODEL_NAME)\nmodel = GPT2LMHeadModel.from_pretrained(MODEL_NAME)\nmodel.eval()\nresults = []\n# Run baseline inference\nfor sample in qa_samples:\n    question = sample[\"question\"]",
+        "peekOfCode": "qa_samples = qa_data[:NUM_SAMPLES]\n# Load model & tokenizer for phi-2\nprint(f\"Loading model: {MODEL_NAME}\")\ntokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token  # Set pad token to eos token for phi-2\nmodel = AutoModelForCausalLM.from_pretrained(\n    MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,  # Use float16 to save memory\n    device_map=\"auto\"  # Automatically use GPU if available",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1908,7 +2189,16 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "tokenizer = GPT2Tokenizer.from_pretrained(MODEL_NAME)\nmodel = GPT2LMHeadModel.from_pretrained(MODEL_NAME)\nmodel.eval()\nresults = []\n# Run baseline inference\nfor sample in qa_samples:\n    question = sample[\"question\"]\n    true_answer = sample[\"answer\"]\n    input_text = f\"Q: {question}\\nA:\"\n    inputs = tokenizer.encode(input_text, return_tensors=\"pt\")",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token  # Set pad token to eos token for phi-2\nmodel = AutoModelForCausalLM.from_pretrained(\n    MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,  # Use float16 to save memory\n    device_map=\"auto\"  # Automatically use GPU if available\n)\nmodel.eval()\nresults = []",
+        "detail": "src.baseline_benchmark",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.pad_token",
+        "kind": 5,
+        "importPath": "src.baseline_benchmark",
+        "description": "src.baseline_benchmark",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token  # Set pad token to eos token for phi-2\nmodel = AutoModelForCausalLM.from_pretrained(\n    MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,  # Use float16 to save memory\n    device_map=\"auto\"  # Automatically use GPU if available\n)\nmodel.eval()\nresults = []\n# Run baseline inference",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1917,7 +2207,7 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "model = GPT2LMHeadModel.from_pretrained(MODEL_NAME)\nmodel.eval()\nresults = []\n# Run baseline inference\nfor sample in qa_samples:\n    question = sample[\"question\"]\n    true_answer = sample[\"answer\"]\n    input_text = f\"Q: {question}\\nA:\"\n    inputs = tokenizer.encode(input_text, return_tensors=\"pt\")\n    start_time = time.time()",
+        "peekOfCode": "model = AutoModelForCausalLM.from_pretrained(\n    MODEL_NAME,\n    trust_remote_code=True,\n    torch_dtype=torch.float16,  # Use float16 to save memory\n    device_map=\"auto\"  # Automatically use GPU if available\n)\nmodel.eval()\nresults = []\n# Run baseline inference\nfor sample in qa_samples:",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -1935,7 +2225,7 @@
         "kind": 5,
         "importPath": "src.baseline_benchmark",
         "description": "src.baseline_benchmark",
-        "peekOfCode": "df = pd.DataFrame(results)\ndf.to_csv(OUTPUT_CSV_PATH, index=False)\nprint(f\"Baseline results saved to {OUTPUT_CSV_PATH}\")\n# Old version-----------------------------------------------------\n# import time\n# import json\n# import csv\n# from pathlib import Path\n# from transformers import GPT2LMHeadModel, GPT2Tokenizer\n# # --- Paths ---",
+        "peekOfCode": "df = pd.DataFrame(results)\ndf.to_csv(OUTPUT_CSV_PATH, index=False)\nprint(f\"Baseline results saved to {OUTPUT_CSV_PATH}\")\n# Old version-----------------------------------------------------\n# import json\n# import time\n# import pandas as pd\n# from transformers import GPT2Tokenizer, GPT2LMHeadModel\n# import os\n# from pathlib import Path",
         "detail": "src.baseline_benchmark",
         "documentation": {}
     },
@@ -2705,11 +2995,20 @@
         "documentation": {}
     },
     {
+        "label": "validate_query_simple",
+        "kind": 2,
+        "importPath": "src.ft_core",
+        "description": "src.ft_core",
+        "peekOfCode": "def validate_query_simple(query: str) -> str:\n    \"\"\"Simple rule-based query validation without API calls.\"\"\"\n    query_lower = query.lower()\n    # Harmful patterns\n    harmful_patterns = [\n        \"harm\", \"attack\", \"malware\", \"virus\", \"hack\", \"exploit\",\n        \"self-harm\", \"suicide\", \"kill\", \"destroy\", \"bomb\", \"weapon\"\n    ]\n    if any(pattern in query_lower for pattern in harmful_patterns):\n        return \"HARMFUL\"",
+        "detail": "src.ft_core",
+        "documentation": {}
+    },
+    {
         "label": "load_ft_model_and_tokenizer",
         "kind": 2,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "def load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Load the BASE model first\n        base_model = AutoModelForCausalLM.from_pretrained(\n            DEFAULT_MODEL_ID,\n            trust_remote_code=True,\n            torch_dtype=torch.float16 if device == \"cuda\" else torch.float32,",
+        "peekOfCode": "def load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Load the FULL fine-tuned model (not PEFT adapter)\n        model_path = script_dir.parent / \"models\" / \"financial_phi2_v1\"\n        model = AutoModelForCausalLM.from_pretrained(\n            model_path,  # ← Load from your model directory\n            trust_remote_code=True,",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2719,15 +3018,6 @@
         "importPath": "src.ft_core",
         "description": "src.ft_core",
         "peekOfCode": "def load_memory_resources():\n    \"\"\"Loads and caches memory Q/A pairs and the Sentence Transformer.\"\"\"\n    def _load_qa_pairs():\n        pairs = []\n        if QA_JSON.exists():\n            with open(QA_JSON, \"r\", encoding=\"utf-8\") as f:\n                pairs = json.load(f)\n        elif QA_TXT.exists():\n            with open(QA_TXT, \"r\", encoding=\"utf-8\") as f:\n                lines = f.read().split(\"\\n\")",
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
-        "label": "validate_query_ft",
-        "kind": 2,
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "peekOfCode": "def validate_query_ft(query: str) -> str:\n    q = (query or \"\").lower()\n    if any(bad in q for bad in [\"attack\", \"explosive\", \"malware\", \"self-harm\"]):\n        return \"HARMFUL\"\n    if not any(k in q for k in FINANCE_KEYWORDS):\n        return \"IRRELEVANT\"\n    return \"OK\"\nDECODE = {\n    \"num_beams\": 5, \"max_new_tokens\": 80, \"early_stopping\": True, \n    \"no_repeat_ngram_size\": 2, \"repetition_penalty\": 1.1, \"temperature\": 0.3",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2745,7 +3035,7 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nDEFAULT_MODEL_ID = \"microsoft/phi-2\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Cached Model & Resource Loading ---\n@st.cache_resource\ndef load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nDEFAULT_MODEL_ID = \"microsoft/phi-2\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Simple Validation Function (ADDED) ---\ndef validate_query_simple(query: str) -> str:\n    \"\"\"Simple rule-based query validation without API calls.\"\"\"\n    query_lower = query.lower()\n    # Harmful patterns\n    harmful_patterns = [",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2754,7 +3044,7 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "DEFAULT_MODEL_ID = \"microsoft/phi-2\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Cached Model & Resource Loading ---\n@st.cache_resource\ndef load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:",
+        "peekOfCode": "DEFAULT_MODEL_ID = \"microsoft/phi-2\"\nQA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Simple Validation Function (ADDED) ---\ndef validate_query_simple(query: str) -> str:\n    \"\"\"Simple rule-based query validation without API calls.\"\"\"\n    query_lower = query.lower()\n    # Harmful patterns\n    harmful_patterns = [\n        \"harm\", \"attack\", \"malware\", \"virus\", \"hack\", \"exploit\",",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2763,7 +3053,7 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "QA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Cached Model & Resource Loading ---\n@st.cache_resource\ndef load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Load the BASE model first",
+        "peekOfCode": "QA_JSON = script_dir.parent / \"data\" / \"qa_pair.json\"\nQA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Simple Validation Function (ADDED) ---\ndef validate_query_simple(query: str) -> str:\n    \"\"\"Simple rule-based query validation without API calls.\"\"\"\n    query_lower = query.lower()\n    # Harmful patterns\n    harmful_patterns = [\n        \"harm\", \"attack\", \"malware\", \"virus\", \"hack\", \"exploit\",\n        \"self-harm\", \"suicide\", \"kill\", \"destroy\", \"bomb\", \"weapon\"",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -2772,7 +3062,7 @@
         "kind": 5,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "QA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Cached Model & Resource Loading ---\n@st.cache_resource\ndef load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Load the BASE model first\n        base_model = AutoModelForCausalLM.from_pretrained(",
+        "peekOfCode": "QA_TXT = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\n# --- Simple Validation Function (ADDED) ---\ndef validate_query_simple(query: str) -> str:\n    \"\"\"Simple rule-based query validation without API calls.\"\"\"\n    query_lower = query.lower()\n    # Harmful patterns\n    harmful_patterns = [\n        \"harm\", \"attack\", \"malware\", \"virus\", \"hack\", \"exploit\",\n        \"self-harm\", \"suicide\", \"kill\", \"destroy\", \"bomb\", \"weapon\"\n    ]",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -3078,7 +3368,7 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceHub(\n        repo_id=\"microsoft/phi-2\",\n        model_kwargs={\"temperature\": 0.1, \"max_new_tokens\": 512}\n    )\n    print(\"Successfully connected to Hugging Face Inference API.\")\n    return llm\n@st.cache_resource",
+        "peekOfCode": "def get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceEndpoint(\n        repo_id=\"microsoft/phi-2\",\n        huggingfacehub_api_token=api_token,\n        task=\"text-generation\",\n        temperature=0.1,\n        max_new_tokens=512,\n        do_sample=True",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3119,6 +3409,15 @@
         "documentation": {}
     },
     {
+        "label": "validate_query_simple",
+        "kind": 2,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "def validate_query_simple(query: str) -> str:\n    \"\"\"Simple rule-based query validation without API calls.\"\"\"\n    query_lower = query.lower()\n    # Harmful patterns\n    harmful_patterns = [\n        \"harm\", \"attack\", \"malware\", \"virus\", \"hack\", \"exploit\",\n        \"self-harm\", \"suicide\", \"kill\", \"destroy\", \"bomb\", \"weapon\"\n    ]\n    if any(pattern in query_lower for pattern in harmful_patterns):\n        return \"HARMFUL\"",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
         "label": "get_rag_response",
         "kind": 2,
         "importPath": "src.rag_core",
@@ -3132,7 +3431,16 @@
         "kind": 5,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceHub(\n        repo_id=\"microsoft/phi-2\",\n        model_kwargs={\"temperature\": 0.1, \"max_new_tokens\": 512}\n    )",
+        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\napi_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceEndpoint(\n        repo_id=\"microsoft/phi-2\",\n        huggingfacehub_api_token=api_token,",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "api_token",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceEndpoint(\n        repo_id=\"microsoft/phi-2\",\n        huggingfacehub_api_token=api_token,\n        task=\"text-generation\",",
         "detail": "src.rag_core",
         "documentation": {}
     },
