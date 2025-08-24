@@ -35,9 +35,10 @@ api_token = st.secrets.get("HUGGINGFACEHUB_API_TOKEN", None)
 def get_rag_llm():
     """Loads the Hugging Face LLM via Inference API and caches it."""
     print("Loading Hugging Face LLM via Inference API...")
-    llm = HuggingFaceHub(
+    llm = HuggingFaceEndpoint(
         repo_id="microsoft/phi-2",
         huggingfacehub_api_token=api_token,
+        task="text-generation",
         temperature=0.1,
         max_new_tokens=512,
         do_sample=True
