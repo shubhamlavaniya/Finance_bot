@@ -620,6 +620,14 @@
         "documentation": {}
     },
     {
+        "label": "OpenAI",
+        "importPath": "langchain_community.llms",
+        "description": "langchain_community.llms",
+        "isExtraImport": true,
+        "detail": "langchain_community.llms",
+        "documentation": {}
+    },
+    {
         "label": "AutoTokenizer",
         "importPath": "transformers",
         "description": "transformers",
@@ -3368,7 +3376,7 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceEndpoint(\n        repo_id=\"microsoft/phi-2\",\n        huggingfacehub_api_token=api_token,\n        task=\"text-generation\",\n        temperature=0.1,\n        max_new_tokens=512,\n        do_sample=True",
+        "peekOfCode": "def get_rag_llm():\n    \"\"\"Use Hugging Face's OpenAI-compatible endpoint\"\"\"\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"HUGGINGFACEHUB_API_TOKEN\"],  # Your HF token\n        openai_api_base=\"https://api-inference.huggingface.co/v1/\",  # HF's OpenAI endpoint\n        model=\"microsoft/phi-2\",  # Your model\n        temperature=0.1,\n        max_tokens=512\n    )\n    return llm",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3431,16 +3439,16 @@
         "kind": 5,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\napi_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceEndpoint(\n        repo_id=\"microsoft/phi-2\",\n        huggingfacehub_api_token=api_token,",
+        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\n#api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Use Hugging Face's OpenAI-compatible endpoint\"\"\"\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"HUGGINGFACEHUB_API_TOKEN\"],  # Your HF token\n        openai_api_base=\"https://api-inference.huggingface.co/v1/\",  # HF's OpenAI endpoint\n        model=\"microsoft/phi-2\",  # Your model",
         "detail": "src.rag_core",
         "documentation": {}
     },
     {
-        "label": "api_token",
+        "label": "#api_token",
         "kind": 5,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads the Hugging Face LLM via Inference API and caches it.\"\"\"\n    print(\"Loading Hugging Face LLM via Inference API...\")\n    llm = HuggingFaceEndpoint(\n        repo_id=\"microsoft/phi-2\",\n        huggingfacehub_api_token=api_token,\n        task=\"text-generation\",",
+        "peekOfCode": "#api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Use Hugging Face's OpenAI-compatible endpoint\"\"\"\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"HUGGINGFACEHUB_API_TOKEN\"],  # Your HF token\n        openai_api_base=\"https://api-inference.huggingface.co/v1/\",  # HF's OpenAI endpoint\n        model=\"microsoft/phi-2\",  # Your model\n        temperature=0.1,",
         "detail": "src.rag_core",
         "documentation": {}
     },

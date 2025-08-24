@@ -44,6 +44,7 @@ with st.sidebar:
 
     st.title("Recent")
     db_conversations = load_chats(limit=20)
+    
 
     for conv in db_conversations:
         chat_title = conv["title"]

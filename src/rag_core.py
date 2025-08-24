@@ -18,6 +18,8 @@ from langchain_community.llms import HuggingFaceEndpoint
 from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 from langchain_core.prompts import PromptTemplate
+from langchain_community.llms import OpenAI
+
 
 from src.hybrid_retriever import HybridRetriever
 from src.memory_retriever import MemoryRetriever
@@ -27,23 +29,20 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-api_token = st.secrets.get("HUGGINGFACEHUB_API_TOKEN", None)
+#api_token = st.secrets.get("HUGGINGFACEHUB_API_TOKEN", None)
 
 # --- Cached Resources ---
 
 @st.cache_resource
 def get_rag_llm():
-    """Loads the Hugging Face LLM via Inference API and caches it."""
-    print("Loading Hugging Face LLM via Inference API...")
-    llm = HuggingFaceEndpoint(
-        repo_id="microsoft/phi-2",
-        huggingfacehub_api_token=api_token,
-        task="text-generation",
+    """Use Hugging Face's OpenAI-compatible endpoint"""
+    llm = OpenAI(
+        openai_api_key=st.secrets["HUGGINGFACEHUB_API_TOKEN"],  # Your HF token
+        openai_api_base="https://api-inference.huggingface.co/v1/",  # HF's OpenAI endpoint
+        model="microsoft/phi-2",  # Your model
         temperature=0.1,
-        max_new_tokens=512,
-        do_sample=True
+        max_tokens=512
     )
-    print("Successfully connected to Hugging Face Inference API.")
     return llm
 
 @st.cache_resource

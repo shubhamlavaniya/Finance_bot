@@ -19,7 +19,7 @@ nomic
 #gradio==4.44.0 # or a newer version
 ollama
 langfuse
-openai
+#openai
 pdfplumber
 langchain-community
 langchain-chroma
