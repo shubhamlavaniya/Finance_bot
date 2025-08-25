@@ -3,25 +3,23 @@ import json
 import yaml
 import torch
 from torch.utils.data import Dataset, DataLoader, random_split
-# --- Auto classes for general model loading ---
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from torch.optim import AdamW, Adam, SGD
 from datetime import datetime
 from pathlib import Path
-
-# --- Import PEFT classes for QLoRA ---
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training, PeftConfig
 
 # -----------------------------
-# Custom Dataset (no changes needed here)
+# Custom Dataset
 # -----------------------------
 script_dir = Path(__file__).resolve().parent
 
 class QADataset(Dataset):
-    def __init__(self, qa_pairs, tokenizer, max_length=256):
+    def __init__(self, qa_pairs, tokenizer, max_length=512):
         self.encodings = []
         for qa in qa_pairs:
-            text = f"Q: {qa['question']} A: {qa['answer']}"
+            # Use a conversational format that TinyLlama understands
+            text = f"<|user|>\n{qa['question']}\n<|assistant|>\n{qa['answer']}"
             enc = tokenizer(
                 text,
                 truncation=True,
@@ -44,6 +42,8 @@ class QADataset(Dataset):
 # -----------------------------
 # Load config
 # -----------------------------
+# Note: You need a config directory with training_config.yaml in the root
+# or change this path
 with open("/config/training_config.yaml", "r") as f:
     cfg = yaml.safe_load(f)
 
@@ -52,11 +52,10 @@ save_dir = Path(cfg["save_dir"])
 # -----------------------------
 # Tokenizer + Model
 # -----------------------------
-# --- CHANGE 3: Load tokenizer with AutoTokenizer ---
 tokenizer = AutoTokenizer.from_pretrained(cfg["model_name"], trust_remote_code=True)
 tokenizer.pad_token = tokenizer.eos_token
+tokenizer.padding_side = "right" # TinyLlama prefers "right" padding
 
-# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_quant_type="nf4",
@@ -66,14 +65,12 @@ bnb_config = BitsAndBytesConfig(
 
 if save_dir.exists():
     print(f"Running continual training from {save_dir} ...")
-    # Load the base model and then the PEFT adapter
     base_model = AutoModelForCausalLM.from_pretrained(
         cfg["model_name"],
         quantization_config=bnb_config,
         device_map="auto",
         trust_remote_code=True
     )
-    # Load PEFT model from the saved directory
     model = get_peft_model(base_model, PeftConfig.from_pretrained(save_dir))
     mode = "continual"
 else:
@@ -84,38 +81,21 @@ else:
         device_map="auto",
         trust_remote_code=True
     )
-    # Prepare base model for k-bit training
     base_model = prepare_model_for_kbit_training(base_model)
-    # Define LoRA configuration
+
+    # LORA configuration for TinyLlama-1.1B
     lora_config = LoraConfig(
         r=16,
         lora_alpha=32,
         lora_dropout=0.05,
         bias="none",
         task_type="CAUSAL_LM",
-        # Phi-2 target modules
         target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
     )
-
-    # --- REVISED CODE FOR GPT-2 ---
-    #lora_config = LoraConfig(
-        #r=16,
-        #lora_alpha=32,
-        #lora_dropout=0.05,
-        #bias="none",
-        #task_type="CAUSAL_LM",
-    # GPT-2 specific target modules
-      #target_modules=["c_attn", "c_proj"],
-    #)
     model = get_peft_model(base_model, lora_config)
     mode = "initial"
 
-# --- Remove redundant model.to(device) because device_map handles it ---
-# device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-# model.to(device)
-
 print(f"Number of trainable parameters: {model.print_trainable_parameters()}")
-
 
 # -----------------------------
 # Load dataset
@@ -123,9 +103,8 @@ print(f"Number of trainable parameters: {model.print_trainable_parameters()}")
 with open(cfg["train_file"], "r") as f:
     qa_pairs = json.load(f)
 
-dataset = QADataset(qa_pairs, tokenizer, max_length=cfg.get("max_length", 256))
+dataset = QADataset(qa_pairs, tokenizer, max_length=cfg.get("max_length", 512))
 
-# Train/val split
 val_ratio = cfg.get("val_split", 0.1)
 val_size = int(len(dataset) * val_ratio)
 train_size = len(dataset) - val_size
@@ -135,7 +114,7 @@ train_loader = DataLoader(train_dataset, batch_size=cfg["batch_size"], shuffle=T
 val_loader = DataLoader(val_dataset, batch_size=cfg["batch_size"]) if val_size > 0 else None
 
 # -----------------------------
-# Optimizer (no changes needed here, it's generic)
+# Optimizer
 # -----------------------------
 opt_choice = cfg.get("optimizer", "AdamW")
 if opt_choice == "Adam":
@@ -158,14 +137,11 @@ for epoch in range(cfg["epochs"]):
     total_loss = 0
     for batch in train_loader:
         optimizer.zero_grad()
-        # --- CHANGE 6: Move input tensors to the device ---
         input_ids = batch["input_ids"].to(model.device)
         attention_mask = batch["attention_mask"].to(model.device)
-
         outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)
         loss = outputs.loss
         loss.backward()
-
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=cfg.get("grad_clip", 1.0))
         optimizer.step()
         total_loss += loss.item()
@@ -175,7 +151,6 @@ for epoch in range(cfg["epochs"]):
 
     print(f"Epoch {epoch+1}/{cfg['epochs']} - Loss: {avg_loss:.4f} - Perplexity: {torch.exp(torch.tensor(avg_loss)):.2f}")
 
-    # Validation
     if val_loader:
         model.eval()
         val_loss = 0
@@ -188,7 +163,6 @@ for epoch in range(cfg["epochs"]):
         val_loss /= len(val_loader)
         print(f"  >> Validation Loss: {val_loss:.4f} - Val Perplexity: {torch.exp(torch.tensor(val_loss)):.2f}")
 
-        # Early stopping
         if patience:
             if val_loss < best_val_loss:
                 best_val_loss = val_loss
@@ -204,7 +178,6 @@ for epoch in range(cfg["epochs"]):
 # Save model + tokenizer
 # -----------------------------
 os.makedirs(save_dir, exist_ok=True)
-# --- CHANGE 7: Save only the PEFT adapter weights, not the whole model ---
 model.save_pretrained(save_dir)
 tokenizer.save_pretrained(save_dir)
 
@@ -214,7 +187,6 @@ print(f"Training completed. PEFT adapter saved at {save_dir}")
 # Logging metadata
 # -----------------------------
 os.makedirs("logs", exist_ok=True)
-# Adjusted log file path to be relative to the current directory
 log_file = Path("logs") / "continual_training.json"
 
 log_entry = {
@@ -226,7 +198,6 @@ log_entry = {
     "batch_size": cfg["batch_size"],
     "learning_rate": cfg["learning_rate"],
     "optimizer": opt_choice,
-    # --- CHANGE 8: Use the model's device
     "device": str(model.device),
     "epoch_losses": epoch_losses,
     "final_loss": epoch_losses[-1] if epoch_losses else None

@@ -49,9 +49,7 @@ def validate_query_simple(query: str) -> str:
     return "IRRELEVANT"
 
 # --- Cached Model & Resource Loading ---
-# In src/ft_core.py
 
-# In src/ft_core.py
 
 @st.cache_resource
 def load_ft_model_and_tokenizer():
@@ -60,50 +58,35 @@ def load_ft_model_and_tokenizer():
     print(f"Loading model on device: {device}")
 
     try:
-        # Define the path to your locally saved model directory
-        model_path = Path(__file__).resolve().parent.parent / "models" / "financial_phi2_v1"
+        # Define the path to your locally saved PEFT adapter
+        adapter_path = Path(__file__).resolve().parent.parent / "models" / "financial_phi2_v1"
         
-        # Load the model, explicitly telling it to only use local files
-        model = AutoModelForCausalLM.from_pretrained(
-            model_path,
+        # 1. Load the base model (TinyLlama)
+        # Note: This will download the base model from Hugging Face Hub on the first run.
+        base_model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+        tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True)
+        tokenizer.pad_token = tokenizer.eos_token
+        
+        base_model = AutoModelForCausalLM.from_pretrained(
+            base_model_id,
             trust_remote_code=True,
             torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-            device_map="auto" if device == "cuda" else None,
-            local_files_only=True  # 👈 This is the key
+            device_map="auto" if device == "cuda" else None
         )
-        
-        # Load the tokenizer, explicitly telling it to only use local files
-        tokenizer = AutoTokenizer.from_pretrained(
-            model_path,
-            trust_remote_code=True,
-            local_files_only=True  # 👈 This is the key
-        )
-        tokenizer.pad_token = tokenizer.eos_token
 
+        # 2. Load the PEFT adapter from your local directory
+        model = PeftModel.from_pretrained(base_model, adapter_path)
+        
+        # 3. Merge the adapter weights into the base model
+        model = model.merge_and_unload()
+        
         model.eval()
-        print("Successfully loaded fine-tuned model")
+        print("Successfully loaded fine-tuned model from base + adapter")
         return model, tokenizer, device
     
     except Exception as e:
-        st.error(f"Failed to load fine-tuned model from local directory: {e}")
-        
-        # Fallback to the base model as a safety net
-        try:
-            print("Falling back to base model...")
-            model = AutoModelForCausalLM.from_pretrained(
-                "microsoft/phi-2",
-                trust_remote_code=True,
-                torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-            )
-            tokenizer = AutoTokenizer.from_pretrained("microsoft/phi-2", trust_remote_code=True)
-            tokenizer.pad_token = tokenizer.eos_token
-            model.to(device)
-            model.eval()
-            st.warning("Using base model as fallback")
-            return model, tokenizer, device
-        except Exception as fallback_error:
-            st.error(f"Fallback also failed: {fallback_error}")
-            return None, None, None
+        st.error(f"Failed to load fine-tuned model: {e}")
+        return None, None, None
 
 @st.cache_resource
 def load_memory_resources():
