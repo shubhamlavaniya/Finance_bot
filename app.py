@@ -59,10 +59,9 @@ with st.sidebar:
 
     st.title("Recent")
     
-    # === MOVED INSIDE SIDEBAR: Load chats here where session state is available ===
+    # === UPDATED: Pass user_id parameter ===
     db_conversations = load_chats(user_id=st.session_state.user_id, limit=20)
-
-    # =============================================================================
+    # =======================================
 
     for conv in db_conversations:
         chat_title = conv["title"]
@@ -90,8 +89,13 @@ with st.sidebar:
                     key=f"rename_input_{conv['thread_id']}"
                 )
                 if st.button("Save Name", use_container_width=True, key=f"rename_button_{conv['thread_id']}"):
-                    st.session_state.user_id,
-                    update_chat_title(conv["thread_id"], new_title)
+                    # === UPDATED: Pass user_id parameter ===
+                    update_chat_title(
+                        user_id=st.session_state.user_id,
+                        thread_id=conv['thread_id'],
+                        new_title=new_title
+                    )
+                    # ========================================
                     st.success("Chat name updated!")
                     time.sleep(1)
                     st.rerun()
@@ -179,16 +183,18 @@ if prompt := st.chat_input("Enter your question here..."):
     chat_title = st.session_state.thread_title if st.session_state.thread_title else prompt
 
     # Save the chat with the new title
+    # === UPDATED: Pass user_id as first parameter ===
     save_chat(
-        st.session_state.user_id,
-        st.session_state.current_thread_id,
-        chat_title,
-        prompt,
-        answer,
-        st.session_state.mode,
-        response_data,
-        response_time
+        user_id=st.session_state.user_id,
+        thread_id=st.session_state.current_thread_id,
+        title=chat_title,
+        query=prompt,
+        answer=answer,
+        mode=st.session_state.mode,
+        response_data=response_data,
+        response_time=response_time
     )
+    # ================================================
 
     # Update the session state title after saving the first message
     if not st.session_state.thread_title:
