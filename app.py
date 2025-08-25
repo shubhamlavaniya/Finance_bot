@@ -9,16 +9,20 @@
 import streamlit as st
 import time
 from src.rag_core import get_rag_response, validate_query_simple
-from src.ft_core import get_ft_response, load_ft_model_and_tokenizer, validate_query_simple
+from src.ft_core import get_ft_response, load_ft_model_and_tokenizer
 from src.db_handler import init_db, save_chat, load_chats, update_chat_title
+from src.db_handler import migrate_schema
 import uuid
 
-# Initialize DB (creates the file on first run, reuses it on subsequent runs)
+# Initialize DB and migrations
 init_db()
+migrate_schema()
 
 # Add unique user ID for each user session
 if "user_id" not in st.session_state:
     st.session_state.user_id = str(uuid.uuid4())
+
+st.set_page_config(page_title="Financial Chatbot", layout="wide")
 
 # Initialize session state for the current conversation thread
 if "current_thread_id" not in st.session_state:
@@ -32,6 +36,12 @@ with st.sidebar:
         st.session_state.current_thread_id = str(uuid.uuid4())
         st.session_state.thread_title = ""
         st.session_state.messages = []
+        st.rerun()
+    
+    # Add clear chat button
+    if st.button("🧹 Clear Current Chat", icon="🧹", use_container_width=True):
+        st.session_state.messages = []
+        st.sidebar.success("Current chat cleared!")
         st.rerun()
 
     st.markdown("---")
@@ -48,12 +58,12 @@ with st.sidebar:
     )
 
     st.title("Recent")
-    # Pass the user_id to load chats
-    db_conversations = load_chats(user_id=st.session_state.user_id, limit=20)
+    db_conversations = load_chats(limit=20)
 
     for conv in db_conversations:
         chat_title = conv["title"]
 
+        # Use columns to put the chat button and popover side-by-side
         col1, col2 = st.columns([0.7, 0.2])
 
         with col1:
@@ -67,6 +77,7 @@ with st.sidebar:
                 st.rerun()
 
         with col2:
+            # Use st.popover to create a compact, floating UI for renaming
             with st.popover("⚙️", use_container_width=True):
                 st.markdown("### Rename Chat")
                 new_title = st.text_input(
@@ -75,7 +86,7 @@ with st.sidebar:
                     key=f"rename_input_{conv['thread_id']}"
                 )
                 if st.button("Save Name", use_container_width=True, key=f"rename_button_{conv['thread_id']}"):
-                    update_chat_title(st.session_state.user_id, conv["thread_id"], new_title)
+                    update_chat_title(conv["thread_id"], new_title)
                     st.success("Chat name updated!")
                     time.sleep(1)
                     st.rerun()
@@ -97,6 +108,7 @@ if prompt := st.chat_input("Enter your question here..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
+    # --- Input Validation (USING SIMPLE VALIDATION FOR BOTH MODES) ---
     validation_status = validate_query_simple(prompt)
     
     if validation_status in ["IRRELEVANT", "HARMFUL"]:
@@ -106,24 +118,35 @@ if prompt := st.chat_input("Enter your question here..."):
         st.session_state.messages.append({"query": prompt, "answer": response_text})
         st.stop()
 
+    # --- Process Query Based on Selected Mode ---
     with st.spinner(f"Thinking with {st.session_state.mode}..."):
         start_time = time.time()
 
         if st.session_state.mode == "RAG":
-
             try:
                 response_data = get_rag_response(prompt)
+                answer = response_data["answer"]
+                response_time = round(time.time() - start_time, 2)
+                
             except Exception as e:
-                st.error(f"openAI API error:{str(e)}.Please check your API key and usage limits.")
+                st.error(f"RAG mode error: {str(e)}. Switching to Fine-tuned mode.")
+                st.session_state.mode = "Fine-tuned"
+                # Load fine-tuned model ONLY when switching to fine-tuned mode
+                with st.spinner("Loading financial expert..."):
+                    ft_model, ft_tokenizer, ft_device = load_ft_model_and_tokenizer()
+                response_data = get_ft_response(prompt)
+                answer = response_data["answer"]
+                response_time = round(time.time() - start_time, 2)
             
         elif st.session_state.mode == "Fine-tuned":
+            # Load fine-tuned model ONLY when in fine-tuned mode
             with st.spinner("Loading financial expert..."):
                 ft_model, ft_tokenizer, ft_device = load_ft_model_and_tokenizer()
             response_data = get_ft_response(prompt)
+            answer = response_data["answer"]
+            response_time = round(time.time() - start_time, 2)
 
-        response_time = round(time.time() - start_time, 2)
-        answer = response_data["answer"]
-
+    # --- Display Response ---
     with st.chat_message("assistant"):
         if "VERIFIED" in str(response_data.get("verification", "")):
             st.success(f"**Answer (Verified):** {answer}")
@@ -135,6 +158,7 @@ if prompt := st.chat_input("Enter your question here..."):
     st.markdown(f"**Method Used:** {response_data.get('method', 'N/A')}")
     st.markdown(f"**Response Time:** {response_time} seconds")
 
+    # Only display confidence if it exists for the RAG method
     if st.session_state.mode == "RAG":
         confidence_score = response_data.get("confidence", "N/A")
         if confidence_score != "N/A":
@@ -146,10 +170,11 @@ if prompt := st.chat_input("Enter your question here..."):
         {"query": prompt, "answer": answer, "response_data": response_data}
     )
 
+    # Get the chat title (first question or saved title)
     chat_title = st.session_state.thread_title if st.session_state.thread_title else prompt
 
+    # Save the chat with the new title
     save_chat(
-        st.session_state.user_id,
         st.session_state.current_thread_id,
         chat_title,
         prompt,
@@ -158,7 +183,8 @@ if prompt := st.chat_input("Enter your question here..."):
         response_data,
         response_time
     )
-    
+
+    # Update the session state title after saving the first message
     if not st.session_state.thread_title:
         st.session_state.thread_title = prompt
 
