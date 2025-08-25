@@ -10,6 +10,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from peft import PeftModel
 from sentence_transformers import SentenceTransformer, util
+from huggingface_hub import snapshot_download
+
 
 # --- Paths / defaults ---
 script_dir = Path(__file__).resolve().parent
@@ -58,29 +60,39 @@ def load_ft_model_and_tokenizer():
     """Loads and caches the fine-tuned model and its tokenizer."""
     device = "cuda" if torch.cuda.is_available() else "cpu"
     print(f"Loading model on device: {device}")
+    
+    base_model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+    adapter_path = Path(__file__).resolve().parent.parent / "models" / "financial_phi2_v1"
 
     try:
-        # Define the path to your locally saved PEFT adapter
-        adapter_path = Path(__file__).resolve().parent.parent / "models" / "financial_tiny2_v1"
-        
-        # 1. Load the base model (TinyLlama)
-        # This will download the base model from Hugging Face Hub on the first run.
-        base_model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-        tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True,local_files_only=True)
+        # Step 1: Explicitly download the base model files to the cache.
+        # This is more reliable than relying on the from_pretrained internal download.
+        print("Downloading base model files to cache...")
+        model_cache_path = snapshot_download(
+            repo_id=base_model_id,
+            allow_patterns=["*"],
+        )
+        print("Model files downloaded successfully.")
+
+        # Step 2: Load the tokenizer from the local cache.
+        tokenizer = AutoTokenizer.from_pretrained(
+            model_cache_path,
+            trust_remote_code=True,
+            local_files_only=True
+        )
         tokenizer.pad_token = tokenizer.eos_token
-        
+
+        # Step 3: Load the base model from the local cache.
         base_model = AutoModelForCausalLM.from_pretrained(
-            base_model_id,
+            model_cache_path,
             trust_remote_code=True,
             torch_dtype=torch.float16 if device == "cuda" else torch.float32,
             device_map="auto" if device == "cuda" else None,
             local_files_only=True
         )
 
-        # 2. Load the PEFT adapter from your local directory
+        # Step 4: Load the PEFT adapter and merge it.
         model = PeftModel.from_pretrained(base_model, adapter_path)
-        
-        # 3. Merge the adapter weights into the base model
         model = model.merge_and_unload()
         
         model.eval()
