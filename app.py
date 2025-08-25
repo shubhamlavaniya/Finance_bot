@@ -58,7 +58,10 @@ with st.sidebar:
     )
 
     st.title("Recent")
+    
+    # === MOVED INSIDE SIDEBAR: Load chats here where session state is available ===
     db_conversations = load_chats(limit=20)
+    # =============================================================================
 
     for conv in db_conversations:
         chat_title = conv["title"]
