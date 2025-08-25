@@ -288,9 +288,9 @@ ANSWER:
         )
         
         # Get documents and context
-        docs = hybrid_retriever.retrieve(query)
+        docs = hybrid_retriever.invoke(query)
         docs = docs[:3]  # ← ONLY TAKE TOP 3 DOCUMENTS
-        
+
         context = "\n\n".join([doc.page_content for doc in docs])
         
         # Generate answer with proper context
