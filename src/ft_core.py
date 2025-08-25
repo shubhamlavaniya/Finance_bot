@@ -49,6 +49,10 @@ def validate_query_simple(query: str) -> str:
     return "IRRELEVANT"
 
 # --- Cached Model & Resource Loading ---
+# In src/ft_core.py
+
+# In src/ft_core.py
+
 @st.cache_resource
 def load_ft_model_and_tokenizer():
     """Loads and caches the fine-tuned model and its tokenizer."""
@@ -56,19 +60,23 @@ def load_ft_model_and_tokenizer():
     print(f"Loading model on device: {device}")
 
     try:
-        # Load the FULL fine-tuned model (not PEFT adapter)
-        model_path = script_dir.parent / "models" / "financial_phi2_v1"
+        # Define the path to your locally saved model directory
+        model_path = Path(__file__).resolve().parent.parent / "models" / "financial_phi2_v1"
         
+        # Load the model, explicitly telling it to only use local files
         model = AutoModelForCausalLM.from_pretrained(
-            model_path,  # ← Load from your model directory
+            model_path,
             trust_remote_code=True,
             torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-            device_map="auto" if device == "cuda" else None
+            device_map="auto" if device == "cuda" else None,
+            local_files_only=True  # 👈 This is the key
         )
         
+        # Load the tokenizer, explicitly telling it to only use local files
         tokenizer = AutoTokenizer.from_pretrained(
-            model_path,  # ← Load from your model directory
-            trust_remote_code=True
+            model_path,
+            trust_remote_code=True,
+            local_files_only=True  # 👈 This is the key
         )
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -77,17 +85,17 @@ def load_ft_model_and_tokenizer():
         return model, tokenizer, device
     
     except Exception as e:
-        st.error(f"Failed to load fine-tuned model: {e}")
+        st.error(f"Failed to load fine-tuned model from local directory: {e}")
         
-        # Fallback to base model
+        # Fallback to the base model as a safety net
         try:
             print("Falling back to base model...")
             model = AutoModelForCausalLM.from_pretrained(
-                DEFAULT_MODEL_ID,
+                "microsoft/phi-2",
                 trust_remote_code=True,
                 torch_dtype=torch.float16 if device == "cuda" else torch.float32,
             )
-            tokenizer = AutoTokenizer.from_pretrained(DEFAULT_MODEL_ID, trust_remote_code=True)
+            tokenizer = AutoTokenizer.from_pretrained("microsoft/phi-2", trust_remote_code=True)
             tokenizer.pad_token = tokenizer.eos_token
             model.to(device)
             model.eval()
