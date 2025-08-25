@@ -60,7 +60,8 @@ with st.sidebar:
     st.title("Recent")
     
     # === MOVED INSIDE SIDEBAR: Load chats here where session state is available ===
-    db_conversations = load_chats(limit=20)
+    db_conversations = load_chats(user_id=st.session_state.user_id, limit=20)
+
     # =============================================================================
 
     for conv in db_conversations:
@@ -89,6 +90,7 @@ with st.sidebar:
                     key=f"rename_input_{conv['thread_id']}"
                 )
                 if st.button("Save Name", use_container_width=True, key=f"rename_button_{conv['thread_id']}"):
+                    st.session_state.user_id,
                     update_chat_title(conv["thread_id"], new_title)
                     st.success("Chat name updated!")
                     time.sleep(1)
@@ -178,6 +180,7 @@ if prompt := st.chat_input("Enter your question here..."):
 
     # Save the chat with the new title
     save_chat(
+        st.session_state.user_id,
         st.session_state.current_thread_id,
         chat_title,
         prompt,
