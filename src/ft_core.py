@@ -51,6 +51,8 @@ def validate_query_simple(query: str) -> str:
 # --- Cached Model & Resource Loading ---
 
 
+# In src/ft_core.py
+
 @st.cache_resource
 def load_ft_model_and_tokenizer():
     """Loads and caches the fine-tuned model and its tokenizer."""
@@ -59,10 +61,10 @@ def load_ft_model_and_tokenizer():
 
     try:
         # Define the path to your locally saved PEFT adapter
-        adapter_path = Path(__file__).resolve().parent.parent / "models" / "financial_phi2_v1"
+        adapter_path = Path(__file__).resolve().parent.parent / "models" / "financial_tiny2_v1"
         
         # 1. Load the base model (TinyLlama)
-        # Note: This will download the base model from Hugging Face Hub on the first run.
+        # This will download the base model from Hugging Face Hub on the first run.
         base_model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
         tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True)
         tokenizer.pad_token = tokenizer.eos_token

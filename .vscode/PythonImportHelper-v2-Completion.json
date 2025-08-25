@@ -604,22 +604,6 @@
         "documentation": {}
     },
     {
-        "label": "HuggingFaceHub",
-        "importPath": "langchain_community.llms",
-        "description": "langchain_community.llms",
-        "isExtraImport": true,
-        "detail": "langchain_community.llms",
-        "documentation": {}
-    },
-    {
-        "label": "HuggingFaceEndpoint",
-        "importPath": "langchain_community.llms",
-        "description": "langchain_community.llms",
-        "isExtraImport": true,
-        "detail": "langchain_community.llms",
-        "documentation": {}
-    },
-    {
         "label": "OpenAI",
         "importPath": "langchain_community.llms",
         "description": "langchain_community.llms",
@@ -1352,6 +1336,14 @@
         "documentation": {}
     },
     {
+        "label": "LLMChain",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
         "label": "BM25Retriever",
         "importPath": "langchain_community.retrievers",
         "description": "langchain_community.retrievers",
@@ -1441,6 +1433,14 @@
         "documentation": {}
     },
     {
+        "label": "PromptTemplate",
+        "importPath": "langchain.prompts",
+        "description": "langchain.prompts",
+        "isExtraImport": true,
+        "detail": "langchain.prompts",
+        "documentation": {}
+    },
+    {
         "label": "chromadb",
         "kind": 6,
         "isExtraImport": true,
@@ -1514,14 +1514,6 @@
         "documentation": {}
     },
     {
-        "label": "validate_query_simple",
-        "importPath": "src.ft_core",
-        "description": "src.ft_core",
-        "isExtraImport": true,
-        "detail": "src.ft_core",
-        "documentation": {}
-    },
-    {
         "label": "init_db",
         "importPath": "src.db_handler",
         "description": "src.db_handler",
@@ -1554,7 +1546,7 @@
         "documentation": {}
     },
     {
-        "label": "check_and_reset_db",
+        "label": "migrate_schema",
         "importPath": "src.db_handler",
         "description": "src.db_handler",
         "isExtraImport": true,
@@ -2628,7 +2620,7 @@
         "kind": 6,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "class QADataset(Dataset):\n    def __init__(self, qa_pairs, tokenizer, max_length=256):\n        self.encodings = []\n        for qa in qa_pairs:\n            text = f\"Q: {qa['question']} A: {qa['answer']}\"\n            enc = tokenizer(\n                text,\n                truncation=True,\n                padding=\"max_length\",\n                max_length=max_length,",
+        "peekOfCode": "class QADataset(Dataset):\n    def __init__(self, qa_pairs, tokenizer, max_length=512):\n        self.encodings = []\n        for qa in qa_pairs:\n            # Use a conversational format that TinyLlama understands\n            text = f\"<|user|>\\n{qa['question']}\\n<|assistant|>\\n{qa['answer']}\"\n            enc = tokenizer(\n                text,\n                truncation=True,\n                padding=\"max_length\",",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2637,7 +2629,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nclass QADataset(Dataset):\n    def __init__(self, qa_pairs, tokenizer, max_length=256):\n        self.encodings = []\n        for qa in qa_pairs:\n            text = f\"Q: {qa['question']} A: {qa['answer']}\"\n            enc = tokenizer(\n                text,\n                truncation=True,\n                padding=\"max_length\",",
+        "peekOfCode": "script_dir = Path(__file__).resolve().parent\nclass QADataset(Dataset):\n    def __init__(self, qa_pairs, tokenizer, max_length=512):\n        self.encodings = []\n        for qa in qa_pairs:\n            # Use a conversational format that TinyLlama understands\n            text = f\"<|user|>\\n{qa['question']}\\n<|assistant|>\\n{qa['answer']}\"\n            enc = tokenizer(\n                text,\n                truncation=True,",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2646,7 +2638,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "save_dir = Path(cfg[\"save_dir\"])\n# -----------------------------\n# Tokenizer + Model\n# -----------------------------\n# --- CHANGE 3: Load tokenizer with AutoTokenizer ---\ntokenizer = AutoTokenizer.from_pretrained(cfg[\"model_name\"], trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,",
+        "peekOfCode": "save_dir = Path(cfg[\"save_dir\"])\n# -----------------------------\n# Tokenizer + Model\n# -----------------------------\ntokenizer = AutoTokenizer.from_pretrained(cfg[\"model_name\"], trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\ntokenizer.padding_side = \"right\" # TinyLlama prefers \"right\" padding\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2655,7 +2647,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(cfg[\"model_name\"], trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():",
+        "peekOfCode": "tokenizer = AutoTokenizer.from_pretrained(cfg[\"model_name\"], trust_remote_code=True)\ntokenizer.pad_token = tokenizer.eos_token\ntokenizer.padding_side = \"right\" # TinyLlama prefers \"right\" padding\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2664,7 +2656,16 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token\n# --- CHANGE 4: Use QLoRA and PEFT for efficient fine-tuning ---\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")",
+        "peekOfCode": "tokenizer.pad_token = tokenizer.eos_token\ntokenizer.padding_side = \"right\" # TinyLlama prefers \"right\" padding\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")",
+        "detail": "src.continual_ft",
+        "documentation": {}
+    },
+    {
+        "label": "tokenizer.padding_side",
+        "kind": 5,
+        "importPath": "src.continual_ft",
+        "description": "src.continual_ft",
+        "peekOfCode": "tokenizer.padding_side = \"right\" # TinyLlama prefers \"right\" padding\nbnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")\n    base_model = AutoModelForCausalLM.from_pretrained(",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2673,7 +2674,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "bnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")\n    # Load the base model and then the PEFT adapter\n    base_model = AutoModelForCausalLM.from_pretrained(",
+        "peekOfCode": "bnb_config = BitsAndBytesConfig(\n    load_in_4bit=True,\n    bnb_4bit_quant_type=\"nf4\",\n    bnb_4bit_compute_dtype=torch.float16,\n    bnb_4bit_use_double_quant=True,\n)\nif save_dir.exists():\n    print(f\"Running continual training from {save_dir} ...\")\n    base_model = AutoModelForCausalLM.from_pretrained(\n        cfg[\"model_name\"],",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2682,7 +2683,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "dataset = QADataset(qa_pairs, tokenizer, max_length=cfg.get(\"max_length\", 256))\n# Train/val split\nval_ratio = cfg.get(\"val_split\", 0.1)\nval_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)",
+        "peekOfCode": "dataset = QADataset(qa_pairs, tokenizer, max_length=cfg.get(\"max_length\", 512))\nval_ratio = cfg.get(\"val_split\", 0.1)\nval_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer\n# -----------------------------",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2691,7 +2692,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "val_ratio = cfg.get(\"val_split\", 0.1)\nval_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")",
+        "peekOfCode": "val_ratio = cfg.get(\"val_split\", 0.1)\nval_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2700,7 +2701,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "val_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":",
+        "peekOfCode": "val_size = int(len(dataset) * val_ratio)\ntrain_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2709,7 +2710,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "train_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))",
+        "peekOfCode": "train_size = len(dataset) - val_size\ntrain_dataset, val_dataset = random_split(dataset, [train_size, val_size])\ntrain_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2718,7 +2719,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "train_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)",
+        "peekOfCode": "train_loader = DataLoader(train_dataset, batch_size=cfg[\"batch_size\"], shuffle=True)\nval_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2727,7 +2728,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "val_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer (no changes needed here, it's generic)\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)\nelse:",
+        "peekOfCode": "val_loader = DataLoader(val_dataset, batch_size=cfg[\"batch_size\"]) if val_size > 0 else None\n# -----------------------------\n# Optimizer\n# -----------------------------\nopt_choice = cfg.get(\"optimizer\", \"AdamW\")\nif opt_choice == \"Adam\":\n    optimizer = Adam(model.parameters(), lr=float(cfg[\"learning_rate\"]))\nelif opt_choice == \"SGD\":\n    optimizer = SGD(model.parameters(), lr=float(cfg[\"learning_rate\"]), momentum=0.9)\nelse:",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2745,7 +2746,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "epoch_losses = []\nearly_stop_counter = 0\nbest_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)",
+        "peekOfCode": "epoch_losses = []\nearly_stop_counter = 0\nbest_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2754,7 +2755,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "early_stop_counter = 0\nbest_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)",
+        "peekOfCode": "early_stop_counter = 0\nbest_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2763,7 +2764,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "best_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)",
+        "peekOfCode": "best_val_loss = float(\"inf\")\npatience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)\n        loss = outputs.loss",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2772,7 +2773,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "patience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        # --- CHANGE 6: Move input tensors to the device ---\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)\n        loss = outputs.loss",
+        "peekOfCode": "patience = cfg.get(\"early_stopping_patience\", None)\nfor epoch in range(cfg[\"epochs\"]):\n    total_loss = 0\n    for batch in train_loader:\n        optimizer.zero_grad()\n        input_ids = batch[\"input_ids\"].to(model.device)\n        attention_mask = batch[\"attention_mask\"].to(model.device)\n        outputs = model(input_ids, attention_mask=attention_mask, labels=input_ids)\n        loss = outputs.loss\n        loss.backward()",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -2790,7 +2791,7 @@
         "kind": 5,
         "importPath": "src.continual_ft",
         "description": "src.continual_ft",
-        "peekOfCode": "log_entry = {\n    \"timestamp\": datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\"),\n    \"mode\": mode,\n    \"train_file\": cfg[\"train_file\"],\n    \"save_dir\": str(save_dir),\n    \"epochs\": cfg[\"epochs\"],\n    \"batch_size\": cfg[\"batch_size\"],\n    \"learning_rate\": cfg[\"learning_rate\"],\n    \"optimizer\": opt_choice,\n    # --- CHANGE 8: Use the model's device",
+        "peekOfCode": "log_entry = {\n    \"timestamp\": datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\"),\n    \"mode\": mode,\n    \"train_file\": cfg[\"train_file\"],\n    \"save_dir\": str(save_dir),\n    \"epochs\": cfg[\"epochs\"],\n    \"batch_size\": cfg[\"batch_size\"],\n    \"learning_rate\": cfg[\"learning_rate\"],\n    \"optimizer\": opt_choice,\n    \"device\": str(model.device),",
         "detail": "src.continual_ft",
         "documentation": {}
     },
@@ -3033,7 +3034,7 @@
         "kind": 2,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "def load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Load the FULL fine-tuned model (not PEFT adapter)\n        model_path = script_dir.parent / \"models\" / \"financial_phi2_v1\"\n        model = AutoModelForCausalLM.from_pretrained(\n            model_path,  # ← Load from your model directory\n            trust_remote_code=True,",
+        "peekOfCode": "def load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Define the path to your locally saved PEFT adapter\n        adapter_path = Path(__file__).resolve().parent.parent / \"models\" / \"financial_tiny2_v1\"\n        # 1. Load the base model (TinyLlama)\n        # This will download the base model from Hugging Face Hub on the first run.\n        base_model_id = \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -3393,7 +3394,7 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_rag_llm():\n    \"\"\"Use Hugging Face's OpenAI-compatible endpoint\"\"\"\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"HUGGINGFACEHUB_API_TOKEN\"],  # Your HF token\n        openai_api_base=\"https://api-inference.huggingface.co/v1/\",  # HF's OpenAI endpoint\n        model=\"microsoft/phi-2\",  # Your model\n        temperature=0.1,\n        max_tokens=512\n    )\n    return llm",
+        "peekOfCode": "def get_rag_llm():\n    \"\"\"Loads OpenAI LLM for RAG\"\"\"\n    from langchain_community.llms import OpenAI\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"OPENAI_API_KEY\"],  # ← Your OpenAI key\n        model=\"gpt-4o-mini\",  # ← OpenAI model\n        temperature=0.1,\n        max_tokens=512\n    )\n    return llm",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3447,7 +3448,7 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_rag_response(query: str):\n    \"\"\"The main RAG function to get a response with guardrails.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    memory_path = script_dir.parent / \"data\" / \"qa_pair.json\"  \n    memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n    memory_result = memory_retriever.query(query)\n    if memory_result:\n        return {\n            \"answer\": memory_result[\"answer\"],\n            \"source\": memory_result[\"source\"],",
+        "peekOfCode": "def get_rag_response(query: str):\n    \"\"\"The main RAG function to get a response with guardrails.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    memory_path = script_dir.parent / \"data\" / \"qa_pair.json\"  \n    memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n    # 1. FIRST: Check memory bank (qa_pair.json)\n    memory_result = memory_retriever.query(query)\n    if memory_result:\n        return {\n            \"answer\": memory_result[\"answer\"],",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3456,7 +3457,7 @@
         "kind": 5,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\n#api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Use Hugging Face's OpenAI-compatible endpoint\"\"\"\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"HUGGINGFACEHUB_API_TOKEN\"],  # Your HF token\n        openai_api_base=\"https://api-inference.huggingface.co/v1/\",  # HF's OpenAI endpoint\n        model=\"microsoft/phi-2\",  # Your model",
+        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\n#api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads OpenAI LLM for RAG\"\"\"\n    from langchain_community.llms import OpenAI\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"OPENAI_API_KEY\"],  # ← Your OpenAI key\n        model=\"gpt-4o-mini\",  # ← OpenAI model",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3465,7 +3466,7 @@
         "kind": 5,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "#api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Use Hugging Face's OpenAI-compatible endpoint\"\"\"\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"HUGGINGFACEHUB_API_TOKEN\"],  # Your HF token\n        openai_api_base=\"https://api-inference.huggingface.co/v1/\",  # HF's OpenAI endpoint\n        model=\"microsoft/phi-2\",  # Your model\n        temperature=0.1,",
+        "peekOfCode": "#api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads OpenAI LLM for RAG\"\"\"\n    from langchain_community.llms import OpenAI\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"OPENAI_API_KEY\"],  # ← Your OpenAI key\n        model=\"gpt-4o-mini\",  # ← OpenAI model\n        temperature=0.1,",
         "detail": "src.rag_core",
         "documentation": {}
     },

@@ -11,7 +11,7 @@ src/read_embed.py
 src/llm_segmenter.py
 #sparse_index_bm25/
 #src/sparse_index.py
-#models/
+models/financial_phi2_v1
 
 # Ignore sensitive files
 langfuse.txt
