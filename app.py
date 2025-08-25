@@ -3,12 +3,14 @@
 
 # Financial RAG + Fine-tuned Chatbot with Guardrails and Mode Switch
 
+#openAI
+
 
 import streamlit as st
 import time
 from src.rag_core import get_rag_response, validate_query_simple
 from src.ft_core import get_ft_response, load_ft_model_and_tokenizer, validate_query_simple
-from src.db_handler import init_db, save_chat, load_chats, update_chat_title, check_and_reset_db
+from src.db_handler import init_db, save_chat, load_chats, update_chat_title
 import uuid
 
 # Initialize DB (creates the file on first run, reuses it on subsequent runs)
@@ -108,7 +110,11 @@ if prompt := st.chat_input("Enter your question here..."):
         start_time = time.time()
 
         if st.session_state.mode == "RAG":
-            response_data = get_rag_response(prompt)
+
+            try:
+                response_data = get_rag_response(prompt)
+            except Exception as e:
+                st.error(f"openAI API error:{str(e)}.Please check your API key and usage limits.")
             
         elif st.session_state.mode == "Fine-tuned":
             with st.spinner("Loading financial expert..."):

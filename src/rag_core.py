@@ -13,12 +13,14 @@ from typing import Any
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
-from langchain_community.llms import HuggingFaceHub
-from langchain_community.llms import HuggingFaceEndpoint
+#from langchain_community.llms import HuggingFaceHub
+#from langchain_community.llms import HuggingFaceEndpoint
 from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 from langchain_core.prompts import PromptTemplate
 from langchain_community.llms import OpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
 
 
 from src.hybrid_retriever import HybridRetriever
@@ -35,11 +37,12 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 @st.cache_resource
 def get_rag_llm():
-    """Use Hugging Face's OpenAI-compatible endpoint"""
+    """Loads OpenAI LLM for RAG"""
+    from langchain_community.llms import OpenAI
+    
     llm = OpenAI(
-        openai_api_key=st.secrets["HUGGINGFACEHUB_API_TOKEN"],  # Your HF token
-        openai_api_base="https://api-inference.huggingface.co/v1/",  # HF's OpenAI endpoint
-        model="microsoft/phi-2",  # Your model
+        openai_api_key=st.secrets["OPENAI_API_KEY"],  # ← Your OpenAI key
+        model="gpt-4o-mini",  # ← OpenAI model
         temperature=0.1,
         max_tokens=512
     )
@@ -209,6 +212,7 @@ def get_rag_response(query: str):
     memory_path = script_dir.parent / "data" / "qa_pair.json"  
     memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)
 
+    # 1. FIRST: Check memory bank (qa_pair.json)
     memory_result = memory_retriever.query(query)
     
     if memory_result:
@@ -220,6 +224,7 @@ def get_rag_response(query: str):
             "verification": "VERIFIED"
         }
     else:
+        # 2. ONLY if not in memory bank: Use vector DB + OpenAI
         # Get cached LLM for validation
         llm = get_rag_llm()
         if not llm:
@@ -250,23 +255,59 @@ def get_rag_response(query: str):
             k=4
         )
         
-        qa_chain = RetrievalQA.from_chain_type(
-            llm=llm,
-            retriever=hybrid_retriever,
-            return_source_documents=True
+        # === NEW: PROPER OPENAI PROMPTING ===
+        
+        
+        # Create optimized prompt template
+        prompt_template = PromptTemplate(
+            input_variables=["context", "question"],
+            template="""You are a financial expert analyzing Apple's 10-K filings. 
+Use the provided context from the documents to answer the question accurately.
+
+CONTEXT:
+{context}
+
+QUESTION: 
+{question}
+
+INSTRUCTIONS:
+- Answer based ONLY on the context provided
+- If the context doesn't contain the answer, say "I cannot find this information in the available documents"
+- Be concise and factual
+- Use financial terminology appropriately
+
+ANSWER:
+"""
         )
+        
+        # Create LLM chain with proper prompting
+        qa_chain = LLMChain(
+            llm=llm,
+            prompt=prompt_template,
+            verbose=False
+        )
+        
+        # Get documents and context
+        docs = hybrid_retriever.retrieve(query)
+        docs = docs[:3]  # ← ONLY TAKE TOP 3 DOCUMENTS
+        
+        context = "\n\n".join([doc.page_content for doc in docs])
+        
+        # Generate answer with proper context
+        result = qa_chain.invoke({
+            "context": context,
+            "question": query
+        })
         
         docs_with_scores = vectordb.similarity_search_with_score(query, k=1)
         confidence_score = 1 - docs_with_scores[0][1] if docs_with_scores else "N/A"
         
-        result = qa_chain.invoke({"query": query})
-        
-        verification_status = verify_answer(llm, result["result"], result["source_documents"])
+        verification_status = verify_answer(llm, result["text"], docs)
         
         return {
-            "answer": result["result"],
-            "source_docs": result["source_documents"],
-            "method": "Hybrid RAG",
+            "answer": result["text"],
+            "source_docs": docs,
+            "method": "Hybrid RAG (OpenAI)",
             "verification": verification_status,
             "confidence": confidence_score
         }
