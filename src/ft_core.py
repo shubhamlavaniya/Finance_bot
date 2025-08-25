@@ -66,14 +66,15 @@ def load_ft_model_and_tokenizer():
         # 1. Load the base model (TinyLlama)
         # This will download the base model from Hugging Face Hub on the first run.
         base_model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-        tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True)
+        tokenizer = AutoTokenizer.from_pretrained(base_model_id, trust_remote_code=True,local_files_only=True)
         tokenizer.pad_token = tokenizer.eos_token
         
         base_model = AutoModelForCausalLM.from_pretrained(
             base_model_id,
             trust_remote_code=True,
             torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-            device_map="auto" if device == "cuda" else None
+            device_map="auto" if device == "cuda" else None,
+            local_files_only=True
         )
 
         # 2. Load the PEFT adapter from your local directory
