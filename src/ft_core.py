@@ -62,7 +62,7 @@ def load_ft_model_and_tokenizer():
     print(f"Loading model on device: {device}")
     
     base_model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-    adapter_path = Path(__file__).resolve().parent.parent / "models" / "financial_phi2_v1"
+    adapter_path = Path(__file__).resolve().parent.parent / "models" / "financial_tiny2_v1"
 
     try:
         # Step 1: Explicitly download the base model files to the cache.
