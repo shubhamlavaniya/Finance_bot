@@ -138,14 +138,15 @@ if prompt := st.chat_input("Enter your question here..."):
                 response_time = round(time.time() - start_time, 2)
                 
             except Exception as e:
-                st.error(f"RAG mode error: {str(e)}. Switching to Fine-tuned mode.")
-                st.session_state.mode = "Fine-tuned"
-                # Load fine-tuned model ONLY when switching to fine-tuned mode
-                with st.spinner("Loading financial expert..."):
-                    ft_model, ft_tokenizer, ft_device = load_ft_model_and_tokenizer()
-                response_data = get_ft_response(prompt)
-                answer = response_data["answer"]
+                # Display the error but don't try to change state or call another model.
+                error_message = f"RAG mode error: {str(e)}. Please try again or switch to Fine-tuned mode manually."
+                st.error(error_message)
+            # Set a clear answer for display and saving
+                answer = error_message
+                response_data = {"answer": answer, "method": "Error"}
                 response_time = round(time.time() - start_time, 2)
+            # Stop the script to prevent any further issues
+                st.stop()
             
         elif st.session_state.mode == "Fine-tuned":
             # Load fine-tuned model ONLY when in fine-tuned mode
