@@ -14,14 +14,25 @@ from langchain_openai import OpenAI, ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
+#from langchain_community.llms import OpenAI
+from openai import OpenAI
+
+
 
 from src.hybrid_retriever import HybridRetriever
 
 # --- Utility Functions ---
 
+# def get_openai_client():
+#     """Returns an OpenAI client instance."""
+#     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+@st.cache_resource
 def get_openai_client():
-    """Returns an OpenAI client instance."""
-    return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    """Loads and caches the OpenAI client."""
+    return OpenAI(
+        api_key=st.secrets["OPENAI_API_KEY"],
+    )
 
 # --- Vector DB Loading ---
 
