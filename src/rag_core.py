@@ -123,8 +123,8 @@ def get_bm25_retriever():
 
 # --- Guardrail Functions ---
 
-def validate_query(llm: Any, query: str) -> str:
-    """Classifies a user query as relevant, irrelevant, or harmful."""
+def validate_query(llm_client: Any, query: str) -> str:
+    """Classifies a user query as relevant, irrelevant, or harmful using an LLM."""
     validation_prompt_template = """
     You are a financial query validator. Your task is to determine if a user's query is related to financial topics, a company's 10-K filing, or is a harmful request.
 
@@ -141,10 +141,14 @@ def validate_query(llm: Any, query: str) -> str:
 
     Query: {query}
     """
-    validation_prompt = PromptTemplate.from_template(validation_prompt_template)
-    validation_chain = validation_prompt | llm
-    response = validation_chain.invoke({"query": query})
-    return response.strip().split('\n')[0].split(':')[-1].strip()
+    
+    response = llm_client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": validation_prompt_template.format(query=query)}],
+        temperature=0.1,
+        max_tokens=256,
+    )
+    return response.choices[0].message.content.strip().split('\n')[0].split(':')[-1].strip()
 
 def verify_answer(llm: Any, answer: str, source_documents: list) -> str:
     """Verifies if the answer is supported by the source documents."""
@@ -169,40 +173,15 @@ def verify_answer(llm: Any, answer: str, source_documents: list) -> str:
     response = verification_chain.invoke({"answer": answer, "source_docs": source_texts})
     return response.strip()
 
+# === REMOVED: The manual keyword validation is no longer needed.
+# def validate_query_simple(query: str) -> str:
+#     ...
+# =======================================================
 
-def validate_query_simple(query: str) -> str:
-    """Simple rule-based query validation without API calls."""
-    query_lower = query.lower()
-    
-    # Harmful patterns
-    harmful_patterns = [
-        "harm", "attack", "malware", "virus", "hack", "exploit",
-        "self-harm", "suicide", "kill", "destroy", "bomb", "weapon"
-    ]
-    
-    if any(pattern in query_lower for pattern in harmful_patterns):
-        return "HARMFUL"
-    
-    # Financial keywords (from Apple 10-K context)
-    financial_keywords = [
-        "revenue", "income", "profit", "financial", "balance", "cash flow",
-        "10-k", "apple", "financial statement", "earnings", "margin",
-        "assets", "liabilities", "equity", "dividend", "investment",
-        "stock", "share", "ipo", "market cap", "valuation", "growth",
-        "sales", "expenses", "rd", "research", "development", "tax",
-        "debt", "credit", "loan", "interest", "currency", "exchange",
-        "segment", "geographic", "product", "service", "iphone", "mac",
-        "ipad", "wearables", "app store", "cloud", "subscription"
-    ]
-    
-    if any(keyword in query_lower for keyword in financial_keywords):
-        return "RELEVANT_FINANCIAL"
-    
-    return "IRRELEVANT"
 
 # --- Main RAG Pipeline Function ---
 
-# === UPDATED: get_rag_response now returns a generator for streaming ===
+# === UPDATED: get_rag_response now uses the LLM-based validation ===
 def get_rag_response(query: str):
     """
     The main RAG function to get a response with guardrails,
@@ -220,8 +199,9 @@ def get_rag_response(query: str):
         return # Return to stop the generator
     
     else:
-        # 2. ONLY if not in memory bank: Use vector DB + OpenAI
-        validation_result = validate_query_simple(query)
+        # 2. ONLY if not in memory bank: Use LLM-based validation
+        client = get_openai_client()
+        validation_result = validate_query(llm_client=client, query=query)
         print(f"Validation: {validation_result}")
         if validation_result not in ["RELEVANT_FINANCIAL"]:
             yield "I can only answer relevant financial questions."
@@ -247,9 +227,6 @@ def get_rag_response(query: str):
         docs = docs[:3]
 
         context = "\n\n".join([doc.page_content for doc in docs])
-
-        # === NEW: Use the OpenAI client directly for streaming ===
-        client = get_openai_client()
         
         prompt_messages = [{
             "role": "system",
