@@ -116,18 +116,16 @@ for message in st.session_state.messages:
         st.markdown(message["answer"])
 
 if prompt := st.chat_input("Enter your question here..."):
-    with st.chat_message("user"):
-        st.markdown(prompt)
+    # Add the user's message to the session state
+    st.session_state.messages.append({"query": prompt, "answer": ""})
 
     # --- Input Validation (USING SIMPLE VALIDATION FOR BOTH MODES) ---
     validation_status = validate_query_simple(prompt)
     
     if validation_status in ["IRRELEVANT", "HARMFUL"]:
         response_text = f"Your query was flagged as **{validation_status}**. Please ask a relevant financial question."
-        with st.chat_message("assistant"):
-            st.markdown(response_text)
-        st.session_state.messages.append({"query": prompt, "answer": response_text})
-        st.stop()
+        st.session_state.messages[-1]["answer"] = response_text
+        st.rerun()
 
     # --- Process Query Based on Selected Mode ---
     response_data = {}
@@ -140,26 +138,20 @@ if prompt := st.chat_input("Enter your question here..."):
                 response_generator = get_rag_response(prompt)
                 
                 full_response = ""
-                with st.chat_message("assistant"):
-                    with st.empty():
-                        for chunk in response_generator:
-                            if isinstance(chunk, dict):
-                                response_data = chunk
-                            else:
-                                full_response += chunk
-                                st.markdown(full_response + "▌")
-                        st.markdown(full_response)
+                for chunk in response_generator:
+                    if isinstance(chunk, dict):
+                        response_data = chunk
+                    else:
+                        full_response += chunk
                 
                 answer = full_response
                 response_time = round(time.time() - start_time, 2)
                 
             except Exception as e:
                 error_message = f"RAG mode error: {str(e)}. Please try again."
-                st.error(error_message)
                 answer = error_message
                 response_data = {"answer": answer, "method": "Error", "verification": "Error", "confidence": "N/A", "source": "N/A"}
                 response_time = round(time.time() - start_time, 2)
-                st.stop()
             
         elif st.session_state.mode == "Fine-tuned":
             with st.spinner("Loading financial expert..."):
@@ -168,14 +160,8 @@ if prompt := st.chat_input("Enter your question here..."):
             answer = response_data["answer"]
             response_time = round(time.time() - start_time, 2)
 
-    # --- Display Response ---
-    with st.chat_message("assistant"):
-        # This will display only the final, complete answer.
-        st.markdown(answer)
-
-    st.session_state.messages.append(
-        {"query": prompt, "answer": answer, "response_data": response_data}
-    )
+    # --- Append the generated answer to the session state ---
+    st.session_state.messages[-1]["answer"] = answer
 
     # Get the chat title (first question or saved title)
     chat_title = st.session_state.thread_title if st.session_state.thread_title else prompt
@@ -195,6 +181,9 @@ if prompt := st.chat_input("Enter your question here..."):
     # Update the session state title after saving the first message
     if not st.session_state.thread_title:
         st.session_state.thread_title = prompt
+
+    # Trigger a rerun to display the full history, including the new answer
+    st.rerun()
 
 
 # with warnings and verification----------------------------------------
