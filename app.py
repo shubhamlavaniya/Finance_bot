@@ -3,6 +3,8 @@
 
 #openAI
 
+# Final, working app.py
+
 import streamlit as st
 import time
 from src.rag_core import get_rag_response, validate_query_simple
@@ -140,30 +142,34 @@ if prompt := st.chat_input("Enter your question here..."):
         st.stop()
 
     # --- Process Query Based on Selected Mode ---
+    response_data = {}
     with st.spinner(f"Thinking with {st.session_state.mode}..."):
         start_time = time.time()
 
         if st.session_state.mode == "RAG":
             try:
-                # === UPDATED: Pass the prompt to the new streaming get_rag_response ===
+                # The generator yields text chunks and then the final response_data dict
                 response_generator = get_rag_response(prompt)
+                
                 full_response = ""
                 with st.chat_message("assistant"):
                     with st.empty():
                         for chunk in response_generator:
-                            full_response += chunk
-                            st.markdown(full_response + "▌")
+                            if isinstance(chunk, dict):
+                                response_data = chunk
+                            else:
+                                full_response += chunk
+                                st.markdown(full_response + "▌")
                         st.markdown(full_response)
-                # ======================================================================
+                
                 answer = full_response
                 response_time = round(time.time() - start_time, 2)
-                response_data = {"answer": answer, "method": "Hybrid RAG (OpenAI)"} # Simplified for now
                 
             except Exception as e:
                 error_message = f"RAG mode error: {str(e)}. Please try again."
                 st.error(error_message)
                 answer = error_message
-                response_data = {"answer": answer, "method": "Error"}
+                response_data = {"answer": answer, "method": "Error", "verification": "Error", "confidence": "N/A", "source": "N/A"}
                 response_time = round(time.time() - start_time, 2)
                 st.stop()
             
