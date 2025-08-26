@@ -146,35 +146,49 @@ def get_rag_response(query: str, chat_history: list = None) -> Any:
 
 # --- New Router Function ---
 
+# --- Updated Router Function ---
+
 def route_query_topic(query: str) -> str:
-    """Classifies a user query to determine the topic."""
-    # Use a simple LLM call for classification
+    """Classifies a user query to determine the topic, including harmful content."""
     client = get_openai_client()
     routing_prompt = f"""
     You are a query router. Your task is to classify a user's question into one of the following categories:
-    - 'FINANCIAL' for questions about company financials (e.g., revenue, earnings, 10-K).
-    - 'SCIENTIFIC' for questions about scientific papers or research concepts.
-    - 'GENERAL' for any other type of question.
+    - 'FINANCIAL' for questions about company financials, reports, or market data.
+    - 'SCIENTIFIC' for questions about academic research, concepts, or papers.
+    - 'HARMFUL' for any question that is toxic, hateful, or promotes illegal acts.
+    - 'GENERAL' for any other type of question that does not fit the above categories.
 
-    Respond with only one word: FINANCIAL, SCIENTIFIC, or GENERAL.
+    Here are some examples for each category:
+
+    FINANCIAL:
+    - "What was Apple's revenue in 2022?"
+    - "Summarize the latest 10-K filing for Tesla."
+
+    SCIENTIFIC:
+    - "What is a Retrieval-Augmented Generation model?"
+    - "Summarize the key findings of the paper 'Attention is All You Need'."
+    - "Explain the concept of neural networks."
+    - "What is GenAI?"
+
+    Respond with only one word: FINANCIAL, SCIENTIFIC, HARMFUL, or GENERAL.
 
     Query: {query}
     Classification:"""
     
     try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-3.5-turbo-0125",
             messages=[{"role": "user", "content": routing_prompt}],
             temperature=0.1,
             max_tokens=10,
         )
         classification = response.choices[0].message.content.strip().upper()
-        if classification not in ["FINANCIAL", "SCIENTIFIC", "GENERAL"]:
+        if classification not in ["FINANCIAL", "SCIENTIFIC", "HARMFUL", "GENERAL"]:
             return "GENERAL" # Default to general if LLM response is unexpected
         return classification
     except Exception as e:
         print(f"Error in query routing: {e}")
-        return "GENERAL" # Default to general in case of API error
+        return "GENERAL" # Default in case of API error
 
 
 
