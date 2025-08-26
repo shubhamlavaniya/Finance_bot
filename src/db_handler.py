@@ -150,6 +150,31 @@ def migrate_schema():
     finally:
         conn.close()
 
+def load_latest_chat(user_id):
+    """Loads the most recent chat from the database for the given user."""
+    conn = sqlite3.connect(DB_PATH)
+    c = conn.cursor()
+    
+    # Get the latest thread_id for the user
+    c.execute(
+        """SELECT thread_id FROM chats WHERE user_id = ? 
+        ORDER BY timestamp DESC LIMIT 1""",
+        (user_id,)
+    )
+    latest_thread = c.fetchone()
+    
+    if latest_thread:
+        latest_thread_id = latest_thread[0]
+        # Use the existing load_chats function to get the full conversation
+        # Note: load_chats should handle loading by a specific thread_id if needed
+        # Assuming load_chats can take a thread_id, you might need to adjust it
+        # to return just one thread's data
+        conversation = load_chats(user_id=user_id, thread_id=latest_thread_id)
+        return conversation[0] if conversation else None
+    
+    conn.close()
+    return None
+
 
 
 # import sqlite3

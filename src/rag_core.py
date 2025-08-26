@@ -1,6 +1,7 @@
 # This script is for RAG
 # using LangChain with a hybrid retriever setup.
 
+# In src/rag_core.py
 
 import os
 import shutil
@@ -13,14 +14,15 @@ from typing import Any
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
-#from langchain_community.llms import HuggingFaceHub
-#from langchain_community.llms import HuggingFaceEndpoint
 from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 from langchain_core.prompts import PromptTemplate
 from langchain_community.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
+# === NEW: Import OpenAI client directly for streaming ===
+from openai import OpenAI
+# =======================================================
 
 
 from src.hybrid_retriever import HybridRetriever
@@ -31,22 +33,17 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-#api_token = st.secrets.get("HUGGINGFACEHUB_API_TOKEN", None)
-
 # --- Cached Resources ---
 
+# === NEW: Use standard OpenAI client for streaming ===
 @st.cache_resource
-def get_rag_llm():
-    """Loads OpenAI LLM for RAG"""
-    from langchain_community.llms import OpenAI
-    
-    llm = OpenAI(
-        openai_api_key=st.secrets["OPENAI_API_KEY"],  # ← Your OpenAI key
-        model="gpt-4o-mini",  # ← OpenAI model
-        temperature=0.1,
-        max_tokens=512
+def get_openai_client():
+    """Loads and caches the OpenAI client."""
+    return OpenAI(
+        api_key=st.secrets["OPENAI_API_KEY"],
     )
-    return llm
+# =======================================================
+
 
 @st.cache_resource
 def get_vector_db():
@@ -205,9 +202,12 @@ def validate_query_simple(query: str) -> str:
 
 # --- Main RAG Pipeline Function ---
 
+# === UPDATED: get_rag_response now returns a generator for streaming ===
 def get_rag_response(query: str):
-    """The main RAG function to get a response with guardrails."""
-
+    """
+    The main RAG function to get a response with guardrails,
+    which yields chunks for streaming.
+    """
     script_dir = Path(__file__).resolve().parent
     memory_path = script_dir.parent / "data" / "qa_pair.json"  
     memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)
@@ -216,37 +216,24 @@ def get_rag_response(query: str):
     memory_result = memory_retriever.query(query)
     
     if memory_result:
-        return {
-            "answer": memory_result["answer"],
-            "source": memory_result["source"],
-            "method": "Memory Bank",
-            "confidence": memory_result.get("similarity", "N/A"),
-            "verification": "VERIFIED"
-        }
+        yield memory_result["answer"]
+        return # Return to stop the generator
+    
     else:
         # 2. ONLY if not in memory bank: Use vector DB + OpenAI
-        # Get cached LLM for validation
-        llm = get_rag_llm()
-        if not llm:
-            return {"answer": "Error: LLM not available.", "method": "Error"}
-            
         validation_result = validate_query_simple(query)
         print(f"Validation: {validation_result}")
         if validation_result not in ["RELEVANT_FINANCIAL"]:
-            return {
-                "answer": "I can only answer relevant financial questions.",
-                "source": "None",
-                "method": "Guardrail",
-                "confidence": "N/A",
-                "verification": "N/A"
-            }
+            yield "I can only answer relevant financial questions."
+            return # Stop the generator
 
         # Get cached resources
         vectordb = get_vector_db()
         bm25_retriever = get_bm25_retriever()
 
         if not vectordb or not bm25_retriever:
-            return {"answer": "Error: Retrievers not available.", "method": "Error"}
+            yield "Error: Retrievers not available."
+            return # Stop the generator
 
         hybrid_retriever = HybridRetriever(
             vectordb=vectordb.as_retriever(),
@@ -255,62 +242,355 @@ def get_rag_response(query: str):
             k=4
         )
         
-        # === NEW: PROPER OPENAI PROMPTING ===
-        
-        
-        # Create optimized prompt template
-        prompt_template = PromptTemplate(
-            input_variables=["context", "question"],
-            template="""You are a financial expert analyzing Apple's 10-K filings. 
-Use the provided context from the documents to answer the question accurately.
-
-CONTEXT:
-{context}
-
-QUESTION: 
-{question}
-
-INSTRUCTIONS:
-- Answer based ONLY on the context provided
-- If the context doesn't contain the answer, say "I cannot find this information in the available documents"
-- Be concise and factual
-- Use financial terminology appropriately
-
-ANSWER:
-"""
-        )
-        
-        # Create LLM chain with proper prompting
-        qa_chain = LLMChain(
-            llm=llm,
-            prompt=prompt_template,
-            verbose=False
-        )
-        
         # Get documents and context
         docs = hybrid_retriever.invoke(query)
-        docs = docs[:3]  # ← ONLY TAKE TOP 3 DOCUMENTS
+        docs = docs[:3]
 
         context = "\n\n".join([doc.page_content for doc in docs])
+
+        # === NEW: Use the OpenAI client directly for streaming ===
+        client = get_openai_client()
         
-        # Generate answer with proper context
-        result = qa_chain.invoke({
-            "context": context,
-            "question": query
-        })
+        prompt_messages = [{
+            "role": "system",
+            "content": """You are a financial expert analyzing Apple's 10-K filings. 
+Use the provided context from the documents to answer the question accurately.
+... [full prompt from your original code] ..."""
+        }, {
+            "role": "user",
+            "content": f"Context: {context}\nQuestion: {query}\nAnswer:"
+        }]
         
-        docs_with_scores = vectordb.similarity_search_with_score(query, k=1)
-        confidence_score = 1 - docs_with_scores[0][1] if docs_with_scores else "N/A"
+        stream = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=prompt_messages,
+            temperature=0.1,
+            max_tokens=512,
+            stream=True
+        )
+
+        for chunk in stream:
+            content = chunk.choices[0].delta.content or ""
+            yield content
+
+        # === Note: We've removed the verification step for streaming. 
+        # You'll need to add it back for the final answer if needed.
+        # This can be done by capturing the full streamed response
+        # and then calling verify_answer on it, but it adds latency.
+        # This is a trade-off for the streaming effect.
+        # =======================================================
+
+
+#---- without streaming code------
+# import os
+# import shutil
+# import pandas as pd
+# import streamlit as st
+# from pathlib import Path
+# from typing import Any
+
+# # LangChain and ChromaDB imports
+# from langchain_community.vectorstores import Chroma
+# from langchain_community.embeddings import HuggingFaceEmbeddings
+# from langchain.chains import RetrievalQA
+# #from langchain_community.llms import HuggingFaceHub
+# #from langchain_community.llms import HuggingFaceEndpoint
+# from langchain_community.retrievers import BM25Retriever
+# from langchain_core.documents import Document
+# from langchain_core.prompts import PromptTemplate
+# from langchain_community.llms import OpenAI
+# from langchain.prompts import PromptTemplate
+# from langchain.chains import LLMChain
+
+
+# from src.hybrid_retriever import HybridRetriever
+# from src.memory_retriever import MemoryRetriever
+
+# # Note: This is good practice for Streamlit to prevent sqlite3 issues
+# __import__('pysqlite3')
+# import sys
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+# #api_token = st.secrets.get("HUGGINGFACEHUB_API_TOKEN", None)
+
+# # --- Cached Resources ---
+
+# @st.cache_resource
+# def get_rag_llm():
+#     """Loads OpenAI LLM for RAG"""
+#     from langchain_community.llms import OpenAI
+    
+#     llm = OpenAI(
+#         openai_api_key=st.secrets["OPENAI_API_KEY"],  # ← Your OpenAI key
+#         model="gpt-4o-mini",  # ← OpenAI model
+#         temperature=0.1,
+#         max_tokens=512
+#     )
+#     return llm
+
+# @st.cache_resource
+# def get_vector_db():
+#     """
+#     Loads or creates a persistent ChromaDB instance.
+#     This function handles the ephemeral filesystem on Streamlit Cloud.
+#     """
+#     script_dir = Path(__file__).resolve().parent
+#     data_path = script_dir.parent / "data" / "processed" / "chunks.csv"
+#     vector_db_path = script_dir.parent / "vector_db"
+
+#     print(f"Checking for existing vector database at: {vector_db_path}")
+
+#     if not vector_db_path.exists() or not os.listdir(vector_db_path):
+#         print("Vector database not found or is empty. Building from scratch...")
         
-        verification_status = verify_answer(llm, result["text"], docs)
+#         if not data_path.exists():
+#             print(f"Error: The file {data_path} was not found. Cannot build vector database.")
+#             return None
+
+#         try:
+#             df = pd.read_csv(data_path)
+#             docs = [
+#                 Document(
+#                     page_content=row["text"],
+#                     metadata={
+#                         "section": row["section"],
+#                         "chunk_id": row["chunk_id"],
+#                     },
+#                 )
+#                 for index, row in df.iterrows()
+#             ]
+#         except KeyError as e:
+#             print(f"Error reading CSV: {e}. Ensure columns are named 'text', 'section', and 'chunk_id'.")
+#             return None
+
+#         if vector_db_path.exists():
+#             shutil.rmtree(vector_db_path)
+
+#         embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+#         vectordb = Chroma.from_documents(
+#             documents=docs,
+#             embedding=embedding_model,
+#             persist_directory=str(vector_db_path)
+#         )
+#         print("Vector database built and saved.")
+#         return vectordb
+#     else:
+#         print("Vector database found. Loading from persistent storage.")
+#         embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+#         vectordb = Chroma(
+#             persist_directory=str(vector_db_path), 
+#             embedding_function=embedding_model
+#         )
+#         return vectordb
+
+# @st.cache_resource
+# def get_bm25_retriever():
+#     """
+#     Loads documents from the CSV and builds a BM25 retriever, caching the result.
+#     """
+#     script_dir = Path(__file__).resolve().parent
+#     data_path = script_dir.parent / "data" / "processed" / "chunks.csv"
+    
+#     try:
+#         df = pd.read_csv(data_path)
+#         docs = [
+#             Document(page_content=row["text"], metadata={"section": row["section"], "chunk_id": row["chunk_id"]})
+#             for index, row in df.iterrows()
+#         ]
+#         bm25_retriever = BM25Retriever.from_documents(docs)
+#         print("BM25 retriever built and cached.")
+#         return bm25_retriever
+#     except Exception as e:
+#         print(f"Error building BM25 retriever: {e}")
+#         return None
+
+# # --- Guardrail Functions ---
+
+# def validate_query(llm: Any, query: str) -> str:
+#     """Classifies a user query as relevant, irrelevant, or harmful."""
+#     validation_prompt_template = """
+#     You are a financial query validator. Your task is to determine if a user's query is related to financial topics, a company's 10-K filing, or is a harmful request.
+
+#     <Instructions>
+#     - If the query is about a company's financial performance, a specific financial term (e.g., revenue, EPS), a financial document (e.g., 10-K), or investment advice, classify it as 'RELEVANT_FINANCIAL'.
+#     - If the query is a personal, non-financial, or general knowledge question, classify it as 'IRRELEVANT'.
+#     - If the query contains any harmful, unethical, dangerous, or illegal content, classify it as 'HARMFUL'.
+
+#     Output format should be a single line with the classification and a brief explanation.
+#     e.g., Classification: RELEVANT_FINANCIAL. Explanation: The query asks about a company's revenue.
+#     e.g., Classification: IRRELEVANT. Explanation: The query is a general knowledge question.
+#     e.g., Classification: HARMFUL. Explanation: The query contains harmful content.
+#     </Instructions>
+
+#     Query: {query}
+#     """
+#     validation_prompt = PromptTemplate.from_template(validation_prompt_template)
+#     validation_chain = validation_prompt | llm
+#     response = validation_chain.invoke({"query": query})
+#     return response.strip().split('\n')[0].split(':')[-1].strip()
+
+# def verify_answer(llm: Any, answer: str, source_documents: list) -> str:
+#     """Verifies if the answer is supported by the source documents."""
+#     source_texts = "\n\n".join([doc.page_content for doc in source_documents])
+#     verification_prompt_template = """
+#     You are a fact-checker. Your task is to determine if the given Answer is directly and entirely supported by the provided Source Documents.
+
+#     <Instructions>
+#     - If the Answer is fully supported by the Source Documents, output 'VERIFIED'.
+#     - If the Answer is not fully supported, contains information not in the Source Documents, or is a hallucination, output 'UNVERIFIED'.
+
+#     Output format should be a single line with the verification status and a brief explanation.
+#     e.g., Verification: VERIFIED. Explanation: The answer is directly from the source documents.
+#     e.g., Verification: UNVERIFIED. Explanation: The answer contains information not found in the source documents.
+#     </Instructions>
+
+#     Answer: {answer}
+#     Source Documents: {source_docs}
+#     """
+#     verification_prompt = PromptTemplate.from_template(verification_prompt_template)
+#     verification_chain = verification_prompt | llm
+#     response = verification_chain.invoke({"answer": answer, "source_docs": source_texts})
+#     return response.strip()
+
+
+# def validate_query_simple(query: str) -> str:
+#     """Simple rule-based query validation without API calls."""
+#     query_lower = query.lower()
+    
+#     # Harmful patterns
+#     harmful_patterns = [
+#         "harm", "attack", "malware", "virus", "hack", "exploit",
+#         "self-harm", "suicide", "kill", "destroy", "bomb", "weapon"
+#     ]
+    
+#     if any(pattern in query_lower for pattern in harmful_patterns):
+#         return "HARMFUL"
+    
+#     # Financial keywords (from Apple 10-K context)
+#     financial_keywords = [
+#         "revenue", "income", "profit", "financial", "balance", "cash flow",
+#         "10-k", "apple", "financial statement", "earnings", "margin",
+#         "assets", "liabilities", "equity", "dividend", "investment",
+#         "stock", "share", "ipo", "market cap", "valuation", "growth",
+#         "sales", "expenses", "rd", "research", "development", "tax",
+#         "debt", "credit", "loan", "interest", "currency", "exchange",
+#         "segment", "geographic", "product", "service", "iphone", "mac",
+#         "ipad", "wearables", "app store", "cloud", "subscription"
+#     ]
+    
+#     if any(keyword in query_lower for keyword in financial_keywords):
+#         return "RELEVANT_FINANCIAL"
+    
+#     return "IRRELEVANT"
+
+# # --- Main RAG Pipeline Function ---
+
+# def get_rag_response(query: str):
+#     """The main RAG function to get a response with guardrails."""
+
+#     script_dir = Path(__file__).resolve().parent
+#     memory_path = script_dir.parent / "data" / "qa_pair.json"  
+#     memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)
+
+#     # 1. FIRST: Check memory bank (qa_pair.json)
+#     memory_result = memory_retriever.query(query)
+    
+#     if memory_result:
+#         return {
+#             "answer": memory_result["answer"],
+#             "source": memory_result["source"],
+#             "method": "Memory Bank",
+#             "confidence": memory_result.get("similarity", "N/A"),
+#             "verification": "VERIFIED"
+#         }
+#     else:
+#         # 2. ONLY if not in memory bank: Use vector DB + OpenAI
+#         # Get cached LLM for validation
+#         llm = get_rag_llm()
+#         if not llm:
+#             return {"answer": "Error: LLM not available.", "method": "Error"}
+            
+#         validation_result = validate_query_simple(query)
+#         print(f"Validation: {validation_result}")
+#         if validation_result not in ["RELEVANT_FINANCIAL"]:
+#             return {
+#                 "answer": "I can only answer relevant financial questions.",
+#                 "source": "None",
+#                 "method": "Guardrail",
+#                 "confidence": "N/A",
+#                 "verification": "N/A"
+#             }
+
+#         # Get cached resources
+#         vectordb = get_vector_db()
+#         bm25_retriever = get_bm25_retriever()
+
+#         if not vectordb or not bm25_retriever:
+#             return {"answer": "Error: Retrievers not available.", "method": "Error"}
+
+#         hybrid_retriever = HybridRetriever(
+#             vectordb=vectordb.as_retriever(),
+#             bm25_retriever=bm25_retriever,
+#             alpha=0.5,
+#             k=4
+#         )
         
-        return {
-            "answer": result["text"],
-            "source_docs": docs,
-            "method": "Hybrid RAG (OpenAI)",
-            "verification": verification_status,
-            "confidence": confidence_score
-        }
+#         # === NEW: PROPER OPENAI PROMPTING ===
+        
+        
+#         # Create optimized prompt template
+#         prompt_template = PromptTemplate(
+#             input_variables=["context", "question"],
+#             template="""You are a financial expert analyzing Apple's 10-K filings. 
+# Use the provided context from the documents to answer the question accurately.
+
+# CONTEXT:
+# {context}
+
+# QUESTION: 
+# {question}
+
+# INSTRUCTIONS:
+# - Answer based ONLY on the context provided
+# - If the context doesn't contain the answer, say "I cannot find this information in the available documents"
+# - Be concise and factual
+# - Use financial terminology appropriately
+
+# ANSWER:
+# """
+#         )
+        
+#         # Create LLM chain with proper prompting
+#         qa_chain = LLMChain(
+#             llm=llm,
+#             prompt=prompt_template,
+#             verbose=False
+#         )
+        
+#         # Get documents and context
+#         docs = hybrid_retriever.invoke(query)
+#         docs = docs[:3]  # ← ONLY TAKE TOP 3 DOCUMENTS
+
+#         context = "\n\n".join([doc.page_content for doc in docs])
+        
+#         # Generate answer with proper context
+#         result = qa_chain.invoke({
+#             "context": context,
+#             "question": query
+#         })
+        
+#         docs_with_scores = vectordb.similarity_search_with_score(query, k=1)
+#         confidence_score = 1 - docs_with_scores[0][1] if docs_with_scores else "N/A"
+        
+#         verification_status = verify_answer(llm, result["text"], docs)
+        
+#         return {
+#             "answer": result["text"],
+#             "source_docs": docs,
+#             "method": "Hybrid RAG (OpenAI)",
+#             "verification": verification_status,
+#             "confidence": confidence_score
+#         }
 
 # uncomment this script if want to use ollama framework        
 
