@@ -105,8 +105,8 @@ with st.sidebar:
                     st.rerun()
 
 # --- Main Panel ---
-st.title("The Accountant (RAG + Fine-tuned)")
-st.write("Ask a financial question. Toggle between **RAG** and **Fine-tuned** modes from the sidebar.")
+st.title("The Accountant (Agentic RAG + Fine-tuned)")
+st.write("Ask a financial or scientific question. Toggle between **RAG** and **Fine-tuned** modes from the sidebar.")
 
 # Display existing messages from the session state
 for message in st.session_state.messages:
@@ -116,34 +116,36 @@ for message in st.session_state.messages:
         st.markdown(message["answer"])
 
 if prompt := st.chat_input("Enter your question here..."):
-    # Add user's message to the chat history
+    # Add user's message to the chat history and display it
     st.session_state.messages.append({"query": prompt, "answer": ""})
+    with st.chat_message("user"):
+        st.markdown(prompt)
 
     # --- Process Query Based on Selected Mode ---
     response_data = {}
+    answer = ""
+    response_time = 0
     with st.spinner(f"Thinking with {st.session_state.mode}..."):
         start_time = time.time()
-
+        
+        # Check the selected mode
         if st.session_state.mode == "RAG":
-            try:
-                # The generator yields text chunks and then the final response_data dict
+            # The get_rag_response function now returns a generator that yields text chunks
+            # and then the final metadata dictionary.
+            with st.chat_message("assistant"):
+                message_placeholder = st.empty()
+                full_response = ""
                 response_generator = get_rag_response(prompt)
                 
-                full_response = ""
-                # Stream the response chunks and capture the full response
                 for chunk in response_generator:
                     if isinstance(chunk, dict):
                         response_data = chunk
                     else:
                         full_response += chunk
+                        message_placeholder.markdown(full_response + "▌")
                 
+                message_placeholder.markdown(full_response)
                 answer = full_response
-                response_time = round(time.time() - start_time, 2)
-                
-            except Exception as e:
-                error_message = f"RAG mode error: {str(e)}. Please try again."
-                answer = error_message
-                response_data = {"answer": answer, "method": "Error", "verification": "Error", "confidence": "N/A", "source": "N/A"}
                 response_time = round(time.time() - start_time, 2)
             
         elif st.session_state.mode == "Fine-tuned":
@@ -152,8 +154,11 @@ if prompt := st.chat_input("Enter your question here..."):
             response_data = get_ft_response(prompt)
             answer = response_data["answer"]
             response_time = round(time.time() - start_time, 2)
+            
+            with st.chat_message("assistant"):
+                st.markdown(answer)
 
-    # --- Append the generated answer to the session state ---
+    # Update the final message in the session state
     st.session_state.messages[-1]["answer"] = answer
 
     # Get the chat title (first question or saved title)
@@ -174,8 +179,7 @@ if prompt := st.chat_input("Enter your question here..."):
     # Update the session state title after saving the first message
     if not st.session_state.thread_title:
         st.session_state.thread_title = prompt
-        
-    # Trigger a rerun to display the full history, including the new answer
+    
     st.rerun()
 
 

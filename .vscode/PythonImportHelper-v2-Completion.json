@@ -1,583 +1,5 @@
 [
     {
-        "label": "logging",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
-        "documentation": {}
-    },
-    {
-        "label": "os.path",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os.path",
-        "description": "os.path",
-        "detail": "os.path",
-        "documentation": {}
-    },
-    {
-        "label": "re",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "re",
-        "description": "re",
-        "detail": "re",
-        "documentation": {}
-    },
-    {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
-        "documentation": {}
-    },
-    {
-        "label": "argparse",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "argparse",
-        "description": "argparse",
-        "detail": "argparse",
-        "documentation": {}
-    },
-    {
-        "label": "ArgumentParser",
-        "importPath": "argparse",
-        "description": "argparse",
-        "isExtraImport": true,
-        "detail": "argparse",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Container",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Iterable",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "TextIO",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Union",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "cast",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Container",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Iterable",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "List",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Tuple",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Optional",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Any",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "Dict",
-        "importPath": "typing",
-        "description": "typing",
-        "isExtraImport": true,
-        "detail": "typing",
-        "documentation": {}
-    },
-    {
-        "label": "pdfminer",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pdfminer",
-        "description": "pdfminer",
-        "detail": "pdfminer",
-        "documentation": {}
-    },
-    {
-        "label": "PDFDocument",
-        "importPath": "pdfminer.pdfdocument",
-        "description": "pdfminer.pdfdocument",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfdocument",
-        "documentation": {}
-    },
-    {
-        "label": "PDFNoOutlines",
-        "importPath": "pdfminer.pdfdocument",
-        "description": "pdfminer.pdfdocument",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfdocument",
-        "documentation": {}
-    },
-    {
-        "label": "PDFXRefFallback",
-        "importPath": "pdfminer.pdfdocument",
-        "description": "pdfminer.pdfdocument",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfdocument",
-        "documentation": {}
-    },
-    {
-        "label": "PDFIOError",
-        "importPath": "pdfminer.pdfexceptions",
-        "description": "pdfminer.pdfexceptions",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfexceptions",
-        "documentation": {}
-    },
-    {
-        "label": "PDFObjectNotFound",
-        "importPath": "pdfminer.pdfexceptions",
-        "description": "pdfminer.pdfexceptions",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfexceptions",
-        "documentation": {}
-    },
-    {
-        "label": "PDFTypeError",
-        "importPath": "pdfminer.pdfexceptions",
-        "description": "pdfminer.pdfexceptions",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfexceptions",
-        "documentation": {}
-    },
-    {
-        "label": "PDFValueError",
-        "importPath": "pdfminer.pdfexceptions",
-        "description": "pdfminer.pdfexceptions",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfexceptions",
-        "documentation": {}
-    },
-    {
-        "label": "PDFValueError",
-        "importPath": "pdfminer.pdfexceptions",
-        "description": "pdfminer.pdfexceptions",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfexceptions",
-        "documentation": {}
-    },
-    {
-        "label": "PDFPage",
-        "importPath": "pdfminer.pdfpage",
-        "description": "pdfminer.pdfpage",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfpage",
-        "documentation": {}
-    },
-    {
-        "label": "PDFParser",
-        "importPath": "pdfminer.pdfparser",
-        "description": "pdfminer.pdfparser",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdfparser",
-        "documentation": {}
-    },
-    {
-        "label": "PDFObjRef",
-        "importPath": "pdfminer.pdftypes",
-        "description": "pdfminer.pdftypes",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdftypes",
-        "documentation": {}
-    },
-    {
-        "label": "PDFStream",
-        "importPath": "pdfminer.pdftypes",
-        "description": "pdfminer.pdftypes",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdftypes",
-        "documentation": {}
-    },
-    {
-        "label": "resolve1",
-        "importPath": "pdfminer.pdftypes",
-        "description": "pdfminer.pdftypes",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdftypes",
-        "documentation": {}
-    },
-    {
-        "label": "stream_value",
-        "importPath": "pdfminer.pdftypes",
-        "description": "pdfminer.pdftypes",
-        "isExtraImport": true,
-        "detail": "pdfminer.pdftypes",
-        "documentation": {}
-    },
-    {
-        "label": "LIT",
-        "importPath": "pdfminer.psparser",
-        "description": "pdfminer.psparser",
-        "isExtraImport": true,
-        "detail": "pdfminer.psparser",
-        "documentation": {}
-    },
-    {
-        "label": "PSKeyword",
-        "importPath": "pdfminer.psparser",
-        "description": "pdfminer.psparser",
-        "isExtraImport": true,
-        "detail": "pdfminer.psparser",
-        "documentation": {}
-    },
-    {
-        "label": "PSLiteral",
-        "importPath": "pdfminer.psparser",
-        "description": "pdfminer.psparser",
-        "isExtraImport": true,
-        "detail": "pdfminer.psparser",
-        "documentation": {}
-    },
-    {
-        "label": "isnumber",
-        "importPath": "pdfminer.utils",
-        "description": "pdfminer.utils",
-        "isExtraImport": true,
-        "detail": "pdfminer.utils",
-        "documentation": {}
-    },
-    {
-        "label": "AnyIO",
-        "importPath": "pdfminer.utils",
-        "description": "pdfminer.utils",
-        "isExtraImport": true,
-        "detail": "pdfminer.utils",
-        "documentation": {}
-    },
-    {
-        "label": "pdfminer.high_level",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pdfminer.high_level",
-        "description": "pdfminer.high_level",
-        "detail": "pdfminer.high_level",
-        "documentation": {}
-    },
-    {
-        "label": "LAParams",
-        "importPath": "pdfminer.layout",
-        "description": "pdfminer.layout",
-        "isExtraImport": true,
-        "detail": "pdfminer.layout",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
-        "documentation": {}
-    },
-    {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
-        "label": "pandas",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pandas",
-        "description": "pandas",
-        "detail": "pandas",
-        "documentation": {}
-    },
-    {
-        "label": "SentenceTransformer",
-        "importPath": "sentence_transformers",
-        "description": "sentence_transformers",
-        "isExtraImport": true,
-        "detail": "sentence_transformers",
-        "documentation": {}
-    },
-    {
-        "label": "util",
-        "importPath": "sentence_transformers",
-        "description": "sentence_transformers",
-        "isExtraImport": true,
-        "detail": "sentence_transformers",
-        "documentation": {}
-    },
-    {
-        "label": "SentenceTransformer",
-        "importPath": "sentence_transformers",
-        "description": "sentence_transformers",
-        "isExtraImport": true,
-        "detail": "sentence_transformers",
-        "documentation": {}
-    },
-    {
-        "label": "util",
-        "importPath": "sentence_transformers",
-        "description": "sentence_transformers",
-        "isExtraImport": true,
-        "detail": "sentence_transformers",
-        "documentation": {}
-    },
-    {
-        "label": "SentenceTransformer",
-        "importPath": "sentence_transformers",
-        "description": "sentence_transformers",
-        "isExtraImport": true,
-        "detail": "sentence_transformers",
-        "documentation": {}
-    },
-    {
-        "label": "util",
-        "importPath": "sentence_transformers",
-        "description": "sentence_transformers",
-        "isExtraImport": true,
-        "detail": "sentence_transformers",
-        "documentation": {}
-    },
-    {
-        "label": "SentenceTransformer",
-        "importPath": "sentence_transformers",
-        "description": "sentence_transformers",
-        "isExtraImport": true,
-        "detail": "sentence_transformers",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -596,19 +18,19 @@
         "documentation": {}
     },
     {
-        "label": "HuggingFaceHub",
-        "importPath": "langchain_community.llms",
-        "description": "langchain_community.llms",
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
         "isExtraImport": true,
-        "detail": "langchain_community.llms",
+        "detail": "transformers",
         "documentation": {}
     },
     {
-        "label": "OpenAI",
-        "importPath": "langchain_community.llms",
-        "description": "langchain_community.llms",
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
         "isExtraImport": true,
-        "detail": "langchain_community.llms",
+        "detail": "transformers",
         "documentation": {}
     },
     {
@@ -844,6 +266,699 @@
         "documentation": {}
     },
     {
+        "label": "snapshot_download",
+        "importPath": "huggingface_hub",
+        "description": "huggingface_hub",
+        "isExtraImport": true,
+        "detail": "huggingface_hub",
+        "documentation": {}
+    },
+    {
+        "label": "snapshot_download",
+        "importPath": "huggingface_hub",
+        "description": "huggingface_hub",
+        "isExtraImport": true,
+        "detail": "huggingface_hub",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "huggingface_hub",
+        "description": "huggingface_hub",
+        "isExtraImport": true,
+        "detail": "huggingface_hub",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
+        "documentation": {}
+    },
+    {
+        "label": "os.path",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.path",
+        "description": "os.path",
+        "detail": "os.path",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "ArgumentParser",
+        "importPath": "argparse",
+        "description": "argparse",
+        "isExtraImport": true,
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Container",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "TextIO",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Union",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "cast",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Container",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Iterable",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Dict",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Tuple",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Any",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "pdfminer",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfminer",
+        "description": "pdfminer",
+        "detail": "pdfminer",
+        "documentation": {}
+    },
+    {
+        "label": "PDFDocument",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFNoOutlines",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFXRefFallback",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFIOError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFObjectNotFound",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFTypeError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFValueError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFValueError",
+        "importPath": "pdfminer.pdfexceptions",
+        "description": "pdfminer.pdfexceptions",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfexceptions",
+        "documentation": {}
+    },
+    {
+        "label": "PDFPage",
+        "importPath": "pdfminer.pdfpage",
+        "description": "pdfminer.pdfpage",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfpage",
+        "documentation": {}
+    },
+    {
+        "label": "PDFParser",
+        "importPath": "pdfminer.pdfparser",
+        "description": "pdfminer.pdfparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfparser",
+        "documentation": {}
+    },
+    {
+        "label": "PDFObjRef",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "PDFStream",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "resolve1",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "stream_value",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "LIT",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "PSKeyword",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "PSLiteral",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "isnumber",
+        "importPath": "pdfminer.utils",
+        "description": "pdfminer.utils",
+        "isExtraImport": true,
+        "detail": "pdfminer.utils",
+        "documentation": {}
+    },
+    {
+        "label": "AnyIO",
+        "importPath": "pdfminer.utils",
+        "description": "pdfminer.utils",
+        "isExtraImport": true,
+        "detail": "pdfminer.utils",
+        "documentation": {}
+    },
+    {
+        "label": "pdfminer.high_level",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfminer.high_level",
+        "description": "pdfminer.high_level",
+        "detail": "pdfminer.high_level",
+        "documentation": {}
+    },
+    {
+        "label": "LAParams",
+        "importPath": "pdfminer.layout",
+        "description": "pdfminer.layout",
+        "isExtraImport": true,
+        "detail": "pdfminer.layout",
+        "documentation": {}
+    },
+    {
+        "label": "nltk",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "nltk",
+        "description": "nltk",
+        "detail": "nltk",
+        "documentation": {}
+    },
+    {
+        "label": "word_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "word_tokenize",
+        "importPath": "nltk.tokenize",
+        "description": "nltk.tokenize",
+        "isExtraImport": true,
+        "detail": "nltk.tokenize",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
+        "label": "fitz",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fitz",
+        "description": "fitz",
+        "detail": "fitz",
+        "documentation": {}
+    },
+    {
+        "label": "pdfplumber",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdfplumber",
+        "description": "pdfplumber",
+        "detail": "pdfplumber",
+        "documentation": {}
+    },
+    {
+        "label": "unidecode",
+        "importPath": "unidecode",
+        "description": "unidecode",
+        "isExtraImport": true,
+        "detail": "unidecode",
+        "documentation": {}
+    },
+    {
+        "label": "unidecode",
+        "importPath": "unidecode",
+        "description": "unidecode",
+        "isExtraImport": true,
+        "detail": "unidecode",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "util",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformer",
+        "importPath": "sentence_transformers",
+        "description": "sentence_transformers",
+        "isExtraImport": true,
+        "detail": "sentence_transformers",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceHub",
+        "importPath": "langchain_community.llms",
+        "description": "langchain_community.llms",
+        "isExtraImport": true,
+        "detail": "langchain_community.llms",
+        "documentation": {}
+    },
+    {
         "label": "PeftModel",
         "importPath": "peft",
         "description": "peft",
@@ -942,36 +1057,76 @@
         "documentation": {}
     },
     {
-        "label": "nltk",
+        "label": "shutil",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "nltk",
-        "description": "nltk",
-        "detail": "nltk",
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
         "documentation": {}
     },
     {
-        "label": "word_tokenize",
-        "importPath": "nltk.tokenize",
-        "description": "nltk.tokenize",
+        "label": "ArxivLoader",
+        "importPath": "langchain_community.document_loaders",
+        "description": "langchain_community.document_loaders",
         "isExtraImport": true,
-        "detail": "nltk.tokenize",
+        "detail": "langchain_community.document_loaders",
         "documentation": {}
     },
     {
-        "label": "word_tokenize",
-        "importPath": "nltk.tokenize",
-        "description": "nltk.tokenize",
+        "label": "RecursiveCharacterTextSplitter",
+        "importPath": "langchain.text_splitter",
+        "description": "langchain.text_splitter",
         "isExtraImport": true,
-        "detail": "nltk.tokenize",
+        "detail": "langchain.text_splitter",
         "documentation": {}
     },
     {
-        "label": "tqdm",
-        "importPath": "tqdm",
-        "description": "tqdm",
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_community.embeddings",
+        "description": "langchain_community.embeddings",
         "isExtraImport": true,
-        "detail": "tqdm",
+        "detail": "langchain_community.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_community.embeddings",
+        "description": "langchain_community.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain_community.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_community.embeddings",
+        "description": "langchain_community.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain_community.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "Chroma",
+        "importPath": "langchain_community.vectorstores",
+        "description": "langchain_community.vectorstores",
+        "isExtraImport": true,
+        "detail": "langchain_community.vectorstores",
         "documentation": {}
     },
     {
@@ -1204,14 +1359,6 @@
         "documentation": {}
     },
     {
-        "label": "Document",
-        "importPath": "langchain_core.documents",
-        "description": "langchain_core.documents",
-        "isExtraImport": true,
-        "detail": "langchain_core.documents",
-        "documentation": {}
-    },
-    {
         "label": "Field",
         "importPath": "langchain_core.pydantic_v1",
         "description": "langchain_core.pydantic_v1",
@@ -1226,22 +1373,6 @@
         "importPath": "ollama",
         "description": "ollama",
         "detail": "ollama",
-        "documentation": {}
-    },
-    {
-        "label": "unidecode",
-        "importPath": "unidecode",
-        "description": "unidecode",
-        "isExtraImport": true,
-        "detail": "unidecode",
-        "documentation": {}
-    },
-    {
-        "label": "unidecode",
-        "importPath": "unidecode",
-        "description": "unidecode",
-        "isExtraImport": true,
-        "detail": "unidecode",
         "documentation": {}
     },
     {
@@ -1270,85 +1401,11 @@
         "documentation": {}
     },
     {
-        "label": "fitz",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "fitz",
-        "description": "fitz",
-        "detail": "fitz",
-        "documentation": {}
-    },
-    {
-        "label": "pdfplumber",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pdfplumber",
-        "description": "pdfplumber",
-        "detail": "pdfplumber",
-        "documentation": {}
-    },
-    {
-        "label": "Chroma",
-        "importPath": "langchain_community.vectorstores",
-        "description": "langchain_community.vectorstores",
-        "isExtraImport": true,
-        "detail": "langchain_community.vectorstores",
-        "documentation": {}
-    },
-    {
-        "label": "Chroma",
-        "importPath": "langchain_community.vectorstores",
-        "description": "langchain_community.vectorstores",
-        "isExtraImport": true,
-        "detail": "langchain_community.vectorstores",
-        "documentation": {}
-    },
-    {
-        "label": "HuggingFaceEmbeddings",
-        "importPath": "langchain_community.embeddings",
-        "description": "langchain_community.embeddings",
-        "isExtraImport": true,
-        "detail": "langchain_community.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "HuggingFaceEmbeddings",
-        "importPath": "langchain_community.embeddings",
-        "description": "langchain_community.embeddings",
-        "isExtraImport": true,
-        "detail": "langchain_community.embeddings",
-        "documentation": {}
-    },
-    {
         "label": "RetrievalQA",
         "importPath": "langchain.chains",
         "description": "langchain.chains",
         "isExtraImport": true,
         "detail": "langchain.chains",
-        "documentation": {}
-    },
-    {
-        "label": "RetrievalQA",
-        "importPath": "langchain.chains",
-        "description": "langchain.chains",
-        "isExtraImport": true,
-        "detail": "langchain.chains",
-        "documentation": {}
-    },
-    {
-        "label": "LLMChain",
-        "importPath": "langchain.chains",
-        "description": "langchain.chains",
-        "isExtraImport": true,
-        "detail": "langchain.chains",
-        "documentation": {}
-    },
-    {
-        "label": "BM25Retriever",
-        "importPath": "langchain_community.retrievers",
-        "description": "langchain_community.retrievers",
-        "isExtraImport": true,
-        "detail": "langchain_community.retrievers",
         "documentation": {}
     },
     {
@@ -1368,14 +1425,6 @@
         "documentation": {}
     },
     {
-        "label": "login",
-        "importPath": "huggingface_hub",
-        "description": "huggingface_hub",
-        "isExtraImport": true,
-        "detail": "huggingface_hub",
-        "documentation": {}
-    },
-    {
         "label": "HybridRetriever",
         "importPath": "src.hybrid_retriever",
         "description": "src.hybrid_retriever",
@@ -1400,14 +1449,6 @@
         "documentation": {}
     },
     {
-        "label": "MemoryRetriever",
-        "importPath": "src.memory_retriever",
-        "description": "src.memory_retriever",
-        "isExtraImport": true,
-        "detail": "src.memory_retriever",
-        "documentation": {}
-    },
-    {
         "label": "PromptTemplate",
         "importPath": "langchain_core.prompts",
         "description": "langchain_core.prompts",
@@ -1416,20 +1457,19 @@
         "documentation": {}
     },
     {
-        "label": "PromptTemplate",
-        "importPath": "langchain_core.prompts",
-        "description": "langchain_core.prompts",
+        "label": "OpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
         "isExtraImport": true,
-        "detail": "langchain_core.prompts",
+        "detail": "langchain_openai",
         "documentation": {}
     },
     {
-        "label": "shutil",
-        "kind": 6,
+        "label": "ChatOpenAI",
+        "importPath": "langchain_openai",
+        "description": "langchain_openai",
         "isExtraImport": true,
-        "importPath": "shutil",
-        "description": "shutil",
-        "detail": "shutil",
+        "detail": "langchain_openai",
         "documentation": {}
     },
     {
@@ -1438,6 +1478,22 @@
         "description": "langchain.prompts",
         "isExtraImport": true,
         "detail": "langchain.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "RunnablePassthrough",
+        "importPath": "langchain.schema.runnable",
+        "description": "langchain.schema.runnable",
+        "isExtraImport": true,
+        "detail": "langchain.schema.runnable",
+        "documentation": {}
+    },
+    {
+        "label": "StrOutputParser",
+        "importPath": "langchain.schema.output_parser",
+        "description": "langchain.schema.output_parser",
+        "isExtraImport": true,
+        "detail": "langchain.schema.output_parser",
         "documentation": {}
     },
     {
@@ -1459,14 +1515,6 @@
     },
     {
         "label": "get_rag_response",
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "isExtraImport": true,
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "validate_query_simple",
         "importPath": "src.rag_core",
         "description": "src.rag_core",
         "isExtraImport": true,
@@ -1546,6 +1594,14 @@
         "documentation": {}
     },
     {
+        "label": "load_latest_chat",
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "isExtraImport": true,
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
         "label": "migrate_schema",
         "importPath": "src.db_handler",
         "description": "src.db_handler",
@@ -1569,6 +1625,15 @@
         "importPath": "gradio",
         "description": "gradio",
         "detail": "gradio",
+        "documentation": {}
+    },
+    {
+        "label": "IS_STREAMLIT_CLOUD",
+        "kind": 5,
+        "importPath": ".streamlit.pre-cache",
+        "description": ".streamlit.pre-cache",
+        "peekOfCode": "IS_STREAMLIT_CLOUD = \"STREAMLIT_CLOUD\" in os.environ\nif IS_STREAMLIT_CLOUD:\n    print(\"Pre-caching TinyLlama model for Streamlit Cloud deployment...\")\n    model_id = \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"\n    # Use snapshot_download to get the model files. It's more robust\n    # than from_pretrained for this use case.\n    snapshot_download(\n        repo_id=model_id,\n        allow_patterns=[\"*\"],\n        cache_dir=\"/mount/streamlit_cache\",",
+        "detail": ".streamlit.pre-cache",
         "documentation": {}
     },
     {
@@ -1740,6 +1805,96 @@
         "description": ".venv.bin.pdf2txt",
         "peekOfCode": "OUTPUT_TYPES = ((\".htm\", \"html\"), (\".html\", \"html\"), (\".xml\", \"xml\"), (\".tag\", \"tag\"))\ndef float_or_disabled(x: str) -> Optional[float]:\n    if x.lower().strip() == \"disabled\":\n        return None\n    try:\n        return float(x)\n    except ValueError:\n        raise argparse.ArgumentTypeError(f\"invalid float value: {x}\")\ndef extract_text(\n    files: Iterable[str] = [],",
         "detail": ".venv.bin.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "chunk_text",
+        "kind": 2,
+        "importPath": "data_processing.chunker",
+        "description": "data_processing.chunker",
+        "peekOfCode": "def chunk_text(text: str, chunk_size: int = 150, overlap: int = 30) -> list:\n    \"\"\"\n    Splits text into chunks using a sliding window approach.\n    Each chunk will overlap with the next one.\n    \"\"\"\n    if overlap >= chunk_size:\n        raise ValueError(\"Overlap must be smaller than the chunk size.\")\n    tokens = word_tokenize(text)\n    chunks = []\n    # the loop to create a sliding window",
+        "detail": "data_processing.chunker",
+        "documentation": {}
+    },
+    {
+        "label": "process_segments_directory",
+        "kind": 2,
+        "importPath": "data_processing.chunker",
+        "description": "data_processing.chunker",
+        "peekOfCode": "def process_segments_directory() -> pd.DataFrame:\n    \"\"\"Process all segment files from the segments directory\"\"\"\n    input_dir = \"data/processed/segments\"\n    all_chunks = []\n    for filename in tqdm(os.listdir(input_dir), desc=\"Chunking segments\"):\n        if not filename.endswith(\".txt\"):\n            continue\n        section_name = filename.replace(\".txt\", \"\")\n        file_path = os.path.join(input_dir, filename)\n        with open(file_path, 'r', encoding='utf-8') as f:",
+        "detail": "data_processing.chunker",
+        "documentation": {}
+    },
+    {
+        "label": "extract_text_from_pdf",
+        "kind": 2,
+        "importPath": "data_processing.preprocess",
+        "description": "data_processing.preprocess",
+        "peekOfCode": "def extract_text_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract all text (non-tabular) from a PDF file.\"\"\"\n    doc = fitz.open(pdf_path)\n    full_text = \"\"\n    for page in doc:\n        full_text += page.get_text(\"text\")\n    return full_text\ndef extract_tables_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract tables from PDF and convert them into readable text.\"\"\"\n    table_text = \"\"",
+        "detail": "data_processing.preprocess",
+        "documentation": {}
+    },
+    {
+        "label": "extract_tables_from_pdf",
+        "kind": 2,
+        "importPath": "data_processing.preprocess",
+        "description": "data_processing.preprocess",
+        "peekOfCode": "def extract_tables_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract tables from PDF and convert them into readable text.\"\"\"\n    table_text = \"\"\n    with pdfplumber.open(pdf_path) as pdf:\n        for i, page in enumerate(pdf.pages, 1):\n            tables = page.extract_tables()\n            for table in tables:\n                # Flatten table rows into readable lines\n                for row in table:\n                    clean_row = [cell.strip() if cell else \"\" for cell in row]",
+        "detail": "data_processing.preprocess",
+        "documentation": {}
+    },
+    {
+        "label": "clean_text",
+        "kind": 2,
+        "importPath": "data_processing.preprocess",
+        "description": "data_processing.preprocess",
+        "peekOfCode": "def clean_text(text: str) -> str:\n    \"\"\"Remove headers, footers, page numbers, but PRESERVE FINANCIAL DATA\"\"\"\n    lines = text.split('\\n')\n    cleaned_lines = []\n    for line in lines:\n        line = line.strip()\n        if re.match(r'^\\s*Page \\d+\\s*$', line):\n            continue\n        if len(line) > 1:\n            cleaned_lines.append(line)",
+        "detail": "data_processing.preprocess",
+        "documentation": {}
+    },
+    {
+        "label": "save_text",
+        "kind": 2,
+        "importPath": "data_processing.preprocess",
+        "description": "data_processing.preprocess",
+        "peekOfCode": "def save_text(text: str, output_path: str):\n    with open(output_path, 'w', encoding='utf-8') as f:\n        f.write(text)\nif __name__ == \"__main__\":\n    # Process both years\n    for year in [2022, 2023]:\n        pdf_path = f\"data/raw/apple_10k_{year}.pdf\"\n        output_path = f\"data/processed/cleaned_apple_10k_{year}.txt\"\n        # Extract narrative text\n        narrative_text = extract_text_from_pdf(pdf_path)",
+        "detail": "data_processing.preprocess",
+        "documentation": {}
+    },
+    {
+        "label": "load_cleaned_text",
+        "kind": 2,
+        "importPath": "data_processing.segmenter",
+        "description": "data_processing.segmenter",
+        "peekOfCode": "def load_cleaned_text(year: int) -> str:\n    \"\"\"Load cleaned text for a specific year\"\"\"\n    file_path = f\"data/processed/cleaned_apple_10k_{year}.txt\"\n    with open(file_path, 'r', encoding='utf-8') as f:\n        return f.read()\ndef segment_text(text: str, year: int) -> Dict[str, str]:\n    \"\"\"Segment text into financial sections\"\"\"\n    sections = {\n        \"income_statement\": r\"(consolidated\\s+)?(statements|statement)\\s+of\\s+(operations|income)\",\n        \"balance_sheet\": r\"(consolidated\\s+)?balance\\s+sheets?\",",
+        "detail": "data_processing.segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "segment_text",
+        "kind": 2,
+        "importPath": "data_processing.segmenter",
+        "description": "data_processing.segmenter",
+        "peekOfCode": "def segment_text(text: str, year: int) -> Dict[str, str]:\n    \"\"\"Segment text into financial sections\"\"\"\n    sections = {\n        \"income_statement\": r\"(consolidated\\s+)?(statements|statement)\\s+of\\s+(operations|income)\",\n        \"balance_sheet\": r\"(consolidated\\s+)?balance\\s+sheets?\",\n        \"cash_flow\": r\"(consolidated\\s+)?statements?\\s+of\\s+cash\\s+flows?\",\n        \"equity\": r\"(consolidated\\s+)?statements?\\s+of\\s+(stockholders'|shareholders')?\\s*equity\",\n        \"financial_highlights\": r\"(selected\\s+financial\\s+data|financial\\s+highlights|summary\\s+of\\s+operations)\",\n        \"notes\": r\"notes\\s+to\\s+(consolidated\\s+)?financial\\s+statements?\",\n        \"management_discussion\": r\"management(?:'s)?\\s+discussion\\s+and\\s+analysis\",",
+        "detail": "data_processing.segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "save_segments",
+        "kind": 2,
+        "importPath": "data_processing.segmenter",
+        "description": "data_processing.segmenter",
+        "peekOfCode": "def save_segments(segments: Dict[str, str]):\n    \"\"\"Save segments to the processed directory\"\"\"\n    segments_dir = \"data/processed/segments\"\n    os.makedirs(segments_dir, exist_ok=True)\n    for name, content in segments.items():\n        filename = os.path.join(segments_dir, f\"{name}.txt\")\n        with open(filename, 'w', encoding='utf-8') as f:\n            f.write(content)\ndef process_all_years(years=[2022, 2023]):\n    \"\"\"Process segmentation for all years\"\"\"",
+        "detail": "data_processing.segmenter",
+        "documentation": {}
+    },
+    {
+        "label": "process_all_years",
+        "kind": 2,
+        "importPath": "data_processing.segmenter",
+        "description": "data_processing.segmenter",
+        "peekOfCode": "def process_all_years(years=[2022, 2023]):\n    \"\"\"Process segmentation for all years\"\"\"\n    all_segments = {}\n    for year in years:\n        print(f\"Segmenting {year}...\")\n        text = load_cleaned_text(year)\n        segments = segment_text(text, year)\n        all_segments.update(segments)\n        print(f\"  Found {len(segments)} sections\")\n    save_segments(all_segments)",
+        "detail": "data_processing.segmenter",
         "documentation": {}
     },
     {
@@ -2112,6 +2267,24 @@
         "documentation": {}
     },
     {
+        "label": "process_arxiv_papers",
+        "kind": 2,
+        "importPath": "scripts.arxiv_processor",
+        "description": "scripts.arxiv_processor",
+        "peekOfCode": "def process_arxiv_papers(query: str, max_papers: int):\n    \"\"\"\n    Fetches papers from ArXiv, chunks them, and stores them in a ChromaDB.\n    \"\"\"\n    print(f\"Fetching up to {max_papers} papers from ArXiv with query: '{query}'...\")\n    # Use ArxivLoader to automatically fetch and parse PDFs\n    loader = ArxivLoader(query=query, load_max_docs=max_papers)\n    docs = loader.load()\n    if not docs:\n        print(\"No documents found for the given query.\")",
+        "detail": "scripts.arxiv_processor",
+        "documentation": {}
+    },
+    {
+        "label": "ARXIV_DB_PATH",
+        "kind": 5,
+        "importPath": "scripts.arxiv_processor",
+        "description": "scripts.arxiv_processor",
+        "peekOfCode": "ARXIV_DB_PATH = Path(__file__).resolve().parent.parent / \"vector_db_arxiv\"\ndef process_arxiv_papers(query: str, max_papers: int):\n    \"\"\"\n    Fetches papers from ArXiv, chunks them, and stores them in a ChromaDB.\n    \"\"\"\n    print(f\"Fetching up to {max_papers} papers from ArXiv with query: '{query}'...\")\n    # Use ArxivLoader to automatically fetch and parse PDFs\n    loader = ArxivLoader(query=query, load_max_docs=max_papers)\n    docs = loader.load()\n    if not docs:",
+        "detail": "scripts.arxiv_processor",
+        "documentation": {}
+    },
+    {
         "label": "input_file",
         "kind": 5,
         "importPath": "scripts.convert_to_finetune",
@@ -2235,24 +2408,6 @@
         "description": "src.baseline_benchmark",
         "peekOfCode": "df = pd.DataFrame(results)\ndf.to_csv(OUTPUT_CSV_PATH, index=False)\nprint(f\"Baseline results saved to {OUTPUT_CSV_PATH}\")\n# Old version-----------------------------------------------------\n# import json\n# import time\n# import pandas as pd\n# from transformers import GPT2Tokenizer, GPT2LMHeadModel\n# import os\n# from pathlib import Path",
         "detail": "src.baseline_benchmark",
-        "documentation": {}
-    },
-    {
-        "label": "chunk_text",
-        "kind": 2,
-        "importPath": "src.chunker",
-        "description": "src.chunker",
-        "peekOfCode": "def chunk_text(text: str, chunk_size: int = 150, overlap: int = 30) -> list:\n    \"\"\"\n    Splits text into chunks using a sliding window approach.\n    Each chunk will overlap with the next one.\n    \"\"\"\n    if overlap >= chunk_size:\n        raise ValueError(\"Overlap must be smaller than the chunk size.\")\n    tokens = word_tokenize(text)\n    chunks = []\n    # the loop to create a sliding window",
-        "detail": "src.chunker",
-        "documentation": {}
-    },
-    {
-        "label": "process_segments_directory",
-        "kind": 2,
-        "importPath": "src.chunker",
-        "description": "src.chunker",
-        "peekOfCode": "def process_segments_directory() -> pd.DataFrame:\n    \"\"\"Process all segment files from the segments directory\"\"\"\n    input_dir = \"data/processed/segments\"\n    all_chunks = []\n    for filename in tqdm(os.listdir(input_dir), desc=\"Chunking segments\"):\n        if not filename.endswith(\".txt\"):\n            continue\n        section_name = filename.replace(\".txt\", \"\")\n        file_path = os.path.join(input_dir, filename)\n        with open(file_path, 'r', encoding='utf-8') as f:",
-        "detail": "src.chunker",
         "documentation": {}
     },
     {
@@ -2800,7 +2955,7 @@
         "kind": 2,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "def init_db():\n    \"\"\"Initialize the SQLite DB with a chat_history table.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            thread_id TEXT NOT NULL,\n            user_id TEXT NOT NULL,\n            title TEXT,",
+        "peekOfCode": "def init_db():\n    \"\"\"Initialize the SQLite DB with a chat_history table.\"\"\"\n    # Ensure the directory exists\n    if not DB_DIR.exists():\n        DB_DIR.mkdir()\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,",
         "detail": "src.db_handler",
         "documentation": {}
     },
@@ -2809,7 +2964,7 @@
         "kind": 2,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "def save_chat(user_id, thread_id, title, query, answer, mode, response_data, response_time):\n    \"\"\"Save a chat interaction with a user_id.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        INSERT INTO chat_history\n        (thread_id, user_id, title, query, answer, mode, method, verification, confidence, source, response_time, timestamp)\n        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)\n    \"\"\", (\n        thread_id,",
+        "peekOfCode": "def save_chat(user_id, thread_id, title, query, answer, mode, response_data, response_time):\n    \"\"\"Save a chat interaction with a user_id.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    # Use json.dumps for the entire response_data for a more robust schema\n    # The timestamp is now handled by the database's CURRENT_TIMESTAMP default\n    cursor.execute(\"\"\"\n        INSERT INTO chat_history\n        (thread_id, user_id, title, query, answer, mode, method, verification, confidence, source, response_time)\n        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         "detail": "src.db_handler",
         "documentation": {}
     },
@@ -2827,7 +2982,7 @@
         "kind": 2,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "def load_chats(user_id, limit=20):\n    \"\"\"Load the most recent chat conversations for a specific user.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        SELECT DISTINCT thread_id, title FROM chat_history\n        WHERE user_id = ?\n        ORDER BY timestamp DESC\n        LIMIT ?\n    \"\"\", (user_id, limit))",
+        "peekOfCode": "def load_chats(user_id, limit=20, thread_id=None):\n    \"\"\"\n    Load recent chat conversations for a user, or a specific thread if thread_id is provided.\n    This function is now capable of handling both use cases.\n    \"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    conn.row_factory = sqlite3.Row  # This allows accessing columns by name\n    cursor = conn.cursor()\n    # If a specific thread_id is provided, load all messages for that thread\n    if thread_id:",
         "detail": "src.db_handler",
         "documentation": {}
     },
@@ -2841,11 +2996,29 @@
         "documentation": {}
     },
     {
+        "label": "load_latest_chat",
+        "kind": 2,
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "peekOfCode": "def load_latest_chat(user_id):\n    \"\"\"Loads the most recent chat from the database for the given user.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    c = conn.cursor()\n    # === CORRECTED: changed \"chats\" to \"chat_history\" ===\n    c.execute(\n        \"\"\"SELECT thread_id FROM chat_history WHERE user_id = ? \n        ORDER BY timestamp DESC LIMIT 1\"\"\",\n        (user_id,)\n    )",
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
+        "label": "DB_DIR",
+        "kind": 5,
+        "importPath": "src.db_handler",
+        "description": "src.db_handler",
+        "peekOfCode": "DB_DIR = Path(__file__).resolve().parent.parent / \"db\"\nDB_PATH = DB_DIR / \"chat_history.db\"\ndef init_db():\n    \"\"\"Initialize the SQLite DB with a chat_history table.\"\"\"\n    # Ensure the directory exists\n    if not DB_DIR.exists():\n        DB_DIR.mkdir()\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"",
+        "detail": "src.db_handler",
+        "documentation": {}
+    },
+    {
         "label": "DB_PATH",
         "kind": 5,
         "importPath": "src.db_handler",
         "description": "src.db_handler",
-        "peekOfCode": "DB_PATH = \"chat_history.db\"\ndef init_db():\n    \"\"\"Initialize the SQLite DB with a chat_history table.\"\"\"\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\n            thread_id TEXT NOT NULL,\n            user_id TEXT NOT NULL,",
+        "peekOfCode": "DB_PATH = DB_DIR / \"chat_history.db\"\ndef init_db():\n    \"\"\"Initialize the SQLite DB with a chat_history table.\"\"\"\n    # Ensure the directory exists\n    if not DB_DIR.exists():\n        DB_DIR.mkdir()\n    conn = sqlite3.connect(DB_PATH)\n    cursor = conn.cursor()\n    cursor.execute(\"\"\"\n        CREATE TABLE IF NOT EXISTS chat_history (",
         "detail": "src.db_handler",
         "documentation": {}
     },
@@ -3034,7 +3207,7 @@
         "kind": 2,
         "importPath": "src.ft_core",
         "description": "src.ft_core",
-        "peekOfCode": "def load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    try:\n        # Define the path to your locally saved PEFT adapter\n        adapter_path = Path(__file__).resolve().parent.parent / \"models\" / \"financial_tiny2_v1\"\n        # 1. Load the base model (TinyLlama)\n        # This will download the base model from Hugging Face Hub on the first run.\n        base_model_id = \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"",
+        "peekOfCode": "def load_ft_model_and_tokenizer():\n    \"\"\"Loads and caches the fine-tuned model and its tokenizer.\"\"\"\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    print(f\"Loading model on device: {device}\")\n    base_model_id = \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"\n    adapter_path = Path(__file__).resolve().parent.parent / \"models\" / \"financial_tiny2_v1\"\n    try:\n        # Step 1: Explicitly download the base model files to the cache.\n        # This is more reliable than relying on the from_pretrained internal download.\n        print(\"Downloading base model files to cache...\")",
         "detail": "src.ft_core",
         "documentation": {}
     },
@@ -3189,42 +3362,6 @@
         "description": "src.prepare_data",
         "peekOfCode": "output_file = script_dir.parent / \"data\" / \"qa_gpt2.txt\"\nwith open(input_file, \"r\") as f:\n    data = json.load(f)\nwith open(output_file, \"w\") as f:\n    for entry in data:\n        q = entry[\"question\"].strip()\n        a = entry[\"answer\"].strip()\n        f.write(f\"Q: {q}\\nA: {a}\\n\\n\")\nprint(f\"Dataset saved to {output_file}\")",
         "detail": "src.prepare_data",
-        "documentation": {}
-    },
-    {
-        "label": "extract_text_from_pdf",
-        "kind": 2,
-        "importPath": "src.preprocess",
-        "description": "src.preprocess",
-        "peekOfCode": "def extract_text_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract all text (non-tabular) from a PDF file.\"\"\"\n    doc = fitz.open(pdf_path)\n    full_text = \"\"\n    for page in doc:\n        full_text += page.get_text(\"text\")\n    return full_text\ndef extract_tables_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract tables from PDF and convert them into readable text.\"\"\"\n    table_text = \"\"",
-        "detail": "src.preprocess",
-        "documentation": {}
-    },
-    {
-        "label": "extract_tables_from_pdf",
-        "kind": 2,
-        "importPath": "src.preprocess",
-        "description": "src.preprocess",
-        "peekOfCode": "def extract_tables_from_pdf(pdf_path: str) -> str:\n    \"\"\"Extract tables from PDF and convert them into readable text.\"\"\"\n    table_text = \"\"\n    with pdfplumber.open(pdf_path) as pdf:\n        for i, page in enumerate(pdf.pages, 1):\n            tables = page.extract_tables()\n            for table in tables:\n                # Flatten table rows into readable lines\n                for row in table:\n                    clean_row = [cell.strip() if cell else \"\" for cell in row]",
-        "detail": "src.preprocess",
-        "documentation": {}
-    },
-    {
-        "label": "clean_text",
-        "kind": 2,
-        "importPath": "src.preprocess",
-        "description": "src.preprocess",
-        "peekOfCode": "def clean_text(text: str) -> str:\n    \"\"\"Remove headers, footers, page numbers, but PRESERVE FINANCIAL DATA\"\"\"\n    lines = text.split('\\n')\n    cleaned_lines = []\n    for line in lines:\n        line = line.strip()\n        if re.match(r'^\\s*Page \\d+\\s*$', line):\n            continue\n        if len(line) > 1:\n            cleaned_lines.append(line)",
-        "detail": "src.preprocess",
-        "documentation": {}
-    },
-    {
-        "label": "save_text",
-        "kind": 2,
-        "importPath": "src.preprocess",
-        "description": "src.preprocess",
-        "peekOfCode": "def save_text(text: str, output_path: str):\n    with open(output_path, 'w', encoding='utf-8') as f:\n        f.write(text)\nif __name__ == \"__main__\":\n    # Process both years\n    for year in [2022, 2023]:\n        pdf_path = f\"data/raw/apple_10k_{year}.pdf\"\n        output_path = f\"data/processed/cleaned_apple_10k_{year}.txt\"\n        # Extract narrative text\n        narrative_text = extract_text_from_pdf(pdf_path)",
-        "detail": "src.preprocess",
         "documentation": {}
     },
     {
@@ -3390,11 +3527,11 @@
         "documentation": {}
     },
     {
-        "label": "get_rag_llm",
+        "label": "get_openai_client",
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_rag_llm():\n    \"\"\"Loads OpenAI LLM for RAG\"\"\"\n    from langchain_community.llms import OpenAI\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"OPENAI_API_KEY\"],  # ← Your OpenAI key\n        model=\"gpt-4o-mini\",  # ← OpenAI model\n        temperature=0.1,\n        max_tokens=512\n    )\n    return llm",
+        "peekOfCode": "def get_openai_client():\n    \"\"\"Returns an OpenAI client instance.\"\"\"\n    return OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n# --- Vector DB Loading ---\n@st.cache_resource\ndef get_vector_db():\n    \"\"\"Loads the financial ChromaDB instance.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    vector_db_path = script_dir.parent / \"vector_db\"\n    if not vector_db_path.exists():",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3403,43 +3540,16 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_vector_db():\n    \"\"\"\n    Loads or creates a persistent ChromaDB instance.\n    This function handles the ephemeral filesystem on Streamlit Cloud.\n    \"\"\"\n    script_dir = Path(__file__).resolve().parent\n    data_path = script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\n    vector_db_path = script_dir.parent / \"vector_db\"\n    print(f\"Checking for existing vector database at: {vector_db_path}\")\n    if not vector_db_path.exists() or not os.listdir(vector_db_path):",
+        "peekOfCode": "def get_vector_db():\n    \"\"\"Loads the financial ChromaDB instance.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    vector_db_path = script_dir.parent / \"vector_db\"\n    if not vector_db_path.exists():\n        st.error(\"Financial vector database not found. Please run the data ingestion script.\")\n        return None\n    embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\n    vectordb = Chroma(\n        persist_directory=str(vector_db_path),",
         "detail": "src.rag_core",
         "documentation": {}
     },
     {
-        "label": "get_bm25_retriever",
+        "label": "get_arxiv_vector_db",
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_bm25_retriever():\n    \"\"\"\n    Loads documents from the CSV and builds a BM25 retriever, caching the result.\n    \"\"\"\n    script_dir = Path(__file__).resolve().parent\n    data_path = script_dir.parent / \"data\" / \"processed\" / \"chunks.csv\"\n    try:\n        df = pd.read_csv(data_path)\n        docs = [\n            Document(page_content=row[\"text\"], metadata={\"section\": row[\"section\"], \"chunk_id\": row[\"chunk_id\"]})",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "validate_query",
-        "kind": 2,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "def validate_query(llm: Any, query: str) -> str:\n    \"\"\"Classifies a user query as relevant, irrelevant, or harmful.\"\"\"\n    validation_prompt_template = \"\"\"\n    You are a financial query validator. Your task is to determine if a user's query is related to financial topics, a company's 10-K filing, or is a harmful request.\n    <Instructions>\n    - If the query is about a company's financial performance, a specific financial term (e.g., revenue, EPS), a financial document (e.g., 10-K), or investment advice, classify it as 'RELEVANT_FINANCIAL'.\n    - If the query is a personal, non-financial, or general knowledge question, classify it as 'IRRELEVANT'.\n    - If the query contains any harmful, unethical, dangerous, or illegal content, classify it as 'HARMFUL'.\n    Output format should be a single line with the classification and a brief explanation.\n    e.g., Classification: RELEVANT_FINANCIAL. Explanation: The query asks about a company's revenue.",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "verify_answer",
-        "kind": 2,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "def verify_answer(llm: Any, answer: str, source_documents: list) -> str:\n    \"\"\"Verifies if the answer is supported by the source documents.\"\"\"\n    source_texts = \"\\n\\n\".join([doc.page_content for doc in source_documents])\n    verification_prompt_template = \"\"\"\n    You are a fact-checker. Your task is to determine if the given Answer is directly and entirely supported by the provided Source Documents.\n    <Instructions>\n    - If the Answer is fully supported by the Source Documents, output 'VERIFIED'.\n    - If the Answer is not fully supported, contains information not in the Source Documents, or is a hallucination, output 'UNVERIFIED'.\n    Output format should be a single line with the verification status and a brief explanation.\n    e.g., Verification: VERIFIED. Explanation: The answer is directly from the source documents.",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "validate_query_simple",
-        "kind": 2,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "def validate_query_simple(query: str) -> str:\n    \"\"\"Simple rule-based query validation without API calls.\"\"\"\n    query_lower = query.lower()\n    # Harmful patterns\n    harmful_patterns = [\n        \"harm\", \"attack\", \"malware\", \"virus\", \"hack\", \"exploit\",\n        \"self-harm\", \"suicide\", \"kill\", \"destroy\", \"bomb\", \"weapon\"\n    ]\n    if any(pattern in query_lower for pattern in harmful_patterns):\n        return \"HARMFUL\"",
+        "peekOfCode": "def get_arxiv_vector_db():\n    \"\"\"Loads the ArXiv ChromaDB instance.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    arxiv_db_path = script_dir.parent / \"vector_db_arxiv\"\n    if not arxiv_db_path.exists():\n        st.error(\"ArXiv vector database not found. Please run the arxiv_processor script.\")\n        return None\n    embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\n    vectordb = Chroma(\n        persist_directory=str(arxiv_db_path),",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3448,25 +3558,16 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_rag_response(query: str):\n    \"\"\"The main RAG function to get a response with guardrails.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    memory_path = script_dir.parent / \"data\" / \"qa_pair.json\"  \n    memory_retriever = MemoryRetriever(memory_path=memory_path, threshold=0.9)\n    # 1. FIRST: Check memory bank (qa_pair.json)\n    memory_result = memory_retriever.query(query)\n    if memory_result:\n        return {\n            \"answer\": memory_result[\"answer\"],",
+        "peekOfCode": "def get_rag_response(query: str, chat_history: list = None) -> Any:\n    \"\"\"\n    Retrieves, augments, and generates a response based on the user query.\n    This function now acts as a router based on the query topic.\n    \"\"\"\n    # 1. Route the query to the correct database\n    query_topic = route_query_topic(query)\n    docs = []\n    response = \"\"\n    source_url = \"N/A\"",
         "detail": "src.rag_core",
         "documentation": {}
     },
     {
-        "label": "sys.modules['sqlite3']",
-        "kind": 5,
+        "label": "route_query_topic",
+        "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\n#api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads OpenAI LLM for RAG\"\"\"\n    from langchain_community.llms import OpenAI\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"OPENAI_API_KEY\"],  # ← Your OpenAI key\n        model=\"gpt-4o-mini\",  # ← OpenAI model",
-        "detail": "src.rag_core",
-        "documentation": {}
-    },
-    {
-        "label": "#api_token",
-        "kind": 5,
-        "importPath": "src.rag_core",
-        "description": "src.rag_core",
-        "peekOfCode": "#api_token = st.secrets.get(\"HUGGINGFACEHUB_API_TOKEN\", None)\n# --- Cached Resources ---\n@st.cache_resource\ndef get_rag_llm():\n    \"\"\"Loads OpenAI LLM for RAG\"\"\"\n    from langchain_community.llms import OpenAI\n    llm = OpenAI(\n        openai_api_key=st.secrets[\"OPENAI_API_KEY\"],  # ← Your OpenAI key\n        model=\"gpt-4o-mini\",  # ← OpenAI model\n        temperature=0.1,",
+        "peekOfCode": "def route_query_topic(query: str) -> str:\n    \"\"\"Classifies a user query to determine the topic.\"\"\"\n    # Use a simple LLM call for classification\n    client = get_openai_client()\n    routing_prompt = f\"\"\"\n    You are a query router. Your task is to classify a user's question into one of the following categories:\n    - 'FINANCIAL' for questions about company financials (e.g., revenue, earnings, 10-K).\n    - 'SCIENTIFIC' for questions about scientific papers or research concepts.\n    - 'GENERAL' for any other type of question.\n    Respond with only one word: FINANCIAL, SCIENTIFIC, or GENERAL.",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3513,42 +3614,6 @@
         "description": "src.read_embed",
         "peekOfCode": "retrieved_data = collection.get(ids=[sample_id_to_retrieve], include=['documents', 'embeddings'])\nif retrieved_data and retrieved_data['embeddings']:\n    print(f\"\\nRetrieved document for ID '{sample_id_to_retrieve}':\")\n    print(retrieved_data['documents'][0][:100], \"...\") # Print first 100 characters\n    print(f\"Retrieved embedding (first 5 values): {retrieved_data['embeddings'][0][:5]}\")\n    print(f\"Length of retrieved embedding: {len(retrieved_data['embeddings'][0])}\")\nelse:\n    print(f\"Could not retrieve data for ID '{sample_id_to_retrieve}'. It might not exist or the DB is empty.\")",
         "detail": "src.read_embed",
-        "documentation": {}
-    },
-    {
-        "label": "load_cleaned_text",
-        "kind": 2,
-        "importPath": "src.segmenter",
-        "description": "src.segmenter",
-        "peekOfCode": "def load_cleaned_text(year: int) -> str:\n    \"\"\"Load cleaned text for a specific year\"\"\"\n    file_path = f\"data/processed/cleaned_apple_10k_{year}.txt\"\n    with open(file_path, 'r', encoding='utf-8') as f:\n        return f.read()\ndef segment_text(text: str, year: int) -> Dict[str, str]:\n    \"\"\"Segment text into financial sections\"\"\"\n    sections = {\n        \"income_statement\": r\"(consolidated\\s+)?(statements|statement)\\s+of\\s+(operations|income)\",\n        \"balance_sheet\": r\"(consolidated\\s+)?balance\\s+sheets?\",",
-        "detail": "src.segmenter",
-        "documentation": {}
-    },
-    {
-        "label": "segment_text",
-        "kind": 2,
-        "importPath": "src.segmenter",
-        "description": "src.segmenter",
-        "peekOfCode": "def segment_text(text: str, year: int) -> Dict[str, str]:\n    \"\"\"Segment text into financial sections\"\"\"\n    sections = {\n        \"income_statement\": r\"(consolidated\\s+)?(statements|statement)\\s+of\\s+(operations|income)\",\n        \"balance_sheet\": r\"(consolidated\\s+)?balance\\s+sheets?\",\n        \"cash_flow\": r\"(consolidated\\s+)?statements?\\s+of\\s+cash\\s+flows?\",\n        \"equity\": r\"(consolidated\\s+)?statements?\\s+of\\s+(stockholders'|shareholders')?\\s*equity\",\n        \"financial_highlights\": r\"(selected\\s+financial\\s+data|financial\\s+highlights|summary\\s+of\\s+operations)\",\n        \"notes\": r\"notes\\s+to\\s+(consolidated\\s+)?financial\\s+statements?\",\n        \"management_discussion\": r\"management(?:'s)?\\s+discussion\\s+and\\s+analysis\",",
-        "detail": "src.segmenter",
-        "documentation": {}
-    },
-    {
-        "label": "save_segments",
-        "kind": 2,
-        "importPath": "src.segmenter",
-        "description": "src.segmenter",
-        "peekOfCode": "def save_segments(segments: Dict[str, str]):\n    \"\"\"Save segments to the processed directory\"\"\"\n    segments_dir = \"data/processed/segments\"\n    os.makedirs(segments_dir, exist_ok=True)\n    for name, content in segments.items():\n        filename = os.path.join(segments_dir, f\"{name}.txt\")\n        with open(filename, 'w', encoding='utf-8') as f:\n            f.write(content)\ndef process_all_years(years=[2022, 2023]):\n    \"\"\"Process segmentation for all years\"\"\"",
-        "detail": "src.segmenter",
-        "documentation": {}
-    },
-    {
-        "label": "process_all_years",
-        "kind": 2,
-        "importPath": "src.segmenter",
-        "description": "src.segmenter",
-        "peekOfCode": "def process_all_years(years=[2022, 2023]):\n    \"\"\"Process segmentation for all years\"\"\"\n    all_segments = {}\n    for year in years:\n        print(f\"Segmenting {year}...\")\n        text = load_cleaned_text(year)\n        segments = segment_text(text, year)\n        all_segments.update(segments)\n        print(f\"  Found {len(segments)} sections\")\n    save_segments(all_segments)",
-        "detail": "src.segmenter",
         "documentation": {}
     },
     {

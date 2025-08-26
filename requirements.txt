@@ -10,7 +10,6 @@ tqdm
 streamlit
 #chromadb
 chromadb==0.4.24
-#chromadb==0.4.1
 pyarrow
 unidecode
 langchain
@@ -19,7 +18,6 @@ nomic
 #gradio==4.44.0 # or a newer version
 ollama
 langfuse
-#openai
 pdfplumber
 langchain-community
 langchain-chroma
@@ -33,6 +31,8 @@ langchain-core
 accelerate
 bitsandbytes
 openai
+langchain_openai
+arxiv
 
 
 
