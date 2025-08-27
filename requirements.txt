@@ -9,7 +9,8 @@ transformers
 tqdm
 streamlit
 #chromadb
-chromadb==0.4.24
+#chromadb==0.4.24
+chromadb==0.4.18
 pyarrow
 unidecode
 langchain
