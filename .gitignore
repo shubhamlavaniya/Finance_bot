@@ -19,5 +19,3 @@ langfuse.txt
 src/continual_finetune.py
 src/query_rag.py
 /vector_db_arxiv/
-
-/vector_db_arxiv/

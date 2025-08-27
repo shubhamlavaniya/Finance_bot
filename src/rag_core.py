@@ -166,7 +166,7 @@ def get_rag_response(query: str, chat_history: list = None) -> Any:
     elif query_topic == "SCIENTIFIC":
         vectordb = get_arxiv_vector_db()
         if not vectordb:
-            yield "The scientific database is not available."
+            yield "The Technology database is not available."
             return {"answer": "Error: Scientific database not found.", "source": "N/A", "method": "RAG", "verification": "Error", "confidence": "Low"}
         
         # Use a standard vector retriever for scientific papers
@@ -176,7 +176,7 @@ def get_rag_response(query: str, chat_history: list = None) -> Any:
 
     else:
         # For general or irrelevant queries
-        response = "I can only answer questions related to financial filings or scientific papers."
+        response = "I can only answer questions related to Apple financial filings or AI based technology."
         yield response
         return {"answer": response, "source": "N/A", "method": "None", "verification": "None", "confidence": "N/A"}
 
@@ -185,7 +185,8 @@ def get_rag_response(query: str, chat_history: list = None) -> Any:
     # 2. Define the RAG prompt template
     template = """
     You are a professional financial or scientific assistant. Use the following context to answer the user's question.
-    If you don't know the answer, say "I can't find that information in my knowledge base."
+    If you don't know the answer, say "I can't find that information in my knowledge base".
+    If user ask what topic he/she can ask you, just say apple financial 10k filings(2022-2023) and AI related questions like "what is GenAI or What do you mean by Machine Learning"
     
     Context:
     {context}

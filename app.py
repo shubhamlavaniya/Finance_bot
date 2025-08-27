@@ -106,7 +106,7 @@ with st.sidebar:
 
 # --- Main Panel ---
 st.title("The Accountant (Agentic RAG + Fine-tuned)")
-st.write("Ask a financial or scientific question. Toggle between **RAG** and **Fine-tuned** modes from the sidebar.")
+st.write("Ask a financial(Apple filings 2022-2023) or AI related question. Toggle between **RAG** and **Fine-tuned** modes from the sidebar.")
 
 # Display existing messages from the session state
 for message in st.session_state.messages:
