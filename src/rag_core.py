@@ -2,6 +2,8 @@
 # using LangChain with a hybrid retriever setup.
 
 
+
+
 import os
 import shutil
 import pandas as pd
@@ -20,6 +22,11 @@ from langchain.schema.output_parser import StrOutputParser
 from openai import OpenAI
 
 from src.hybrid_retriever import HybridRetriever
+
+# Note: This is good practice for Streamlit to prevent sqlite3 issues
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 # --- A more robust way to get the project root directory ---
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
