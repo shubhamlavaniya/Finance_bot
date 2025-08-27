@@ -3,6 +3,8 @@
 
 
 import os
+import shutil
+import pandas as pd
 import time
 from pathlib import Path
 from typing import Any
@@ -10,22 +12,19 @@ import streamlit as st
 
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_core.documents import Document
 from langchain_openai import OpenAI, ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
-#from langchain_community.llms import OpenAI
 from openai import OpenAI
-
-
 
 from src.hybrid_retriever import HybridRetriever
 
-# --- Utility Functions ---
+# --- A more robust way to get the project root directory ---
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-# def get_openai_client():
-#     """Returns an OpenAI client instance."""
-#     return OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# --- Utility Functions ---
 
 @st.cache_resource
 def get_openai_client():
@@ -34,41 +33,83 @@ def get_openai_client():
         api_key=st.secrets["OPENAI_API_KEY"],
     )
 
-# --- Vector DB Loading ---
+# --- Vector DB Loading and Building Functions ---
+
+@st.cache_resource
+def get_embedding_model():
+    """Caches the embedding model to avoid re-loading."""
+    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+def _build_vector_db_from_csv(data_path: Path, db_path: Path) -> Any:
+    """Helper function to build a ChromaDB instance from a CSV file."""
+    if not data_path.exists():
+        print(f"Error: The file {data_path} was not found. Cannot build vector database.")
+        return None
+
+    try:
+        df = pd.read_csv(data_path)
+        docs = [
+            Document(
+                page_content=row["text"],
+                metadata={
+                    "section": row["section"],
+                    "chunk_id": row["chunk_id"],
+                },
+            )
+            for _, row in df.iterrows()
+        ]
+    except KeyError as e:
+        print(f"Error reading CSV: {e}. Ensure columns are named 'text', 'section', and 'chunk_id'.")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred while reading CSV: {e}")
+        return None
+
+    if db_path.exists():
+        shutil.rmtree(db_path)
+
+    embedding_model = get_embedding_model()
+    vectordb = Chroma.from_documents(
+        documents=docs,
+        embedding=embedding_model,
+        persist_directory=str(db_path)
+    )
+    print("Vector database built and saved.")
+    return vectordb
 
 @st.cache_resource
 def get_vector_db():
-    """Loads the financial ChromaDB instance."""
-    script_dir = Path(__file__).resolve().parent
-    vector_db_path = script_dir.parent / "vector_db"
+    """Loads or builds the financial ChromaDB instance."""
+    vector_db_path = PROJECT_ROOT / "vector_db"
+    data_path = PROJECT_ROOT / "data" / "processed" / "chunks.csv"
 
-    if not vector_db_path.exists():
-        st.error("Financial vector database not found. Please run the data ingestion script.")
-        return None
-
-    embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-    vectordb = Chroma(
-        persist_directory=str(vector_db_path),
-        embedding_function=embedding_model
-    )
-    return vectordb
+    if not vector_db_path.exists() or not os.listdir(vector_db_path):
+        print("Financial vector database not found. Building from scratch...")
+        return _build_vector_db_from_csv(data_path, vector_db_path)
+    else:
+        print("Financial vector database found. Loading from persistent storage.")
+        embedding_model = get_embedding_model()
+        return Chroma(
+            persist_directory=str(vector_db_path),
+            embedding_function=embedding_model
+        )
 
 @st.cache_resource
 def get_arxiv_vector_db():
-    """Loads the ArXiv ChromaDB instance."""
-    script_dir = Path(__file__).resolve().parent
-    arxiv_db_path = script_dir.parent / "vector_db_arxiv"
+    """Loads or builds the ArXiv ChromaDB instance."""
+    arxiv_db_path = PROJECT_ROOT / "vector_db_arxiv"
+    data_path = PROJECT_ROOT / "data" / "processed" / "arxiv_chunks.csv"
 
-    if not arxiv_db_path.exists():
-        st.error("ArXiv vector database not found. Please run the arxiv_processor script.")
-        return None
-
-    embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
-    vectordb = Chroma(
-        persist_directory=str(arxiv_db_path),
-        embedding_function=embedding_model
-    )
-    return vectordb
+    if not arxiv_db_path.exists() or not os.listdir(arxiv_db_path):
+        print("ArXiv vector database not found. Building from scratch...")
+        return _build_vector_db_from_csv(data_path, arxiv_db_path)
+    else:
+        print("ArXiv vector database found. Loading from persistent storage.")
+        embedding_model = get_embedding_model()
+        return Chroma(
+            persist_directory=str(arxiv_db_path),
+            embedding_function=embedding_model
+        )
 
 # --- RAG Core Logic ---
 
@@ -157,8 +198,6 @@ def get_rag_response(query: str, chat_history: list = None) -> Any:
 
 # --- New Router Function ---
 
-# --- Updated Router Function ---
-
 def route_query_topic(query: str) -> str:
     """Classifies a user query to determine the topic, including harmful content."""
     client = get_openai_client()
@@ -205,8 +244,7 @@ def route_query_topic(query: str) -> str:
 
 
 
-
-
+#----without arxiv database-------
 
 # import os
 # import shutil
