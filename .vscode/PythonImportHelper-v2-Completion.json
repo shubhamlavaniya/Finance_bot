@@ -1,295 +1,5 @@
 [
     {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
-        "label": "torch",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "torch",
-        "description": "torch",
-        "detail": "torch",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "TrainingArguments",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "Trainer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "GPT2LMHeadModel",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "GPT2Tokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "BitsAndBytesConfig",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "BitsAndBytesConfig",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "Trainer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "TrainingArguments",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "DataCollatorForLanguageModeling",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "GPT2LMHeadModel",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "GPT2Tokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoTokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "AutoModelForCausalLM",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "BitsAndBytesConfig",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "pipeline",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "GPT2LMHeadModel",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "GPT2Tokenizer",
-        "importPath": "transformers",
-        "description": "transformers",
-        "isExtraImport": true,
-        "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "snapshot_download",
-        "importPath": "huggingface_hub",
-        "description": "huggingface_hub",
-        "isExtraImport": true,
-        "detail": "huggingface_hub",
-        "documentation": {}
-    },
-    {
-        "label": "snapshot_download",
-        "importPath": "huggingface_hub",
-        "description": "huggingface_hub",
-        "isExtraImport": true,
-        "detail": "huggingface_hub",
-        "documentation": {}
-    },
-    {
-        "label": "login",
-        "importPath": "huggingface_hub",
-        "description": "huggingface_hub",
-        "isExtraImport": true,
-        "detail": "huggingface_hub",
-        "documentation": {}
-    },
-    {
         "label": "logging",
         "kind": 6,
         "isExtraImport": true,
@@ -697,6 +407,15 @@
         "documentation": {}
     },
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "nltk",
         "kind": 6,
         "isExtraImport": true,
@@ -951,11 +670,252 @@
         "documentation": {}
     },
     {
+        "label": "torch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "torch",
+        "description": "torch",
+        "detail": "torch",
+        "documentation": {}
+    },
+    {
         "label": "HuggingFaceHub",
         "importPath": "langchain_community.llms",
         "description": "langchain_community.llms",
         "isExtraImport": true,
         "detail": "langchain_community.llms",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "TrainingArguments",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2LMHeadModel",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2Tokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BitsAndBytesConfig",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BitsAndBytesConfig",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "Trainer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "TrainingArguments",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "DataCollatorForLanguageModeling",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2LMHeadModel",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2Tokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoTokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "AutoModelForCausalLM",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "BitsAndBytesConfig",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "pipeline",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2LMHeadModel",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
+        "documentation": {}
+    },
+    {
+        "label": "GPT2Tokenizer",
+        "importPath": "transformers",
+        "description": "transformers",
+        "isExtraImport": true,
+        "detail": "transformers",
         "documentation": {}
     },
     {
@@ -1326,6 +1286,22 @@
         "documentation": {}
     },
     {
+        "label": "snapshot_download",
+        "importPath": "huggingface_hub",
+        "description": "huggingface_hub",
+        "isExtraImport": true,
+        "detail": "huggingface_hub",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "huggingface_hub",
+        "description": "huggingface_hub",
+        "isExtraImport": true,
+        "detail": "huggingface_hub",
+        "documentation": {}
+    },
+    {
         "label": "pickle",
         "kind": 6,
         "isExtraImport": true,
@@ -1340,6 +1316,14 @@
         "description": "langchain_core.retrievers",
         "isExtraImport": true,
         "detail": "langchain_core.retrievers",
+        "documentation": {}
+    },
+    {
+        "label": "Document",
+        "importPath": "langchain_core.documents",
+        "description": "langchain_core.documents",
+        "isExtraImport": true,
+        "detail": "langchain_core.documents",
         "documentation": {}
     },
     {
@@ -1497,6 +1481,22 @@
         "documentation": {}
     },
     {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "BM25Retriever",
+        "importPath": "langchain.retrievers",
+        "description": "langchain.retrievers",
+        "isExtraImport": true,
+        "detail": "langchain.retrievers",
+        "documentation": {}
+    },
+    {
         "label": "chromadb",
         "kind": 6,
         "isExtraImport": true,
@@ -1625,15 +1625,6 @@
         "importPath": "gradio",
         "description": "gradio",
         "detail": "gradio",
-        "documentation": {}
-    },
-    {
-        "label": "IS_STREAMLIT_CLOUD",
-        "kind": 5,
-        "importPath": ".streamlit.pre-cache",
-        "description": ".streamlit.pre-cache",
-        "peekOfCode": "IS_STREAMLIT_CLOUD = \"STREAMLIT_CLOUD\" in os.environ\nif IS_STREAMLIT_CLOUD:\n    print(\"Pre-caching TinyLlama model for Streamlit Cloud deployment...\")\n    model_id = \"TinyLlama/TinyLlama-1.1B-Chat-v1.0\"\n    # Use snapshot_download to get the model files. It's more robust\n    # than from_pretrained for this use case.\n    snapshot_download(\n        repo_id=model_id,\n        allow_patterns=[\"*\"],\n        cache_dir=\"/mount/streamlit_cache\",",
-        "detail": ".streamlit.pre-cache",
         "documentation": {}
     },
     {
@@ -3531,7 +3522,16 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_openai_client():\n    \"\"\"Returns an OpenAI client instance.\"\"\"\n    return OpenAI(api_key=os.getenv(\"OPENAI_API_KEY\"))\n# --- Vector DB Loading ---\n@st.cache_resource\ndef get_vector_db():\n    \"\"\"Loads the financial ChromaDB instance.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    vector_db_path = script_dir.parent / \"vector_db\"\n    if not vector_db_path.exists():",
+        "peekOfCode": "def get_openai_client():\n    \"\"\"Loads and caches the OpenAI client.\"\"\"\n    return OpenAI(\n        api_key=st.secrets[\"OPENAI_API_KEY\"],\n    )\n# --- Vector DB Loading and Building Functions ---\n@st.cache_resource\ndef get_embedding_model():\n    \"\"\"Caches the embedding model to avoid re-loading.\"\"\"\n    return HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "get_embedding_model",
+        "kind": 2,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "def get_embedding_model():\n    \"\"\"Caches the embedding model to avoid re-loading.\"\"\"\n    return HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef _build_vector_db_from_csv(data_path: Path, db_path: Path) -> Any:\n    \"\"\"Helper function to build a ChromaDB instance from a CSV file.\"\"\"\n    if not data_path.exists():\n        print(f\"Error: The file {data_path} was not found. Cannot build vector database.\")\n        return None\n    try:\n        df = pd.read_csv(data_path)",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3540,7 +3540,7 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_vector_db():\n    \"\"\"Loads the financial ChromaDB instance.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    vector_db_path = script_dir.parent / \"vector_db\"\n    if not vector_db_path.exists():\n        st.error(\"Financial vector database not found. Please run the data ingestion script.\")\n        return None\n    embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\n    vectordb = Chroma(\n        persist_directory=str(vector_db_path),",
+        "peekOfCode": "def get_vector_db():\n    \"\"\"Loads or builds the financial ChromaDB instance.\"\"\"\n    vector_db_path = PROJECT_ROOT / \"vector_db\"\n    data_path = PROJECT_ROOT / \"data\" / \"processed\" / \"chunks.csv\"\n    if not vector_db_path.exists() or not os.listdir(vector_db_path):\n        print(\"Financial vector database not found. Building from scratch...\")\n        return _build_vector_db_from_csv(data_path, vector_db_path)\n    else:\n        print(\"Financial vector database found. Loading from persistent storage.\")\n        embedding_model = get_embedding_model()",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3549,7 +3549,7 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def get_arxiv_vector_db():\n    \"\"\"Loads the ArXiv ChromaDB instance.\"\"\"\n    script_dir = Path(__file__).resolve().parent\n    arxiv_db_path = script_dir.parent / \"vector_db_arxiv\"\n    if not arxiv_db_path.exists():\n        st.error(\"ArXiv vector database not found. Please run the arxiv_processor script.\")\n        return None\n    embedding_model = HuggingFaceEmbeddings(model_name=\"all-MiniLM-L6-v2\")\n    vectordb = Chroma(\n        persist_directory=str(arxiv_db_path),",
+        "peekOfCode": "def get_arxiv_vector_db():\n    \"\"\"Loads or builds the ArXiv ChromaDB instance.\"\"\"\n    arxiv_db_path = PROJECT_ROOT / \"vector_db_arxiv\"\n    data_path = PROJECT_ROOT / \"data\" / \"processed\" / \"arxiv_chunks.csv\"\n    if not arxiv_db_path.exists() or not os.listdir(arxiv_db_path):\n        print(\"ArXiv vector database not found. Building from scratch...\")\n        return _build_vector_db_from_csv(data_path, arxiv_db_path)\n    else:\n        print(\"ArXiv vector database found. Loading from persistent storage.\")\n        embedding_model = get_embedding_model()",
         "detail": "src.rag_core",
         "documentation": {}
     },
@@ -3567,7 +3567,25 @@
         "kind": 2,
         "importPath": "src.rag_core",
         "description": "src.rag_core",
-        "peekOfCode": "def route_query_topic(query: str) -> str:\n    \"\"\"Classifies a user query to determine the topic.\"\"\"\n    # Use a simple LLM call for classification\n    client = get_openai_client()\n    routing_prompt = f\"\"\"\n    You are a query router. Your task is to classify a user's question into one of the following categories:\n    - 'FINANCIAL' for questions about company financials (e.g., revenue, earnings, 10-K).\n    - 'SCIENTIFIC' for questions about scientific papers or research concepts.\n    - 'GENERAL' for any other type of question.\n    Respond with only one word: FINANCIAL, SCIENTIFIC, or GENERAL.",
+        "peekOfCode": "def route_query_topic(query: str) -> str:\n    \"\"\"Classifies a user query to determine the topic, including harmful content.\"\"\"\n    client = get_openai_client()\n    routing_prompt = f\"\"\"\n    You are a query router. Your task is to classify a user's question into one of the following categories:\n    - 'FINANCIAL' for questions about company financials, reports, or market data.\n    - 'SCIENTIFIC' for questions about academic research, concepts, or papers.\n    - 'HARMFUL' for any question that is toxic, hateful, or promotes illegal acts.\n    - 'GENERAL' for any other type of question that does not fit the above categories.\n    Here are some examples for each category:",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "sys.modules['sqlite3']",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')\n# --- A more robust way to get the project root directory ---\nPROJECT_ROOT = Path(__file__).resolve().parents[1]\n# --- Utility Functions ---\n@st.cache_resource\ndef get_openai_client():\n    \"\"\"Loads and caches the OpenAI client.\"\"\"\n    return OpenAI(\n        api_key=st.secrets[\"OPENAI_API_KEY\"],\n    )",
+        "detail": "src.rag_core",
+        "documentation": {}
+    },
+    {
+        "label": "PROJECT_ROOT",
+        "kind": 5,
+        "importPath": "src.rag_core",
+        "description": "src.rag_core",
+        "peekOfCode": "PROJECT_ROOT = Path(__file__).resolve().parents[1]\n# --- Utility Functions ---\n@st.cache_resource\ndef get_openai_client():\n    \"\"\"Loads and caches the OpenAI client.\"\"\"\n    return OpenAI(\n        api_key=st.secrets[\"OPENAI_API_KEY\"],\n    )\n# --- Vector DB Loading and Building Functions ---\n@st.cache_resource",
         "detail": "src.rag_core",
         "documentation": {}
     },
