@@ -1,8 +1,9 @@
 import os
+import urllib
+import pandas as pd
 from langchain_community.document_loaders import ArxivLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-import fitz
 from langchain_community.embeddings.sentence_transformer import (
     SentenceTransformerEmbeddings,
 )
@@ -12,7 +13,6 @@ from tqdm import tqdm
 CHROMA_PATH = "vector_db_arxiv"
 ARXIV_CHUNKS_PATH = "arxiv_chunks.csv"
 
-# Function to get the embedding model
 def get_embedding_model():
     """Returns the SentenceTransformer embedding model."""
     return SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
@@ -20,15 +20,27 @@ def get_embedding_model():
 def process_arxiv_queries(queries: list):
     """
     Downloads, chunks, and adds documents for a list of queries to a vector DB.
+    Also saves chunks to a CSV file.
     """
     documents = []
     print("Fetching new documents from ArXiv...")
+
     for query in queries:
         print(f"  - Searching for '{query}'...")
-        # Use a lower max_results to stay within API limits
-        loader = ArxivLoader(query=query, load_max_docs=10)
-        documents.extend(loader.load())
-    
+        try:
+            loader = ArxivLoader(query=query, load_max_docs=10)
+            documents.extend(loader.load())
+        except urllib.error.HTTPError as e:
+            print(f"    - Skipping document due to HTTP Error: {e}")
+            continue
+        except Exception as e:
+            print(f"    - An unexpected error occurred: {e}")
+            continue
+
+    if not documents:
+        print("No documents were successfully loaded. Exiting.")
+        return
+
     # Split the documents into chunks
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=500,
@@ -36,6 +48,18 @@ def process_arxiv_queries(queries: list):
     )
     chunks = text_splitter.split_documents(documents)
     print(f"Generated {len(chunks)} chunks from {len(documents)} documents.")
+    
+    # Save chunks to a CSV file
+    chunks_df = pd.DataFrame([
+        {
+            "page_content": chunk.page_content,
+            "source": chunk.metadata.get("source", "N/A"),
+            "title": chunk.metadata.get("title", "N/A"),
+        }
+        for chunk in chunks
+    ])
+    chunks_df.to_csv(ARXIV_CHUNKS_PATH, index=False)
+    print(f"Chunks saved to '{ARXIV_CHUNKS_PATH}'.")
 
     # Initialize the embedding model
     embedding_model = get_embedding_model()
@@ -61,7 +85,6 @@ def process_arxiv_queries(queries: list):
     print("Database updated successfully!")
 
 if __name__ == "__main__":
-    # Define a list of topics you want to add
     new_topics = [
         "Large Language Models",
         "Natural Language Processing",

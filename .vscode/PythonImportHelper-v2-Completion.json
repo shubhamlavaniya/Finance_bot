@@ -1017,6 +1017,15 @@
         "documentation": {}
     },
     {
+        "label": "urllib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "urllib",
+        "description": "urllib",
+        "detail": "urllib",
+        "documentation": {}
+    },
+    {
         "label": "ArxivLoader",
         "importPath": "langchain_community.document_loaders",
         "description": "langchain_community.document_loaders",
@@ -2262,7 +2271,7 @@
         "kind": 2,
         "importPath": "scripts.arxiv_processor",
         "description": "scripts.arxiv_processor",
-        "peekOfCode": "def get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    \"\"\"\n    documents = []\n    print(\"Fetching new documents from ArXiv...\")\n    for query in queries:",
+        "peekOfCode": "def get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    Also saves chunks to a CSV file.\n    \"\"\"\n    documents = []\n    print(\"Fetching new documents from ArXiv...\")",
         "detail": "scripts.arxiv_processor",
         "documentation": {}
     },
@@ -2271,7 +2280,7 @@
         "kind": 2,
         "importPath": "scripts.arxiv_processor",
         "description": "scripts.arxiv_processor",
-        "peekOfCode": "def process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    \"\"\"\n    documents = []\n    print(\"Fetching new documents from ArXiv...\")\n    for query in queries:\n        print(f\"  - Searching for '{query}'...\")\n        # Use a lower max_results to stay within API limits\n        loader = ArxivLoader(query=query, load_max_docs=10)",
+        "peekOfCode": "def process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    Also saves chunks to a CSV file.\n    \"\"\"\n    documents = []\n    print(\"Fetching new documents from ArXiv...\")\n    for query in queries:\n        print(f\"  - Searching for '{query}'...\")\n        try:",
         "detail": "scripts.arxiv_processor",
         "documentation": {}
     },
@@ -2280,7 +2289,7 @@
         "kind": 5,
         "importPath": "scripts.arxiv_processor",
         "description": "scripts.arxiv_processor",
-        "peekOfCode": "CHROMA_PATH = \"vector_db_arxiv\"\nARXIV_CHUNKS_PATH = \"arxiv_chunks.csv\"\n# Function to get the embedding model\ndef get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    \"\"\"",
+        "peekOfCode": "CHROMA_PATH = \"vector_db_arxiv\"\nARXIV_CHUNKS_PATH = \"arxiv_chunks.csv\"\ndef get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    Also saves chunks to a CSV file.\n    \"\"\"",
         "detail": "scripts.arxiv_processor",
         "documentation": {}
     },
@@ -2289,7 +2298,7 @@
         "kind": 5,
         "importPath": "scripts.arxiv_processor",
         "description": "scripts.arxiv_processor",
-        "peekOfCode": "ARXIV_CHUNKS_PATH = \"arxiv_chunks.csv\"\n# Function to get the embedding model\ndef get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    \"\"\"\n    documents = []",
+        "peekOfCode": "ARXIV_CHUNKS_PATH = \"arxiv_chunks.csv\"\ndef get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    Also saves chunks to a CSV file.\n    \"\"\"\n    documents = []",
         "detail": "scripts.arxiv_processor",
         "documentation": {}
     },

@@ -18,4 +18,5 @@ langfuse.txt
 .streamlit/secrets.toml
 src/continual_finetune.py
 src/query_rag.py
+/vector_db_arxiv/
 
