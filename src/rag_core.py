@@ -20,6 +20,7 @@ from langchain.prompts import PromptTemplate
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
 from openai import OpenAI
+from langchain.retrievers import BM25Retriever # <-- New Import
 
 from src.hybrid_retriever import HybridRetriever
 
@@ -139,8 +140,26 @@ def get_rag_response(query: str, chat_history: list = None) -> Any:
             yield "The financial database is not available."
             return {"answer": "Error: Financial database not found.", "source": "N/A", "method": "RAG", "verification": "Error", "confidence": "Low"}
         
-        # Use your existing HybridRetriever for financial data
-        retriever = HybridRetriever(vectordb.as_retriever(), "data/processed/chunks.csv")
+        # --- FIX: Create the BM25Retriever before passing it to HybridRetriever ---
+        data_path = PROJECT_ROOT / "data" / "processed" / "chunks.csv"
+        if data_path.exists():
+            df = pd.read_csv(data_path)
+            bm25_docs = [
+                Document(
+                    page_content=row["text"],
+                    metadata={
+                        "section": row["section"],
+                        "chunk_id": row["chunk_id"],
+                    },
+                )
+                for _, row in df.iterrows()
+            ]
+            bm25_retriever = BM25Retriever.from_documents(bm25_docs)
+            retriever = HybridRetriever(vectordb.as_retriever(), bm25_retriever)
+        else:
+            print(f"Warning: chunks.csv not found at {data_path}. Falling back to standard vector search.")
+            retriever = vectordb.as_retriever(search_kwargs={"k": 4})
+
         docs = retriever.invoke(query)
         source_url = "Apple 10-K Filings"
         
