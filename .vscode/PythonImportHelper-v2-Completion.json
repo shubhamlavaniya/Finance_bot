@@ -458,6 +458,14 @@
         "documentation": {}
     },
     {
+        "label": "tqdm",
+        "importPath": "tqdm",
+        "description": "tqdm",
+        "isExtraImport": true,
+        "detail": "tqdm",
+        "documentation": {}
+    },
+    {
         "label": "fitz",
         "kind": 6,
         "isExtraImport": true,
@@ -563,14 +571,6 @@
         "description": "sentence_transformers",
         "isExtraImport": true,
         "detail": "sentence_transformers",
-        "documentation": {}
-    },
-    {
-        "label": "Path",
-        "importPath": "pathlib",
-        "description": "pathlib",
-        "isExtraImport": true,
-        "detail": "pathlib",
         "documentation": {}
     },
     {
@@ -1017,15 +1017,6 @@
         "documentation": {}
     },
     {
-        "label": "shutil",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "shutil",
-        "description": "shutil",
-        "detail": "shutil",
-        "documentation": {}
-    },
-    {
         "label": "ArxivLoader",
         "importPath": "langchain_community.document_loaders",
         "description": "langchain_community.document_loaders",
@@ -1035,34 +1026,10 @@
     },
     {
         "label": "RecursiveCharacterTextSplitter",
-        "importPath": "langchain.text_splitter",
-        "description": "langchain.text_splitter",
+        "importPath": "langchain_text_splitters",
+        "description": "langchain_text_splitters",
         "isExtraImport": true,
-        "detail": "langchain.text_splitter",
-        "documentation": {}
-    },
-    {
-        "label": "HuggingFaceEmbeddings",
-        "importPath": "langchain_community.embeddings",
-        "description": "langchain_community.embeddings",
-        "isExtraImport": true,
-        "detail": "langchain_community.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "HuggingFaceEmbeddings",
-        "importPath": "langchain_community.embeddings",
-        "description": "langchain_community.embeddings",
-        "isExtraImport": true,
-        "detail": "langchain_community.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "HuggingFaceEmbeddings",
-        "importPath": "langchain_community.embeddings",
-        "description": "langchain_community.embeddings",
-        "isExtraImport": true,
-        "detail": "langchain_community.embeddings",
+        "detail": "langchain_text_splitters",
         "documentation": {}
     },
     {
@@ -1087,6 +1054,14 @@
         "description": "langchain_community.vectorstores",
         "isExtraImport": true,
         "detail": "langchain_community.vectorstores",
+        "documentation": {}
+    },
+    {
+        "label": "SentenceTransformerEmbeddings",
+        "importPath": "langchain_community.embeddings.sentence_transformer",
+        "description": "langchain_community.embeddings.sentence_transformer",
+        "isExtraImport": true,
+        "detail": "langchain_community.embeddings.sentence_transformer",
         "documentation": {}
     },
     {
@@ -1385,6 +1360,22 @@
         "documentation": {}
     },
     {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_community.embeddings",
+        "description": "langchain_community.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain_community.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "HuggingFaceEmbeddings",
+        "importPath": "langchain_community.embeddings",
+        "description": "langchain_community.embeddings",
+        "isExtraImport": true,
+        "detail": "langchain_community.embeddings",
+        "documentation": {}
+    },
+    {
         "label": "RetrievalQA",
         "importPath": "langchain.chains",
         "description": "langchain.chains",
@@ -1438,6 +1429,15 @@
         "description": "langchain_core.prompts",
         "isExtraImport": true,
         "detail": "langchain_core.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "shutil",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "shutil",
+        "description": "shutil",
+        "detail": "shutil",
         "documentation": {}
     },
     {
@@ -2258,20 +2258,38 @@
         "documentation": {}
     },
     {
-        "label": "process_arxiv_papers",
+        "label": "get_embedding_model",
         "kind": 2,
         "importPath": "scripts.arxiv_processor",
         "description": "scripts.arxiv_processor",
-        "peekOfCode": "def process_arxiv_papers(query: str, max_papers: int):\n    \"\"\"\n    Fetches papers from ArXiv, chunks them, and stores them in a ChromaDB.\n    \"\"\"\n    print(f\"Fetching up to {max_papers} papers from ArXiv with query: '{query}'...\")\n    # Use ArxivLoader to automatically fetch and parse PDFs\n    loader = ArxivLoader(query=query, load_max_docs=max_papers)\n    docs = loader.load()\n    if not docs:\n        print(\"No documents found for the given query.\")",
+        "peekOfCode": "def get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    \"\"\"\n    documents = []\n    print(\"Fetching new documents from ArXiv...\")\n    for query in queries:",
         "detail": "scripts.arxiv_processor",
         "documentation": {}
     },
     {
-        "label": "ARXIV_DB_PATH",
+        "label": "process_arxiv_queries",
+        "kind": 2,
+        "importPath": "scripts.arxiv_processor",
+        "description": "scripts.arxiv_processor",
+        "peekOfCode": "def process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    \"\"\"\n    documents = []\n    print(\"Fetching new documents from ArXiv...\")\n    for query in queries:\n        print(f\"  - Searching for '{query}'...\")\n        # Use a lower max_results to stay within API limits\n        loader = ArxivLoader(query=query, load_max_docs=10)",
+        "detail": "scripts.arxiv_processor",
+        "documentation": {}
+    },
+    {
+        "label": "CHROMA_PATH",
         "kind": 5,
         "importPath": "scripts.arxiv_processor",
         "description": "scripts.arxiv_processor",
-        "peekOfCode": "ARXIV_DB_PATH = Path(__file__).resolve().parent.parent / \"vector_db_arxiv\"\ndef process_arxiv_papers(query: str, max_papers: int):\n    \"\"\"\n    Fetches papers from ArXiv, chunks them, and stores them in a ChromaDB.\n    \"\"\"\n    print(f\"Fetching up to {max_papers} papers from ArXiv with query: '{query}'...\")\n    # Use ArxivLoader to automatically fetch and parse PDFs\n    loader = ArxivLoader(query=query, load_max_docs=max_papers)\n    docs = loader.load()\n    if not docs:",
+        "peekOfCode": "CHROMA_PATH = \"vector_db_arxiv\"\nARXIV_CHUNKS_PATH = \"arxiv_chunks.csv\"\n# Function to get the embedding model\ndef get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    \"\"\"",
+        "detail": "scripts.arxiv_processor",
+        "documentation": {}
+    },
+    {
+        "label": "ARXIV_CHUNKS_PATH",
+        "kind": 5,
+        "importPath": "scripts.arxiv_processor",
+        "description": "scripts.arxiv_processor",
+        "peekOfCode": "ARXIV_CHUNKS_PATH = \"arxiv_chunks.csv\"\n# Function to get the embedding model\ndef get_embedding_model():\n    \"\"\"Returns the SentenceTransformer embedding model.\"\"\"\n    return SentenceTransformerEmbeddings(model_name=\"all-MiniLM-L6-v2\")\ndef process_arxiv_queries(queries: list):\n    \"\"\"\n    Downloads, chunks, and adds documents for a list of queries to a vector DB.\n    \"\"\"\n    documents = []",
         "detail": "scripts.arxiv_processor",
         "documentation": {}
     },
