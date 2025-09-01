@@ -28,7 +28,7 @@ def process_arxiv_queries(queries: list):
     for query in queries:
         print(f"  - Searching for '{query}'...")
         try:
-            loader = ArxivLoader(query=query, load_max_docs=10)
+            loader = ArxivLoader(query=query, load_max_docs=50)
             documents.extend(loader.load())
         except urllib.error.HTTPError as e:
             print(f"    - Skipping document due to HTTP Error: {e}")

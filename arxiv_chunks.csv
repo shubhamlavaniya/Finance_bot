@@ -33059,6 +33059,189 @@ revolution. arXiv preprint arXiv:1801.04016, 2018.",N/A,N/A
 "[42] Daniel J Buehrer. A mathematical framework for superintelligent machines. arXiv preprint
 arXiv:1804.03301, 2018.
 27",N/A,N/A
+"Deep learning research landscape & roadmap in a nutshell:
+past, present and future - Towards deep cortical learning
+Aras R. Dargazany
+August 7, 2019
+Abstract
+The past, present and future of deep learning is presented in this work. Given this landscape
+& roadmap, we predict that deep cortical learning will be the convergence of deep learning &
+cortical learning which builds an artiﬁcial cortical column ultimately.
+1
+Past: Deep learning inspirations",N/A,N/A
+"1
+Past: Deep learning inspirations
+Deep learning horizon, landscape and research roadmap in nutshell is presented in this ﬁgure 1.
+The historical development and timeline of deep learning & neural network is separately illustrated
+Figure 1: Deep learning research landscape & roadmap: past, present, future.
+The future is
+highlighted as deep cortical learning.
+in ﬁgure 2. The Origin of neural nets [WR17] is thoroughly reviewed in terms of the evolutionary",N/A,N/A
+"history of deep learning models. Vernon Mountcastle discovery of cortical columns in somatosen-
+sory cortex [Mou97] was a breakthrough in brain science. The big bang was the discovery of Hubel
+& Wiesel of simple cells and complex cell in visual cortex [HW59] which won the Nobel prize for
+this discovery in 1981. This work was heavily founded on Vernon Mountcastle discovery of cortical
+columns in somatosensory cortex [Mou97]. After the discovery of Hubel & Wiesel, Fukushima",N/A,N/A
+"proposed a pattern recognition architecture based on the simple cell and complex cell discovery,
+known as NeoCognitron [FM82]. In this work, a deep neural network was proposed using simple
+cell layer and complex cell layer repeatedly. In 80s and maybe a bit earlier backpropagation have
+been proposed by multiple people but the ﬁrst time it was well-explained and applied for learning
+neural nets was done by Hinton and his colleagues in 1987 [RHW86].
+1
+arXiv:1908.02130v1  [cs.NE]  30 Jul 2019",N/A,N/A
+"1
+arXiv:1908.02130v1  [cs.NE]  30 Jul 2019
+Figure 2: Neural nets origin, timeline & history made by Favio Vazquez
+2
+Present: Deep learning by LeCun, Bengio and Hinton
+Convolutional nets was invented by LeCun [LBD+89] which led to deep learning conspiracy which
+also started by the three founding fathers of the ﬁeld: LeCun, Bengio and Hinton [LBH15]. The
+main hype in deep learning happened in 2012 when the state-of-the-art result in Imagenet classi-",N/A,N/A
+"ﬁcation and TIMIT speech recognition task were dramatically reduced using an end-to-end deep
+convolutional network [KSH12] and deep belief net [HDY+12].
+The power of deep learning is scalability and the ability to learn in an end-to-end fashion.
+In this sense, deep learning architectures are capable of learning big datasets such as Imagenet
+[KSH12, GDG+17] and TIMIT using multiple GPUs in an end-to-end fashion meaning directly",N/A,N/A
+"from raw inputs, all the way the desired outputs. Alexnet [KSH12] used two GPUs for Imagenet
+classiﬁcation which is a very big dataset of images, almost 1.5 million images of size 215x215.
+Kaiming He et al. [GDG+17] proposed a highly scalable approach for training on Image using
+256 GPUs for almost an hour which shows an amazingly powerful approach based stochastic
+gradient descent for applying big cluster of GPUs on huge datasets. Very many application domains",N/A,N/A
+"have been revolutionized using deep learning architectures such as image classiﬁcations [KSH12],
+machine translation [WSC+16, JSL+16], speech recognition [HDY+12], and robotics [MKS+15].
+The Nobel Prize in Physiology or Medicine 2014 was given to John O’Keefe, May-Britt Moser
+and Edvard I. Moser “for their discoveries of cells that constitute a positioning system in the
+brain.” [Bur14].
+This study of cognitive neuroscience shed light on how the world is repre-",N/A,N/A
+"sented within the brain. Hinton’s Capsule network [SFH17] and Hawkins’ cortical learning al-
+gorithm [HAD11] are highly inspired by this Nobel-prize winning work [Bur14].
+3
+Future: Brain-plausible deep learning & cortical learning
+algorithms
+The main direction and inclination in the deep learning for future is the ability to bridge the gap
+between the cortical architecture and deep learning architectures, speciﬁcally convolutional nets.",N/A,N/A
+"In this quest, Hinton proposed capsule network [SFH17] as an eﬀort to get rid of pooling layers
+and replace it with capsules which are highly inspired bu cortical mini-columns in cortical columns
+and layers and include the location information or pose information of parts.
+Another important quest in deep learning is understanding the biological root of learning in our
+brain, speciﬁcally in our cortex. Backpropagation is not biologically inspired and plausible. Hinton",N/A,N/A
+"and the other founding fathers of deep learning have been trying to understand how backprop
+2
+might be feasible biologically in brain. Feedback alignment [LCTA16] and spike time-dependent
+plasticity or STDP-based backprop [BSR+18] are some of the works which have been done by
+Timothy Lillicrap, Blake Richards, and Hinton in order to model backprop biologically based on
+the pyramidal neuron in the cortex.
+In the far future, the main goal should be the merge of two very independent quest to build",N/A,N/A
+"cortical structure in our brain: The ﬁrst one is heavily target by the big and active deep learning
+community; The second one is targeted independently and neuroscientiﬁcally by Numenta and
+GeoﬀHawkins [HAD11]. These people argue that the cortical structure and our neocortex is the
+main source of our intelligence and for building a true intelligent machine, we should be able to
+reconstruct the cortex and to do so, we should ﬁrst focus more on the cortex and understand what",N/A,N/A
+"cortex is made out of.
+4
+Finale: Deep cortical learning as the merge of deep learning
+and cortical learning
+By merging deep learning and cortical learning, a very more focused and detailed architectures,
+named deep cortical learning might be created. We might be able to understand and reconstruct
+the cortical structure with much more accuracy and have a better idea what the true intelligence is
+and how artiﬁcial general intelligence or AGI might be reproducible. Deep cortical learning might",N/A,N/A
+"be the algorithm behind one cortical column in the neocortex.
+References
+[BSR+18]
+Sergey Bartunov, Adam Santoro, Blake Richards, Luke Marris, Geoﬀrey E Hinton,
+and Timothy Lillicrap. Assessing the scalability of biologically-motivated deep learning
+algorithms and architectures. In Advances in Neural Information Processing Systems,
+pages 9368–9378, 2018.
+[Bur14]
+Neil Burgess. The 2014 nobel prize in physiology or medicine: a spatial model for",N/A,N/A
+"cognitive neuroscience. Neuron, 84(6):1120–1125, 2014.
+[FM82]
+Kunihiko Fukushima and Sei Miyake. Neocognitron: A self-organizing neural network
+model for a mechanism of visual pattern recognition. In Competition and cooperation
+in neural nets, pages 267–285. Springer, 1982.
+[GDG+17] Priya Goyal, Piotr Dollár, Ross Girshick, Pieter Noordhuis, Lukasz Wesolowski, Aapo
+Kyrola, Andrew Tulloch, Yangqing Jia, and Kaiming He. Accurate, large minibatch",N/A,N/A
+"sgd: training imagenet in 1 hour. arXiv preprint arXiv:1706.02677, 2017.
+[HAD11]
+Jeﬀ
+Hawkins,
+Subutai
+Ahmad,
+and
+D
+Dubinsky.
+Hierarchi-
+cal
+temporal
+memory
+including
+htm
+cortical
+learning
+algorithms.
+Technical
+report,
+Numenta,
+Inc.
+http://www.numenta.com/htm-
+overview/education/HTM/CorticalLearningAlgorithms.pdf, 2011.
+[HDY+12] Geoﬀrey Hinton, Li Deng, Dong Yu, George E Dahl, Abdel-rahman Mohamed, Navdeep
+Jaitly, Andrew Senior, Vincent Vanhoucke, Patrick Nguyen, Tara N Sainath, et al. Deep",N/A,N/A
+"neural networks for acoustic modeling in speech recognition: The shared views of four
+research groups. IEEE Signal Processing Magazine, 29(6):82–97, 2012.
+[HW59]
+David H Hubel and Torsten N Wiesel. Receptive ﬁelds of single neurones in the cat’s
+striate cortex. The Journal of physiology, 148(3):574–591, 1959.
+[JSL+16]
+Melvin Johnson, Mike Schuster, Quoc V Le, Maxim Krikun, Yonghui Wu, Zhifeng
+Chen, Nikhil Thorat, Fernanda Viégas, Martin Wattenberg, Greg Corrado, et al.",N/A,N/A
+"Google’s multilingual neural machine translation system: Enabling zero-shot trans-
+lation. arXiv preprint arXiv:1611.04558, 2016.
+[KSH12]
+Alex Krizhevsky, Ilya Sutskever, and Geoﬀrey E Hinton. Imagenet classiﬁcation with
+deep convolutional neural networks.
+In Advances in neural information processing
+systems, pages 1097–1105, 2012.
+3
+[LBD+89] Yann LeCun, Bernhard Boser, John S Denker, Donnie Henderson, Richard E Howard,",N/A,N/A
+"Wayne Hubbard, and Lawrence D Jackel. Backpropagation applied to handwritten zip
+code recognition. Neural computation, 1(4):541–551, 1989.
+[LBH15]
+Yann LeCun, Yoshua Bengio, and Geoﬀrey Hinton.
+Deep learning.
+Nature,
+521(7553):436–444, 2015.
+[LCTA16] Timothy P Lillicrap, Daniel Cownden, Douglas B Tweed, and Colin J Akerman. Ran-
+dom synaptic feedback weights support error backpropagation for deep learning. Nature
+communications, 7:13276, 2016.",N/A,N/A
+"communications, 7:13276, 2016.
+[MKS+15] Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei A Rusu, Joel Veness,
+Marc G Bellemare, Alex Graves, Martin Riedmiller, Andreas K Fidjeland, Georg
+Ostrovski, et al. Human-level control through deep reinforcement learning. Nature,
+518(7540):529–533, 2015.
+[Mou97]
+Vernon B Mountcastle. The columnar organization of the neocortex. Brain: a journal
+of neurology, 120(4):701–722, 1997.
+[RHW86]",N/A,N/A
+"of neurology, 120(4):701–722, 1997.
+[RHW86]
+David E Rumelhart, Geoﬀrey E Hinton, and Ronald J Williams. Learning representa-
+tions by back-propagating errors. Nature, 323:533–536, 1986.
+[SFH17]
+Sara Sabour, Nicholas Frosst, and Geoﬀrey E Hinton. Dynamic routing between cap-
+sules. In Advances in Neural Information Processing Systems, pages 3859–3869, 2017.
+[WR17]
+Haohan Wang and Bhiksha Raj.
+On the origin of deep learning.
+arXiv preprint
+arXiv:1702.07800, 2017.",N/A,N/A
+"arXiv preprint
+arXiv:1702.07800, 2017.
+[WSC+16] Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc V Le, Mohammad Norouzi, Wolfgang
+Macherey, Maxim Krikun, Yuan Cao, Qin Gao, Klaus Macherey, et al. Google’s neural
+machine translation system: Bridging the gap between human and machine translation.
+arXiv preprint arXiv:1609.08144, 2016.
+4",N/A,N/A
 "Concept-Oriented Deep Learning 
  
 Daniel T. Chang (张遵) 
@@ -33419,189 +33602,6 @@ with Neural Networks: A Review,” arXiv preprint arXiv:1802.07569 (2018)
 in Gradient-Based Neural Networks,” arXiv preprint arXiv:1312.6211 (2015).",N/A,N/A
 "[21] S.-A. Rebuffi, A. Kolesnikov, G. Sperl, and C. H. Lampert, “iCaRL: Incremental Classifier and Representation 
 Learning,” CVPR’14, pages 2001–2010 (2017).",N/A,N/A
-"Deep learning research landscape & roadmap in a nutshell:
-past, present and future - Towards deep cortical learning
-Aras R. Dargazany
-August 7, 2019
-Abstract
-The past, present and future of deep learning is presented in this work. Given this landscape
-& roadmap, we predict that deep cortical learning will be the convergence of deep learning &
-cortical learning which builds an artiﬁcial cortical column ultimately.
-1
-Past: Deep learning inspirations",N/A,N/A
-"1
-Past: Deep learning inspirations
-Deep learning horizon, landscape and research roadmap in nutshell is presented in this ﬁgure 1.
-The historical development and timeline of deep learning & neural network is separately illustrated
-Figure 1: Deep learning research landscape & roadmap: past, present, future.
-The future is
-highlighted as deep cortical learning.
-in ﬁgure 2. The Origin of neural nets [WR17] is thoroughly reviewed in terms of the evolutionary",N/A,N/A
-"history of deep learning models. Vernon Mountcastle discovery of cortical columns in somatosen-
-sory cortex [Mou97] was a breakthrough in brain science. The big bang was the discovery of Hubel
-& Wiesel of simple cells and complex cell in visual cortex [HW59] which won the Nobel prize for
-this discovery in 1981. This work was heavily founded on Vernon Mountcastle discovery of cortical
-columns in somatosensory cortex [Mou97]. After the discovery of Hubel & Wiesel, Fukushima",N/A,N/A
-"proposed a pattern recognition architecture based on the simple cell and complex cell discovery,
-known as NeoCognitron [FM82]. In this work, a deep neural network was proposed using simple
-cell layer and complex cell layer repeatedly. In 80s and maybe a bit earlier backpropagation have
-been proposed by multiple people but the ﬁrst time it was well-explained and applied for learning
-neural nets was done by Hinton and his colleagues in 1987 [RHW86].
-1
-arXiv:1908.02130v1  [cs.NE]  30 Jul 2019",N/A,N/A
-"1
-arXiv:1908.02130v1  [cs.NE]  30 Jul 2019
-Figure 2: Neural nets origin, timeline & history made by Favio Vazquez
-2
-Present: Deep learning by LeCun, Bengio and Hinton
-Convolutional nets was invented by LeCun [LBD+89] which led to deep learning conspiracy which
-also started by the three founding fathers of the ﬁeld: LeCun, Bengio and Hinton [LBH15]. The
-main hype in deep learning happened in 2012 when the state-of-the-art result in Imagenet classi-",N/A,N/A
-"ﬁcation and TIMIT speech recognition task were dramatically reduced using an end-to-end deep
-convolutional network [KSH12] and deep belief net [HDY+12].
-The power of deep learning is scalability and the ability to learn in an end-to-end fashion.
-In this sense, deep learning architectures are capable of learning big datasets such as Imagenet
-[KSH12, GDG+17] and TIMIT using multiple GPUs in an end-to-end fashion meaning directly",N/A,N/A
-"from raw inputs, all the way the desired outputs. Alexnet [KSH12] used two GPUs for Imagenet
-classiﬁcation which is a very big dataset of images, almost 1.5 million images of size 215x215.
-Kaiming He et al. [GDG+17] proposed a highly scalable approach for training on Image using
-256 GPUs for almost an hour which shows an amazingly powerful approach based stochastic
-gradient descent for applying big cluster of GPUs on huge datasets. Very many application domains",N/A,N/A
-"have been revolutionized using deep learning architectures such as image classiﬁcations [KSH12],
-machine translation [WSC+16, JSL+16], speech recognition [HDY+12], and robotics [MKS+15].
-The Nobel Prize in Physiology or Medicine 2014 was given to John O’Keefe, May-Britt Moser
-and Edvard I. Moser “for their discoveries of cells that constitute a positioning system in the
-brain.” [Bur14].
-This study of cognitive neuroscience shed light on how the world is repre-",N/A,N/A
-"sented within the brain. Hinton’s Capsule network [SFH17] and Hawkins’ cortical learning al-
-gorithm [HAD11] are highly inspired by this Nobel-prize winning work [Bur14].
-3
-Future: Brain-plausible deep learning & cortical learning
-algorithms
-The main direction and inclination in the deep learning for future is the ability to bridge the gap
-between the cortical architecture and deep learning architectures, speciﬁcally convolutional nets.",N/A,N/A
-"In this quest, Hinton proposed capsule network [SFH17] as an eﬀort to get rid of pooling layers
-and replace it with capsules which are highly inspired bu cortical mini-columns in cortical columns
-and layers and include the location information or pose information of parts.
-Another important quest in deep learning is understanding the biological root of learning in our
-brain, speciﬁcally in our cortex. Backpropagation is not biologically inspired and plausible. Hinton",N/A,N/A
-"and the other founding fathers of deep learning have been trying to understand how backprop
-2
-might be feasible biologically in brain. Feedback alignment [LCTA16] and spike time-dependent
-plasticity or STDP-based backprop [BSR+18] are some of the works which have been done by
-Timothy Lillicrap, Blake Richards, and Hinton in order to model backprop biologically based on
-the pyramidal neuron in the cortex.
-In the far future, the main goal should be the merge of two very independent quest to build",N/A,N/A
-"cortical structure in our brain: The ﬁrst one is heavily target by the big and active deep learning
-community; The second one is targeted independently and neuroscientiﬁcally by Numenta and
-GeoﬀHawkins [HAD11]. These people argue that the cortical structure and our neocortex is the
-main source of our intelligence and for building a true intelligent machine, we should be able to
-reconstruct the cortex and to do so, we should ﬁrst focus more on the cortex and understand what",N/A,N/A
-"cortex is made out of.
-4
-Finale: Deep cortical learning as the merge of deep learning
-and cortical learning
-By merging deep learning and cortical learning, a very more focused and detailed architectures,
-named deep cortical learning might be created. We might be able to understand and reconstruct
-the cortical structure with much more accuracy and have a better idea what the true intelligence is
-and how artiﬁcial general intelligence or AGI might be reproducible. Deep cortical learning might",N/A,N/A
-"be the algorithm behind one cortical column in the neocortex.
-References
-[BSR+18]
-Sergey Bartunov, Adam Santoro, Blake Richards, Luke Marris, Geoﬀrey E Hinton,
-and Timothy Lillicrap. Assessing the scalability of biologically-motivated deep learning
-algorithms and architectures. In Advances in Neural Information Processing Systems,
-pages 9368–9378, 2018.
-[Bur14]
-Neil Burgess. The 2014 nobel prize in physiology or medicine: a spatial model for",N/A,N/A
-"cognitive neuroscience. Neuron, 84(6):1120–1125, 2014.
-[FM82]
-Kunihiko Fukushima and Sei Miyake. Neocognitron: A self-organizing neural network
-model for a mechanism of visual pattern recognition. In Competition and cooperation
-in neural nets, pages 267–285. Springer, 1982.
-[GDG+17] Priya Goyal, Piotr Dollár, Ross Girshick, Pieter Noordhuis, Lukasz Wesolowski, Aapo
-Kyrola, Andrew Tulloch, Yangqing Jia, and Kaiming He. Accurate, large minibatch",N/A,N/A
-"sgd: training imagenet in 1 hour. arXiv preprint arXiv:1706.02677, 2017.
-[HAD11]
-Jeﬀ
-Hawkins,
-Subutai
-Ahmad,
-and
-D
-Dubinsky.
-Hierarchi-
-cal
-temporal
-memory
-including
-htm
-cortical
-learning
-algorithms.
-Technical
-report,
-Numenta,
-Inc.
-http://www.numenta.com/htm-
-overview/education/HTM/CorticalLearningAlgorithms.pdf, 2011.
-[HDY+12] Geoﬀrey Hinton, Li Deng, Dong Yu, George E Dahl, Abdel-rahman Mohamed, Navdeep
-Jaitly, Andrew Senior, Vincent Vanhoucke, Patrick Nguyen, Tara N Sainath, et al. Deep",N/A,N/A
-"neural networks for acoustic modeling in speech recognition: The shared views of four
-research groups. IEEE Signal Processing Magazine, 29(6):82–97, 2012.
-[HW59]
-David H Hubel and Torsten N Wiesel. Receptive ﬁelds of single neurones in the cat’s
-striate cortex. The Journal of physiology, 148(3):574–591, 1959.
-[JSL+16]
-Melvin Johnson, Mike Schuster, Quoc V Le, Maxim Krikun, Yonghui Wu, Zhifeng
-Chen, Nikhil Thorat, Fernanda Viégas, Martin Wattenberg, Greg Corrado, et al.",N/A,N/A
-"Google’s multilingual neural machine translation system: Enabling zero-shot trans-
-lation. arXiv preprint arXiv:1611.04558, 2016.
-[KSH12]
-Alex Krizhevsky, Ilya Sutskever, and Geoﬀrey E Hinton. Imagenet classiﬁcation with
-deep convolutional neural networks.
-In Advances in neural information processing
-systems, pages 1097–1105, 2012.
-3
-[LBD+89] Yann LeCun, Bernhard Boser, John S Denker, Donnie Henderson, Richard E Howard,",N/A,N/A
-"Wayne Hubbard, and Lawrence D Jackel. Backpropagation applied to handwritten zip
-code recognition. Neural computation, 1(4):541–551, 1989.
-[LBH15]
-Yann LeCun, Yoshua Bengio, and Geoﬀrey Hinton.
-Deep learning.
-Nature,
-521(7553):436–444, 2015.
-[LCTA16] Timothy P Lillicrap, Daniel Cownden, Douglas B Tweed, and Colin J Akerman. Ran-
-dom synaptic feedback weights support error backpropagation for deep learning. Nature
-communications, 7:13276, 2016.",N/A,N/A
-"communications, 7:13276, 2016.
-[MKS+15] Volodymyr Mnih, Koray Kavukcuoglu, David Silver, Andrei A Rusu, Joel Veness,
-Marc G Bellemare, Alex Graves, Martin Riedmiller, Andreas K Fidjeland, Georg
-Ostrovski, et al. Human-level control through deep reinforcement learning. Nature,
-518(7540):529–533, 2015.
-[Mou97]
-Vernon B Mountcastle. The columnar organization of the neocortex. Brain: a journal
-of neurology, 120(4):701–722, 1997.
-[RHW86]",N/A,N/A
-"of neurology, 120(4):701–722, 1997.
-[RHW86]
-David E Rumelhart, Geoﬀrey E Hinton, and Ronald J Williams. Learning representa-
-tions by back-propagating errors. Nature, 323:533–536, 1986.
-[SFH17]
-Sara Sabour, Nicholas Frosst, and Geoﬀrey E Hinton. Dynamic routing between cap-
-sules. In Advances in Neural Information Processing Systems, pages 3859–3869, 2017.
-[WR17]
-Haohan Wang and Bhiksha Raj.
-On the origin of deep learning.
-arXiv preprint
-arXiv:1702.07800, 2017.",N/A,N/A
-"arXiv preprint
-arXiv:1702.07800, 2017.
-[WSC+16] Yonghui Wu, Mike Schuster, Zhifeng Chen, Quoc V Le, Mohammad Norouzi, Wolfgang
-Macherey, Maxim Krikun, Yuan Cao, Qin Gao, Klaus Macherey, et al. Google’s neural
-machine translation system: Bridging the gap between human and machine translation.
-arXiv preprint arXiv:1609.08144, 2016.
-4",N/A,N/A
 "arXiv:gr-qc/0612006v1  1 Dec 2006
 The Ξ-transform for conformally ﬂat
 space-time
