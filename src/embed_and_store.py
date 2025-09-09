@@ -18,7 +18,7 @@ documents = [
 ]
 
 # Embed & store using LangChain's Chroma
-embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-large-en-v1.5")
+embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 vectordb = Chroma.from_documents(
     documents=documents,
     embedding=embedding_model,
