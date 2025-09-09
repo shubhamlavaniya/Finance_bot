@@ -15,7 +15,7 @@ ARXIV_CHUNKS_PATH = "arxiv_chunks.csv"
 
 def get_embedding_model():
     """Returns the SentenceTransformer embedding model."""
-    return SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+    return SentenceTransformerEmbeddings(model_name="BAAI/bge-large-en-v1.5")
 
 def process_arxiv_queries(queries: list):
     """

@@ -46,7 +46,7 @@ def get_openai_client():
 @st.cache_resource
 def get_embedding_model():
     """Caches the embedding model to avoid re-loading."""
-    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+    return HuggingFaceEmbeddings(model_name="BAAI/bge-large-en-v1.5")
 
 def _build_vector_db_from_csv(data_path: Path, db_path: Path) -> Any:
     """Helper function to build a ChromaDB instance from a CSV file."""
@@ -140,7 +140,7 @@ def get_rag_response(query: str, chat_history: list = None) -> Any:
             yield "The financial database is not available."
             return {"answer": "Error: Financial database not found.", "source": "N/A", "method": "RAG", "verification": "Error", "confidence": "Low"}
         
-        # --- FIX: Create the BM25Retriever before passing it to HybridRetriever ---
+        # Create the BM25Retriever before passing it to HybridRetriever ---
         data_path = PROJECT_ROOT / "data" / "processed" / "chunks.csv"
         if data_path.exists():
             df = pd.read_csv(data_path)
