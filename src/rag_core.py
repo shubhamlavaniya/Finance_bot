@@ -46,7 +46,7 @@ def get_openai_client():
 @st.cache_resource
 def get_embedding_model():
     """Caches the embedding model to avoid re-loading."""
-    return HuggingFaceEmbeddings(model_name="BAAI/bge-large-en-v1.5")
+    return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 
 def _build_vector_db_from_csv(data_path: Path, db_path: Path) -> Any:
     """Helper function to build a ChromaDB instance from a CSV file."""
