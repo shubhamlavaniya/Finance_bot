@@ -3,6 +3,8 @@
 
 
 
+# rag_core.py
+
 import os
 import shutil
 import pandas as pd
@@ -15,7 +17,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 from langchain_openai import OpenAI, ChatOpenAI
 from langchain.prompts import PromptTemplate
-from langchain.schema.runnable import RunnablePassthrough
+#from langchain.schema.runnables import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
 from openai import OpenAI
 from langchain.retrievers import BM25Retriever
@@ -23,6 +25,8 @@ from langchain.agents import AgentExecutor, create_react_agent
 from langchain_core.tools import Tool
 from langchain import hub
 from src.hybrid_retriever import HybridRetriever
+from langchain.chains import LLMChain
+import re
 
 # Note: This is good practice for Streamlit to prevent sqlite3 issues
 __import__('pysqlite3')
@@ -164,12 +168,40 @@ tools = [
     )
 ]
 
+# --- Define a Pre-Processing Guardrail ---
+def get_safety_classification(query: str) -> str:
+    """Classifies a user query as 'HARMFUL' or 'SAFE' using a dedicated LLM call."""
+    safety_prompt = PromptTemplate(
+        input_variables=["query"],
+        template="""You are a safety classification model. Classify the following user query as 'HARMFUL' or 'SAFE'. 
+        Examples of HARMFUL queries include: bomb-making instructions, illegal activities, hate speech, self-harm, etc.
+        Return only 'HARMFUL' or 'SAFE'.
+        Query: {query}
+        Classification:
+        """
+    )
+    safety_llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
+    chain = LLMChain(llm=safety_llm, prompt=safety_prompt)
+    response = chain.invoke({"query": query})
+    classification = response['text'].strip().upper()
+    
+    # Use regex to be more robust to LLM output variations
+    if re.search(r'HARMFUL', classification):
+        return "HARMFUL"
+    return "SAFE"
+
 # --- Create the Agentic RAG Chain ---
 def get_agentic_response(query: str) -> str:
     """Generates a response using an agent that can reason and use tools."""
+    
+    # Check the safety guardrail first
+    if get_safety_classification(query) == "HARMFUL":
+        return "I'm sorry, I cannot assist with that request. It falls outside of my safety guidelines."
+
     llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
     prompt = hub.pull("hwchase17/react")
     agent = create_react_agent(llm, tools, prompt)
+    
     agent_executor = AgentExecutor(
         agent=agent, 
         tools=tools, 
@@ -178,8 +210,14 @@ def get_agentic_response(query: str) -> str:
         max_iterations=15,
         early_stopping_method='generate'
     )
-    response = agent_executor.invoke({"input": query})
-    return response['output']
+
+    try:
+        response = agent_executor.invoke({"input": query})
+        return response['output']
+    except Exception as e:
+        # Fallback for unexpected errors from the agent
+        st.error(f"Agent Execution Error: {e}")
+        return "I'm sorry, I encountered an internal error while trying to answer your question. Please try rephrasing your query."
 
 
 
