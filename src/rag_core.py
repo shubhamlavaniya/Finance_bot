@@ -174,7 +174,9 @@ def get_agentic_response(query: str) -> str:
         agent=agent, 
         tools=tools, 
         verbose=True,
-        handle_parsing_errors=True
+        handle_parsing_errors=True,
+        max_iterations=15,
+        early_stopping_method='generate'
     )
     response = agent_executor.invoke({"input": query})
     return response['output']
