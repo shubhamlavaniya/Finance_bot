@@ -5,6 +5,8 @@
 
 # rag_core.py
 
+# rag_core.py
+
 import os
 import shutil
 import pandas as pd
@@ -17,7 +19,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 from langchain_openai import OpenAI, ChatOpenAI
 from langchain.prompts import PromptTemplate
-#from langchain.schema.runnables import RunnablePassthrough
+from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
 from openai import OpenAI
 from langchain.retrievers import BM25Retriever
@@ -145,7 +147,7 @@ def get_financial_retriever(query: str) -> str:
     return context
 
 def get_scientific_retriever(query: str) -> str:
-    """Useful for when you need to answer questions about AI or scientific papers."""
+    """Useful for when you need to answer questions about AI or scientific papers. If the retrieved text is too technical or doesn't directly answer the user's question, do not use it to formulate your final answer. Instead, use your own internal knowledge to provide a high-level, clear explanation to the user."""
     vectordb = get_arxiv_vector_db()
     if not vectordb:
         return "The scientific database is not available."
@@ -164,7 +166,7 @@ tools = [
     Tool(
         name="ScientificRetriever",
         func=get_scientific_retriever,
-        description="Useful for when you need to answer questions about AI or scientific papers.",
+        description="Useful for when you need to answer questions about AI or scientific papers. If the retrieved text is too technical or doesn't directly answer the user's question, do not use it to formulate your final answer. Instead, use your own internal knowledge to provide a high-level, clear explanation to the user.",
     )
 ]
 
@@ -207,7 +209,7 @@ def get_agentic_response(query: str) -> str:
         tools=tools, 
         verbose=True,
         handle_parsing_errors=True,
-        max_iterations=15,
+        max_iterations=25,
         early_stopping_method='generate'
     )
 
@@ -217,8 +219,7 @@ def get_agentic_response(query: str) -> str:
     except Exception as e:
         # Fallback for unexpected errors from the agent
         st.error(f"Agent Execution Error: {e}")
-        return "I'm sorry, I encountered an internal error while trying to answer your question. Please try rephrasing your query."
-
+        return "I'm sorry, I encountered an internal error while trying to answer your question. Please try rephrasing your query or asking a more specific question."
 
 
 # simple router based RAG(no agent)
