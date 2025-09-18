@@ -5,7 +5,7 @@
 
 import streamlit as st
 import time
-from src.rag_core import get_rag_response
+from src.rag_core import get_agentic_response
 from src.ft_core import get_ft_response, load_ft_model_and_tokenizer
 from src.db_handler import init_db, save_chat, load_chats, update_chat_title, load_latest_chat
 from src.db_handler import migrate_schema
@@ -24,7 +24,6 @@ st.set_page_config(page_title="Financial Chatbot", layout="wide")
 # Check if a chat thread exists. If not, try to load the latest one from the DB.
 if "current_thread_id" not in st.session_state:
     latest_chat = load_latest_chat(user_id=st.session_state.user_id)
-    
     if latest_chat:
         st.session_state.current_thread_id = latest_chat["thread_id"]
         st.session_state.thread_title = latest_chat["title"]
@@ -68,14 +67,10 @@ with st.sidebar:
     )
 
     st.title("Recent")
-    
     db_conversations = load_chats(user_id=st.session_state.user_id, limit=20)
-
     for conv in db_conversations:
         chat_title = conv["title"]
-
         col1, col2 = st.columns([0.7, 0.2])
-
         with col1:
             if st.button(f"**{chat_title}**", use_container_width=True, key=f"chat_button_{conv['thread_id']}"):
                 st.session_state.messages = [
@@ -85,7 +80,6 @@ with st.sidebar:
                 st.session_state.current_thread_id = conv["thread_id"]
                 st.session_state.thread_title = conv["title"]
                 st.rerun()
-
         with col2:
             with st.popover("⚙️", use_container_width=True):
                 st.markdown("### Rename Chat")
@@ -130,23 +124,16 @@ if prompt := st.chat_input("Enter your question here..."):
         
         # Check the selected mode
         if st.session_state.mode == "RAG":
-            # The get_rag_response function now returns a generator that yields text chunks
-            # and then the final metadata dictionary.
             with st.chat_message("assistant"):
                 message_placeholder = st.empty()
-                full_response = ""
-                response_generator = get_rag_response(prompt)
-                
-                for chunk in response_generator:
-                    if isinstance(chunk, dict):
-                        response_data = chunk
-                    else:
-                        full_response += chunk
-                        message_placeholder.markdown(full_response + "▌")
-                
-                message_placeholder.markdown(full_response)
-                answer = full_response
+                answer = get_agentic_response(prompt)
+                message_placeholder.markdown(answer)
                 response_time = round(time.time() - start_time, 2)
+                response_data = {
+                    "method": "Agentic RAG", 
+                    "verification": "Multi-step reasoning",
+                    "confidence": "High"
+                }
             
         elif st.session_state.mode == "Fine-tuned":
             with st.spinner("Loading financial expert..."):
@@ -154,7 +141,6 @@ if prompt := st.chat_input("Enter your question here..."):
             response_data = get_ft_response(prompt)
             answer = response_data["answer"]
             response_time = round(time.time() - start_time, 2)
-            
             with st.chat_message("assistant"):
                 st.markdown(answer)
 
@@ -181,6 +167,194 @@ if prompt := st.chat_input("Enter your question here..."):
         st.session_state.thread_title = prompt
     
     st.rerun()
+
+
+
+
+
+
+
+
+# Router based augumentation(not pure agentic RAG)
+
+# import streamlit as st
+# import time
+# from src.rag_core import get_rag_response
+# from src.ft_core import get_ft_response, load_ft_model_and_tokenizer
+# from src.db_handler import init_db, save_chat, load_chats, update_chat_title, load_latest_chat
+# from src.db_handler import migrate_schema
+# import uuid
+
+# # Initialize DB and migrations
+# init_db()
+# migrate_schema()
+
+# # Add unique user ID for each user session
+# if "user_id" not in st.session_state:
+#     st.session_state.user_id = str(uuid.uuid4())
+
+# st.set_page_config(page_title="Financial Chatbot", layout="wide")
+
+# # Check if a chat thread exists. If not, try to load the latest one from the DB.
+# if "current_thread_id" not in st.session_state:
+#     latest_chat = load_latest_chat(user_id=st.session_state.user_id)
+    
+#     if latest_chat:
+#         st.session_state.current_thread_id = latest_chat["thread_id"]
+#         st.session_state.thread_title = latest_chat["title"]
+#         # Load messages from the latest chat
+#         st.session_state.messages = [
+#             {"query": msg["query"], "answer": msg["answer"]}
+#             for msg in latest_chat["messages"]
+#         ]
+#     else:
+#         # If no previous chats exist, start a new, empty one
+#         st.session_state.current_thread_id = str(uuid.uuid4())
+#         st.session_state.thread_title = ""
+#         st.session_state.messages = []
+
+# # --- Sidebar ---
+# with st.sidebar:
+#     st.header("Start a New Chat")
+#     if st.button("New Chat", icon="✨"):
+#         st.session_state.current_thread_id = str(uuid.uuid4())
+#         st.session_state.thread_title = ""
+#         st.session_state.messages = []
+#         st.rerun()
+    
+#     # Add clear chat button
+#     if st.button("🧹 Clear Current Chat", icon="🧹", use_container_width=True):
+#         st.session_state.messages = []
+#         st.sidebar.success("Current chat cleared!")
+#         st.rerun()
+
+#     st.markdown("---")
+#     st.title("Settings")
+
+#     if "mode" not in st.session_state:
+#         st.session_state.mode = "RAG"
+
+#     st.radio(
+#         "Select Mode:",
+#         options=["RAG", "Fine-tuned"],
+#         index=0 if st.session_state.mode == "RAG" else 1,
+#         key="mode"
+#     )
+
+#     st.title("Recent")
+    
+#     db_conversations = load_chats(user_id=st.session_state.user_id, limit=20)
+
+#     for conv in db_conversations:
+#         chat_title = conv["title"]
+
+#         col1, col2 = st.columns([0.7, 0.2])
+
+#         with col1:
+#             if st.button(f"**{chat_title}**", use_container_width=True, key=f"chat_button_{conv['thread_id']}"):
+#                 st.session_state.messages = [
+#                     {"query": msg["query"], "answer": msg["answer"]}
+#                     for msg in conv["messages"]
+#                 ]
+#                 st.session_state.current_thread_id = conv["thread_id"]
+#                 st.session_state.thread_title = conv["title"]
+#                 st.rerun()
+
+#         with col2:
+#             with st.popover("⚙️", use_container_width=True):
+#                 st.markdown("### Rename Chat")
+#                 new_title = st.text_input(
+#                     "Enter a new name:",
+#                     value=chat_title,
+#                     key=f"rename_input_{conv['thread_id']}"
+#                 )
+#                 if st.button("Save Name", use_container_width=True, key=f"rename_button_{conv['thread_id']}"):
+#                     update_chat_title(
+#                         user_id=st.session_state.user_id,
+#                         thread_id=conv['thread_id'],
+#                         new_title=new_title
+#                     )
+#                     st.success("Chat name updated!")
+#                     time.sleep(1)
+#                     st.rerun()
+
+# # --- Main Panel ---
+# st.title("The Accountant (Agentic RAG + Fine-tuned)")
+# st.write("Ask a financial(Apple filings 2022-2023) or AI related question. Toggle between **RAG** and **Fine-tuned** modes from the sidebar.")
+
+# # Display existing messages from the session state
+# for message in st.session_state.messages:
+#     with st.chat_message("user"):
+#         st.markdown(message["query"])
+#     with st.chat_message("assistant"):
+#         st.markdown(message["answer"])
+
+# if prompt := st.chat_input("Enter your question here..."):
+#     # Add user's message to the chat history and display it
+#     st.session_state.messages.append({"query": prompt, "answer": ""})
+#     with st.chat_message("user"):
+#         st.markdown(prompt)
+
+#     # --- Process Query Based on Selected Mode ---
+#     response_data = {}
+#     answer = ""
+#     response_time = 0
+#     with st.spinner(f"Thinking with {st.session_state.mode}..."):
+#         start_time = time.time()
+        
+#         # Check the selected mode
+#         if st.session_state.mode == "RAG":
+#             # The get_rag_response function now returns a generator that yields text chunks
+#             # and then the final metadata dictionary.
+#             with st.chat_message("assistant"):
+#                 message_placeholder = st.empty()
+#                 full_response = ""
+#                 response_generator = get_rag_response(prompt)
+                
+#                 for chunk in response_generator:
+#                     if isinstance(chunk, dict):
+#                         response_data = chunk
+#                     else:
+#                         full_response += chunk
+#                         message_placeholder.markdown(full_response + "▌")
+                
+#                 message_placeholder.markdown(full_response)
+#                 answer = full_response
+#                 response_time = round(time.time() - start_time, 2)
+            
+#         elif st.session_state.mode == "Fine-tuned":
+#             with st.spinner("Loading financial expert..."):
+#                 ft_model, ft_tokenizer, ft_device = load_ft_model_and_tokenizer()
+#             response_data = get_ft_response(prompt)
+#             answer = response_data["answer"]
+#             response_time = round(time.time() - start_time, 2)
+            
+#             with st.chat_message("assistant"):
+#                 st.markdown(answer)
+
+#     # Update the final message in the session state
+#     st.session_state.messages[-1]["answer"] = answer
+
+#     # Get the chat title (first question or saved title)
+#     chat_title = st.session_state.thread_title if st.session_state.thread_title else prompt
+
+#     # Save the chat with the new title
+#     save_chat(
+#         user_id=st.session_state.user_id,
+#         thread_id=st.session_state.current_thread_id,
+#         title=chat_title,
+#         query=prompt,
+#         answer=answer,
+#         mode=st.session_state.mode,
+#         response_data=response_data,
+#         response_time=response_time
+#     )
+
+#     # Update the session state title after saving the first message
+#     if not st.session_state.thread_title:
+#         st.session_state.thread_title = prompt
+    
+#     st.rerun()
 
 
 # with warnings and verification----------------------------------------

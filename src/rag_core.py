@@ -3,7 +3,6 @@
 
 
 
-
 import os
 import shutil
 import pandas as pd
@@ -11,7 +10,6 @@ import time
 from pathlib import Path
 from typing import Any
 import streamlit as st
-
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.documents import Document
@@ -20,8 +18,10 @@ from langchain.prompts import PromptTemplate
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
 from openai import OpenAI
-from langchain.retrievers import BM25Retriever # <-- New Import
-
+from langchain.retrievers import BM25Retriever
+from langchain.agents import AgentExecutor, create_react_agent
+from langchain_core.tools import Tool
+from langchain import hub
 from src.hybrid_retriever import HybridRetriever
 
 # Note: This is good practice for Streamlit to prevent sqlite3 issues
@@ -53,7 +53,6 @@ def _build_vector_db_from_csv(data_path: Path, db_path: Path) -> Any:
     if not data_path.exists():
         print(f"Error: The file {data_path} was not found. Cannot build vector database.")
         return None
-
     try:
         df = pd.read_csv(data_path)
         docs = [
@@ -90,7 +89,6 @@ def get_vector_db():
     """Loads or builds the financial ChromaDB instance."""
     vector_db_path = PROJECT_ROOT / "vector_db"
     data_path = PROJECT_ROOT / "data" / "processed" / "chunks.csv"
-
     if not vector_db_path.exists() or not os.listdir(vector_db_path):
         print("Financial vector database not found. Building from scratch...")
         return _build_vector_db_from_csv(data_path, vector_db_path)
@@ -107,7 +105,6 @@ def get_arxiv_vector_db():
     """Loads or builds the ArXiv ChromaDB instance."""
     arxiv_db_path = PROJECT_ROOT / "vector_db_arxiv"
     data_path = PROJECT_ROOT / "data" / "processed" / "arxiv_chunks.csv"
-
     if not arxiv_db_path.exists() or not os.listdir(arxiv_db_path):
         print("ArXiv vector database not found. Building from scratch...")
         return _build_vector_db_from_csv(data_path, arxiv_db_path)
@@ -119,153 +116,335 @@ def get_arxiv_vector_db():
             embedding_function=embedding_model
         )
 
-# --- RAG Core Logic ---
+# --- Tool Definitions for the Agent ---
 
-def get_rag_response(query: str, chat_history: list = None) -> Any:
-    """
-    Retrieves, augments, and generates a response based on the user query.
-    This function now acts as a router based on the query topic.
-    """
+def get_financial_retriever(query: str) -> str:
+    """Useful for when you need to answer questions about Apple's financial filings."""
+    vectordb = get_vector_db()
+    if not vectordb:
+        return "The financial database is not available."
     
-    # 1. Route the query to the correct database
-    query_topic = route_query_topic(query)
-    
-    docs = []
-    response = ""
-    source_url = "N/A"
-    
-    if query_topic == "FINANCIAL":
-        vectordb = get_vector_db()
-        if not vectordb:
-            yield "The financial database is not available."
-            return {"answer": "Error: Financial database not found.", "source": "N/A", "method": "RAG", "verification": "Error", "confidence": "Low"}
-        
-        # Create the BM25Retriever before passing it to HybridRetriever ---
-        data_path = PROJECT_ROOT / "data" / "processed" / "chunks.csv"
-        if data_path.exists():
-            df = pd.read_csv(data_path)
-            bm25_docs = [
-                Document(
-                    page_content=row["text"],
-                    metadata={
-                        "section": row["section"],
-                        "chunk_id": row["chunk_id"],
-                    },
-                )
-                for _, row in df.iterrows()
-            ]
-            bm25_retriever = BM25Retriever.from_documents(bm25_docs)
-            retriever = HybridRetriever(vectordb.as_retriever(), bm25_retriever)
-        else:
-            print(f"Warning: chunks.csv not found at {data_path}. Falling back to standard vector search.")
-            retriever = vectordb.as_retriever(search_kwargs={"k": 4})
-
-        docs = retriever.invoke(query)
-        source_url = "Apple 10-K Filings"
-        
-    elif query_topic == "SCIENTIFIC":
-        vectordb = get_arxiv_vector_db()
-        if not vectordb:
-            yield "The Technology database is not available."
-            return {"answer": "Error: Scientific database not found.", "source": "N/A", "method": "RAG", "verification": "Error", "confidence": "Low"}
-        
-        # Use a standard vector retriever for scientific papers
-        retriever = vectordb.as_retriever(search_kwargs={"k": 4})
-        docs = retriever.invoke(query)
-        source_url = "ArXiv API"
-
+    data_path = PROJECT_ROOT / "data" / "processed" / "chunks.csv"
+    if data_path.exists():
+        df = pd.read_csv(data_path)
+        bm25_docs = [
+            Document(page_content=row["text"], metadata={"section": row["section"], "chunk_id": row["chunk_id"]})
+            for _, row in df.iterrows()
+        ]
+        bm25_retriever = BM25Retriever.from_documents(bm25_docs)
+        retriever = HybridRetriever(vectordb.as_retriever(), bm25_retriever)
     else:
-        # For general or irrelevant queries
-        response = "I can only answer questions related to Apple financial filings or AI based technology."
-        yield response
-        return {"answer": response, "source": "N/A", "method": "None", "verification": "None", "confidence": "N/A"}
-
+        retriever = vectordb.as_retriever(search_kwargs={"k": 4})
+        
+    docs = retriever.invoke(query)
     context = "\n\n".join([doc.page_content for doc in docs])
-    
-    # 2. Define the RAG prompt template
-    template = """
-    You are a professional financial or scientific assistant. Use the following context to answer the user's question.
-    If you don't know the answer, say "I can't find that information in my knowledge base".
-    If user ask what topic he/she can ask you, just say apple financial 10k filings(2022-2023) and AI related questions like "what is GenAI or What do you mean by Machine Learning"
-    
-    Context:
-    {context}
-    
-    Question: {question}
-    
-    Answer:
-    """
-    prompt = PromptTemplate(template=template, input_variables=["context", "question"])
-    
-    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
+    return context
 
-    # 3. Create the RAG Chain with streaming
-    rag_chain = (
-        {"context": RunnablePassthrough(), "question": RunnablePassthrough()}
-        | prompt
-        | llm
-        | StrOutputParser()
+def get_scientific_retriever(query: str) -> str:
+    """Useful for when you need to answer questions about AI or scientific papers."""
+    vectordb = get_arxiv_vector_db()
+    if not vectordb:
+        return "The scientific database is not available."
+    retriever = vectordb.as_retriever(search_kwargs={"k": 4})
+    docs = retriever.invoke(query)
+    context = "\n\n".join([doc.page_content for doc in docs])
+    return context
+
+# Create the tools list
+tools = [
+    Tool(
+        name="FinancialRetriever",
+        func=get_financial_retriever,
+        description="Useful for when you need to answer questions about Apple's financial filings.",
+    ),
+    Tool(
+        name="ScientificRetriever",
+        func=get_scientific_retriever,
+        description="Useful for when you need to answer questions about AI or scientific papers.",
     )
+]
 
-    full_answer = ""
+# --- Create the Agentic RAG Chain ---
+def get_agentic_response(query: str) -> str:
+    """Generates a response using an agent that can reason and use tools."""
+    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
+    prompt = hub.pull("hwchase17/react")
+    agent = create_react_agent(llm, tools, prompt)
+    agent_executor = AgentExecutor(
+        agent=agent, 
+        tools=tools, 
+        verbose=True,
+        handle_parsing_errors=True
+    )
+    response = agent_executor.invoke({"input": query})
+    return response['output']
+
+
+
+# simple router based RAG(no agent)
+
+# import os
+# import shutil
+# import pandas as pd
+# import time
+# from pathlib import Path
+# from typing import Any
+# import streamlit as st
+
+# from langchain_community.vectorstores import Chroma
+# from langchain_community.embeddings import HuggingFaceEmbeddings
+# from langchain_core.documents import Document
+# from langchain_openai import OpenAI, ChatOpenAI
+# from langchain.prompts import PromptTemplate
+# from langchain.schema.runnable import RunnablePassthrough
+# from langchain.schema.output_parser import StrOutputParser
+# from openai import OpenAI
+# from langchain.retrievers import BM25Retriever # <-- New Import
+
+# from src.hybrid_retriever import HybridRetriever
+
+# # Note: This is good practice for Streamlit to prevent sqlite3 issues
+# __import__('pysqlite3')
+# import sys
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+# # --- A more robust way to get the project root directory ---
+# PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+# # --- Utility Functions ---
+
+# @st.cache_resource
+# def get_openai_client():
+#     """Loads and caches the OpenAI client."""
+#     return OpenAI(
+#         api_key=st.secrets["OPENAI_API_KEY"],
+#     )
+
+# # --- Vector DB Loading and Building Functions ---
+
+# @st.cache_resource
+# def get_embedding_model():
+#     """Caches the embedding model to avoid re-loading."""
+#     return HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+# def _build_vector_db_from_csv(data_path: Path, db_path: Path) -> Any:
+#     """Helper function to build a ChromaDB instance from a CSV file."""
+#     if not data_path.exists():
+#         print(f"Error: The file {data_path} was not found. Cannot build vector database.")
+#         return None
+
+#     try:
+#         df = pd.read_csv(data_path)
+#         docs = [
+#             Document(
+#                 page_content=row["text"],
+#                 metadata={
+#                     "section": row["section"],
+#                     "chunk_id": row["chunk_id"],
+#                 },
+#             )
+#             for _, row in df.iterrows()
+#         ]
+#     except KeyError as e:
+#         print(f"Error reading CSV: {e}. Ensure columns are named 'text', 'section', and 'chunk_id'.")
+#         return None
+#     except Exception as e:
+#         print(f"An unexpected error occurred while reading CSV: {e}")
+#         return None
+
+#     if db_path.exists():
+#         shutil.rmtree(db_path)
+
+#     embedding_model = get_embedding_model()
+#     vectordb = Chroma.from_documents(
+#         documents=docs,
+#         embedding=embedding_model,
+#         persist_directory=str(db_path)
+#     )
+#     print("Vector database built and saved.")
+#     return vectordb
+
+# @st.cache_resource
+# def get_vector_db():
+#     """Loads or builds the financial ChromaDB instance."""
+#     vector_db_path = PROJECT_ROOT / "vector_db"
+#     data_path = PROJECT_ROOT / "data" / "processed" / "chunks.csv"
+
+#     if not vector_db_path.exists() or not os.listdir(vector_db_path):
+#         print("Financial vector database not found. Building from scratch...")
+#         return _build_vector_db_from_csv(data_path, vector_db_path)
+#     else:
+#         print("Financial vector database found. Loading from persistent storage.")
+#         embedding_model = get_embedding_model()
+#         return Chroma(
+#             persist_directory=str(vector_db_path),
+#             embedding_function=embedding_model
+#         )
+
+# @st.cache_resource
+# def get_arxiv_vector_db():
+#     """Loads or builds the ArXiv ChromaDB instance."""
+#     arxiv_db_path = PROJECT_ROOT / "vector_db_arxiv"
+#     data_path = PROJECT_ROOT / "data" / "processed" / "arxiv_chunks.csv"
+
+#     if not arxiv_db_path.exists() or not os.listdir(arxiv_db_path):
+#         print("ArXiv vector database not found. Building from scratch...")
+#         return _build_vector_db_from_csv(data_path, arxiv_db_path)
+#     else:
+#         print("ArXiv vector database found. Loading from persistent storage.")
+#         embedding_model = get_embedding_model()
+#         return Chroma(
+#             persist_directory=str(arxiv_db_path),
+#             embedding_function=embedding_model
+#         )
+
+# # --- RAG Core Logic ---
+
+# def get_rag_response(query: str, chat_history: list = None) -> Any:
+#     """
+#     Retrieves, augments, and generates a response based on the user query.
+#     This function now acts as a router based on the query topic.
+#     """
     
-    # Stream the response back to the user
-    for chunk in rag_chain.stream({"context": context, "question": query}):
-        yield chunk
-        full_answer += chunk
-
-    # 4. Return the full response data
-    return {
-        "answer": full_answer,
-        "source": source_url,
-        "method": "RAG",
-        "verification": "Context-based",
-        "confidence": "High"
-    }
-
-# --- New Router Function ---
-
-def route_query_topic(query: str) -> str:
-    """Classifies a user query to determine the topic, including harmful content."""
-    client = get_openai_client()
-    routing_prompt = f"""
-    You are a query router. Your task is to classify a user's question into one of the following categories:
-    - 'FINANCIAL' for questions about company financials, reports, or market data.
-    - 'SCIENTIFIC' for questions about academic research, concepts, or papers.
-    - 'HARMFUL' for any question that is toxic, hateful, or promotes illegal acts.
-    - 'GENERAL' for any other type of question that does not fit the above categories.
-
-    Here are some examples for each category:
-
-    FINANCIAL:
-    - "What was Apple's revenue in 2022?"
-    - "Summarize the latest 10-K filing for Tesla."
-
-    SCIENTIFIC:
-    - "What is a Retrieval-Augmented Generation model?"
-    - "Summarize the key findings of the paper 'Attention is All You Need'."
-    - "Explain the concept of neural networks."
-    - "What is GenAI?"
-
-    Respond with only one word: FINANCIAL, SCIENTIFIC, HARMFUL, or GENERAL.
-
-    Query: {query}
-    Classification:"""
+#     # 1. Route the query to the correct database
+#     query_topic = route_query_topic(query)
     
-    try:
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[{"role": "user", "content": routing_prompt}],
-            temperature=0.1,
-            max_tokens=10,
-        )
-        classification = response.choices[0].message.content.strip().upper()
-        if classification not in ["FINANCIAL", "SCIENTIFIC", "HARMFUL", "GENERAL"]:
-            return "GENERAL" # Default to general if LLM response is unexpected
-        return classification
-    except Exception as e:
-        print(f"Error in query routing: {e}")
-        return "GENERAL" # Default in case of API error
+#     docs = []
+#     response = ""
+#     source_url = "N/A"
+    
+#     if query_topic == "FINANCIAL":
+#         vectordb = get_vector_db()
+#         if not vectordb:
+#             yield "The financial database is not available."
+#             return {"answer": "Error: Financial database not found.", "source": "N/A", "method": "RAG", "verification": "Error", "confidence": "Low"}
+        
+#         # Create the BM25Retriever before passing it to HybridRetriever ---
+#         data_path = PROJECT_ROOT / "data" / "processed" / "chunks.csv"
+#         if data_path.exists():
+#             df = pd.read_csv(data_path)
+#             bm25_docs = [
+#                 Document(
+#                     page_content=row["text"],
+#                     metadata={
+#                         "section": row["section"],
+#                         "chunk_id": row["chunk_id"],
+#                     },
+#                 )
+#                 for _, row in df.iterrows()
+#             ]
+#             bm25_retriever = BM25Retriever.from_documents(bm25_docs)
+#             retriever = HybridRetriever(vectordb.as_retriever(), bm25_retriever)
+#         else:
+#             print(f"Warning: chunks.csv not found at {data_path}. Falling back to standard vector search.")
+#             retriever = vectordb.as_retriever(search_kwargs={"k": 4})
+
+#         docs = retriever.invoke(query)
+#         source_url = "Apple 10-K Filings"
+        
+#     elif query_topic == "SCIENTIFIC":
+#         vectordb = get_arxiv_vector_db()
+#         if not vectordb:
+#             yield "The Technology database is not available."
+#             return {"answer": "Error: Scientific database not found.", "source": "N/A", "method": "RAG", "verification": "Error", "confidence": "Low"}
+        
+#         # Use a standard vector retriever for scientific papers
+#         retriever = vectordb.as_retriever(search_kwargs={"k": 4})
+#         docs = retriever.invoke(query)
+#         source_url = "ArXiv API"
+
+#     else:
+#         # For general or irrelevant queries
+#         response = "I can only answer questions related to Apple financial filings or AI based technology."
+#         yield response
+#         return {"answer": response, "source": "N/A", "method": "None", "verification": "None", "confidence": "N/A"}
+
+#     context = "\n\n".join([doc.page_content for doc in docs])
+    
+#     # 2. Define the RAG prompt template
+#     template = """
+#     You are a professional financial or scientific assistant. Use the following context to answer the user's question.
+#     If you don't know the answer, say "I can't find that information in my knowledge base".
+#     If user ask what topic he/she can ask you, just say apple financial 10k filings(2022-2023) and AI related questions like "what is GenAI or What do you mean by Machine Learning"
+    
+#     Context:
+#     {context}
+    
+#     Question: {question}
+    
+#     Answer:
+#     """
+#     prompt = PromptTemplate(template=template, input_variables=["context", "question"])
+    
+#     llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
+
+#     # 3. Create the RAG Chain with streaming
+#     rag_chain = (
+#         {"context": RunnablePassthrough(), "question": RunnablePassthrough()}
+#         | prompt
+#         | llm
+#         | StrOutputParser()
+#     )
+
+#     full_answer = ""
+    
+#     # Stream the response back to the user
+#     for chunk in rag_chain.stream({"context": context, "question": query}):
+#         yield chunk
+#         full_answer += chunk
+
+#     # 4. Return the full response data
+#     return {
+#         "answer": full_answer,
+#         "source": source_url,
+#         "method": "RAG",
+#         "verification": "Context-based",
+#         "confidence": "High"
+#     }
+
+# # --- New Router Function ---
+
+# def route_query_topic(query: str) -> str:
+#     """Classifies a user query to determine the topic, including harmful content."""
+#     client = get_openai_client()
+#     routing_prompt = f"""
+#     You are a query router. Your task is to classify a user's question into one of the following categories:
+#     - 'FINANCIAL' for questions about company financials, reports, or market data.
+#     - 'SCIENTIFIC' for questions about academic research, concepts, or papers.
+#     - 'HARMFUL' for any question that is toxic, hateful, or promotes illegal acts.
+#     - 'GENERAL' for any other type of question that does not fit the above categories.
+
+#     Here are some examples for each category:
+
+#     FINANCIAL:
+#     - "What was Apple's revenue in 2022?"
+#     - "Summarize the latest 10-K filing for Tesla."
+
+#     SCIENTIFIC:
+#     - "What is a Retrieval-Augmented Generation model?"
+#     - "Summarize the key findings of the paper 'Attention is All You Need'."
+#     - "Explain the concept of neural networks."
+#     - "What is GenAI?"
+
+#     Respond with only one word: FINANCIAL, SCIENTIFIC, HARMFUL, or GENERAL.
+
+#     Query: {query}
+#     Classification:"""
+    
+#     try:
+#         response = client.chat.completions.create(
+#             model="gpt-4o-mini",
+#             messages=[{"role": "user", "content": routing_prompt}],
+#             temperature=0.1,
+#             max_tokens=10,
+#         )
+#         classification = response.choices[0].message.content.strip().upper()
+#         if classification not in ["FINANCIAL", "SCIENTIFIC", "HARMFUL", "GENERAL"]:
+#             return "GENERAL" # Default to general if LLM response is unexpected
+#         return classification
+#     except Exception as e:
+#         print(f"Error in query routing: {e}")
+#         return "GENERAL" # Default in case of API error
 
 
 
