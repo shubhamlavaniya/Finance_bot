@@ -48,7 +48,7 @@ with st.sidebar:
         st.rerun()
     
     # Add clear chat button
-    if st.button("🧹 Clear Current Chat", icon="🧹", use_container_width=True):
+    if st.button("Clear Current Chat", icon="🧹", use_container_width=True):
         st.session_state.messages = []
         st.sidebar.success("Current chat cleared!")
         st.rerun()
@@ -99,7 +99,7 @@ with st.sidebar:
                     st.rerun()
 
 # --- Main Panel ---
-st.title("The Accountant (Agentic RAG + Fine-tuned)")
+st.title("Lucius (Agentic RAG + Fine-tuned)")
 st.write("Ask a financial(Apple filings 2022-2023) or AI related question. Toggle between **RAG** and **Fine-tuned** modes from the sidebar.")
 
 # Display existing messages from the session state
