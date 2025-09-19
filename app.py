@@ -48,7 +48,7 @@ with st.sidebar:
         st.rerun()
     
     # Add clear chat button
-    if st.button("Clear Current Chat", icon="🧹", use_container_width=True):
+    if st.button("Clear Chat", icon="🧹", use_container_width=True):
         st.session_state.messages = []
         st.sidebar.success("Current chat cleared!")
         st.rerun()
