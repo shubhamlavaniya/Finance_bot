@@ -99,7 +99,7 @@ with st.sidebar:
                     st.rerun()
 
 # --- Main Panel ---
-st.title("Lucius (Agentic RAG + Fine-tuned)")
+st.title("HALIE (Agentic RAG + Fine-tuned)")
 st.write("Ask a financial(Apple filings 2022-2023) or AI related question. Toggle between **RAG** and **Fine-tuned** modes from the sidebar.")
 
 # Display existing messages from the session state
