@@ -8,9 +8,9 @@ rank_bm25
 transformers
 tqdm
 streamlit
-#chromadb
-chromadb==0.4.24
-#chromadb==0.4.1
+chromadb
+#chromadb==0.4.24
+#chromadb==0.4.18
 pyarrow
 unidecode
 langchain
@@ -19,7 +19,6 @@ nomic
 #gradio==4.44.0 # or a newer version
 ollama
 langfuse
-#openai
 pdfplumber
 langchain-community
 langchain-chroma
@@ -32,6 +31,12 @@ numpy==1.26.4
 langchain-core
 accelerate
 bitsandbytes
+openai
+langchain_openai
+arxiv
+langchainhub
+
+
 
 
 

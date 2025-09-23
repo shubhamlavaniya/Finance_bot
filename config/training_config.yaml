@@ -14,9 +14,23 @@
 # grad_clip: 1.0
 #early_stopping_patience: 2
 
-model_name: microsoft/phi-2
+# model_name: microsoft/phi-2
+# train_file: data/qa_pair.json
+# save_dir: models/financial_phi2_v1
+# prev_model: null
+
+# learning_rate: 2e-4
+# epochs: 3
+# batch_size: 2
+# optimizer: AdamW
+# val_split: 0.1
+# max_length: 512
+# weight_decay: 0.01
+# grad_clip: 1.0
+
+model_name: TinyLlama/TinyLlama-1.1B-Chat-v1.0
 train_file: data/qa_pair.json
-save_dir: models/financial_phi2_v1
+save_dir: models/financial_tiny2_v1
 prev_model: null
 
 learning_rate: 2e-4
