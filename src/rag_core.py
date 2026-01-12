@@ -1,10 +1,6 @@
 # This script is for RAG
 # using LangChain with a hybrid retriever setup.
 
-
-
-# rag_core.py
-
 # rag_core.py
 
 import os
@@ -18,7 +14,8 @@ from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.documents import Document
 from langchain_openai import OpenAI, ChatOpenAI
-from langchain.prompts import PromptTemplate
+#from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.schema.output_parser import StrOutputParser
 from openai import OpenAI

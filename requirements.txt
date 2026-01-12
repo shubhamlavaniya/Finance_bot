@@ -35,6 +35,7 @@ openai
 langchain_openai
 arxiv
 langchainhub
+langchain-core
 
 
 
