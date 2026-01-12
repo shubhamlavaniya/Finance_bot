@@ -7,7 +7,7 @@ import pickle
 from langchain_core.retrievers import BaseRetriever
 from langchain_core.documents import Document
 from typing import List, Any
-from langchain_core.pydantic_v1 import Field
+from pydantic import BaseModel, Field
 
 class HybridRetriever(BaseRetriever):
     vectordb: Any = Field(None)

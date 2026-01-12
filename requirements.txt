@@ -37,6 +37,7 @@ arxiv
 langchainhub
 langchain-core
 langchain-classic
+pydantic
 
 
 
