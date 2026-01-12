@@ -34,7 +34,7 @@ bitsandbytes
 openai
 langchain-openai
 arxiv
-langchain-hub
+langchain_hub
 langchain-core
 langchain-classic
 
