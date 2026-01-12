@@ -32,10 +32,12 @@ langchain-core
 accelerate
 bitsandbytes
 openai
-langchain_openai
+langchain-openai
 arxiv
 langchainhub
 langchain-core
+langchain-classic
+pydantic
 
 
 

@@ -16,15 +16,15 @@ from langchain_core.documents import Document
 from langchain_openai import OpenAI, ChatOpenAI
 #from langchain.prompts import PromptTemplate
 from langchain_core.prompts import PromptTemplate
-from langchain.schema.runnable import RunnablePassthrough
-from langchain.schema.output_parser import StrOutputParser
+#from langchain.schema.runnable import RunnablePassthrough
+#from langchain.schema.output_parser import StrOutputParser
 from openai import OpenAI
-from langchain.retrievers import BM25Retriever
-from langchain.agents import AgentExecutor, create_react_agent
+from langchain_community.retrievers import BM25Retriever
+from langchain_classic.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.tools import Tool
-from langchain import hub
+from langchain_classic import hub
 from src.hybrid_retriever import HybridRetriever
-from langchain.chains import LLMChain
+from langchain_classic.chains import LLMChain
 import re
 
 # Note: This is good practice for Streamlit to prevent sqlite3 issues
@@ -199,7 +199,7 @@ def get_agentic_response(query: str) -> str:
 
     llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
     prompt = hub.pull("hwchase17/react")
-    agent = create_react_agent(llm, tools, prompt)
+    agent = create_tool_calling_agent(llm, tools, prompt)
     
     agent_executor = AgentExecutor(
         agent=agent, 
