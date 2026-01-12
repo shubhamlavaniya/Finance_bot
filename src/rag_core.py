@@ -22,7 +22,7 @@ from openai import OpenAI
 from langchain_community.retrievers import BM25Retriever
 from langchain_classic.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.tools import Tool
-from langchain import hub
+from langchain_classic import hub
 from src.hybrid_retriever import HybridRetriever
 from langchain.chains import LLMChain
 import re
