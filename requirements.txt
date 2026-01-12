@@ -36,6 +36,7 @@ langchain-openai
 arxiv
 langchainhub
 langchain-core
+langchain-classic
 
 
 

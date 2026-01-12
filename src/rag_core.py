@@ -20,7 +20,7 @@ from langchain_core.prompts import PromptTemplate
 #from langchain.schema.output_parser import StrOutputParser
 from openai import OpenAI
 from langchain_community.retrievers import BM25Retriever
-from langchain.agents import AgentExecutor, create_tool_calling_agent
+from langchain_classic.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.tools import Tool
 from langchain import hub
 from src.hybrid_retriever import HybridRetriever
