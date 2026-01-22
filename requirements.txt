@@ -38,6 +38,7 @@ langchainhub
 langchain-core
 langchain-classic
 pydantic
+altair<5
 
 
 
