@@ -22,7 +22,7 @@ from openai import OpenAI
 from langchain_community.retrievers import BM25Retriever
 from langchain_classic.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.tools import Tool
-from langchain_classic import hub
+from langchain import hub
 from src.hybrid_retriever import HybridRetriever
 from langchain_classic.chains import LLMChain
 import re
@@ -198,7 +198,7 @@ def get_agentic_response(query: str) -> str:
         return "I'm sorry, I cannot assist with that request. It falls outside of my safety guidelines."
 
     llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
-    prompt = hub.pull("hwchase17/react")
+    prompt = hub.pull("hwchase17//openai-tools-agent")
     agent = create_tool_calling_agent(llm, tools, prompt)
     
     agent_executor = AgentExecutor(
