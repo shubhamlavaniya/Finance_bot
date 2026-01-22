@@ -199,7 +199,7 @@ def get_agentic_response(query: str) -> str:
         return "I'm sorry, I cannot assist with that request. It falls outside of my safety guidelines."
 
     llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
-    prompt = hub.pull("hwchase17//openai-tools-agent")
+    prompt = hub.pull("hwchase17/openai-tools-agent")
     agent = create_tool_calling_agent(llm, tools, prompt)
     
     agent_executor = AgentExecutor(
