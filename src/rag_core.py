@@ -180,9 +180,10 @@ def get_safety_classification(query: str) -> str:
         """
     )
     safety_llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
-    chain = LLMChain(llm=safety_llm, prompt=safety_prompt)
-    response = chain.invoke({"query": query})
-    classification = response['text'].strip().upper()
+    #chain = LLMChain(llm=safety_llm, prompt=safety_prompt)
+    safety_chain = safety_prompt | safety_llm
+    response = safety_chain.invoke({"query": query})
+    classification = response.content.strip().upper()
     
     # Use regex to be more robust to LLM output variations
     if re.search(r'HARMFUL', classification):
