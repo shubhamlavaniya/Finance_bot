@@ -180,9 +180,10 @@ def get_safety_classification(query: str) -> str:
         """
     )
     safety_llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
-    chain = LLMChain(llm=safety_llm, prompt=safety_prompt)
-    response = chain.invoke({"query": query})
-    classification = response['text'].strip().upper()
+    #chain = LLMChain(llm=safety_llm, prompt=safety_prompt)
+    safety_chain = safety_prompt | safety_llm
+    response = safety_chain.invoke({"query": query})
+    classification = response.content.strip().upper()
     
     # Use regex to be more robust to LLM output variations
     if re.search(r'HARMFUL', classification):
@@ -198,7 +199,7 @@ def get_agentic_response(query: str) -> str:
         return "I'm sorry, I cannot assist with that request. It falls outside of my safety guidelines."
 
     llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
-    prompt = hub.pull("hwchase17/react")
+    prompt = hub.pull("hwchase17/openai-tools-agent")
     agent = create_tool_calling_agent(llm, tools, prompt)
     
     agent_executor = AgentExecutor(
